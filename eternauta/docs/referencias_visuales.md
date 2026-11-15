@@ -1,0 +1,3389 @@
+# Referencias visuales de El Eternauta (catálogo completo, p001–p376)
+
+Formato: página | recorte en px (x0,y0,x1,y1 sobre la página de 1100 px) | categoría | descripción | ★ = de los mejores.
+
+## Ventanas y vistas (64)
+
+- p013 | 745,56,1022,278 | C1 | Cuarto de trabajo visto desde afuera por el ventanal: el guionista de espaldas, en silueta contra la lámpara |
+- p013 | 63,286,413,508 | C1 | Ventana de dos paños sobre el cielo nocturno; el escritorio y el respaldo del guionista en sombra |
+- p016 | 63,55,389,278 | C1 | Silueta de un hombre joven contra una franja vertical de luz (¿ventana?) en un cuarto a oscuras |
+- p017 | 500,287,742,509 | C1 | La ventana del altillo desde afuera: seis vidrios, pared de ladrillo y los hombres iluminados adentro |
+- p019 | 175,519,445,740 | C1 | Cuatro siluetas de espaldas contra la ventana iluminada: una con anteojos redondos y otra que señala afuera |
+- p019 | 685,288,1025,510 | C1 | Ventana del altillo de seis paños con la luz de la nieve; los hombres de pie miran hacia el vidrio |
+- p019 | 318,56,702,278 | C1 | Ventana grande con travesaño y manija, recortada en negro; afuera, un blanco cegador con copos |
+- p020 | 80,55,376,280 | C1 | Dos hombres junto a la ventana del altillo: uno de espaldas la cierra y el otro lo mira alarmado |
+- p020 | 380,55,700,280 | C1 | Marco de ventana y manija redonda de metal recortados contra el resplandor blanco del exterior |
+- p021 | 493,58,660,278 | C1 | Ventana con la luz blanca de la nieve y pequeñas siluetas oscuras al fondo, vistas desde adentro |
+- p021 | 665,58,900,278 | C1 | Tres caras pegadas al vidrio de una ventana de varios paños, con copos y noche negra afuera |
+- p023 | 775,57,1022,278 | C1 | Ventana con cortina estampada y el reflejo de la nieve; Elena y Juan miran hacia afuera |
+- p023 | 60,57,310,278 | C1 | Puerta de calle abierta de par en par: una figura con el abrigo sobre la cabeza se recorta contra la nieve blanca |
+- p023 | 710,287,1026,510 | C1 | Desde adentro: Juan, Elena y Martita de espaldas miran por el ventanal a Polsky corriendo bajo la nieve |
+- p024 | 75,286,265,510 | C1 | Siluetas de Juan, Elena y Martita contra una ventana con cortinas; la nena en el centro |
+- p026 | 76,55,341,276 | C1 | Ventanas encendidas del chalet con siluetas oscuras detrás de los vidrios, bajo la nevada |
+- p033 | 426,55,659,277 | C1 | Cinco siluetas negras contra una franja de luz: tres hombres, una mujer y una nena de la mano |
+- p034 | 491,315,1033,510 | C1 | Ventana de cuatro paños con el cielo negro y copos; las siluetas del grupo recortadas contra el vidrio |
+- p034 | 76,519,401,738 | C1 | Dos hombres asomados a la ventana nocturna con el cielo estrellado; la nena de pelo claro al costado |
+- p034 | 659,519,1035,738 | C1 | Muro de ladrillo con dos ventanas de cuatro vidrios y cinco caras apretadas mirando hacia afuera |
+- p035 | 65,283,482,509 | C1 | Ventana de la casa de enfrente vista desde afuera: una figura clara detrás del vidrio, con el brazo levantado |
+- p035 | 803,515,1025,739 | C1 | Dos siluetas, una mujer y un hombre, contra la claridad del vidrio, en el living a oscuras |
+- p035 | 538,515,795,739 | C1 | Ventana de cuatro vidrios y, afuera, la casa iluminada de enfrente entre la nieve; una cabeza oscura al frente |
+- p035 | 64,56,1022,277 | C1 | Cinco siluetas de espaldas contra el ventanal de cuatro travesaños; afuera, la calle nevada y una ventana encendida |
+- p036 | 865,287,1036,509 | C1 | Hombre de perfil con las manos en la hoja de la ventana, a punto de abrirla; el vidrio brilla |
+- p036 | 749,55,1035,277 | C1 | A través de la ventana nevada: la casa de enfrente con una ventana iluminada y médanos en el jardín |
+- p036 | 76,287,447,509 | C1 | Cuatro caras apretadas tras el marco de la ventana: dos hombres mayores, uno de anteojos y una mujer |
+- p037 | 657,288,1022,507 | C1 | La ventana vista desde afuera: la silueta oscura del cuerpo sobre el alféizar, cortina y copos en el vidrio |
+- p042 | 716,517,1026,739 | C1 | La ventana de cuatro vidrios en la pared de ladrillo con las caras de la familia asomadas |
+- p043 | 419,57,736,277 | C1 | Cuatro caras apoyadas en el marco de la ventana: Favalli de anteojos, Lucas, Martita y Elena |
+- p050 | 694,292,1015,509 | C1 | Ventana de dos paños en un muro de ladrillo: adentro, una mujer y una nena rubia saludan con la mano |
+- p053 | 64,286,390,509 | C1 | Desde adentro: espaldas de Pablo y Juan recortadas contra la ventana; afuera, dos figuras con traje se alejan por la nieve |
+- p053 | 780,286,1025,509 | C1 | Contra la ventana clara, la silueta negra de un hombre de pie con la mano en el respaldo de una silla |
+- p054 | 390,57,740,278 | C1 | Desde adentro: siluetas de Elena y Juan contra la ventana; afuera, el furgón del almacén con cartel pintado |
+- p056 | 65,290,410,510 | C1 | Vista desde la cabina a través del parabrisas: la farmacia cerrada con su cartel y la vereda nevada |
+- p062 | 335,55,530,275 | C1 | Living con ventanal a la derecha: Elena y Juan de pie recortados contra la nieve del exterior |
+- p063 | 725,518,1030,740 | C1 | Silueta oscura de espaldas contra un ventanal iluminado, con copos y sombras en el interior |
+- p079 | 67,290,332,510 | C1 | Cara de la mujer contra la ventana de persianas: ojos abiertos, grito ahogado |
+- p079 | 237,56,730,278 | C1 | Ventana con persianas horizontales y cortinas; las siluetas se recortan contra el vidrio claro |
+- p133 | 695,57,1022,276 | C1 | Dos hombres de perfil recortados contra una ventana negra llena de estrellas; un objeto ovalado sobre la mesa |
+- p149 | 188,517,578,741 | C1 | Ventana con persiana entreabierta y luz que se filtra a rayas; dos hombres se pegan a la pared |
+- p156 | 327,286,623,506 | C1 | Ventana de vidrios oscuros dividida en cuadros, vista desde adentro, con una figura al fondo |
+- p175 | 687,287,1016,507 | C1 | Noche negra con nubes de explosión estallando detrás de los vidrios de una ventana |
+- p176 | 748,55,1035,276 | C1 | Puerta de vidrio con un hombre oscuro parado del otro lado, recortado contra la luz |
+- p305 | 326,346,632,509 | C1 | Ventanas de madera con montantes divididos y la luz del chalet detrás de las siluetas |
+- p306 | 706,549,1037,739 | C1 | Desde adentro y en sombras: vecinos asomados a una ventana abierta, el tejado de chapa afuera |
+- p307 | 739,518,1025,740 | C1 | Desde adentro del vehículo, la fila de ventanillas con cabezas recortadas y el campo afuera |
+- p308 | 584,518,1038,740 | C1 | Dos cabezas en sombra en primer plano y, por la ventana, el jardín con la figura y dos gurbos |
+- p311 | 63,518,476,720 | C1 | Ventana con cortina a medio correr y la luz de adentro reflejada en los vidrios |
+- p311 | 641,288,852,508 | C1 | La mujer grita desde la ventana mientras la nieve cae y el cuerpo yace en el alféizar |
+- p311 | 63,286,238,507 | C1 | Ventana con postigos: un hombre de saco y camisa mira desde adentro, la nieve cayendo afuera |
+- p311 | 415,287,632,508 | C1 | Mujer asomada a la ventana con los brazos abiertos, sobre un cuerpo caído en el antepecho |
+- p312 | 705,518,845,739 | C1 | Interior en penumbra al amanecer: siluetas junto a una ventana y algo sobre la mesa |
+- p314 | 615,305,980,507 | C1 | Ventana de madera con visillos y el sillón al pie: la familia mira hacia afuera desde la sala |
+- p322 | 676,536,1037,738 | C1 | Ventana de noche con copos blancos pegados al vidrio y el cielo negro |
+- p323 | 63,518,528,739 | C1 | Ventana con cortina al fondo del escritorio, la noche negra afuera |
+- p324 | 637,87,832,277 | C1 | Silueta de un hombre de perfil en la ventana; afuera, tres figuras con traje caminan en la nieve |
+- p325 | 710,548,1025,730 | C1 | Un hombre de espaldas se inclina hacia la ventana, con un cuadro enmarcado en la pared |
+- p325 | 180,55,400,278 | C1 | Ventana grande del living: la reja y el cerco del jardín nevado detrás de los vidrios |
+- p329 | 820,318,1023,507 | C1 | Una mujer y una nena pegadas al vidrio de la ventana, mirando hacia afuera |
+- p329 | 558,518,1024,739 | C1 | La mujer rubia señala la ventana de vidrios mientras el viejo y otro hombre se acercan |
+- p333 | 480,288,1035,508 | C1 | Ventanilla lateral del camión con el espejo y la calle nevada del otro lado |
+- p344 | 76,331,455,508 | C1 | Desde atrás de la cabina: cabezas en silueta y el campo nevado por el parabrisas |
+- p359 | 665,120,1035,277 | C1 | Ventana nocturna con cielo estrellado y un chorro de luz sobre el marco |
+
+## Calles y exteriores (381)
+
+- p013 | 212,56,745,278 | C2 | Calle arbolada de Vicente López de noche: poste de madera, dos chalets a dos aguas y cerco bajo, cielo estrellado |
+- p018 | 766,57,1034,246 | C2 | Calle de Vicente López de noche: colectivo iluminado, un auto a lo lejos, faroles de brazo curvo y una pareja |
+- p019 | 450,519,1025,739 | C2 | Esquina nevada de noche: cordón, reja baja, poste, auto con chapa B 370-867 y un chalet al fondo |
+- p020 | 75,287,555,510 | C2 | Vista alta de una esquina nevada: auto estacionado, farol alto, cercos, setos y chalets a la redonda |
+- p023 | 350,518,718,739 | C2 | Polsky corre con el abrigo sobre la cabeza junto a un auto nevado; calle blanca y copos |
+- p023 | 60,287,400,510 | C2 | Polsky baja del porche a la nieve con el abrigo sobre la cabeza; tapial de ladrillo, reja y setos |
+- p024 | 637,548,915,738 | C2 | Calle de Vicente López bajo la nieve: vereda, cordón, cerco bajo y una casa recortada en la noche |
+- p024 | 432,93,913,265 | C2 | Cadáver de Polsky boca abajo en la nieve, un brazo extendido y la mano crispada; cordón y baldosas |
+- p025 | 900,150,1030,270 | C2 | Oleada de nieve con bustos y caras humanas emergiendo (las víctimas), junto a un caserón nevado |
+- p025 | 505,58,1030,270 | C2 | Médano de nieve redondeado, farol de calle y chalets bajos bajo un cielo negro lleno de copos y estrellas |
+- p030 | 670,512,1037,739 | C2 | Calle nevada con médanos y un cerco; al frente, un hombre pensativo con la mano en el mentón |
+- p030 | 789,56,1036,277 | C2 | Nevada sobre los techos de Vicente López: copos grandes, árboles cargados y una ventana encendida |
+- p030 | 546,512,670,739 | C2 | Dos siluetas de hombres con abrigo y algo largo en la mano, sobre un paisaje nevado |
+- p031 | 65,70,393,245 | C2 | Jardín y vereda bajo la nieve: cerco bajo, casas vecinas, árboles cargados y la fachada del chalet |
+- p036 | 327,517,732,739 | C2 | El vecino se inclina por la ventana abierta, la boca abierta y la nieve ya prendida en el pelo y los hombros |
+- p036 | 78,517,316,739 | C2 | Ventana abierta hacia la noche nevada: un hombre se asoma y los copos caen sobre el marco |
+- p037 | 66,55,587,277 | C2 | El vecino muerto sobre el alféizar de la ventana abierta, el saco a rayas y la nieve amontonada en la espalda |
+- p042 | 321,283,785,509 | C2 | Nieve amontonada junto a la pared de ladrillo y el cerco, con copos cayendo sobre el traje |
+- p043 | 67,537,365,733 | C2 | Juan se agacha junto a la pared nevada al tropezar con un bulto blanco en el sendero |
+- p043 | 365,537,600,733 | C2 | Un gato muerto y tieso sobre la nieve, con un gorrión muerto al lado, entre copos |
+- p044 | 200,515,452,742 | C2 | Calle nevada con huellas de ruedas y la figurita del traje caminando hacia el fondo |
+- p044 | 79,283,391,509 | C2 | El cuerpo de un hombre caído sobre el capó nevado, cubierto de blanco, junto a la vereda |
+- p044 | 79,55,700,276 | C2 | Pared de ladrillo con celosía cuadriculada y un médano de nieve en primer plano; Juan con el traje y el rifle |
+- p044 | 712,55,1027,276 | C2 | Campo nevado con médanos grandes, un chalet bajo al fondo y la figura chica de Polsky encorvada |
+- p045 | 318,283,702,509 | C2 | Cuerpo tirado en la nieve frente a la puerta del negocio, con los copos encima |
+- p045 | 68,60,665,277 | C2 | Avenida nevada: edificio de departamentos, seto sepultado, farol inclinado, auto tapado, casas bajas y palmeras |
+- p045 | 68,515,324,742 | C2 | Vista alta de la esquina nevada: médano de nieve, farol inclinado, auto sepultado y una figura chica |
+- p046 | 750,283,1035,509 | C2 | Hoja de periódico arrastrada por el viento sobre la nieve, junto a una pared oscura |
+- p046 | 68,55,400,277 | C2 | Calle lateral nevada: kiosco de madera con cartel redondo, casa con porche, cables y árboles; Juan con el rifle |
+- p046 | 190,515,413,725 | C2 | Vista alta de la calle nevada con la figura chica del traje caminando entre copos |
+- p048 | 794,519,1029,738 | C2 | Vista alta de la nieve con huellas y marcas, y un bulto oscuro al borde del cuadro |
+- p049 | 787,518,1016,738 | C2 | Calle nevada desde un tapial: chalets de tejas, árboles pelados y un farol alto; un solitario con bolsa |
+- p050 | 714,57,1028,258 | C2 | Edificio alto de departamentos con ventanas, poste de luz de madera, casa baja y un solitario con rifle en la nieve |
+- p050 | 78,292,343,509 | C2 | Calle nevada: camión volcado de costado contra un terraplén, tapial y seto a la derecha, figura chiquita con rifle |
+- p051 | 637,518,1030,738 | C2 | Avenida nevada al amanecer: locales bajos, poste de madera, dos figuras cruzan a lo lejos con la carretilla |
+- p051 | 299,57,483,277 | C2 | Dos figuras con traje y rifle avanzan entre grandes montículos blancos de nieve, con copos cayendo |
+- p055 | 174,288,660,509 | C2 | Calle nevada con el furgón del almacén a la izquierda y un montículo enorme del que sale un miembro peludo |
+- p056 | 492,518,890,740 | C2 | Calle nevada junto a una persiana metálica: huellas frescas marcadas en la nieve y dos figuras señalando |
+- p057 | 65,55,760,278 | C2 | Descampado nevado con dos franjas oscuras diagonales, huellas y dos figuras con rifle hacia la farmacia |
+- p059 | 359,519,688,740 | C2 | Cuerpo de un hombre mayor boca abajo en la nieve junto a una puerta oscura, con copos encima |
+- p059 | 696,519,994,740 | C2 | Frente de un negocio nevado con cartel, un camión estacionado y una figura chiquita en la calle |
+- p060 | 563,55,797,275 | C2 | Nuca de un casco nevado en primer plano y, detrás, la calle con persiana, puerta y huellas |
+- p060 | 65,55,557,275 | C2 | Hombre con traje arrodillado con rifle junto al cuerpo caído, en un descampado nevado; copos grandes |
+- p061 | 565,285,800,508 | C2 | Figura con traje agachada junto a una reja de madera rota en la nieve, con copos cayendo |
+- p062 | 65,285,330,508 | C2 | Hombre con traje y escopeta junto a un cerco de ladrillo, mirando el barrio nevado con chalets y un auto |
+- p066 | 65,518,350,740 | C2 | Frente de un negocio con cartel pintado en la nieve, una figura con casco y rifle, otra detrás |
+- p066 | 65,285,330,508 | C2 | Fila de figuras con rifle alejándose por una calle nevada entre cercos y árboles, de noche |
+- p067 | 65,55,410,280 | C2 | Calle nevada de noche: dos trajes con rifle de espaldas, farol, chalets y una esfera con cola en el cielo |
+- p067 | 265,518,510,740 | C2 | Calle nevada con tres figuras con rifle y la cola luminosa de una esfera cayendo en diagonal |
+- p068 | 475,55,830,280 | C2 | Calle nevada de noche: fila de casas bajas a ambos lados, camión estacionado y tres figuras chiquitas |
+- p068 | 335,518,545,740 | C2 | Estación de servicio en picado: galpones de techo plano, surtidores, tanque alto, camión y tres figuras |
+- p069 | 405,55,660,280 | C2 | Calle nevada de noche con el camión en marcha, cercos, techos blancos y esferas cayendo al fondo |
+- p070 | 305,285,640,508 | C2 | Dos figuras con traje se acercan a una casa moderna detrás de una reja baja, con ramas peladas |
+- p071 | 65,55,370,280 | C2 | Calle nevada de noche entre árboles y cercos; dos figuras con traje agachadas con rifle |
+- p071 | 305,285,640,508 | C2 | Dos figuras con traje junto al tronco de un árbol en la nieve, una con rifle y otra de mono claro |
+- p071 | 645,285,1030,508 | C2 | Dos figuras con traje agachadas detrás de un árbol, frente a un terreno nevado y una casa baja |
+- p072 | 655,285,1030,508 | C2 | Patio nevado: árboles pelados, chalets y una figura oscura saltando en el aire con un arma |
+- p072 | 65,518,380,740 | C2 | Figura con traje arrodillada junto a un cuerpo en la nieve, despojándolo del traje aislante |
+- p073 | 776,317,1023,511 | C2 | Esquina vista desde lo alto: tapial, cerco de alambre, árboles secos y dos siluetas encapuchadas |
+- p073 | 62,56,309,278 | C2 | Dos hombres con el traje hermético en la nieve nocturna: uno arrastra un cuerpo caído y el otro vigila con el fusil |
+- p073 | 67,521,376,721 | C2 | Calle nevada: un hombre del traje corre junto a un tronco oscuro; atrás una casa y un auto |
+- p073 | 743,56,1023,278 | C2 | Esquina nevada de noche: vereda, cerco bajo, dos siluetas con el traje y otro hombre diminuto al fondo |
+- p073 | 385,521,667,721 | C2 | Vista alta de la avenida: auto y colectivo clavados en la nieve, farol alto, dos siluetas mínimas |
+- p074 | 77,58,554,290 | C2 | Dos hombres del traje de espaldas sobre una loma de nieve; abajo el barrio con chalets y pinos |
+- p074 | 723,521,1028,740 | C2 | Dos hombres del traje trotando entre árboles secos y un poste de luz, calle nevada de noche |
+- p076 | 513,286,718,509 | C2 | Callejón nevado entre tapiales de ladrillo; cuatro figuras se alejan dejando huellas |
+- p079 | 630,519,1037,740 | C2 | Tapial de ladrillo nevado con un encapuchado de espaldas y tres soldados con casco y fusil |
+- p079 | 341,290,828,510 | C2 | Columna de hombres con capote, casco, mochila y fusil marchando por una calle nevada |
+- p080 | 605,290,815,509 | C2 | Calle nevada: sobrevivientes encapuchados con fusiles junto a un portón de madera y pilar de ladrillo |
+- p080 | 555,56,912,277 | C2 | Avenida nevada desde lo alto: camiones y autos clavados, postes y árboles secos |
+- p081 | 66,290,331,509 | C2 | Detrás del joven, calle nevada con cerco y un camión estacionado al fondo |
+- p081 | 585,290,1023,509 | C2 | Calle nevada: columna de soldados alejándose junto a un chalet de techo agudo y un farol |
+- p082 | 719,56,1023,275 | C2 | Avenida nevada en diagonal con un grupo de soldados con casco caminando junto al cordón |
+- p083 | 317,56,556,276 | C2 | Calle nevada con un camión y siluetas diminutas que miran caer los bólidos brillantes |
+- p083 | 837,56,1021,276 | C2 | Siluetas oscuras de soldados junto a un camión en la calle nevada, de noche |
+- p084 | 638,519,913,740 | C2 | Avenida nevada con vehículos detenidos y soldados diminutos, tejados en primer plano |
+- p084 | 605,56,807,278 | C2 | Soldados y un camión en una calle nevada; dos figuras armadas junto a un portón |
+- p088 | 76,56,555,275 | C2 | Llanura nevada bajo un cielo negro con un tanque de torreta redonda y ocho siluetas en fila |
+- p089 | 63,56,452,277 | C2 | Soldados agazapados tras un pilar de ladrillo; atrás un camión y el tapial nevado |
+- p090 | 731,290,1035,509 | C2 | Un tanque detrás de un cerco de alambre, chalet y soldados en una loma nevada |
+- p090 | 77,519,287,740 | C2 | Loma nevada con yuyos: un soldado saluda desde lo alto a otro que está abajo |
+- p091 | 65,519,423,740 | C2 | Soldados tras un muro bajo de la calle, con un tanque y las criaturas al fondo |
+- p092 | 530,56,790,275 | C2 | Plaza circular con pérgola, calles y techos nevados, vista desde lo alto |
+- p092 | 405,519,798,740 | C2 | Sauces altos nevados: un soldado corre entre los troncos hacia una casita |
+- p092 | 75,56,410,275 | C2 | Vista aérea del parque nevado: puente, plazoleta circular con pérgola y casitas alrededor |
+- p093 | 63,56,460,276 | C2 | Monte nevado con troncos finos y un tanque entre los soldados |
+- p093 | 547,519,863,740 | C2 | Fila de soldados con fusil caminando por la cima del terraplén nevado, de espaldas |
+- p093 | 725,290,1022,509 | C2 | Vista aérea de soldados y un tanque en el campo nevado, con el plan sobre la nieve |
+- p094 | 77,56,1035,275 | C2 | Loma nevada con arbustos pelados y siluetas de soldados en fila, de perfil |
+- p095 | 282,290,477,509 | C2 | Vista aérea de soldados tendidos a lo largo de una carretera nevada, con morteros |
+- p096 | 77,519,367,740 | C2 | Siluetas de soldados en una loma nevada, con la máquina redonda a la derecha |
+- p097 | 200,54,730,278 | C2 | Vista alta de una plaza nevada con fuente circular de borde bajo, acribillada de cráteres y surcos en la nieve |
+- p097 | 268,286,520,510 | C2 | Avenida nevada con vereda, cerco bajo y un edificio claro al fondo, invadida por manchas negras |
+- p098 | 773,520,1037,741 | C2 | Calle nevada con soldados caminando junto a un vehículo destruido y cascarudos muertos en el piso |
+- p098 | 75,55,335,276 | C2 | Esquina de barrio nevada: vereda, cerco bajo, postes y casas bajas alrededor del aparato enemigo |
+- p098 | 478,286,704,510 | C2 | Avenida ancha y vacía bordeada de rejas, árboles pelados y casas bajas, con el aparato al centro |
+- p099 | 800,289,1035,509 | C2 | Avenida nevada a lo lejos con una columna de vehículos y soldados en fila, cielo rayado |
+- p100 | 75,519,295,741 | C2 | Vista alta de una avenida nevada con un tanque chico, cascarudos muertos y surcos en la nieve |
+- p100 | 75,286,425,509 | C2 | Calle nevada con un tanque al frente, árboles pelados, poste de luz y un negocio con cartel |
+- p100 | 470,55,1035,263 | C2 | Campo nevado con un tanque y una fila de soldados en silueta contra un cielo oscuro |
+- p102 | 350,286,552,509 | C2 | Calle vacía nevada con un tanque de agua o andamio de madera y casas bajas al fondo |
+- p102 | 585,55,1035,241 | C2 | Calle nevada con un camión blindado estacionado, soldados agachados, árbol pelado y poste de luz |
+- p103 | 730,103,1035,275 | C2 | Dos hombres de capote caminando por un campo nevado, vistos de lejos, con la ciudad al fondo |
+- p105 | 62,518,320,741 | C2 | Escalinata nevada con soldados y un tanque, baranda de tubos y nieve acumulada |
+- p109 | 63,55,550,269 | C2 | Nieve fosforescente cayendo en esferas redondas sobre techos y calles, cada una con aureola |
+- p119 | 805,127,1035,276 | C2 | Fila de soldados en silueta sobre la nieve, con cascos y rifles, al pie de la tribuna |
+- p120 | 398,614,605,741 | C2 | Campo nevado con un galpón bajo y una columna de humo que sube, señales de espejo (?) |
+- p121 | 445,286,732,509 | C2 | La nube-calavera flota sobre una planicie vacía; abajo, baranda metálica y borde de una tribuna |
+- p121 | 347,518,576,741 | C2 | Vista en picado de una tribuna: soldados diminutos corren por la explanada y uno señala con el brazo |
+- p121 | 419,55,800,277 | C2 | Llanura nevada sin fin bajo un cielo plomizo, jirones de humo y tres soldados de espaldas con casco |
+- p122 | 75,55,388,276 | C2 | Escalinata de hormigón vista desde abajo: soldados subiendo de espaldas y dos cascos enormes en primer plano |
+- p122 | 684,519,1037,740 | C2 | Dos soldados de espaldas tras un parapeto miran una explanada blanca con un vehículo al fondo |
+- p122 | 348,287,560,508 | C2 | Explanada en pendiente: una fila de figuritas corre hacia el centro, con muro bajo y farol al fondo |
+- p123 | 61,285,304,507 | C2 | Bajada de tribuna desde arriba: centinela con fusil, escalones y un cobertizo con escalera |
+- p124 | 527,519,806,740 | C2 | Vista alta de una explanada: hileras de hombres tras una baranda, nieve y un carrito al fondo |
+- p125 | 821,57,1023,276 | C2 | Ladera nevada en diagonal con figuritas diminutas y surcos de luz |
+- p125 | 64,57,318,276 | C2 | Dos soldados se alejan por un pedregal inclinado bajo un cielo oscuro |
+- p125 | 716,519,1026,740 | C2 | Vignette circular sobre negro: el carro abandonado y el caballo desplomado en la calle nevada |
+- p126 | 333,521,645,741 | C2 | Camino nevado vacío: dos figuritas diminutas a lo lejos, un muro bajo y ramas secas |
+- p126 | 413,58,746,277 | C2 | Vignette binocular: cuatro cuerpos tirados en la nieve junto a una reja baja y un árbol |
+- p128 | 702,289,1036,510 | C2 | Escalinata ancha de hormigón: soldados que trepan y corren entre manchas oscuras en el piso |
+- p130 | 76,56,315,276 | C2 | Figura diminuta que camina por una explanada de hormigón rayada, bajo un cielo oscuro |
+- p130 | 472,520,773,740 | C2 | Casco de espaldas contra un muro de nubes fantasmales y líneas de fuerza |
+- p131 | 643,287,1023,508 | C2 | Escalinata empinada vista desde arriba: soldado que trepa y alarga la mano |
+- p131 | 63,57,508,276 | C2 | Soldado de espaldas con casco mira un cielo de nubes enormes con un sol redondo y rayos |
+- p131 | 65,287,350,508 | C2 | Dos encapuchados diminutos sobre una terraza blanca, con copos oscuros alrededor |
+- p136 | 413,58,746,277 | C2 | Calle desierta: vereda, cordón, un edificio moderno y dos soldados de espaldas en primer plano |
+- p137 | 298,525,460,741 | C2 | Esquina nevada: fachada con puerta, soldados diminutos y cascarudos que avanzan |
+- p137 | 470,525,715,741 | C2 | Dos soldados corren junto a un muro alto de ladrillo, esquivando el lanzarrayos |
+- p138 | 686,56,1035,276 | C2 | Calle nevada nocturna: dos soldados caminando, tronco de árbol enorme y reja baja |
+- p138 | 76,56,344,276 | C2 | Parque nevado de noche: árboles secos, dos soldados corriendo y cascarudos muertos en primer plano |
+- p138 | 806,287,1037,508 | C2 | Dos soldados de espaldas con casco frente a un monte bajo y árboles secos |
+- p139 | 776,57,1015,276 | C2 | Dos soldados bajan por un techo nevado inclinado; abajo, un tren detenido |
+- p139 | 553,287,1023,508 | C2 | Calle nevada con plátanos sin hojas, un kiosco de afiches y dos soldados que caminan |
+- p141 | 64,57,456,276 | C2 | Dos soldados armados detrás de un poste de chapa torcido con una placa numerada |
+- p141 | 686,57,1021,276 | C2 | Alambrado de tablas, árboles secos, cascarudos dispersos y un soldado junto a un cacharro |
+- p142 | 507,56,1035,277 | C2 | Explanada nevada con un soldado que instruye a figuras encorvadas; al fondo, un vagón con inscripción |
+- p143 | 66,520,407,740 | C2 | Campo nevado con alambrado, árboles secos y bultos oscuros dispersos en la nieve |
+- p143 | 65,287,323,508 | C2 | Dos soldados de espaldas en una loma nevada, con un campo de reja y cascarudos al fondo |
+- p145 | 62,54,548,276 | C2 | Plaza nevada de noche vista desde atrás de un auto: hileras de árboles secos, pabellón blanco al fondo y cascarudos oscuros |
+- p145 | 66,517,454,741 | C2 | Dos soldados trepando una reja de hierro con lanzas, de noche, contra fondo totalmente negro |
+- p145 | 457,517,890,741 | C2 | Patio nevado con reja de puntas, plantas espinosas y huellas; dos hombres corren hacia una puerta |
+- p148 | 729,56,1045,277 | C2 | Silueta de un hombre trepando un muro blanco mientras otro corre hacia una puerta iluminada |
+- p149 | 388,285,616,510 | C2 | Calle de noche: un hombre agachado junto a un muro bajo y otro en un portal; edificios altos al fondo |
+- p149 | 764,285,1025,510 | C2 | Dos hombres corren encorvados por una calle a oscuras, dibujados pequeños, con rayas de velocidad |
+- p150 | 57,519,343,742 | C2 | Plaza nocturna: pabellón luminoso, árbol alto y poste con cartel; el suelo blanco y grandes rayos |
+- p150 | 74,55,439,278 | C2 | Detalle nocturno: remate de hierro de un pabellón y una gran masa oscura de borde festoneado encima (?) |
+- p150 | 57,286,387,510 | C2 | Plaza de noche con pabellón blanco de cúpula y rayos, edificios altos al fondo, suelo nevado |
+- p151 | 751,55,1025,277 | C2 | Dos hombres de espaldas miran la plaza nocturna: pabellón iluminado, poste con cruz y un auto |
+- p154 | 438,54,629,277 | C2 | Templete de mármol con cúpula y columnas en un campo nevado, rodeado de cascarudos y huellas |
+- p154 | 74,54,302,277 | C2 | Descampado nevado con árboles secos, cascarudos negros junto a un cuerpo y un hombre de saco de pie |
+- p154 | 634,54,821,277 | C2 | Escalinata con baranda de hierro y fila de siluetas subiendo en la penumbra |
+- p155 | 807,517,1025,741 | C2 | Pabellón de la orquesta iluminado con rayos y fila de cascarudos negros delante, entre árboles |
+- p161 | 368,518,705,741 | C2 | Pabellón de la orquesta con farol y árbol, rodeado por un círculo de cascarudos negros |
+- p162 | 445,286,708,510 | C2 | Plaza nocturna: hilera de árboles sin hojas, pabellón iluminado y farol; calle con escombros |
+- p163 | 57,54,547,276 | C2 | Parque nocturno: pabellón alumbrado, farol alto con remate, árboles sin hojas y huellas en la nieve |
+- p165 | 815,517,1045,741 | C2 | Pabellón de la orquesta, farol con globo y fila de cascarudos negros al pie, de noche |
+- p166 | 57,284,271,509 | C2 | Noche: dos siluetas corren con los brazos en alto bajo árboles secos, sobre nieve |
+- p166 | 363,54,734,277 | C2 | Panorámica nocturna de la ciudad: edificios blancos, palmeras, pabellón y un punto luminoso que estalla |
+- p166 | 512,284,809,509 | C2 | Plaza nocturna con pabellón, farol de globo y dos figuras corriendo en silueta |
+- p167 | 525,285,709,509 | C2 | Dos hombres de espaldas caminan con un prisionero entre ellos, bajo cables y un auto al fondo |
+- p167 | 57,285,521,509 | C2 | Dos hombres caminan por la vereda nevada: uno carga un prisionero al hombro y el otro lleva fusil |
+- p168 | 57,286,319,510 | C2 | Dos figuras caminan por la ruta de noche con un auto lejos, bajo un cielo rayado en diagonal |
+- p169 | 752,286,1035,509 | C2 | Ruta nevada en picado: banquina, maleza seca y rastros oscuros sobre la nieve |
+- p169 | 385,55,745,277 | C2 | Calle de chalets nevada con un auto oscuro que se aleja entre la nieve |
+- p170 | 246,286,682,509 | C2 | Chalets de madera nevados y dos hombres que corren encorvados por la nieve |
+- p170 | 74,54,565,276 | C2 | Noche negra con resplandor de incendio sobre la nieve y escombros esparcidos |
+- p174 | 554,59,1027,277 | C2 | Paisaje nocturno apenas visible: nieve, surcos y horizonte bajo un cielo negro |
+- p176 | 480,285,708,468 | C2 | Calle nevada con humo: dos hombres armados corren agachados junto a un cerco |
+- p176 | 268,285,470,468 | C2 | Hombre armado corre por una calle nevada junto a una casa y escombros |
+- p176 | 713,286,1035,468 | C2 | Vereda nevada junto a una pared baja: dos siluetas corren alejándose bajo el cielo negro |
+- p180 | 342,518,700,740 | C2 | Columna de soldados armados avanza por una calle nevada con casas bajas detrás |
+- p180 | 296,55,525,277 | C2 | Explanada nevada junto al estadio con hileras de figuritas y vehículos blindados |
+- p181 | 67,516,325,737 | C2 | Esquina nevada con árboles secos y un camión; soldados armados avanzan por la calle |
+- p181 | 67,286,320,506 | C2 | Vista picada de un barrio de casas planas con techos nevados, autos y calles desiertas |
+- p181 | 730,286,1014,506 | C2 | Soldado junto a una pared de ladrillo con cartel de calle "MONROE", de noche |
+- p181 | 787,55,1018,277 | C2 | Soldados caminan de espaldas junto a un galpón oscuro y un tapial nevado |
+- p182 | 555,287,895,510 | C2 | Avenida nevada en perspectiva: casas bajas, tapial largo, un jeep y grupos de soldados |
+- p182 | 425,538,830,742 | C2 | Nieve abierta de noche: un soldado de espaldas, otro que señala y un jeep con un hombre |
+- p183 | 715,59,1015,277 | C2 | Dos soldados de espaldas suben una loma nevada junto a un árbol sin hojas |
+- p183 | 65,287,280,507 | C2 | Vista alta de una esquina nevada: casa con chimenea, árboles secos y soldados con un auto |
+- p183 | 665,518,830,737 | C2 | Fila de siluetas de soldados camina por la nieve en la oscuridad, un vehículo atrás |
+- p183 | 65,518,330,737 | C2 | Campo nevado: soldados dispersos, uno con el brazo en alto, y un jeep a la derecha |
+- p183 | 65,59,310,277 | C2 | Esquina nevada con un edificio de altos y un jeep; soldados cruzan la calle en fila |
+- p184 | 65,285,395,509 | C2 | Campo nevado abierto con tres soldados; dos se alejan llevando un estuche y un fusil |
+- p184 | 385,569,705,740 | C2 | Terreno nevado con farol, árboles secos, ruinas de un puesto y huellas en la nieve |
+- p185 | 791,519,1012,729 | C2 | Soldados corren agachados por la nieve junto a un talud oscuro |
+- p185 | 455,286,695,509 | C2 | Avenida nevada desierta en perspectiva con un edificio alto al fondo y escombros |
+- p186 | 68,55,470,277 | C2 | Ladera nevada con un árbol seco, soldados trepando y un auto volcado con las ruedas al aire |
+- p186 | 395,515,610,742 | C2 | Hilera de figuritas y vehículos cruzan una loma nevada con un árbol seco |
+- p187 | 620,56,1035,245 | C2 | Llanura nevada enorme con figuritas alejándose hacia el edificio del fondo |
+- p187 | 307,518,520,741 | C2 | Grupo de soldados se aleja por un campo nevado entre árboles secos |
+- p187 | 545,518,830,741 | C2 | Dos soldados de pie en la nieve miran el terreno, uno con el fusil listo |
+- p187 | 63,55,610,245 | C2 | Soldados cruzan un campo nevado hacia un gran cartel publicitario sobre un cerco de alambre |
+- p188 | 670,55,1035,276 | C2 | Soldado agazapado de espaldas apunta hacia una calle oscura con escombros y un farol |
+- p188 | 540,285,815,509 | C2 | Campo de escombros con soldados y edificios altos y oscuros humeando al fondo |
+- p188 | 68,55,300,277 | C2 | Soldado encorvado con fusil avanza por un campo nevado con escombros y otros soldados |
+- p189 | 832,291,1024,507 | C2 | Fila de siluetas de soldados camina por la cresta de un médano nevado, árboles secos |
+- p189 | 369,55,645,275 | C2 | Campo de escombros con vigas retorcidas y soldados de pie; edificio alto y humo al fondo |
+- p189 | 65,518,500,741 | C2 | Soldado de frente con fusil en primer plano y compañeros caminando por la nieve |
+- p190 | 589,55,739,268 | C2 | Soldado señala el suelo en un descampado nevado; otros soldados vienen detrás |
+- p190 | 430,524,785,740 | C2 | Calle nevada con galpón de portón metálico y soldados que miran el suelo agrietado |
+- p190 | 70,285,510,509 | C2 | Patio nevado enorme con huellas circulares gigantes y grietas, soldados diminutos al pie de un edificio |
+- p191 | 865,518,1035,738 | C2 | Calle nevada con una casa baja y un tronco de palmera en diagonal, figuritas al fondo |
+- p191 | 675,289,1035,489 | C2 | Soldados de espaldas caminan hacia un cerco blanco y una masa oscura de escombros |
+- p191 | 403,288,632,489 | C2 | Vista alta de galpones y casas de techo plano nevados, con soldados en la calle |
+- p191 | 66,59,350,277 | C2 | Soldado agachado en la nieve mira el suelo; campo abierto y horizonte rayado |
+- p191 | 67,288,397,483 | C2 | Soldados caminan frente a una casa en ruinas con escombros amontonados en la puerta |
+- p191 | 715,518,860,738 | C2 | Dos soldados corren hacia una casa baja de la que sale una figura, cielo blanco |
+- p192 | 558,55,737,276 | C2 | Calle recta y limpia flanqueada por edificios y faroles, con cables sueltos |
+- p192 | 75,55,444,275 | C2 | Avenida ancha y despejada entre edificios bajos, con soldados de espaldas y uno que señala |
+- p192 | 745,55,1035,276 | C2 | Dos soldados suben una loma nevada empujando una moto; edificio bajo y farol detrás |
+- p192 | 495,510,770,745 | C2 | Calle nevada con escombros amontonados; dos soldados de pie miran hacia adelante |
+- p193 | 205,57,540,275 | C2 | Soldados en silueta cruzan de noche frente a la fachada; vereda limpia y cielo rayado |
+- p193 | 765,57,1035,275 | C2 | Dos soldados de espaldas con casco y fusil miran una esquina de edificios bajos y paredones |
+- p193 | 317,285,680,508 | C2 | Vías de tranvía arrancadas y retorcidas sobre montañas de escombros; soldados diminutos al fondo |
+- p193 | 62,285,310,508 | C2 | Calle lateral tapada por un médano de escombros; caños y cables cruzan sobre la nieve |
+- p193 | 66,518,330,741 | C2 | Avenida ancha en fuga hacia el centro, con vías curvas y figuritas diminutas sobre la nieve |
+- p193 | 349,518,622,741 | C2 | Plaza con monumento sobre pedestal de piedra, árboles sin hojas y cuerpos tendidos en la nieve |
+- p194 | 75,54,535,275 | C2 | Soldados con fusil cruzan la calle nevada frente a la fachada; paredón blanco y reja baja |
+- p194 | 765,54,1035,275 | C2 | Vista lejana del puente de hierro del Pacífico sobre pilares, con figuras diminutas abajo |
+- p194 | 555,285,760,508 | C2 | Vista en picado: vigas de acero remachadas en diagonal sobre la nieve y una fila de soldados |
+- p194 | 790,285,1037,508 | C2 | Esquina en sombra con aleros, cables colgando y soldados chicos junto al colectivo |
+- p194 | 770,518,1035,741 | C2 | Dos soldados corren agachados con fusiles por una calle nevada, cielo rayado |
+- p195 | 668,54,1035,272 | C2 | Vista aérea de una rotonda enorme con calles en círculo, monumento, árboles y autos diminutos |
+- p195 | 360,54,663,272 | C2 | Dos soldados de espaldas, casco y fusil al hombro, frente a una calle tapada de escombros |
+- p195 | 62,285,370,508 | C2 | Callejón entre medianeras altas con cinco soldados de casco y fusil; uno señala hacia arriba |
+- p196 | 575,518,1035,741 | C2 | Calle en ruinas con tres soldados que corren hacia cámara y troncos de árbol enormes a la derecha |
+- p196 | 220,285,565,508 | C2 | Panorámica de la ciudad en llamas vista desde una azotea, con copos y humo |
+- p196 | 325,54,505,272 | C2 | Cráter abierto en el pavimento con escombros alrededor y una figurita diminuta al borde |
+- p197 | 612,518,1035,741 | C2 | Campo de escombros humeante con dos soldados de pie y uno que se aleja; nieve en el piso |
+- p197 | 62,283,425,508 | C2 | Talud de escombros con vigas cruzadas y cascotes suspendidos en el aire; figura diminuta abajo |
+- p199 | 62,288,690,508 | C2 | Calle ancha con árboles y vehículos alineados bajo un puente en arco de ladrillo |
+- p200 | 76,54,600,236 | C2 | Soldados y voluntarios huyen en desbandada por un descampado nevado entre árboles pelados |
+- p200 | 622,54,1035,236 | C2 | Un hombre de sweater de espaldas frente a una cortina de cascotes que caen; casco en perfil |
+- p201 | 63,54,342,278 | C2 | Soldado trepa un médano de escombros humeantes; llamas blancas y vigas negras detrás |
+- p201 | 909,288,1024,505 | C2 | Llamaradas blancas y escombros junto a un poste de luz inclinado |
+- p201 | 266,288,546,505 | C2 | Dos figuritas diminutas suben una loma humeante bajo llamaradas blancas |
+- p202 | 612,285,1035,431 | C2 | Soldados escapan entre ruinas humeantes; un cañón inclinado en primer plano y uno con brazos en alto |
+- p202 | 450,54,660,275 | C2 | Soldado de casco en perfil señala hacia arriba una columna de humo; sol blanco al fondo |
+- p203 | 282,288,583,506 | C2 | Soldados pasan junto a un cuerpo tendido en la nieve; camión y árboles secos al fondo |
+- p203 | 67,517,450,737 | C2 | Descampado nevado con árboles pelados, figuritas al fondo y vehículos estacionados |
+- p203 | 430,59,757,278 | C2 | Columna de soldados camina por la nieve entre una reja baja y árboles sin hojas |
+- p205 | 355,284,514,508 | C2 | Dos soldados de pie en una plaza nevada con árboles sin hojas y un banco |
+- p205 | 644,517,800,742 | C2 | Siluetas de soldados en la nieve junto a un poste, bajo un cielo rayado |
+- p205 | 702,55,1023,272 | C2 | Decenas de soldados caídos o arrastrándose por la nieve, bajo un cielo rayado |
+- p206 | 861,61,1033,275 | C2 | Árbol seco junto a un cerco de alambre y un tapial bajo, en un campo blanco |
+- p206 | 76,61,571,275 | C2 | Descampado nevado con cerco de alambre, árboles secos y soldados dispersos |
+- p206 | 77,328,250,508 | C2 | Vista alta de un camino nevado: carro tirado por caballos, vehículos chicos y árboles junto a un cerco |
+- p206 | 415,573,780,741 | C2 | Soldados conversan en un descampado nevado con árboles y un auto oscuro al fondo |
+- p207 | 64,285,478,465 | C2 | Vista aérea: camiones y jeeps al borde de un campo nevado cubierto de figuras diminutas y cuerpos |
+- p207 | 793,518,1022,740 | C2 | Calle con auto en primer plano, soldados que disparan y figuritas al fondo, entre edificios |
+- p208 | 340,517,855,740 | C2 | Calle nocturna entre edificios con ventanas encendidas y una estatua sobre pedestal |
+- p210 | 480,54,729,276 | C2 | Hombre de espaldas ante una ametralladora mira una calle con edificios altos y vidrios rotos |
+- p217 | 63,285,470,489 | C2 | Calle ancha y clara, cubierta de humo y escombros, con vehículos rotos y casas bajas |
+- p225 | 575,50,1021,275 | C2 | Calle con edificios al fondo y soldados que corren pegados a la mole del monstruo |
+- p242 | 790,285,1035,508 | C2 | Vista en picado de una rampa rayada, un cobertizo con ventanuco y cuatro figuras diminutas |
+- p243 | 428,331,752,506 | C2 | Tres siluetas armadas en un pasadizo oscuro; en primer plano un perfil claro y una cúpula |
+- p243 | 642,559,1015,737 | C2 | Dos hombres sobre un montón de escombros junto a un gran bloque rayado; boca de túnel |
+- p248 | 75,515,340,740 | C2 | Un hombre de pie señala a lo lejos; dos figuras bajas junto a él entre escombros |
+- p250 | 75,75,310,277 | C2 | Tres hombres armados de espaldas en una esquina; puerta de dos hojas y adoquines |
+- p250 | 76,306,495,508 | C2 | Tres hombres armados avanzan junto a una casa con reja; uno se vuelve con el rifle |
+- p250 | 761,306,1038,507 | C2 | Tres siluetas armadas se alejan bajo árboles; troncos oscuros a la derecha |
+- p250 | 75,515,561,740 | C2 | Nuca en primer plano, muro de ladrillo a la derecha y calle arbolada con tres siluetas |
+- p251 | 311,56,508,276 | C2 | Hombre de espaldas de pelo corto mira una fachada oscura con un poste |
+- p251 | 332,286,507,508 | C2 | Dos figuras oscuras trotan por un sendero nevado entre tapias |
+- p251 | 63,286,323,507 | C2 | Dos hombres encorvados avanzan por una vereda nevada junto a un árbol seco |
+- p252 | 75,515,690,740 | C2 | Calle con árboles secos: la muchacha frente a cuatro hombres armados, reja y puerta detrás |
+- p253 | 653,306,909,508 | C2 | Cuatro personas de pie en la vereda; una bicicleta apoyada contra una reja |
+- p254 | 75,525,314,739 | C2 | Dos hombres de perfil conversan en la calle; una figura con capucha al lado |
+- p254 | 400,287,700,508 | C2 | Grupo de cinco personas de pie en la vereda, una con rifle a la espalda |
+- p255 | 705,515,1035,740 | C2 | La muchacha de perfil y dos hombres; ramas de árbol desnudo al fondo |
+- p255 | 705,290,1035,508 | C2 | Cuatro figuras de pie en la calle, una de sobretodo largo; tronco de árbol a la derecha |
+- p256 | 211,536,447,739 | C2 | Dos hombres caminan por la vereda, uno con fusil; árbol seco al fondo |
+- p256 | 695,55,1037,277 | C2 | Calle con vereda, árboles secos, farol, un auto estacionado y figuras que corren |
+- p256 | 687,536,1037,739 | C2 | Cuatro figuras avanzan calle arriba, una corre; ventana iluminada y árbol al fondo |
+- p261 | 700,330,1020,507 | C2 | Dos hombres de espaldas con fusiles avanzan hacia un portón sombrío |
+- p264 | 730,55,1035,277 | C2 | Dos hombres de espaldas ante un edificio alto con cartel de calle "CALLAO" y un farol |
+- p265 | 195,55,458,275 | C2 | Callejón de noche: dos figuras agazapadas, una con rifle; edificio blanco con balcón de hierro y un árbol seco tras la tapia |
+- p265 | 513,517,1025,739 | C2 | Azotea con balaustrada sobre techos y terrazas de la ciudad, cielo negro y antenas domésticas |
+- p265 | 697,286,1025,507 | C2 | Escalera exterior de hierro: un hombre sube con el rifle al hombro y dos siluetas con sombrero esperan arriba |
+- p265 | 62,517,505,738 | C2 | Patio nocturno: reja de hierro, paredes claras, toldo de lona sobre un camión y edificios al fondo |
+- p266 | 74,58,1037,648 | C2 | Plaza nocturna: esfera luminosa gigante, torre con soporte acanalado, árboles-antena y figuritas humanas de escala mínima |
+- p267 | 84,56,538,276 | C2 | Azotea de noche: pretil oscuro, escalera de mano y un cielo rayado sobre los techos |
+- p268 | 725,287,1037,508 | C2 | Tres siluetas en la azotea: una señala al cielo algo que cae y no se distingue bien |
+- p268 | 687,518,1038,739 | C2 | Azotea en perspectiva: cráter humeante en la nieve, tejas y un objeto chato y redondo caído más allá |
+- p269 | 396,57,683,277 | C2 | Un hombre dibuja un croquis apoyado en el pretil; Favalli mira por encima de su hombro, con un disco en la nuca |
+- p269 | 63,518,417,739 | C2 | Azotea: un muchacho flaco de camiseta cruza la losa, otro espera más allá y un cartel se recorta al fondo |
+- p270 | 76,286,369,508 | C2 | La plaza barrida por haces de luz: monumento, torre con esfera y cúpula de edificio, cielo estriado |
+- p272 | 319,517,740,738 | C2 | Calle bombardeada: un cuerpo tirado en la nieve, humo y un aparato con antena a la derecha |
+- p274 | 328,550,739,739 | C2 | Tres hombres caminan por la azotea hacia una pared invisible; alambre y tejas al fondo |
+- p275 | 63,536,344,738 | C2 | Fachada de negocio con cartel y soldados borrosos en la calle; el rubio de camiseta en primer plano |
+- p275 | 391,286,742,507 | C2 | Cuatro hombres de pie en la azotea, uno con rifle terciado, brazos abiertos contra el cielo claro |
+- p277 | 640,518,1024,721 | C2 | Tres hombres de espaldas agazapados tras el pretil de una azotea, cielo negro sin estrellas |
+- p278 | 77,518,457,738 | C2 | Picado de una azotea con claraboya y una fila de hombres bajando por una rampa; sombras largas |
+- p279 | 723,109,1023,278 | C2 | Picado de la azotea: un grupo de hombres de pie y caminando, sombras alargadas sobre la losa |
+- p280 | 423,519,823,739 | C2 | Tres hombres en la azotea y una mano gigante negra alzándose detrás del pretil |
+- p281 | 63,519,438,740 | C2 | Dos hombres disparan desde el pretil de noche, fogonazos y un edificio al fondo |
+- p282 | 75,288,690,508 | C2 | Picado de un edificio de oficinas con una calle y una fila de gente diminuta corriendo; humo arriba |
+- p282 | 317,57,689,277 | C2 | Tres siluetas de espaldas tras el pretil y, arriba, una multitud diminuta corriendo por la azotea |
+- p283 | 259,288,541,508 | C2 | Azotea en diagonal: hombres disparando, un cuerpo que se desliza por el borde y otro que se arrastra |
+- p283 | 545,286,1000,508 | C2 | Picado: hombres parapetados disparando, cuerpos tirados en la rampa y un contenedor arriba |
+- p284 | 75,288,484,509 | C2 | Dos hombres apuntando la bazooka sobre el pretil; la torre con esfera, el monumento y la plaza al fondo |
+- p285 | 63,518,383,739 | C2 | Picado de la plaza bombardeada: el domo, un cuerpo en el suelo y figuras sueltas |
+- p285 | 752,57,1024,276 | C2 | Hombre cuerpo a tierra disparando, humo y una explosión entre árboles |
+- p286 | 75,57,388,277 | C2 | Dos hombres de espaldas frente al domo ya apagado, el monumento y la ciudad en silueta; cielo estrellado |
+- p286 | 76,341,416,508 | C2 | Skyline nocturno: la torre con esfera, el monumento y "gurbos" negros inmóviles en la plaza |
+- p287 | 562,288,788,508 | C2 | Picado de la azotea: tres hombres reunidos, un cuerpo tirado y una reja metálica al costado |
+- p287 | 62,56,309,277 | C2 | Hombre barbudo alza la cara al cielo entre flores muertas y ramas secas; campo nevado |
+- p287 | 815,537,1024,739 | C2 | Tres siluetas de espaldas mirando el cielo sobre los techos de la ciudad |
+- p289 | 63,55,490,270 | C2 | Calle de noche con locales de persianas metálicas y marquesinas, árboles sin hojas y tres hombres corriendo entre sombras |
+- p289 | 63,512,364,745 | C2 | Vereda nevada frente a un negocio de óptica, poste de luz con cables y arbolito seco |
+- p289 | 787,55,1023,265 | C2 | Esquina con cartel "CALLAO", persianas metálicas bajas, farol de hierro calado y hombres de abrigo; uno agazapado corre |
+- p289 | 700,285,1022,497 | C2 | Pendiente nevada con un árbol pelado y tres figuras humanas diminutas en la cresta |
+- p290 | 784,55,1037,275 | C2 | Calle cubierta de escombros y cascotes: árboles pelados, ciclistas y soldados abriéndose paso |
+- p292 | 770,538,1039,740 | C2 | Calle nevada con peatones y ciclistas en silueta pasando frente al colectivo destruido |
+- p292 | 731,87,1039,277 | C2 | Calle nevada: un hombre de sombrero y abrigo largo señala al grupo, siluetas alrededor |
+- p292 | 77,538,341,740 | C2 | Kiosco volcado con diarios desparramados, una rueda de bici encima y un cuerpo tirado en la nieve |
+- p293 | 522,75,792,278 | C2 | Esquina con cartel vertical "GRAN SURTIDOR", persianas metálicas, ciclistas y peatones bajo cielo rayado |
+- p293 | 62,549,229,739 | C2 | Dos hombres de espaldas miran un descampado nevado y plano, árboles pelados y horizonte bajo |
+- p294 | 76,287,489,508 | C2 | Silueta agazapada entre maleza seca y alta; ciclistas lejanos en un camino y bosque de troncos |
+- p294 | 75,57,358,277 | C2 | Calle vacía con edificio de esquina, columna de monumento con estatua y dos ciclistas en sombra |
+- p295 | 464,286,1024,499 | C2 | Matas de pasto muy alto con una vara seca de cardo y una cabeza asomando al fondo |
+- p295 | 62,286,455,499 | C2 | Pasto seco y alto enmarañado, una vara de cardo y el horizonte en negro |
+- p296 | 305,57,574,269 | C2 | La onda expansiva aplasta el pasto: líneas veloces y un bulto arrastrado por el suelo |
+- p297 | 62,56,360,276 | C2 | Descampado con un banco, bicicletas caídas en el pasto, cajas y cinco hombres en fila que se alejan |
+- p297 | 739,374,1022,509 | C2 | Descampado gris con un puente bajo a la izquierda y un pedestal de monumento partido en dos |
+- p297 | 369,57,635,277 | C2 | Camino recto con un camión detenido a lo lejos, árboles pelados y escombros bajo cielo rayado |
+- p301 | 63,56,343,276 | C2 | Calle nevada de noche: un auto oscuro pasa frente a galpones y siluetas de edificios, relámpagos |
+- p302 | 355,56,630,276 | C2 | Ochava con faroles, casas bajas de tejas, cercos y un auto doblando en la esquina |
+- p303 | 62,56,557,276 | C2 | Un cuerpo pequeño desplomado en el jardín, junto al portón de madera y al cerco de ligustrina |
+- p304 | 610,519,1036,739 | C2 | Calle de chalets al anochecer con faroles, un auto estacionado y figuritas lejanas |
+- p310 | 75,518,340,739 | C2 | El jardín de noche: gurbos muertos en la nieve, la casa a lo lejos y la nevada cayendo |
+- p311 | 184,60,400,277 | C2 | Figura de abrigo largo avanza bajo la nieve que cae, brazos abiertos, casi sin rasgos |
+- p311 | 728,60,1000,277 | C2 | Cuerpo tendido boca abajo en la nieve, rodeado de copos que caen |
+- p313 | 63,55,620,277 | C2 | Vista aérea de una avenida nevada de noche: líneas de calzada, cercos, copos y un cuerpo tirado en la nieve |
+- p315 | 63,283,380,510 | C2 | Noche de nevada sobre la calle: copos grandes, líneas diagonales, cerco y vereda |
+- p320 | 580,631,1038,739 | C2 | Copos grandes cayendo en diagonal sobre el jardín y el techo del chalet |
+- p326 | 77,98,355,280 | C2 | Noche nevada sobre la calle y el muro de ladrillo, copos como puntos blancos |
+- p329 | 65,518,549,739 | C2 | Cielo negro lleno de copos de todos los tamaños sobre los techos nevados |
+- p330 | 116,518,470,738 | C2 | El grupo cruza la nieve del jardín hacia el camión, uno con rifle al hombro |
+- p330 | 330,56,750,275 | C2 | Copos redondos y trama densa: la nevada más espesa de todo el episodio |
+- p331 | 566,99,779,241 | C2 | La calle y el cerco casi borrados por la nevada |
+- p332 | 75,113,330,247 | C2 | Campo nevado con copos salpicados y un bulto chico y oscuro a un costado |
+- p332 | 431,288,644,508 | C2 | Barrera de madera y reja de la estación Mitre, todo cubierto de nieve |
+- p333 | 64,56,481,276 | C2 | Avenida nevada con portón de hierro, cerca de malla, álamos secos y un poste con el cartel "60" |
+- p334 | 279,306,456,507 | C2 | Alambrado y campo nevado con una silueta caída a lo lejos |
+- p334 | 813,100,1034,232 | C2 | Campo blanco infinito con un bulto bajo y oscuro y un árbol pelado a la derecha |
+- p335 | 858,354,1024,507 | C2 | Farol de hierro forjado con globo redondo en la nieve y un edificio con el cartel "ALMACÉN" |
+- p335 | 555,56,1030,276 | C2 | Campo nevado con alambrado, huellas, el camión a lo lejos y un poste de luz con crucetas |
+- p336 | 385,288,1036,509 | C2 | Camino de tierra con pasto seco y un cartel de madera clavado al costado |
+- p337 | 560,330,748,507 | C2 | Dorso oscuro de un cartel de ruta sobre dos postes, con el camión detenido al lado |
+- p337 | 264,70,584,277 | C2 | Camino rural de tierra entre pastizales altos, árboles pelados y un cartel bajo |
+- p338 | 169,57,381,277 | C2 | Loma de pasto con poste de luz, un caminante solitario abajo y horizonte llano |
+- p338 | 403,518,571,705 | C2 | Explanada oscura de noche con un grupo de siluetas y una figura que se adelanta |
+- p338 | 339,348,608,507 | C2 | Dos hombres parados en suelo blanco junto a un cerco de alambre, árboles pelados |
+- p339 | 64,328,407,507 | C2 | Siluetas sobre una loma: una mujer, un chico y hombres agachados miran la llanura |
+- p340 | 395,121,796,277 | C2 | Soldados diminutos en la cresta de una loma, vistos sobre las cabezas del grupo |
+- p341 | 599,518,862,738 | C2 | Hombre de espaldas que dispara, un soldado que corre y figuras en la loma |
+- p345 | 760,355,1025,435 | C2 | Zanja abierta en la nieve con el grupo agazapado adentro, cielo oscuro arriba |
+- p345 | 64,355,461,507 | C2 | Campo nevado visto desde arriba, con un borde oscuro y erizado y un grupo de siluetas |
+- p346 | 439,548,799,738 | C2 | El grupo se aleja caminando por un lomo nevado, visto desde la zanja |
+- p347 | 363,59,667,279 | C2 | Tres figuras caminan por un pasillo de pasto alto entre troncos oscuros |
+- p349 | 328,560,600,739 | C2 | Un hombre corre encorvado por la zanja bajo una fila de siluetas armadas |
+- p351 | 535,307,751,509 | C2 | Dos siluetas con fusil caminando dentro de un túnel oscuro de tierra |
+- p351 | 288,538,478,740 | C2 | Tres siluetas que corren en fila sobre un fondo negro, agachadas |
+- p351 | 672,537,1025,740 | C2 | Un hombre de espaldas mira una fila de figuritas que cruzan la llanura, pasto delante |
+- p352 | 75,294,417,508 | C2 | Llanura nevada vacía con una bestia redonda a la izquierda y horizonte parejo |
+- p352 | 76,537,235,739 | C2 | Perfil de un hombre en primer plano y la llanura con una cúpula oscura al fondo |
+- p352 | 426,294,784,508 | C2 | Un hombre de espaldas mira la llanura desde la zanja, pastos altos alrededor |
+- p353 | 62,137,330,278 | C2 | Dos figuras corren por la llanura nevada, una con fusil, sombras alargadas |
+- p358 | 597,111,794,276 | C2 | Dos figuras diminutas en la llanura vacía, una garra en el suelo |
+- p358 | 379,518,705,739 | C2 | Dos hombres en la llanura vacía, uno con la mano en el hombro del otro |
+- p360 | 310,306,545,508 | C2 | Hombre de espaldas que corre por la calle de noche frente a la vidriera |
+- p360 | 76,306,300,508 | C2 | Hombre que corre por la vereda frente a la vidriera, brazo extendido |
+- p360 | 76,525,450,739 | C2 | Esquina de noche con cerco de tablas y cerco vivo; un hombre abraza a una nena |
+- p360 | 432,57,723,277 | C2 | Calle de noche con un hombre alto en ropa interior que camina por la vereda |
+- p360 | 554,306,860,507 | C2 | Calle de chalets con cercos y árboles; una nena camina y un hombre corre |
+- p361 | 62,287,351,507 | C2 | Seto bajo de trazos sueltos detrás de los dos hombres, sobre fondo blanco: fondo de vereda simple |
+- p361 | 657,57,1025,278 | C2 | Vereda frente a un seto oscuro rayado: mujer de pollera ajustada con una nena de la mano, dos hombres y calle al fondo |
+- p369 | 592,152,1090,518 | C2 | Noche de suburbio en alto contraste: vereda, cordón, setos y árboles negros, cielo negro con estrellas |
+
+## Casas y fachadas (181)
+
+- p013 | 212,56,745,278 | C3 | Chalet de dos plantas con chimenea, gran ventana y hastial con revestimiento horizontal; vecino con buhardilla |
+- p016 | 389,55,491,278 | C3 | Viñeta chica del chalet entre árboles, con techo a dos aguas y un farol de calle al lado |
+- p017 | 750,287,1023,509 | C3 | Vista en picado del chalet: techo a dos aguas con buhardillas, chimenea de ladrillo, jardín y árboles |
+- p017 | 500,287,742,509 | C3 | Muro de ladrillo a la vista con ventana de seis paños y marco grueso, visto desde la calle |
+- p019 | 450,519,1025,739 | C3 | Chalet de ladrillo con techo a dos aguas nevado, chimenea y ventana, rodeado de árboles blancos |
+- p020 | 705,55,1020,280 | C3 | Techo de tejas inclinado, chimenea de ladrillo y ventana del altillo iluminada; nieve por todas partes |
+- p020 | 75,287,555,510 | C3 | Casa de techo inclinado, tapial bajo y portón; al fondo, un edificio blanco con arco de entrada |
+- p021 | 68,287,390,510 | C3 | Casa vecina a oscuras: techo plano nevado, pared de ladrillo, ventanas apagadas y cipreses blancos |
+- p023 | 60,287,400,510 | C3 | Fachada del chalet: pared de ladrillo, portón blanco con paneles, techo de porche con vigas y arbustos nevados |
+- p023 | 60,57,310,278 | C3 | Puerta de madera abierta con umbral y marco grueso; el exterior nevado se ve más allá |
+- p024 | 637,548,915,738 | C3 | Esquina nevada con un chalet de techo empinado, tapial de ladrillo, cerco y ventanas apagadas |
+- p026 | 76,55,341,276 | C3 | Chalet nevado de noche visto en picado: techo a dos aguas cargado, tablas del alero y dos ventanas iluminadas |
+- p029 | 535,88,767,277 | C3 | Chalet de dos pisos de ladrillo con techo a dos aguas nevado, chimenea, cerco y casas vecinas |
+- p030 | 789,56,1036,277 | C3 | Casa nevada de techo a dos aguas con ventanas iluminadas y árboles, bajo un cielo negro |
+- p031 | 65,70,393,245 | C3 | Chalet nevado de noche: techo a dos aguas con buhardilla, porche con columnas y una ventana iluminada |
+- p031 | 65,400,220,509 | C3 | Viñeta chica: techo del altillo con ventanas inclinadas visto desde afuera, entre casas bajas |
+- p035 | 65,283,482,509 | C3 | Ventana de madera con cortina y copos pegados al vidrio, en la fachada de la casa de Ramírez |
+- p035 | 500,455,575,509 | C3 | Detalle: boca de buzón metálica con chapa numerada, sobre una puerta en sombra |
+- p035 | 64,56,1022,277 | C3 | Chalets de techo a dos aguas cargados de nieve, chimeneas, setos y árboles a través de los vidrios |
+- p036 | 749,55,1035,277 | C3 | Chalet vecino de noche visto desde adentro, con el techo cargado de nieve y una ventana encendida |
+- p037 | 65,517,508,739 | C3 | Chalet nevado de noche con un auto tapado de nieve en la puerta y el techo cargado, entre árboles blancos |
+- p043 | 615,537,912,733 | C3 | Portón de tablas del jardín, sendero de baldosas, muro y reja de hierro bajo un cielo de amanecer |
+- p043 | 374,318,740,509 | C3 | Vista en picado del sendero de baldosas, el muro de ladrillo, el seto y la figura chica de Juan |
+- p044 | 65,515,200,742 | C3 | Viñeta chica: ciudad de edificios y techos nevados vista de lejos, bajo la nieve |
+- p045 | 648,515,1013,742 | C3 | Fachada de la ferretería con la puerta de madera, la vidriera y la bicicleta contra la pared |
+- p045 | 68,60,665,277 | C3 | Edificio de departamentos con grilla de ventanas y chalets bajos de techo a dos aguas al fondo |
+- p046 | 420,515,690,725 | C3 | Fachada del negocio: vidriera grande, reja y pared de azulejos con la nieve amontonada |
+- p046 | 68,55,400,277 | C3 | Kiosco y casa baja con porche y postigos, cubiertos de nieve, en una calle de las afueras |
+- p049 | 66,286,266,509 | C3 | Detalle de un candado y una aldaba sobre tablas de madera gastada, en diagonal, con copos de nieve |
+- p049 | 556,57,750,277 | C3 | Vista en picado de un techo de tablas nevado con una escotilla de madera y la figura del traje agachada con rifle |
+- p050 | 66,518,168,738 | C3 | Jardín nevado: pórtico de ladrillo con techo curvo sobre una puerta de madera y hiedra en el muro |
+- p050 | 352,292,581,509 | C3 | Chalet de techo a dos aguas nevado, chimenea de ladrillo, ventana de altillo y cerco bajo; figura con rifle de espaldas |
+- p052 | 77,293,426,500 | C3 | Llegada al chalet: una figura con traje corre junto a una reja de tablas rota y arbustos nevados, carretilla detrás |
+- p054 | 78,288,525,509 | C3 | Chalet de dos aguas con ventana de altillo y chimenea, y un camión aguatero de tanque cilíndrico estacionado adelante |
+- p055 | 357,57,662,275 | C3 | Chalet de techo empinado y buhardilla, rodeado de pinos nevados; el furgón del almacén y el camión delante |
+- p060 | 605,520,773,738 | C3 | Chalet nevado visto a lo lejos entre copos, techo a dos aguas y ventanas chicas |
+- p065 | 665,518,1015,740 | C3 | Chalet nevado de noche entre árboles pelados, techo a dos aguas y ventanas oscuras |
+- p067 | 410,285,560,508 | C3 | Estación de servicio nevada: galpón bajo con cartel y un camión con figuras alrededor |
+- p068 | 425,285,820,508 | C3 | Techos nevados de chalets entre árboles pelados y la esfera con cola cruzando el cielo negro |
+- p069 | 270,518,450,740 | C3 | Barrio nevado de noche: casas bajas, un bloque de departamentos y una esfera con cola sobre el horizonte |
+- p070 | 65,518,430,740 | C3 | Chalet con ventanal curvo y techo nevado, árboles pelados y una ventana iluminada |
+- p071 | 335,518,640,740 | C3 | Chalet moderno de techo plano y ventanal de tres paños, con un pino oscuro detrás del vidrio |
+- p072 | 575,55,1030,278 | C3 | Casa moderna con techo plano y ventanal, un hombre gesticulando en la nieve y otro que se acerca |
+- p073 | 743,56,1023,278 | C3 | Chalet de dos plantas con balcón y techo nevado, tronco seco en primer plano y ventanas apagadas |
+- p074 | 78,521,363,740 | C3 | Tapial de ladrillo con ventana y yuyos nevados; dos hombres del traje pasan corriendo por la vereda |
+- p074 | 77,58,554,290 | C3 | Techos nevados, chimeneas y pinos del barrio vistos desde lo alto, con un auto detenido en la calle |
+- p074 | 410,290,657,510 | C3 | Tejados, torre de iglesia y árboles secos del barrio nevado bajo el cielo negro |
+- p075 | 400,84,731,278 | C3 | Chalet nevado con un auto volcado de costado y un camión delante; un hombre del traje corre al jardín |
+- p075 | 67,518,391,740 | C3 | Chalet con camioneta delante y pinos; un hombre del traje salta un talud nevado con el fusil |
+- p075 | 66,286,416,508 | C3 | Chalet de ladrillo con techo nevado, una camioneta estacionada y dos siluetas mirándolo desde el jardín |
+- p075 | 65,84,288,278 | C3 | Casa en llamas: humo y fuego salen del techo mientras dos siluetas del traje la miran desde la nieve |
+- p078 | 62,56,345,278 | C3 | Chalet nevado de noche con chimenea, pinos y un rayo blanco quebrado en el cielo negro |
+- p078 | 663,519,1035,740 | C3 | Casa de dos plantas con ventanas iluminadas y verja de hierro, camión parado en la puerta |
+- p081 | 66,519,337,740 | C3 | Casa de ladrillo de noche con una ventana iluminada; un hombre del traje pasa por la vereda |
+- p083 | 338,290,629,509 | C3 | Fachadas de chalets con techo nevado, árboles secos y un tanque en la calle |
+- p088 | 616,519,926,740 | C3 | Fábrica de una planta con gran cartel sobre el toldo, camión y fila de soldados en la nieve |
+- p089 | 624,56,1022,277 | C3 | Fachada de la fábrica con el gran cartel, un tanque disparando en primer plano y humo |
+- p091 | 64,290,611,509 | C3 | Fábrica de ladrillo con gran cartel y chimenea detrás de los invasores, todo nevado |
+- p100 | 75,55,470,263 | C3 | Pared de ladrillo con graffiti de tiza y un muñeco dibujado, junto a un cobertizo y un chalet bajo |
+- p103 | 62,519,370,741 | C3 | Campo nevado con un árbol grande y aislado y un edificio alto con torre al fondo |
+- p104 | 745,340,1035,509 | C3 | Rampa curva de hormigón agrietada con baranda, nieve acumulada en los bordes |
+- p104 | 76,55,742,509 | C3 | Estadio de cemento con costillas curvas y rampa, visto desde un costado y cubierto de nieve |
+- p104 | 443,519,686,740 | C3 | Rampa de hormigón en diagonal con figuras diminutas y humo al pie |
+- p105 | 590,286,963,508 | C3 | La rampa de acceso del estadio con soldados subiendo, un cobertizo y las costillas de cemento |
+- p105 | 63,55,546,256 | C3 | Costillas de hormigón del estadio en contrapicado, con nieve sobre las cornisas y la baranda |
+- p109 | 321,304,640,509 | C3 | Escalinata de cemento ancha y vacía, con un soldado subiendo y tabiques de hormigón al fondo |
+- p110 | 193,285,562,508 | C3 | Interior del estadio visto desde la rampa: tribunas de cemento, soldados y ametralladoras apostadas |
+- p111 | 365,56,512,276 | C3 | Rampa de cemento ancha con un soldado diminuto caminando y un disco redondo en el suelo |
+- p111 | 179,286,416,509 | C3 | Escalinata de tribuna en diagonal, con un soldado subiendo y el hormigón rayado |
+- p119 | 320,285,574,509 | C3 | Rampa de cemento en diagonal con soldados diminutos y vehículos al pie |
+- p120 | 845,614,1037,740 | C3 | Perfil lejano de la ciudad con chimeneas y columnas de humo, visto desde la tribuna |
+- p120 | 291,85,479,277 | C3 | Escalinata de cemento de la tribuna, todavía con copos, y el cielo que se aclara |
+- p122 | 761,55,1035,277 | C3 | Bajo una losa de hormigón con vigas diagonales: soldados en lo alto y un casco recortado en primer plano |
+- p129 | 570,57,771,275 | C3 | Soldado que apunta hacia arriba delante de un cartel enorme pintado que dice SALIDA |
+- p136 | 413,58,746,277 | C3 | Edificio blanco de tres pisos con filas de ventanas al otro lado de una calle vacía; árbol seco a la izquierda |
+- p136 | 705,522,1038,741 | C3 | Fachada oscura con banda de ventanas, escalones y dos soldados pegados a la pared |
+- p138 | 345,520,630,740 | C3 | Esquina de una casa baja con puerta y escalones, árboles secos y dos soldados que corren agachados |
+- p138 | 321,287,562,508 | C3 | Muro largo con portón oscuro y árbol seco; dos soldaditos caminan por la nieve |
+- p139 | 768,520,1023,740 | C3 | Glorieta de hierro con cúpula acanalada, columnas finas y bultos oscuros en la base |
+- p139 | 403,520,758,740 | C3 | Plaza nevada con pabellón de música al fondo, farol alto, árboles y un colectivo a la izquierda |
+- p142 | 762,288,1034,509 | C3 | Explanada nevada con prisioneros al fondo y, en primer plano, una carrocería metálica curva |
+- p145 | 65,285,482,495 | C3 | Esquina de edificios blancos de tres plantas con ventanas en hilera; calle nevada con cuerpos y un auto |
+- p146 | 589,285,1035,509 | C3 | Entrada de chalet con escalinata nevada, puerta en arco, toldillo y reja; sombras de plantas espinosas |
+- p146 | 596,53,1035,277 | C3 | Fachada de ladrillo con puerta y postigos: los soldados entran al patio mientras los cascarudos trepan la reja |
+- p149 | 62,55,356,277 | C3 | Pasillo entre una pared blanca con ventana enrejada y un muro oscuro; dos hombres avanzan dejando sombra larga |
+- p166 | 815,284,1045,509 | C3 | Dos hombres entran por una puerta abierta en una pared blanca, de noche |
+- p167 | 57,55,497,278 | C3 | Chalet blanco con persianas y reja baja; dos hombres corren por la vereda nevada de noche |
+- p168 | 785,286,1045,510 | C3 | Hombre corriendo con una bolsa junto a un galpón de ladrillo; el otro lo espera de pie |
+- p170 | 568,55,857,276 | C3 | Pared de ladrillo y llamas al fondo, detrás de los hombres que corren |
+- p175 | 67,518,390,737 | C3 | Chalet de techo a dos aguas y casa de techo plano con puerta; nieve y árboles secos |
+- p176 | 863,519,1037,740 | C3 | Edificio bajo de fachada de vidrio curvada, iluminado por dentro; dos figuras diminutas en la nieve |
+- p177 | 62,61,238,276 | C3 | Fachada curva de un estadio con estructura de hormigón en grilla y cartel sobre la entrada |
+- p178 | 406,287,684,510 | C3 | Vista exterior del estadio oval de hormigón, rodeado de nieve, caminos y cercos bajos |
+- p178 | 70,55,600,277 | C3 | Estructura de hormigón curva con vigas oscuras abajo y barandas arriba, tipo tribuna |
+- p179 | 62,519,330,750 | C3 | Vista aérea de un estadio circular de hormigón con tribunas en anillos, rodeado de nieve |
+- p180 | 70,55,290,277 | C3 | Tribuna del estadio con un monumento sobre pedestal y vigas curvas; cielo rayado |
+- p180 | 315,286,680,508 | C3 | Vista elevada del estadio y de un barrio bajo nevado que se pierde en el horizonte |
+- p181 | 67,286,320,506 | C3 | Casas bajas de techo plano y terrazas, con autos en las entradas y cercos bajos |
+- p183 | 65,59,310,277 | C3 | Edificio de esquina de dos plantas con cartel y chimeneas, visto desde el suelo |
+- p187 | 655,285,1035,470 | C3 | Calle nevada con edificio de dos plantas y carteles comerciales, farol y soldados al fondo |
+- p187 | 620,56,1035,245 | C3 | Edificio alto abandonado de varios pisos junto a un descampado nevado y un cerco |
+- p187 | 63,55,610,245 | C3 | Cartel de chapa grande con letras montado detrás de un cerco de tejido |
+- p189 | 65,518,500,741 | C3 | Calle nevada con casa de dos plantas en la esquina, postes y árboles secos |
+- p190 | 75,54,557,268 | C3 | Manzana de edificios destruidos en silueta, con escombros y poste de luz al costado |
+- p190 | 70,285,510,509 | C3 | Edificio de esquina con balcón, escalinata y puerta oscura; árboles secos delante |
+- p191 | 67,288,397,483 | C3 | Edificio de esquina con porche de arcos y balaustrada, medio tapado por escombros |
+- p192 | 75,55,444,275 | C3 | Fachadas planas y continuas de edificios de dos o tres plantas bordeando la avenida |
+- p193 | 205,57,540,275 | C3 | Edificio bajo de tres pisos con hileras de ventanas, toldo de entrada, antena y cartel redondo en el techo |
+- p194 | 75,54,535,275 | C3 | Esquina con edificio de dos pisos y balcones de hierro, vereda vacía y árboles secos al fondo |
+- p194 | 765,54,1035,275 | C3 | Puente ferroviario de hierro entre edificios bajos, visto en fuga desde la calle |
+- p195 | 62,54,355,272 | C3 | Esquina nocturna con negocio de toldo curvo rotulado, vidrieras y farol; soldados cruzan la vereda |
+- p195 | 765,518,1035,741 | C3 | Tres soldados trepan una azotea con pretil de ladrillo; ciudad recortada en negro al fondo |
+- p195 | 62,518,365,741 | C3 | Contrapicado de un edificio con ventanas repetidas y dos cascos asomando por el borde inferior |
+- p195 | 630,285,1035,508 | C3 | Edificio de departamentos con ventanas en grilla; un soldado señala la fachada y un avión cruza |
+- p196 | 62,285,215,508 | C3 | Chimenea y techos recortados en negro, con una lengua de fuego blanca subiendo |
+- p196 | 400,518,570,741 | C3 | Fachada torcida vista desde abajo, ventanas y balcones, soldados chicos corriendo en la calle |
+- p196 | 570,285,775,508 | C3 | Techos planos en picado con pirámides de escombros y figuras diminutas que corren |
+- p197 | 68,55,665,275 | C3 | Edificio alto inclinado con ventanas en grilla, base sepultada por nieve y cascotes |
+- p198 | 604,283,763,508 | C3 | Silueta negra de un edificio bajo con caños y chimenea; llamas blancas suben por detrás |
+- p198 | 771,283,1034,508 | C3 | Borde de azotea con soldados en silueta que señalan hacia abajo, entre paredones oscuros |
+- p198 | 336,522,462,741 | C3 | Casa de techo a dos aguas y ventana, con llamas blancas trepando por la pared y el piso |
+- p203 | 765,59,1015,278 | C3 | Silueta negra de edificios recortados contra el cielo, con texto encima |
+- p203 | 67,59,422,278 | C3 | Detrás de los rostros, fachada de edificio alto con balcones y cielo negro |
+- p205 | 66,55,342,272 | C3 | Verja baja de hierro con remates circulares y setos redondos recortados; cielo en blanco |
+- p208 | 80,517,332,740 | C3 | Ruinas: fachada con ventanas y un montón de escombros en la calle, en sombra |
+- p209 | 478,72,765,274 | C3 | Hombre calvo de espaldas mira un edificio alto y una esquina en sombra con figuras diminutas |
+- p210 | 521,285,1039,509 | C3 | Torre inclinada que se hunde en su propia polvareda; plaza, árboles y monumento alrededor |
+- p210 | 897,54,1037,276 | C3 | Esquina de edificio moderno con balcones y ventanas, vidrios rotos, contra el cielo negro |
+- p210 | 738,54,890,276 | C3 | Edificio alto con ventanas en grilla y locales destrozados en la planta baja, todo en sombra |
+- p218 | 70,48,420,275 | C3 | Chalet bajo de techo a dos aguas, reja de hierro y portón, árbol pelado y casilla de ladrillo |
+- p244 | 812,286,1035,505 | C3 | Un hombre ayuda a sentarse a otro junto al tronco de un árbol grande; alambrado al fondo |
+- p248 | 560,55,1036,276 | C3 | Tres hombres de perfil bajo un cielo oscuro; farol de hierro y edificio con ventanas detrás |
+- p250 | 504,306,751,508 | C3 | Favalli y un mayor de pelo claro conversan junto a una puerta y un cartel |
+- p251 | 62,56,302,276 | C3 | Rostro junto a un muro de ladrillos; silueta oscura detrás, en penumbra |
+- p251 | 561,287,803,507 | C3 | Hombre con rifle al pecho apostado en un umbral oscuro, placa con el número 8 |
+- p257 | 63,86,448,276 | C3 | Grupo de hombres bajo un toldo; Favalli de anteojos y un auto oscuro detrás |
+- p259 | 556,518,737,739 | C3 | Dos hombres armados junto al umbral oscuro de un zaguán de ladrillos |
+- p260 | 420,520,700,745 | C3 | Esquina de ladrillo con cartel de calle "PARAGUAY" y afiches; cabezas de espaldas |
+- p261 | 63,560,322,738 | C3 | Fachada de edificio de varios pisos en perspectiva, ventanas en grilla, cielo estrellado |
+- p263 | 62,330,350,508 | C3 | Fachada clásica con rejas y ventanas altas; un platillo bajo en la calle y tres siluetas |
+- p263 | 703,55,1023,277 | C3 | Masa oscura de caparazones al pie de un edificio clásico con escalinata; siluetas armadas |
+- p265 | 677,55,1024,276 | C3 | Galería de chapa y madera: una anciana sentada en una silla bajo el alero, junto a una planta en maceta |
+- p266 | 74,58,1037,648 | C3 | Al fondo, edificio público de ventanas cuadriculadas y escalinata; a la derecha el monumento con estatua y leones |
+- p267 | 300,341,527,507 | C3 | Una cúpula de edificio público y una torre de antenas recortadas en negro detrás de las cabezas en sombra |
+- p268 | 74,286,465,507 | C3 | Un cohete impacta un edificio con cúpula: estallido de escombros y humo sobre la fachada y el techo |
+- p269 | 426,518,804,739 | C3 | Detrás, fachadas de edificios bajos con ventanas, cornisas y techos inclinados de tejas |
+- p272 | 76,286,308,508 | C3 | Otra vez la cúpula ardiendo, ahora de costado, con columnas y balaustrada al pie |
+- p272 | 76,55,572,277 | C3 | Fachada y cúpula de un edificio público reventadas por la bomba, con casas bajas a la derecha |
+- p273 | 675,287,1024,508 | C3 | Calle con edificio de balcones y ventanas, tres hombres de pie y humo entre los techos |
+- p275 | 775,56,1024,277 | C3 | Edificio alto de noche con balcones y cartel vertical de hotel; un pretil oscuro abajo |
+- p290 | 440,55,775,275 | C3 | Fachadas planas de dos plantas con ventanas y balcones, tras la pelea de las bestias |
+- p292 | 77,87,402,277 | C3 | Al fondo, esquina de un edificio con balcones y medianera clara sobre la vereda |
+- p300 | 693,86,1036,277 | C3 | Edificio alto con ventanas inclinadas en grilla y un auto por la ruta al anochecer |
+- p300 | 460,86,685,277 | C3 | Estructura urbana curva con entramado metálico diagonal y un auto oscuro al pie |
+- p302 | 554,287,1037,507 | C3 | El chalet de dos plantas: techo a dos aguas, chimenea y ventana en el gablete, entre pinos y cercos |
+- p302 | 75,518,543,740 | C3 | Medianera de ladrillo visto con ventana de reja y cerco de tablas al lado |
+- p303 | 62,56,557,276 | C3 | Jardín del chalet: pared de ladrillo, ventana con reja, portón de tablas y un cuerpo tirado en las baldosas |
+- p304 | 682,285,1036,506 | C3 | Casa de madera de dos plantas con local y cartel abajo, junto al cuerpo caído |
+- p306 | 75,549,368,739 | C3 | Techo y medianera de chapa y madera de una casa baja, con ventanas y tablas |
+- p308 | 75,100,460,277 | C3 | Chalet nevado con techo de tejas y cerco, visto de noche desde el jardín |
+- p308 | 746,100,1037,278 | C3 | Fachada de ladrillo con hilera de ventanillas bajo el techo, de noche |
+- p311 | 861,288,1023,508 | C3 | Fachada oscura con una ventana abierta y una silueta tendida en la repisa, nieve cayendo |
+- p313 | 63,55,620,277 | C3 | Chalet de dos aguas con buhardilla y chimeneas, un cobertizo con autos y árboles cargados, visto desde arriba |
+- p315 | 63,283,380,510 | C3 | Chalet nocturno con techo nevado, chimenea, un árbol seco y un portón; copos como puntos |
+- p320 | 580,631,1038,739 | C3 | Chalet nevado de noche: techo a dos aguas cargado, ventanas con vidrios y arbustos como montículos |
+- p321 | 799,98,1013,275 | C3 | Chalet nevado a lo lejos bajo un cielo negro con copos, casi tapado por el texto |
+- p324 | 85,288,395,509 | C3 | Fachada baja con ventana y árboles secos, cubierta de nieve, detrás de los trajes |
+- p327 | 412,561,646,738 | C3 | El chalet con techo nevado y el camión cargado en la puerta, bajo la nevada |
+- p329 | 65,518,549,739 | C3 | Fila de chalets con techos cargados de nieve y chimeneas, vistos desde abajo |
+- p330 | 330,56,750,275 | C3 | Medianera de ladrillo con hastial triangular y ventanitas, tapada por la nevada |
+- p330 | 116,518,470,738 | C3 | La casa y el cerco del chalet al fondo, todo blanco bajo la nevada |
+- p334 | 82,99,404,232 | C3 | Un negocio con cartel sobre el techo, detrás de un árbol seco, tapado de nieve |
+- p360 | 432,57,723,277 | C3 | Chalet de ladrillo con techo a dos aguas, cerco bajo y un pino; farol de calle |
+- p360 | 76,306,300,508 | C3 | Vidriera de negocio con carteles y un afiche grande con signo de interrogación |
+- p360 | 554,306,860,507 | C3 | Hilera de chalets de techos a dos aguas alineados a lo largo de la vereda |
+- p361 | 749,287,1023,507 | C3 | Vista en picado del chalet: techo de tejas, toldo sobre la escalera, setos recortados, farol de pie y un pino |
+- p362 | 745,57,1036,278 | C3 | Cuatro siluetas negras de espaldas caminan hacia un chalet claro con techo a dos aguas y setos |
+- p362 | 641,519,1038,742 | C3 | Chalet de dos pisos: techo de tejas a dos aguas, chimenea, ventanas chicas, portón de cochera y cerco de tablas |
+- p362 | 74,287,395,507 | C3 | Dos fachadas de chalet de noche: paredes blancas, techos oscuros a dos aguas y seto bajo, cielo negro rayado |
+- p368 | 123,118,500,497 | C3 | Fotografía: casa de dos pisos en Beccar, planta baja de ladrillo con postigos blancos, piso alto de siding, jardín con conífera |
+- p369 | 592,152,1090,518 | C3 | Ilustración en alto contraste: chalet de dos pisos, ladrillo y techo a dos aguas, chimenea, setos y cerco de tablas |
+
+## Vehículos (213)
+
+- p018 | 766,57,1034,246 | C4 | Colectivo de la época visto de costado, con las ventanillas iluminadas, sobre la calle vacía |
+- p019 | 450,519,1025,739 | C4 | Auto de la época, nevado, con la puerta abierta y un bulto oscuro desplomado adentro (?) |
+- p020 | 75,287,555,510 | C4 | Auto antiguo nevado en la entrada de una casa, con el techo cubierto por una capa blanca |
+- p023 | 350,518,718,739 | C4 | Auto abandonado con la puerta abierta y nieve sobre el techo; un bulto oscuro asoma en la puerta (?) |
+- p037 | 65,517,508,739 | C4 | Auto de la época completamente cubierto de nieve, junto a la entrada del chalet |
+- p044 | 79,283,391,509 | C4 | Auto tapado de nieve con un cuerpo desplomado sobre el capó y la rueda visible; Juan se inclina |
+- p045 | 673,60,1014,277 | C4 | Colectivo inclinado contra un poste: cartel con el número 10, parrilla enorme y faros redondos, todo nevado |
+- p050 | 78,292,343,509 | C4 | Camión o camioneta volcado y semienterrado en la nieve, ruedas al aire, junto a un tapial |
+- p053 | 660,518,1030,741 | C4 | Furgón blindado del almacén, con ventanilla enrejada y chapa, avanzando entre la nieve frente a un chalet |
+- p054 | 78,288,525,509 | C4 | Camión aguatero de tanque cilíndrico y cabina redonda, nevado, delante del chalet |
+- p054 | 665,288,865,509 | C4 | Vista en picado del patio: el camión tanque y el furgón blindado en la nieve, dos figuras con traje entre ellos |
+- p056 | 415,290,755,510 | C4 | Furgón blindado con la puerta abierta: una figura con traje y rifle baja, otra espera en la nieve |
+- p060 | 305,286,660,508 | C4 | Furgón del almacén con la puerta trasera abierta, un bulto en la nieve y una figura oscura junto a la caja |
+- p067 | 565,285,830,508 | C4 | Camión con el capó abierto y varias figuras con traje trabajando alrededor, de noche |
+- p069 | 645,518,1010,740 | C4 | Camión detenido de espaldas en la calle nevada: puertas traseras, chapa y chalets oscuros a los lados |
+- p069 | 65,518,265,740 | C4 | Camión de espaldas alejándose por la calle nevada, entre cercos y copos |
+- p069 | 405,55,660,280 | C4 | Camión oscuro avanzando por la calle nevada, casas bajas y colas de esferas en el cielo |
+- p075 | 400,84,731,278 | C4 | Auto volcado sobre su costado, ruedas al aire, junto al cerco de un chalet nevado |
+- p078 | 663,519,1035,740 | C4 | Camión oscuro y autos detenidos frente a un chalet de dos plantas con verja de hierro |
+- p080 | 62,56,547,277 | C4 | Camión con altoparlante montado en el techo avanzando por la calle nevada; otro vehículo detrás |
+- p080 | 555,56,912,277 | C4 | Vista alta de la avenida con vehículos dispersos en la nieve y faroles altos |
+- p082 | 723,290,1025,509 | C4 | Vista aérea de tanques dispersos en la avenida nevada con soldados diminutos alrededor |
+- p082 | 370,519,674,740 | C4 | Camión militar con lona en la nieve y cinco figuras de pie a su alrededor |
+- p084 | 638,519,913,740 | C4 | Vista aérea de la avenida nevada con camión, blindado y jeep dispersos; faroles y techos |
+- p084 | 78,290,293,509 | C4 | Vista alta: un camión y un tanque en un campo nevado, con cuatro figuras diminutas cerca |
+- p085 | 673,56,1022,278 | C4 | Depósito o parque nevado con hileras de camiones y tanques estacionados y un arco de entrada |
+- p087 | 650,519,911,740 | C4 | Tanques y vehículos dispersos en un descampado nevado con arco de entrada y casas al fondo |
+- p087 | 775,56,1021,278 | C4 | Camión con lona y una plataforma de madera con soldados, en un patio nevado |
+- p088 | 676,56,1035,275 | C4 | Tanque visto desde atrás, con la placa trasera y las orugas, y soldados caminando al lado |
+- p088 | 436,290,739,509 | C4 | Tanque de noche con dos soldados; una esfera luminosa cruza el cielo dejando estela |
+- p088 | 616,519,926,740 | C4 | Camión detenido frente a la fábrica de cartel grande, con soldados alrededor |
+- p089 | 514,519,693,740 | C4 | Tanque disparando de costado con el fogonazo y el humo del cañón |
+- p089 | 300,290,585,509 | C4 | Tanque de costado en la nieve con soldados tendidos detrás; haces de luz radiales |
+- p089 | 624,56,1022,277 | C4 | Tanque con el cañón humeante frente a la fábrica, y soldados cuerpo a tierra |
+- p099 | 605,519,900,741 | C4 | Vehículos y tanques alineados en un campo nevado, con soldados entre ellos y humo al fondo |
+- p099 | 178,519,360,741 | C4 | Tanque de perfil en una pendiente nevada y una fila de soldados diminutos caminando a su lado |
+- p100 | 651,286,1035,509 | C4 | Camión con un aparato de boca acampanada montado atrás, soldados subidos, campo nevado |
+- p100 | 470,55,1035,263 | C4 | Tanque con torreta redonda y cañón corto avanzando de perfil por la nieve, seguido de infantería |
+- p101 | 300,285,570,508 | C4 | Tanque aislado en un campo nevado con un árbol pelado al lado y el cielo rayado |
+- p102 | 585,55,1035,241 | C4 | Camión blindado o tanque ligero detenido en la calle, con la torreta y el cañón apuntando |
+- p103 | 370,519,535,741 | C4 | Camión cargado de soldados, uno de pie en la caja, en medio de la nieve |
+- p103 | 770,285,1035,509 | C4 | Vehículo blindado con cañón en la nieve, soldados alrededor y un hombre grande gesticulando |
+- p103 | 560,285,770,509 | C4 | Camión pequeño y fila de soldados sobre un campo nevado, con una casa baja al fondo |
+- p104 | 694,518,1037,740 | C4 | Tanque detenido al pie de la rampa de cemento, con soldados corriendo a su lado |
+- p107 | 795,518,1035,741 | C4 | Tanque entre la multitud de cascarudos, con un soldado corriendo con el rifle |
+- p108 | 312,55,505,276 | C4 | Tanque de perfil con la torreta y el cañón largo; un brazo asoma por la escotilla |
+- p114 | 803,519,1037,739 | C4 | El cañón antiaéreo con los sirvientes entre el humo, la nieve y la chatarra |
+- p125 | 716,519,1026,740 | C4 | Carro de panadería tirado por un caballo muerto, con ruedas y varas sobre la nieve |
+- p135 | 331,58,534,277 | C4 | Tanque visto en escorzo, con orugas, torreta y cañón, junto a dos figuritas diminutas |
+- p135 | 66,521,356,741 | C4 | Camión militar con lona, ruedas dobles y tres soldados de pie delante |
+- p139 | 468,57,766,276 | C4 | Vista aérea del playón de una estación: vagones largos, andenes nevados y un edificio con cartel RETIRO |
+- p139 | 553,287,1023,508 | C4 | Trolebús detenido junto al cordón con las pértigas en el cable y un colectivo detrás |
+- p140 | 79,521,356,741 | C4 | Colectivo visto de costado, con franja oscura en las ventanillas y dos soldados agazapados adelante |
+- p140 | 378,57,669,277 | C4 | Trolebús con las pértigas arriba, detenido en la nieve, junto a árboles secos y un farol |
+- p142 | 368,520,646,740 | C4 | Colectivo detenido y figuras que caminan por la nieve, con un cascarudo alto en primer plano |
+- p144 | 605,520,815,740 | C4 | Dos soldados de espaldas junto al auto miran una fila de bultos oscuros en el campo |
+- p144 | 77,57,437,277 | C4 | Auto de los años cincuenta nevado, visto de frente, con dos soldados agazapados a sus costados |
+- p144 | 750,57,1035,277 | C4 | Detalle del auto: capó curvo con moldura cromada, parabrisas y burletes redondos |
+- p145 | 62,54,548,276 | C4 | Trasero y guardabarros de un auto de los años 50 con patente 294-461 y ópticas redondas en primer plano |
+- p150 | 456,519,730,742 | C4 | Dos hombres salen de un portal y corren junto a una casa blanca con persianas; un vehículo volcado al fondo |
+- p151 | 57,55,543,277 | C4 | Gran rueda oscura con radios en primer plano (¿de un auto volcado?); chalet blanco y árbol seco al fondo |
+- p167 | 754,519,1045,742 | C4 | El auto se aleja por la calle nevada mientras un hombre se agazapa junto a dos caparazones negros |
+- p167 | 714,285,1045,509 | C4 | Dos hombres corren junto a un auto blanco estacionado en la calle, de noche |
+- p167 | 399,519,749,742 | C4 | Un auto claro con parrilla y parabrisas partido se desliza sobre los cascarudos negros, con un hombre abierto de brazos |
+- p168 | 716,519,1045,742 | C4 | Un hombre de espaldas mira un camión claro que se acerca por la ruta a oscuras |
+- p168 | 564,54,841,267 | C4 | Limusina oscura de techo largo y neumáticos con banda blanca, estacionada al borde del pastizal |
+- p168 | 301,54,559,267 | C4 | Sedán claro de los años 50 abandonado en un pastizal nevado, visto de 3/4 con parrilla y guardabarros redondos |
+- p168 | 845,54,1045,267 | C4 | Cabina de camión volcada de costado junto a un auto chico, vistas desde arriba |
+- p168 | 74,54,297,267 | C4 | Vista en picado de un camino con tres vehículos abandonados: un sedán claro, un camión con lona y una camioneta |
+- p169 | 745,55,1030,277 | C4 | Camioneta redondeada de frente, parrilla cromada, y un hombre que cae por la puerta abierta |
+- p169 | 752,286,1035,509 | C4 | Camión cisterna visto en picado sobre una ruta nevada, con huellas y un artefacto bajo |
+- p169 | 62,55,377,277 | C4 | Camión cisterna volcado en la nieve, la cuba oscura en primer plano y la cabina torcida |
+- p181 | 84,59,402,276 | C4 | Interior de un jeep: dos soldados con casco, uno al volante y otro con radio y fusil |
+- p182 | 555,287,895,510 | C4 | Jeep detenido en medio de la calle nevada con soldados alrededor |
+- p184 | 400,285,640,509 | C4 | Vehículo anfibio grande y volcado en la nieve, con figuras trepadas arriba |
+- p184 | 805,285,1035,509 | C4 | Colectivo grande detenido en una calle nevada, con dos soldados que corren delante |
+- p185 | 403,519,790,729 | C4 | Vagón de tren volcado con la inscripción FERROCARRIL, junto a dos soldados que corren |
+- p185 | 795,286,1035,509 | C4 | Colectivo inclinado hacia adelante sobre la nieve, detenido al costado de la ruta |
+- p186 | 68,55,470,277 | C4 | Auto volcado boca abajo sobre la nieve al pie de una barranca |
+- p186 | 615,515,1035,742 | C4 | Vagón de tren inclinado y descarrilado en un descampado nevado, con soldados alrededor |
+- p192 | 65,510,490,745 | C4 | Columna blindada avanza por la avenida nevada, camiones con soldados y edificios altos a los lados |
+- p193 | 62,285,310,508 | C4 | Auto oscuro asomando de costado entre los escombros, techo y ventanillas en silueta |
+- p194 | 790,285,1037,508 | C4 | Colectivo oscuro con ventanillas iluminadas y rueda delantera visible, bajo un toldo y cables |
+- p198 | 482,522,862,741 | C4 | Filas de camiones, jeeps y autos detenidos en las calles curvas de la plaza, en picado |
+- p198 | 889,522,1036,741 | C4 | Soldado de pie en la cabina abierta de un jeep, con el brazo en alto y el vehículo de frente |
+- p199 | 62,288,690,508 | C4 | Camión con carga oscura y rueda doble, jeep y fila de autos detenidos en la calle; arco al fondo |
+- p199 | 283,52,545,272 | C4 | Jeep descubierto inclinado que sube un talud nevado, con estela de humo y dos tripulantes |
+- p199 | 695,288,830,508 | C4 | Vista en picado: autos y camiones embotellados y cruzados en la calle, entre humo |
+- p203 | 67,517,450,737 | C4 | Moto con sidecar y soldado sentado encima, junto a tres soldados de pie en la nieve |
+- p203 | 282,288,583,506 | C4 | Camión oscuro con la puerta abierta y una rueda grande a la derecha de la escena |
+- p204 | 612,54,1034,276 | C4 | Tanque mediano con "E.A." pintado y soldados de pie junto al blindaje, entre estructuras oscuras |
+- p204 | 326,54,606,276 | C4 | Filas de camiones y autos estacionados detrás de un oficial, en un playón enorme |
+- p204 | 258,284,528,507 | C4 | Tanque con dos soldados subidos avanza levantando humo; otro vehículo a la derecha |
+- p204 | 76,284,251,507 | C4 | Vista en picado de autos y camiones amontonados, embotellados unos contra otros |
+- p206 | 76,61,571,275 | C4 | Camión oscuro con rueda grande y guardabarros visible junto al grupo de soldados |
+- p206 | 415,573,780,741 | C4 | Auto sedán oscuro estacionado entre los soldados, con las ventanillas marcadas |
+- p207 | 64,285,478,465 | C4 | Camiones con caja de madera y un jeep alineados en el borde del descampado |
+- p207 | 350,85,645,275 | C4 | Camión oscuro de frente con la parrilla y el guardabarros a la vista; un hombre de pie delante |
+- p208 | 717,97,1035,275 | C4 | Ametralladora sobre un vehículo con rueda de rayos y caja con aspa; tirador y ayudante agachados |
+- p209 | 64,285,518,508 | C4 | Vehículo blindado oscuro con un círculo marcado "E.A." pintado en el costado |
+- p209 | 782,599,1010,741 | C4 | Un tanque solo cruza un descampado nevado con árboles, un edificio alto y vallas |
+- p209 | 345,599,775,741 | C4 | Tanque en marcha con el jefe asomado por la escotilla y soldados sentados sobre el blindaje |
+- p209 | 65,599,340,741 | C4 | Hombre de barba trabaja en el interior de un vehículo con "E.A." pintado, entre planchas metálicas |
+- p209 | 526,285,1024,508 | C4 | Tanque con soldados encima avanza por una calle nevada entre casas bajas y un tapial |
+- p211 | 818,54,1023,276 | C4 | Tanque dispara y el proyectil estalla en una nube de humo, entre chispas |
+- p212 | 78,518,316,740 | C4 | Oficial canoso dentro del tanque, de perfil, habla por un micrófono junto a la escotilla |
+- p212 | 625,320,1035,505 | C4 | Tanque combate de costado contra los gurbos en la calle, frente a una confitería con toldo |
+- p212 | 76,53,320,275 | C4 | Tanque solo, visto desde atrás, con la torreta y el cañón hacia la derecha, sobre negro |
+- p213 | 483,287,773,509 | C4 | Soldados disparan desde un pozo junto a un tanque; una explosión levanta tierra al lado |
+- p214 | 574,54,1036,276 | C4 | Torreta de tanque por dentro: escotilla, cables y asientos de chapa |
+- p215 | 495,286,644,510 | C4 | Camión con acoplado solo en un campo nevado, visto de costado, bajo el texto |
+- p216 | 695,54,1035,276 | C4 | Tanque con la torreta y el cañón asomando detrás de una reja de hierro |
+- p217 | 63,285,470,489 | C4 | Calle de combate: tanques y columnas de humo; un auto chico avanza entre los escombros |
+- p217 | 700,518,1035,740 | C4 | Jeep aplastado bajo una pata enorme: ruedas al aire, chasis doblado, astillas |
+- p218 | 85,285,388,508 | C4 | Camión militar y cañón de tanque entre columnas de humo, sobre la calle nevada |
+- p219 | 746,517,1024,740 | C4 | Camión militar de cabina redonda y caja alta; un hombre trepa por la puerta |
+- p221 | 62,48,530,278 | C4 | Fila de camiones y autos destrozados con soldados chiquitos en el borde inferior |
+- p225 | 61,50,545,275 | C4 | Explosiones y humo sobre tanques y vehículos; un caparazón oscuro en primer plano |
+- p226 | 702,50,1027,275 | C4 | Tren de subte descarrilado y torcido sobre las vías, con escombros y dos siluetas |
+- p227 | 473,518,775,740 | C4 | Vista aérea del vagón volcado sobre las vías y dos figuras mínimas abajo |
+- p227 | 82,285,407,508 | C4 | Vagón de subte descarrilado con el número 275, bogies al aire; tres siluetas delante |
+- p228 | 738,293,1037,508 | C4 | Costado del vagón con rueda y estribo, y hombres corriendo pegados a la chapa |
+- p228 | 148,292,398,508 | C4 | Siluetas saltando de la puerta del vagón hacia el túnel; chapa inclinada y peldaños |
+- p229 | 809,518,1023,740 | C4 | Vagón inclinado con las puertas abiertas y figuras trepando; un hierro curvo arriba |
+- p231 | 674,518,1023,740 | C4 | Bajos del vagón volcado: bogies y ejes al aire bajo el cuerpo del gurbo |
+- p231 | 286,285,713,508 | C4 | Vagón volcado con el número 275, tres hombres delante y un gurbo enorme a la derecha |
+- p232 | 337,55,641,276 | C4 | El vagón abollado y volcado bajo el empuje del gurbo, con trozos de chapa |
+- p234 | 417,517,658,736 | C4 | Vagón descarrilado con un hombrecito parado adelante y una nuca pálida a la derecha |
+- p240 | 754,289,1027,509 | C4 | Vehículo destrozado y dado vuelta entre escombros sobre la vía |
+- p245 | 880,60,1044,250 | C4 | Auto de los años cincuenta destrozado: parabrisas roto, ópticos reventados, torcido en la nieve |
+- p256 | 695,55,1037,277 | C4 | Auto oscuro de los años cincuenta estacionado junto a la vereda, visto de atrás |
+- p267 | 546,55,1023,276 | C4 | Camión de carga estacionado junto a la escalinata del monumento, bajo el resplandor del domo |
+- p270 | 609,286,1037,508 | C4 | Bombardero de alas en flecha cruzando el cielo, motores alares y estela; marcas pintadas en el fuselaje |
+- p270 | 76,519,412,739 | C4 | El bombardero de perfil entre haces de luz, sobre las cabezas de los hombres en la azotea |
+- p271 | 674,86,1023,275 | C4 | Bombardero visto desde abajo, cruzando sobre los techos y las columnas de luz de la plaza |
+- p289 | 530,512,1025,745 | C4 | Auto oscuro de los años cincuenta estacionado junto al cordón, frente a una vidriera |
+- p290 | 650,515,1037,745 | C4 | Ciclista sale despedido de la bicicleta y queda tumbado en el aire sobre la nieve rayada |
+- p290 | 410,315,725,506 | C4 | Ciclista de espaldas sube por una loma nevada; multitud de siluetas recortadas abajo |
+- p290 | 440,55,775,275 | C4 | Tres ciclistas diminutos pedalean en fila india por una calle recta al fondo |
+- p290 | 74,55,432,275 | C4 | Bicicletas alineadas de costado junto al cordón y una bicicleta caída en la nieve, en primer plano |
+- p290 | 76,315,401,506 | C4 | Ciclista de frente con manubrio y rueda en primer plano, campera clara y cuello oscuro |
+- p292 | 350,538,656,740 | C4 | Cuatro ciclistas en silueta pedalean en fila por la calle, uno arrastra un carrito |
+- p292 | 770,538,1039,740 | C4 | Colectivo volcado contra la esquina de un edificio alto, la carrocería abollada y torcida |
+- p292 | 767,375,1013,508 | C4 | Un hombre de camisa a cuadros entrega una bicicleta al chico; la rueda y el asiento en primer plano |
+- p293 | 189,307,700,508 | C4 | Triciclo de carga con tres ocupantes y dos bicicletas que lo escoltan, en fila por una loma |
+- p293 | 664,550,1024,740 | C4 | Triciclo con dos hombres a bordo pedaleando, siluetas negras contra el cielo claro |
+- p293 | 172,75,422,278 | C4 | Interior de un ómnibus: marco oscuro de ventanillas, pasajeros desplomados en los asientos y siluetas afuera |
+- p294 | 75,57,358,277 | C4 | Dos ciclistas silueteados pasan frente al monumento por la calzada desierta |
+- p294 | 605,57,1036,277 | C4 | Ciclista armado pedalea de frente con la correa del rifle cruzada al pecho; árboles y ruedas atrás |
+- p295 | 798,56,1024,276 | C4 | Triciclo volcado entre el pasto alto, un hombre caído al lado y otro que se incorpora |
+- p297 | 192,519,489,739 | C4 | Caja del camión desde adentro: un hombre se asoma por la abertura y por la ventanilla se ve al chofer |
+- p297 | 560,372,731,508 | C4 | Camión de caja con lona visto de atrás; dos hombres trepan a la caja, ruinas lejanas al fondo |
+- p298 | 762,55,1038,276 | C4 | Camión de caja con lona visto de atrás y de costado, acelerando por la ruta recta |
+- p298 | 413,55,667,276 | C4 | Interior de la cabina del camión: el chofer al volante y un hombre de anteojos al lado |
+- p298 | 260,285,470,506 | C4 | El camión deja estela de polvo y tablas que salen volando; el gurbo aparece al borde |
+- p298 | 849,548,1038,741 | C4 | El camión vuelca: la cabina se levanta, la rueda delantera en el aire y la carga desparramada |
+- p299 | 64,89,426,277 | C4 | El camión vuelca en el aire: ruedas para arriba, tierra y una rueda suelta que sale rodando |
+- p299 | 434,90,823,277 | C4 | El camión yace de costado entre una nube de polvo, la caja abollada y las ruedas al aire |
+- p300 | 354,525,534,739 | C4 | Auto de costado con sombra larga sobre el pasto y un rayo cayendo al fondo |
+- p300 | 542,525,805,739 | C4 | Auto solitario sobre una avenida agrietada, las grietas abriéndose en abanico |
+- p300 | 76,525,346,739 | C4 | Auto oscuro corre por una ruta recta entre pasto seco, polvo y líneas de velocidad |
+- p300 | 76,86,254,278 | C4 | Auto oscuro de frente por la ruta, levantando polvo, silueta recortada contra el suelo claro |
+- p300 | 263,86,451,277 | C4 | Dentro del auto: el chofer de anteojos y tres cabezas más apretadas en la penumbra |
+- p300 | 300,306,589,508 | C4 | Auto que se aleja por una ruta con árboles pelados, líneas de velocidad y un rayo |
+- p301 | 62,286,366,507 | C4 | Auto escapa a toda velocidad entre líneas de polvo; una mole oscura asoma a la derecha |
+- p301 | 63,56,343,276 | C4 | Auto negro de costado en una calle desierta, polvo levantado y un galpón con cartel al fondo |
+- p302 | 638,56,1036,276 | C4 | Auto chocado contra un camión volcado, otro coche oscuro al lado y edificio alto detrás |
+- p302 | 74,56,347,277 | C4 | Sedán claro de costado frente al negocio, cromados y guardabarros redondos, sobre la calle nevada |
+- p307 | 739,518,1025,740 | C4 | Ventanilla de un coche: siluetas de pasajeros contra los vidrios y una cara de anteojos que mira |
+- p326 | 77,98,355,280 | C4 | Camioneta rural de los años cincuenta, parrilla ancha y guardabarros redondos, en la nieve frente a una casa |
+- p327 | 412,561,646,738 | C4 | Camión con caja alta y lona, estacionado frente a la casa, con las ruedas en la nieve |
+- p328 | 390,55,690,275 | C4 | Caja del camión con barandas de madera en aspa y remates redondeados |
+- p331 | 796,317,1025,495 | C4 | El camión pasa junto a un auto volcado y hundido en la nieve |
+- p331 | 143,317,400,495 | C4 | El camión chico visto desde arriba, avanzando por una avenida bordeada de setos |
+- p331 | 566,99,779,241 | C4 | El camión con caja alta alejándose por la calle nevada, cerco y árboles al fondo |
+- p332 | 813,113,1040,247 | C4 | El camión de atrás, con la caja cargada, avanzando bajo los copos |
+- p332 | 940,519,1030,739 | C4 | El camión subiendo un lomo de camino, inclinado y entre copos |
+- p332 | 431,288,644,508 | C4 | El camión cruza una barrera de la estación: tranquera de madera y cadena |
+- p332 | 748,519,930,739 | C4 | El camión visto desde arriba en la ruta, con las huellas marcadas |
+- p332 | 76,288,294,509 | C4 | El camión de perfil y, delante, la masa del gurbo sobre la calle |
+- p332 | 821,288,1037,508 | C4 | El camión detenido y, a la derecha, un bulto oscuro en la nieve |
+- p333 | 763,524,1030,738 | C4 | El camión desde arriba doblando en una esquina de piedra, huellas en la nieve |
+- p333 | 76,287,470,508 | C4 | El camión de frente con la caja cargada y otro vehículo oscuro detrás |
+- p333 | 64,525,300,738 | C4 | Trasero de un auto oscuro con luneta dividida, hundido en la nieve |
+- p334 | 82,99,404,232 | C4 | Dos vehículos sepultados en la nieve, uno con ventanillas y otro con la carrocería blanca |
+- p334 | 822,548,1015,738 | C4 | El camión en la llanura nevada con una casa chica a lo lejos |
+- p334 | 481,100,663,232 | C4 | Camioneta oscura con techo redondeado, encajada en un campo nevado tras un alambrado |
+- p336 | 304,76,617,278 | C4 | Camión con caja alta y lona avanzando de perfil por un camino de tierra, a pleno día |
+- p336 | 420,538,696,740 | C4 | El camión visto desde arriba en el camino, con el cartel a la derecha |
+- p336 | 385,288,1036,509 | C4 | El camión con caja de madera y puertas traseras, de tres cuartos, sobre el camino de tierra |
+- p336 | 704,538,1036,740 | C4 | El camión de atrás alejándose por un camino bordeado de árboles |
+- p337 | 539,524,770,738 | C4 | Camioneta vista en picado sobre una huella de tierra entre pastos, sombra alargada |
+- p337 | 778,524,1024,737 | C4 | Camión blindado avanzando por un camino anegado, con estrías de agua y niebla |
+- p337 | 65,330,223,507 | C4 | Camión blindado de frente en la ruta, caja alta con letras y guardabarros redondos |
+- p337 | 264,70,584,277 | C4 | Camioneta blindada de caja cuadrada vista desde atrás en un camino de tierra entre yuyos |
+- p338 | 169,57,381,277 | C4 | Camioneta blindada estacionada en una loma de pasto ralo, figuras diminutas alrededor |
+- p342 | 76,287,387,507 | C4 | Camioneta blindada que acelera por un camino de tierra levantando polvo |
+- p342 | 348,517,624,737 | C4 | Camión de frente en la polvareda con un soldado que abre los brazos delante |
+- p342 | 705,517,796,737 | C4 | Camioneta de frente envuelta en polvo, vista desde abajo, camino en subida |
+- p342 | 628,55,832,276 | C4 | Camión blindado de frente; soldados cargan municiones a su alrededor |
+- p342 | 867,518,1036,738 | C4 | Interior de la cabina: el conductor al volante y un chico sentado al lado |
+- p342 | 840,56,1036,276 | C4 | Interior de la cabina: un hombre se asoma por la puerta con una caja de municiones |
+- p343 | 65,561,382,739 | C4 | Camioneta y auto corren por un camino de tierra levantando una nube de polvo |
+- p343 | 65,57,190,276 | C4 | Vista alta de una camioneta en una ruta recta que cruza el campo nevado |
+- p344 | 724,518,1037,739 | C4 | Camioneta en el aire, de frente, a punto de volcar entre nubes de tierra |
+- p344 | 75,98,362,277 | C4 | Camioneta blindada a toda velocidad sobre el campo nevado, con líneas de velocidad |
+- p344 | 464,331,1037,508 | C4 | Camioneta en la ruta nevada junto a un cerco de alambre, cielo rayado |
+- p344 | 388,518,516,739 | C4 | Camioneta que se va de la ruta en diagonal, levantando polvo |
+- p345 | 64,355,461,507 | C4 | Vista alta del camión volcado con el grupo de figuritas reunido al lado, sombras largas |
+- p345 | 64,120,411,276 | C4 | Camioneta que vuelca en la banquina, caja torcida y ruedas en el aire |
+- p348 | 76,57,562,278 | C4 | Camioneta destruida por la explosión, caja abierta y restos en el aire |
+- p357 | 349,57,701,277 | C4 | Cohete despegando de una plataforma con torre de lanzamiento y humo |
+- p369 | 592,152,1090,518 | C4 | Auto claro de techo curvo y vidrios oscuros estacionado junto al cordón, con otra forma oscura detrás (?) |
+
+## Interiores (398)
+
+- p013 | 63,519,442,739 | C5 | Dos hombres frente a frente sobre la mesa: uno de perfil y otro todavía como una mancha blanca |
+- p013 | 745,56,1022,278 | C5 | Estudio de noche: biblioteca de estantes llenos, escritorio con lámpara de pantalla y sillón de madera |
+- p013 | 418,286,697,508 | C5 | Rincón del estudio: biblioteca, silla de madera con remates tallados, pila de libros y el anciano sentado |
+- p013 | 63,286,413,508 | C5 | El guionista de espaldas en el escritorio, la ventana de dos paños delante y la biblioteca alta al costado |
+- p014 | 73,516,340,742 | C5 | El guionista de espaldas en el escritorio, lámpara de pantalla, pila de papeles y máquina de escribir |
+- p014 | 410,56,616,279 | C5 | El guionista inclinado sobre el escritorio con una lapicera y papeles; delante, la nuca del visitante |
+- p014 | 444,288,660,510 | C5 | El estudio: el anciano sentado junto a la ventana, biblioteca y láminas en la pared, el guionista al escritorio |
+- p015 | 362,290,668,510 | C5 | Sillón de madera oscura con remates redondos, junto a una ventana y una biblioteca baja |
+- p015 | 63,57,372,278 | C5 | El guionista y el anciano frente a frente sobre el escritorio: lámpara de brazo, libros y ventana al fondo |
+- p015 | 389,519,614,739 | C5 | El guionista de perfil junto al anciano sentado: ventana, libros y cuadros en la pared |
+- p016 | 743,55,1034,278 | C5 | Buhardilla: vigas del techo inclinado, ventana y el perfil oscuro de otro jugador en primer plano |
+- p016 | 76,286,468,507 | C5 | Mesa de juego en detalle: manos, naipes y un cigarrillo humeante sobre fondo tramado |
+- p016 | 576,287,803,507 | C5 | La mesa de truco vista desde arriba: cuatro hombres sentados y naipes desparramados sobre el mantel |
+- p017 | 649,519,1023,740 | C5 | Buhardilla en penumbras: dos hombres frente a frente sobre la mesa y la radio a la izquierda |
+- p017 | 63,68,428,278 | C5 | Lucas, Favalli y Polsky alrededor de la radio: Favalli con anteojos y el brazo sobre el respaldo |
+- p017 | 63,519,376,740 | C5 | Elena en la cama leyendo bajo la lámpara, con biblioteca de cabecera, ventana y mueble bajo |
+- p017 | 432,68,673,278 | C5 | Primer plano de la radio a válvulas: caja redondeada, rejilla horizontal de listones, dial y perillas |
+- p017 | 63,287,495,509 | C5 | Partida de truco: Lucas de perfil a la izquierda, Favalli y Juan con las cartas en abanico |
+- p017 | 677,68,1023,278 | C5 | Los cuatro hombres apretados alrededor de la radio, alarmados, bajo el techo inclinado y la ventana |
+- p018 | 63,563,528,739 | C5 | Juan se inclina sobre la mesa hacia Favalli, sentado; sillas de madera y un objeto redondo a la izquierda |
+- p018 | 780,563,1035,739 | C5 | Rincón del altillo: la mano de Juan sobre los naipes y el brazo apoyado en la mesa |
+- p018 | 77,337,400,508 | C5 | Favalli grita con anteojos y ceño fruncido; Lucas y Polsky a la izquierda, una nuca en sombra a la derecha |
+- p018 | 682,337,1035,509 | C5 | Los cuatro jugadores se yerguen alarmados alrededor de la mesa; uno se levanta y mira hacia la ventana |
+- p018 | 76,57,427,246 | C5 | La partida en el altillo: Lucas, la espalda oscura de Favalli en primer plano y dos jugadores más |
+- p019 | 712,56,1025,278 | C5 | Tres siluetas alrededor de la mesa de truco, brazos y dedos en alto, discutiendo contra la pared clara |
+- p019 | 380,288,680,510 | C5 | Mesa de truco bajo un farol: naipes en las manos, caras iluminadas de frente y sombras duras |
+- p019 | 685,288,1025,510 | C5 | Altillo con techo inclinado, ventana de seis vidrios, sillas de madera y hombres que se levantan de la mesa |
+- p019 | 318,56,702,278 | C5 | Cuatro hombres de espaldas en silueta frente a una ventana de madera; la luz blanca de la nieve inunda el altillo |
+- p020 | 370,517,755,739 | C5 | Dormitorio en penumbras: Elena de perfil se inclina sobre la cama donde se incorpora Martita; silla y lámpara |
+- p020 | 125,517,365,739 | C5 | Silueta negra de un hombre corriendo, escalones a la derecha y líneas de movimiento sobre fondo blanco |
+- p020 | 590,287,810,510 | C5 | Grupo de hombres apiñados en el altillo, iluminados de costado, mirando algo fuera de cuadro |
+- p021 | 765,518,980,738 | C5 | Interior oscuro: un hombre mayor con el auricular del teléfono; detrás, un hombre y una mujer angustiados |
+- p021 | 68,58,300,278 | C5 | Cuarto de Martita: cuna de barrotes, caballito de juguete, dibujos infantiles y postigos abiertos junto a la ventana |
+- p022 | 75,287,425,510 | C5 | Zaguán: escalera, reloj de pared, perchero con abrigos y puerta con ventanilla redonda; un hombre junto a una vela |
+- p022 | 573,57,770,278 | C5 | Pasillo alto visto desde arriba: nena de camisón, pelota en el piso y un hombre de espaldas junto a la baranda |
+- p022 | 800,57,1035,278 | C5 | Escalera de madera con balaustres y remates redondos; un anciano se apoya en el pasamanos |
+- p022 | 345,545,720,739 | C5 | Forcejeo en el zaguán: un hombre se lanza sobre Polsky cuando éste alcanza la manija de la puerta |
+- p023 | 578,57,663,278 | C5 | Pasillo a oscuras: un hombre calvo y encorvado avanza agachado, casi en silueta sobre el fondo negro |
+- p023 | 315,57,565,278 | C5 | Un hombre calvo, agachado junto a la puerta con ventanilla redonda, con la mano en el picaporte |
+- p024 | 355,548,630,738 | C5 | Tres hombres de cuerpo entero conversando: Lucas de perfil, Juan de campera clara y Favalli de sweater |
+- p024 | 270,286,590,510 | C5 | Escalera del living: Juan al pie, Elena y Martita en los escalones y Favalli sentado en un sillón |
+- p024 | 795,286,1035,510 | C5 | Living en penumbras: Favalli sentado en un sillón y Juan de pie apoyándole la mano en el hombro |
+- p025 | 716,517,1024,739 | C5 | Tres siluetas masculinas de espaldas y de perfil, en plena discusión, contra el fondo claro |
+- p025 | 65,517,372,739 | C5 | Tres hombres de pie conversando: uno gesticula con las manos, un joven de pelo corto y un mayor de perfil |
+- p025 | 65,287,485,508 | C5 | Altillo con techo a dos aguas y cabriadas: Favalli sobre una silla sella la ventana y cuelgan modelos de avión |
+- p025 | 749,287,1024,508 | C5 | Interior en sombras: Lucas abre la ventana de madera y Favalli levanta el contador con el auricular puesto |
+- p026 | 473,55,727,276 | C5 | Tres hombres de pie en el living: un joven de sweater claro al frente y dos mayores detrás, uno con anteojos |
+- p026 | 735,55,1035,276 | C5 | Despensa con estantes de frascos y latas: un hombre alcanza un paquete alto y una mujer toma nota sentada |
+- p026 | 76,285,425,509 | C5 | Mesa de cocina cubierta de frascos, latas, paquetes y una botella oscura, con tres personas anotando el inventario |
+- p026 | 768,285,1036,509 | C5 | Nena de pelo claro con flequillo escribe junto a una lámpara de aceite; un hombre de espaldas en silueta |
+- p026 | 76,517,473,739 | C5 | Altillo: un hombre de espaldas inclinado sobre una silla y una mesa, dos mayores al fondo y una máquina con volante |
+- p026 | 807,517,1035,739 | C5 | Hombre de anteojos de perfil inclinado sobre una radio encendida, la mano en la perilla |
+- p026 | 473,517,694,739 | C5 | Radio de gabinete con dial y perilla sobre la mesa; tres hombres inclinados sobre el aparato |
+- p027 | 756,287,1025,509 | C5 | Frente de la radio: rejilla de listones y placa de dial con marcas, sobre un fondo oscuro |
+- p027 | 704,56,1023,277 | C5 | Dos hombres de perfil escuchando un receptor portátil, las caras en sombra y el fondo rayado |
+- p027 | 63,57,391,277 | C5 | Tres hombres apiñados detrás de un receptor de madera con rejilla de listones; interior tramado en negro |
+- p027 | 65,542,375,739 | C5 | Altillo con un parlante circular negro montado en un pie alto, junto a dos hombres sentados al aparato |
+- p027 | 709,542,1025,739 | C5 | Tres rostros tensos detrás de la rejilla del receptor: pelo blanco, joven de pelo corto y anteojos |
+- p027 | 64,287,351,509 | C5 | Dos hombres agazapados de espaldas junto al gabinete del receptor; fuertes tramas negras |
+- p027 | 384,542,701,739 | C5 | Tres hombres alrededor de una radio de gabinete con patas; uno de cara larga en primer plano |
+- p028 | 646,287,1035,509 | C5 | Hombre calvo sentado a la mesa que se aferra al borde y grita; radio encendida y silla vacía |
+- p028 | 370,515,746,739 | C5 | Taller: un hombre de espaldas agarra del brazo a otros dos, banco de trabajo con cajones y ventana al fondo |
+- p028 | 78,515,370,739 | C5 | Altillo con techo inclinado y vigas; un hombre calvo grita con la cabeza ladeada junto a una silla |
+- p028 | 77,55,333,277 | C5 | Primer plano del frente de la radio: mueble redondeado, rejilla de listones, ventanilla de dial y dos perillas |
+- p028 | 434,55,742,277 | C5 | Altillo en perspectiva: un hombre de espaldas y otro calvo con anteojos entre estantes de libros y ventanas |
+- p029 | 63,88,312,277 | C5 | Favalli de anteojos gesticula con la mano frente a dos hombres: uno mayor de pelo ralo y un joven |
+- p029 | 65,517,403,739 | C5 | Altillo: un hombre mayor desplomado en una silla y otro de pie con sweater a franjas, manos en los bolsillos |
+- p029 | 403,517,698,739 | C5 | Figura de perfil con las manos en los bolsillos junto a una pared negra; la luz cae sobre el piso |
+- p029 | 360,300,604,509 | C5 | Tres hombres inclinados sobre un banco de trabajo con papeles y una lente redonda |
+- p030 | 76,56,474,277 | C5 | Altillo desde lo alto: tres hombres alrededor de una mesa larga con papeles, vigas y estanterías |
+- p030 | 79,512,200,739 | C5 | Silueta chica de un hombre agachado en la oscuridad, junto a un bloque de texto (viñeta mínima) |
+- p030 | 414,325,721,509 | C5 | Tres siluetas negras contra un fondo claro: dos de espaldas y una de perfil con anteojos |
+- p031 | 453,517,1023,739 | C5 | Living en penumbra: Elena de perfil junto a una lámpara de vidrio y dos hombres al fondo, uno con la cara entre las manos |
+- p031 | 744,70,1023,245 | C5 | Interior con un cuadro enmarcado: un hombre de anteojos y otro joven detrás, junto a una puerta abierta |
+- p031 | 227,288,848,509 | C5 | Living: dos hombres sentados a la mesa con lámpara de aceite y una lata de cemento; Elena cose inclinada |
+- p031 | 511,70,735,245 | C5 | Hombre de perfil inclinado sobre la baranda de la escalera; otro asoma detrás del barrote |
+- p032 | 76,288,468,509 | C5 | Living: chimenea con repisa, Elena con la nena en brazos en un sillón y un hombre mayor sentado |
+- p032 | 581,517,1030,739 | C5 | Hall con biblioteca: un joven sostiene el traje colgando del brazo, Elena y la nena al lado, dos hombres más |
+- p032 | 78,517,573,739 | C5 | Living en penumbra: un hombre de espaldas ocupa el frente, otro de pie a la izquierda y una mujer en el sillón |
+- p032 | 76,57,499,282 | C5 | Tres personajes en el living bajo sombras diagonales: un mayor de perfil, una mujer joven y un joven de pelo corto |
+- p033 | 426,55,659,277 | C5 | Grupo familiar recortado en negro frente a la ventana iluminada del altillo |
+- p033 | 184,535,652,739 | C5 | Living: Favalli de perfil, Juan con los brazos cruzados y Elena al lado; Lucas sentado con el traje en la falda |
+- p033 | 65,280,453,509 | C5 | Favalli sentado con sweater de franjas oscuras, apretando un trozo de tela en el regazo |
+- p033 | 462,280,634,509 | C5 | Viñeta de recuerdo: tres hombres en camisa alrededor de un receptor de pie con dial redondo |
+- p034 | 537,55,1031,280 | C5 | Cuatro personas: un joven agarra de los hombros a un hombre de anteojos; Elena a la izquierda y un mayor de perfil |
+- p034 | 491,315,1033,510 | C5 | Living de noche: tres hombres y una mujer de perfil frente a la ventana de cuatro vidrios estrellada |
+- p036 | 74,55,475,277 | C5 | Tres bustos en el living: un joven de perfil, un hombre con anteojos y cuello alto, y Elena al lado |
+- p037 | 597,55,1022,277 | C5 | Dormitorio de noche: la mujer incorporada en la cama mira el cuerpo del marido; mesa de luz con lámpara |
+- p037 | 624,517,1022,739 | C5 | El grupo en el living: Juan abrazando a Elena, Martita chiquita entre los dos y dos hombres de perfil |
+- p037 | 64,288,648,507 | C5 | La mujer de pie junto a la cómoda con espejo, tapándose la cara; el marido caído sobre el alféizar |
+- p038 | 730,55,1035,277 | C5 | Living con cuadros enmarcados: Elena, un hombre de pelo ralo y Favalli de perfil con anteojos, todos tensos |
+- p038 | 77,285,385,509 | C5 | Favalli sentado en un sillón con los brazos cruzados y sweater con una franja oscura al pecho |
+- p038 | 448,517,726,739 | C5 | Grupo alrededor de la mesa con lámpara de aceite: uno se inclina sobre el paño y dos hombres de pie |
+- p038 | 70,55,415,277 | C5 | Dos hombres a la mesa: un joven de frente y un hombre de anteojos de perfil, fondo rayado |
+- p038 | 394,285,906,509 | C5 | Juan inclinado sobre la mesa con las dos manos apoyadas en la tela; al lado, el perfil de Favalli en sombra |
+- p039 | 64,57,387,277 | C5 | Mano grande tirando dos dados sobre una mesa negra; dos cabezas asoman detrás, una de pelo blanco |
+- p039 | 742,517,1024,739 | C5 | Dos hombres inclinados sobre la mesa, el dado en el aire con líneas de movimiento y uno sonriendo |
+- p039 | 455,57,657,277 | C5 | Dado blanco con puntos negros, quieto sobre un fondo rayado en diagonal y con sombra larga |
+- p039 | 781,288,1022,509 | C5 | Dado en el aire con líneas de movimiento, sobre un fondo blanco rayado en diagonal |
+- p039 | 666,57,1024,277 | C5 | Tres hombres inclinados sobre la mesa: un joven de frente, uno de anteojos y un mayor de perfil |
+- p040 | 75,310,486,508 | C5 | Garage de baldosas claras: manguera enrollada, neumático tirado, estantes con latas y una puerta de dos hojas |
+- p040 | 522,55,923,277 | C5 | Cuatro personajes contra el fondo negro: Favalli de anteojos, Lucas, Juan con el overol y Elena con la mano en la cara |
+- p040 | 77,55,285,277 | C5 | Dado blanco con puntos negros rebotando sobre un piso negro, con líneas de movimiento |
+- p040 | 742,519,1037,739 | C5 | Elena con la nena delante y Favalli de perfil con anteojos; interior claro con puerta |
+- p040 | 295,55,513,277 | C5 | Dado solo sobre fondo negro, con las aristas marcadas y los puntos negros |
+- p041 | 501,288,755,509 | C5 | Garaje con la puerta abierta al pasillo: Elena, Favalli, Lucas y Juan con el traje y el casco |
+- p042 | 79,283,313,509 | C5 | Puerta de dos hojas con paneles y picaportes redondos, abierta hacia el jardín nevado |
+- p043 | 63,318,374,509 | C5 | Desde el interior del jardín: cabezas oscuras en primer plano y Juan saludando con la mano alzada |
+- p044 | 692,515,1028,742 | C5 | Interior del almacén: un sifón alto y claro sobre la mesa y un hombre muerto desplomado al lado |
+- p045 | 68,283,318,509 | C5 | Vidriera rota y oscura con copos que entran por el hueco y nieve acumulada en la repisa |
+- p045 | 648,515,1013,742 | C5 | Ferretería: bicicleta apoyada con la rueda grande a la vista, vidriera y un cuerpo en el umbral |
+- p045 | 318,283,702,509 | C5 | Fachada del almacén: vidriera pintada, cartel colgado y Juan en el umbral junto a un cliente caído |
+- p046 | 695,515,1035,725 | C5 | Interior a oscuras: el ferretero muerto en el piso y una figura agachada a su lado; Juan en la puerta |
+- p046 | 420,515,690,725 | C5 | Vidriera sucia de la ferretería con la puerta abierta y un cuerpo tirado en el umbral |
+- p047 | 67,59,344,277 | C5 | Interior del almacén: mesa con un aparato oscuro, botellas y paquetes, estantes al fondo |
+- p047 | 356,59,721,277 | C5 | Despensa del negocio: estanterías repletas de latas, frascos y cajas, dos lámparas colgadas y Juan en la puerta |
+- p048 | 608,283,902,507 | C5 | Juan de espaldas con el traje claro ante un estante con herramientas colgadas y un cartel enmarcado |
+- p048 | 509,519,786,738 | C5 | Vista en picado del piso de tablas: cajones apilados, un tambor redondo y la figura chica de Juan |
+- p048 | 78,519,271,738 | C5 | Interior oscuro: Juan con el rifle al hombro detrás de un banco, entre cajones y un farol |
+- p048 | 77,283,341,507 | C5 | Interior de la ferretería: estantes con latas y herramientas y Juan con el rifle listo, agazapado |
+- p049 | 748,286,1016,509 | C5 | Figura agachada al borde de una escotilla abierta en un piso de tablas, sombras duras |
+- p049 | 486,286,746,509 | C5 | Hombre con traje y rifle asomado a una escotilla, entre cajones de madera apilados, latas y papeles |
+- p049 | 340,518,677,738 | C5 | Interior de la ferretería: estanterías con paquetes, mostrador, puerta oscura y el hombre del traje con rifle y bolsa |
+- p050 | 175,518,515,738 | C5 | Garage de paredes claras: el hombre del traje con una bolsa al hombro entra y Favalli lo espera con un mono claro |
+- p050 | 865,518,1035,738 | C5 | Dos figuras con traje y rifle caminan entre sombras sobre un piso de baldosas claras y oscuras |
+- p051 | 776,286,1024,509 | C5 | Uno carga al chico envuelto al hombro y otro empuja una carretilla de una rueda entre maderas |
+- p051 | 570,286,768,509 | C5 | Dos figuras con traje junto a una pila de tablas y una ventana oscura; interior despojado |
+- p051 | 586,57,784,277 | C5 | Escotilla abierta en un piso de tablas: dos figuras bajan por la abertura con rifle y una cuerda enrollada |
+- p051 | 64,286,402,509 | C5 | Trastienda de la ferretería: dos figuras con traje barren y limpian entre estanterías, cajones y un mostrador |
+- p052 | 772,293,1035,500 | C5 | Elena de espaldas, pelo claro, inclinada sobre el bulto blanco y soplando con un secador de mano redondo |
+- p052 | 79,518,340,740 | C5 | Extractor de aire cuadrado con hélice de cuatro aspas y rejilla, montado contra una pared de tablas; nieve en el piso |
+- p052 | 470,293,763,500 | C5 | Garage: el chico envuelto sobre la carretilla, dos figuras del traje junto a una puerta abierta y un extractor en la pared |
+- p052 | 700,518,1035,740 | C5 | Living: abrazo de la mujer rubia con la nena, el hombre joven abrazándolas y Favalli con anteojos tomando a Pablo |
+- p053 | 570,286,728,509 | C5 | Interior: Elena rubia con Martita en la falda y un hombre de pelo blanco de perfil, junto a una ventana nevada |
+- p053 | 399,518,640,741 | C5 | Interior: hombre de pelo blanco y brazos desnudos junto a Juan, que señala por la ventana; una cara chiquita al pie |
+- p054 | 415,518,675,740 | C5 | Interior claro: silueta de Elena de espaldas frente a un hombre del traje con rifle, ambos casi negros |
+- p054 | 82,518,402,740 | C5 | Despensa: tres hombres con mono y capucha entre cajones, bolsas y latas apiladas; uno vuelca un saco |
+- p055 | 415,518,800,738 | C5 | Caja del furgón: dos figuras con casco sentadas frente a una escotilla oscura, paredes de tablas |
+- p055 | 67,57,348,275 | C5 | Garage oscuro: puerta enrollable clara, extractor en la pared, manguera en el piso y tres figuras con traje |
+- p056 | 65,290,410,510 | C5 | Farmacia cerrada vista desde la cabina: cartel grande, persiana acanalada y puerta; nuca de un casco en primer plano |
+- p057 | 760,290,1035,510 | C5 | Persiana metálica acanalada de la farmacia con un portón entreabierto y un hueco oscuro; huellas en la nieve |
+- p057 | 65,518,355,740 | C5 | Interior de farmacia: piso ajedrezado, vitrinas con frascos, estantes y dos hombres con escopeta avanzando |
+- p057 | 360,518,700,740 | C5 | Trastienda con estanterías llenas de cajas, reloj redondo de pared, mostrador y un traje con rifle de espaldas |
+- p058 | 519,53,725,275 | C5 | Interior en penumbra con puerta blanca entreabierta: dos figuras con traje y rifle, una se asoma al hueco |
+- p058 | 77,285,394,508 | C5 | Cuarto con cama de respaldo tallado, lámpara de pantalla plisada y un muerto boca arriba; dos trajes de pie |
+- p058 | 817,287,1035,509 | C5 | Depósito con estantes llenos de cajas; dos figuras de espaldas revisando mercadería |
+- p058 | 595,518,880,740 | C5 | Figura con traje sosteniendo una caja de madera rotulada FARMACIA, junto a otro que alcanza un estante |
+- p058 | 260,518,590,740 | C5 | Hombre con traje estirando el brazo hacia un estante alto lleno de frascos y cajas |
+- p058 | 732,53,971,275 | C5 | Estantería cargada de cajas y frascos; dos figuras con traje y rifle, una mira hacia arriba |
+- p058 | 683,287,795,509 | C5 | Estanterías con frascos y una figura con traje y rifle junto al mostrador de la farmacia |
+- p058 | 75,53,280,275 | C5 | Farmacia vista en picado: piso de damero, vitrinas de vidrio, estanterías y dos siluetas oscuras con rifle |
+- p059 | 86,285,363,508 | C5 | Figura con traje de espaldas golpeando con el puño una puerta, fondo rayado de trama |
+- p059 | 528,55,769,277 | C5 | Hombre con traje pegado a una puerta cerrada, junto a un estante con frascos, mirando hacia atrás |
+- p059 | 371,285,597,509 | C5 | Un hombre con traje rompe un cristal con una barra: vidrios y astillas vuelan en la penumbra |
+- p059 | 64,54,240,275 | C5 | Trastienda de la farmacia: hombre con casco revisando una caja entre estantes, puerta al fondo |
+- p060 | 780,520,1038,738 | C5 | Interior: Juan abraza a Pablo mientras Favalli, de anteojos, les habla junto a la puerta |
+- p060 | 665,286,810,508 | C5 | Interior de la cabina: silueta oscura del conductor al volante, ventanilla con reflejos y nieve afuera |
+- p060 | 65,520,393,738 | C5 | Living: un hombre calvo inclinado, Elena con Martita, Pablo de pie y Juan con el mono claro junto a la puerta |
+- p061 | 685,55,1030,275 | C5 | Living de noche: lámparas de pie, sillones, cuadros y el grupo de pie discutiendo frente a una puerta |
+- p062 | 335,55,530,275 | C5 | Living: gran espalda oscura en primer plano y, al fondo, Elena y Juan de pie junto a la ventana |
+- p062 | 65,55,330,275 | C5 | Interior: Favalli inclinado sobre una mesa, Elena y Juan de espaldas junto a una lámpara encendida |
+- p062 | 335,285,560,508 | C5 | Living desde el piso: sofá, mesa ratona, biblioteca, lámpara y varias figuras de pie; piso de tablas |
+- p063 | 705,285,1030,508 | C5 | Siluetas: Favalli de anteojos y una figura con casco junto a la puerta, con un haz de luz |
+- p063 | 65,285,330,508 | C5 | Interior a contraluz: dos siluetas oscuras de espaldas frente a una puerta con cerradura |
+- p063 | 725,518,1030,740 | C5 | Hombre de espaldas con pistola ante un ventanal iluminado; sombra y copos |
+- p064 | 525,285,690,508 | C5 | Siluetas de dos figuras contra una pared con la puerta agujereada por los disparos |
+- p064 | 335,518,640,740 | C5 | Dos figuras con traje arrodilladas junto al muerto, una señala la rotura del traje; manguera y rejilla |
+- p064 | 705,55,1030,280 | C5 | Puerta con agujeros de bala, guante con pistola a la izquierda y un casco asomando en la penumbra |
+- p064 | 65,518,330,740 | C5 | Un cuerpo envuelto en tela clara en el piso del garage, junto a una máquina chica con caños (?); dos trajes lo miran |
+- p064 | 415,55,700,280 | C5 | Puerta blanca de paneles perforada por los balazos, astillas volando y dos cascos agachados abajo |
+- p064 | 65,55,410,280 | C5 | Dos figuras con traje se derriban al piso junto al portón de madera del garage, sombras marcadas |
+- p065 | 710,285,930,508 | C5 | Rincón del living con un gran receptor de radio de madera, dial y parlante; la familia alrededor |
+- p065 | 335,55,1030,275 | C5 | Living de noche: lámpara de pie con pantalla, cortinas, cuadros, aparador y el grupo discutiendo de pie |
+- p065 | 190,285,400,508 | C5 | Grupo alrededor de una mesa: Elena, Martita y Juan escribiendo; un hombre de pie gesticula |
+- p066 | 65,55,180,275 | C5 | Interior: dos hombres de pie junto a una ventana con cortinas, uno de sweater y otro oscuro |
+- p068 | 550,518,700,740 | C5 | Interior de la cabina del camión: figura oscura al volante y otra con casco que se asoma |
+- p068 | 705,518,1010,740 | C5 | Cabina del camión desde adelante: dos cascos, volante y parabrisas con la noche y los copos |
+- p069 | 665,55,1010,280 | C5 | Cabina del camión: dos cascos con visera y un tercer rostro, todos mirando hacia adelante |
+- p077 | 400,519,748,739 | C5 | Amplio living con mesa ratona, sillones, una mujer sentada al fondo y dos hombres de pie con papeles |
+- p077 | 787,290,1036,510 | C5 | Interior del chalet: dos hombres de pie con libros y papeles, uno con anteojos, luz lateral |
+- p077 | 66,519,393,739 | C5 | Living de noche: dos hombres sentados frente a frente, lámpara de globo redondo y libros apilados |
+- p078 | 697,56,1035,277 | C5 | Comedor: cuatro comensales a la mesa con botellas y vasos, ventana con cortinas al fondo |
+- p078 | 600,290,921,510 | C5 | Dos hombres asomados a la ventana del living, uno con anteojos; marcos y cortinas alrededor |
+- p078 | 478,56,690,277 | C5 | Interior: un hombre de pie y una mujer que cose junto a una mesa, cuadro en la pared y cómoda |
+- p079 | 380,519,620,740 | C5 | Garage o taller: tres figuras armadas entran por la puerta; ventana con reja a la derecha |
+- p079 | 237,56,730,278 | C5 | Living en penumbras: siluetas que se ponen los trajes, sillón, ventana con persianas y un chico |
+- p080 | 315,519,545,740 | C5 | Garage con puerta metálica: tres figuras armadas de pie, estantes y cajas al fondo |
+- p086 | 77,519,405,740 | C5 | Cobertizo improvisado de maderas: cuatro soldados de espaldas junto a una mesa, en la nieve |
+- p107 | 254,55,548,276 | C5 | Soldados reunidos bajo la tribuna de cemento, entre columnas y sombras, con rifles |
+- p107 | 328,286,564,509 | C5 | Interior oscuro del estadio: soldados de pie y sentados alrededor de una lámpara baja |
+- p110 | 333,518,593,739 | C5 | Soldados inclinados alrededor de un herido o de una mesa, en un interior oscuro |
+- p110 | 193,285,562,508 | C5 | Puesto de armas bajo la tribuna, con soldados y un hombre barbudo con rifle en primer plano |
+- p129 | 570,57,771,275 | C5 | Boca de salida del estadio: cartel SALIDA, haces diagonales de luz y siluetas con fusil |
+- p133 | 695,57,1022,276 | C5 | Interior nocturno: ventana grande de marco grueso, muebles bajos y un objeto en forma de domo |
+- p133 | 344,57,685,276 | C5 | Cuarto en penumbras: sillón, ventana a la izquierda y dos objetos altos con llamas detrás del sillón |
+- p144 | 79,520,210,740 | C5 | Interior del auto: dos soldados asomados sobre el tablero, uno con casco y otro con gorro |
+- p146 | 75,285,582,509 | C5 | Hall oscuro: puerta de doble hoja con vidrios, soldado con pistola y otro agachado junto a la ventana |
+- p146 | 57,517,473,740 | C5 | Cuarto con estufa redonda blanca encendida y aparador; una pareja muerta en el piso y una persona de pie junto a la mesa |
+- p147 | 57,55,322,277 | C5 | Interior en penumbra: soldado con casco y fusil junto a una abertura, paredes y vigas rayadas |
+- p148 | 400,285,704,508 | C5 | Cocina con azulejos blancos: un hombre sirve con cucharón de una olla y otro de perfil espera |
+- p148 | 57,285,395,508 | C5 | Cocina de noche: dos hombres a la mesa con vasos y una lámpara de aceite de tubo, pared con azulejos |
+- p148 | 708,285,1045,508 | C5 | Hombre come de un bol con cuchara frente a la ventana; el otro, de espaldas, sostiene un vaso |
+- p148 | 656,516,864,738 | C5 | Dos hombres beben vino: uno con vaso en mano y el otro sirviendo de una botella oscura |
+- p148 | 424,516,650,738 | C5 | Cocina vista desde arriba: hombre junto a la cocina y otro sentado a la mesa con platos y sifón |
+- p155 | 344,285,680,509 | C5 | Persona con pañuelo en la cabeza lava ropa en un balde de lata; el hombre mayor la mira desde el suelo |
+- p156 | 57,517,434,737 | C5 | Galpón con vigas cruzadas en el techo y rampa lateral; tres figuras diminutas en el suelo |
+- p157 | 197,287,610,508 | C5 | Habitación oscura con lámpara colgante: el oficial sostiene la cabeza de Franco, tirado en el suelo |
+- p160 | 308,519,629,742 | C5 | Dos hombres en camiseta en sillones redondos vistos desde arriba, y el oficial pequeño de pie entre ellos |
+- p160 | 74,55,769,278 | C5 | Tres hombres sentados en sillones redondos de mimbre con cinturón, ante una baranda baja y fondo rayado |
+- p161 | 57,285,396,509 | C5 | El oficial de espaldas con el brazo extendido habla con dos hombres de pie en un cuarto oscuro |
+- p161 | 679,285,1045,509 | C5 | Sala con ventanal negro: dos hombres desplomados en sillas redondas y el oficial de pie en el medio |
+- p162 | 57,518,331,742 | C5 | Terraza con balaustrada: dos hombres sentados en sillones de mimbre y el oficial de perfil |
+- p162 | 751,55,1045,277 | C5 | Terraza con baranda calada: un hombre sentado en un banco y el oficial de pie a su lado |
+- p163 | 496,517,742,741 | C5 | Vista amplia del cuarto con aparatos, cables y el cuerpo de Franco sobre una camilla |
+- p164 | 86,519,355,742 | C5 | Franco sentado en un recipiente redondo de cerámica; el oficial lo levanta del brazo |
+- p165 | 778,54,1024,276 | C5 | El oficial desplomado en un sillón con cinturón de botones; Franco de pie y otro hombre en el piso |
+- p165 | 57,517,523,741 | C5 | Interior con techo curvo y flecos: Franco carga a un hombre en la espalda y el otro lo cubre con pistola |
+- p166 | 57,517,347,740 | C5 | Interior penumbroso: dos siluetas con fusil entran por un zaguán y un hombre agachado en primer plano |
+- p170 | 78,519,439,740 | C5 | Cocina con azulejos blancos, cocina a leña con pava y pileta; un hombre carga a otro desplomado |
+- p170 | 447,519,751,740 | C5 | Cocina con mesa de mantel a cuadros y botellas; un hombre caído sobre la mesa y otro que lo sostiene |
+- p170 | 690,286,885,509 | C5 | Hombre con tiradores en el umbral de una puerta de madera; gran perfil oscuro en primer plano |
+- p171 | 369,518,770,740 | C5 | Living: un mayor de pie con pistola apunta a un joven sentado a la mesa que también empuña un arma |
+- p171 | 62,286,270,509 | C5 | Cuarto en penumbras: dos siluetas agazapadas con rifle y palomas sueltas en el piso |
+- p171 | 275,286,520,509 | C5 | Joven en cuclillas sostiene una paloma entre las manos; alacena y estante de cocina detrás |
+- p171 | 318,55,607,276 | C5 | Cocina con pileta, azulejos y alacena; un hombre agazapado con rifle mira debajo de la pileta |
+- p171 | 638,286,820,508 | C5 | Dos hombres agachados junto a un mueble bajo recogen pollitos del piso de la cocina |
+- p171 | 846,286,1023,508 | C5 | Detalle sobre la mesa: una mano junto a un vaso y una botella en la oscuridad |
+- p172 | 640,518,836,740 | C5 | Cocina pequeña: cocina a leña con pava, pileta y estante con botellas bajo azulejos |
+- p172 | 687,55,1026,276 | C5 | Mesa con una cafetera de vidrio con aros metálicos, una jarra y una taza en la oscuridad |
+- p172 | 77,285,388,508 | C5 | Living con cortinas y mesa de botellas; un joven con tiradores examina un cilindro metálico |
+- p173 | 65,536,240,741 | C5 | Interior estrecho: dos figuras pequeñas de pie junto a una mesa, luz lateral dura |
+- p173 | 740,57,860,278 | C5 | Interior en penumbras: un hombre sentado en una silla y dos de pie, recortados en negro |
+- p173 | 236,536,401,741 | C5 | Mesa de mantel a cuadros con botellas y cafetera; un anciano sentado y un joven de pie |
+- p173 | 299,286,496,509 | C5 | Vista picada de un comedor: mesa con sillas, ventana, cómoda y figuras de pie alrededor |
+- p174 | 754,520,1026,738 | C5 | Cuarto con mesa: el "Mano" sentado y dos hombres alrededor, uno de pie con rifle |
+- p174 | 408,520,631,738 | C5 | Interior: sillas de madera, un hombre sentado de espaldas y otros de pie contra la pared |
+- p174 | 136,59,545,277 | C5 | Cocina con azulejos y puerta: dos hombres de pie, uno con abrigo y otro con tiradores |
+- p175 | 687,287,1016,507 | C5 | Dos hombres asomados a una ventana con cortina, mirando las explosiones del cielo nocturno |
+- p175 | 774,59,1015,277 | C5 | Mesa de mantel a cuadros con botella de vino, sifón, vaso y plato; una cabeza blanca se desploma encima |
+- p175 | 503,286,679,507 | C5 | Ventana de varios paños con los vidrios rotos y astillas que vuelan hacia adentro |
+- p176 | 564,55,740,276 | C5 | Pasillo con puerta abierta y un hombre en camisa que se asoma doblado, otro detrás en la sombra |
+- p176 | 748,55,1035,276 | C5 | Hombre sentado de espaldas en una silla de madera junto a una puerta vidriera y una ventana |
+- p176 | 75,285,262,468 | C5 | Un viejo de sobretodo y bufanda camina con un palo por un cuarto con estantes |
+- p176 | 75,53,304,274 | C5 | Cuarto en sombras con un umbral iluminado; dos siluetas de hombre, una de espaldas |
+- p177 | 445,286,1035,508 | C5 | Interior sobrio con pared revocada, cuadros enmarcados y un cartel redondo con las letras CARP |
+- p177 | 689,61,1022,276 | C5 | Hombres en uniforme alrededor de un oficial de pelo oscuro y bigote; pared con cuadros |
+- p177 | 484,61,671,276 | C5 | Interior del estadio: multitud de siluetas con los brazos en alto bajo una estructura de vigas |
+- p178 | 691,288,1037,510 | C5 | Tres hombres apoyados en una baranda miran hacia afuera; cascos, gorros y caras tensas |
+- p185 | 63,285,450,508 | C5 | Dos soldados detrás de un parapeto con una radio de mano, cielo rayado |
+- p186 | 434,392,638,508 | C5 | Soldado con auriculares de espaldas frente al equipo de radio |
+- p186 | 665,372,830,508 | C5 | Soldado de espaldas con auriculares frente al equipo de radio, contra un fondo negro |
+- p186 | 76,372,416,508 | C5 | Interior del jeep: soldado con auriculares y tablero con diales, fusil apoyado |
+- p188 | 335,285,535,509 | C5 | Soldado agazapado detrás de una chatarra levanta el brazo y grita a un compañero lejano |
+- p196 | 780,285,1035,508 | C5 | Tres hombres trastabillan por una escalera interior; uno se agarra del pasamanos junto a la ventana |
+- p196 | 62,518,395,741 | C5 | Soldado baja la escalera entre planchas de yeso que caen; un cuerpo oscuro yace en el piso |
+- p214 | 574,54,1036,276 | C5 | Interior de un vehículo blindado: dos hombres, uno en la ametralladora y otro sentado; engranajes arriba |
+- p215 | 445,518,762,742 | C5 | Interior del tanque: dos hombres manejan cables y una palanca junto a la munición |
+- p215 | 769,518,1025,742 | C5 | Interior del vehículo: un hombre al volante y otros dos asomados, entre casco y periscopio |
+- p225 | 63,285,377,508 | C5 | Hombres suben una escalera mecánica oscura con un herido; pared rayada a la izquierda |
+- p225 | 65,518,456,740 | C5 | Andén de subte en arco con escalera mecánica, vías y un grupo de gente armada |
+- p225 | 674,285,1022,508 | C5 | Escalera de subte con azulejos blancos: hombres subiendo a la carrera con fusiles |
+- p225 | 746,518,1024,740 | C5 | Boca de túnel en arco: siluetas corriendo por la pasarela, tren al costado y cables |
+- p226 | 79,518,308,737 | C5 | Vista alta de la escalera del subte, peldaños y barandas, una silueta chica abajo |
+- p226 | 80,50,404,275 | C5 | Tres siluetas con fusiles corren dentro del túnel, iluminadas por una linterna baja |
+- p227 | 62,48,1021,278 | C5 | Interior del túnel: pared curva rayada, dos siluetas de espaldas y un rostro grande a la derecha |
+- p227 | 670,285,1022,508 | C5 | Puerta inclinada del vagón: un hombre entra y otro de pelo claro espera, en penumbra |
+- p228 | 212,48,901,278 | C5 | Interior del vagón: asientos mullidos, ventanas, un hombre con fusil y cuerpos en el piso |
+- p229 | 62,74,442,276 | C5 | Túnel derrumbado: bloques enormes colgando del techo, vías y escombros |
+- p230 | 74,48,646,275 | C5 | Galería del subte con balasto, durmientes y losa curva; un vagón blanco al fondo |
+- p232 | 79,518,444,740 | C5 | El túnel con el vagón volcado al fondo, hojas de vidrio y hombres caminando |
+- p233 | 67,518,446,740 | C5 | Vías que se curvan entre escombros y una gran plancha blanca y curva |
+- p233 | 65,56,635,278 | C5 | Interior del túnel con un vagón tumbado, vías y planchas transparentes gigantes |
+- p233 | 709,319,1021,508 | C5 | Dos hombres de espaldas mirando el túnel: figuras mínimas y una pared pálida |
+- p237 | 936,517,1024,739 | C5 | Boca del túnel con un hombrecito de pie y un hierro retorcido a la derecha |
+- p238 | 799,316,889,506 | C5 | El hombre pálido de pie en el túnel iluminado, con las manos juntas |
+- p238 | 80,316,343,506 | C5 | Túnel en picado: durmientes, rieles curvos y una casilla de ladrillo con tapa metálica |
+- p239 | 403,286,678,506 | C5 | Galería del subte con vigas caídas, un vagón tumbado y la figura pálida al centro |
+- p240 | 404,60,657,279 | C5 | El hombre pálido de espaldas frente a una plancha pálida y curva, vagón y escombros |
+- p244 | 558,55,791,275 | C5 | Escalinata de piedra entre paredes: tres figuras bajan; vigas y postes oscuros en primer plano |
+- p253 | 340,305,645,508 | C5 | La muchacha señala un pasadizo oscuro y una pared de azulejos con la mano abierta |
+- p254 | 705,56,1036,277 | C5 | Muchacha frente a una pared de azulejos; tronco oscuro en sombra y ramas con nieve |
+- p258 | 422,56,722,270 | C5 | Un hombre se inclina sobre un cuerpo caído junto a una pared; fondo rayado |
+- p260 | 75,97,358,276 | C5 | Favalli de anteojos junto a un joven de perfil, pared de azulejos blancos detrás |
+- p263 | 385,560,667,739 | C5 | Kiosco de diarios iluminado de noche: revistas colgadas y tres hombres apoyados |
+- p264 | 460,515,760,742 | C5 | Dos hombres en un interior oscuro, uno en la puerta; cesto de mimbre y un bulto rayado |
+- p264 | 765,515,1035,742 | C5 | Interior: un hombre se inclina sobre dos figuras dormidas; reloj, cuadro y silla |
+- p287 | 64,537,227,740 | C5 | Portal de un edificio con columnas: tres siluetas asomadas en la puerta oscura |
+- p290 | 74,55,432,275 | C5 | Negocio de bicicletas con vidriera, afiches y cartel "AQUÍ"; tres hombres corren entre las bicis alineadas |
+- p293 | 172,75,422,278 | C5 | Interior de colectivo en penumbras, respaldos y caños del techo, ventanillas de montantes gruesos |
+- p293 | 522,75,792,278 | C5 | Negocio de ramos generales con cartel vertical sobre la ochava y puerta con reja, vereda nevada |
+- p302 | 74,56,347,277 | C5 | Ferretería con cartel "FERRETERÍA" sobre la vidriera, auto de los cincuenta estacionado en la puerta |
+- p302 | 742,518,1037,740 | C5 | Interior: mujer joven de pelo claro desplomada junto a la pared de ladrillos, una nena abrazada a ella |
+- p303 | 63,519,359,740 | C5 | Cuarto de madera visto desde el patio: un hombre arrodillado en el umbral iluminado junto a un cuerpo |
+- p305 | 436,519,687,739 | C5 | Dos siluetas de perfil frente a frente, con un velador redondo sobre la mesa |
+- p305 | 63,519,429,740 | C5 | Cuarto con biblioteca, cuadro en la pared y cortinas; dos hombres conversan en sillones |
+- p306 | 706,549,1037,739 | C5 | Cuarto oscuro con gente de espaldas junto a la ventana abierta |
+- p306 | 543,56,906,276 | C5 | Interior: dos hombres sentados frente a frente, mesa con papeles y un velador redondo |
+- p306 | 75,377,639,507 | C5 | Living con sillón, cuadros en la pared y lámpara: la joven abraza a la nena y el mayor les habla |
+- p307 | 390,55,700,276 | C5 | Cuarto con un banco largo: cuatro hombres de pie, uno señala hacia la puerta |
+- p308 | 313,518,575,739 | C5 | Interior en sombras: un grupo de vecinos mira hacia arriba, junto a una pared con listones |
+- p310 | 299,55,513,276 | C5 | Primer plano de una mano sobre el picaporte de bronce y la cerradura de la puerta |
+- p310 | 75,55,268,276 | C5 | Silueta de un hombre de espaldas en el marco de la puerta, con la mano en el picaporte |
+- p311 | 635,519,1024,719 | C5 | Cuarto con biblioteca y ventana: un hombre de sweater y bigote habla con otro de campera clara |
+- p312 | 467,317,744,507 | C5 | Tres hombres alrededor de una mesa con papeles, uno apoyado; estantes de libros detrás |
+- p312 | 76,319,458,507 | C5 | Gente sentada en el suelo del living, unos sobre una lona, otros de pie alrededor |
+- p312 | 418,56,905,276 | C5 | Taller con estantes: un hombre de camisa clara de pie entre dos figuras, uno de espaldas con sweater grueso |
+- p313 | 433,287,753,509 | C5 | Tres hombres alrededor de una mesa con pocillos de café, un plato y un paquete; persianas al fondo |
+- p313 | 761,287,1023,509 | C5 | Mesa de entrecasa: una mujer rubia de remera rayada, un joven apoyado y un viejo de espaldas |
+- p314 | 615,305,980,507 | C5 | Living con ventana de vidrios y un sofá con estrellas bordadas; un hombre frena a la mujer y la nena |
+- p314 | 639,524,1036,738 | C5 | Escalera de madera con baranda de bolas torneadas, vista en diagonal desde el llano |
+- p314 | 134,524,568,738 | C5 | Hall interior con puerta al fondo y baranda de madera con cruces en aspa; el joven cruza con el rifle |
+- p315 | 62,55,403,278 | C5 | Cuarto con puertas de panel y baranda: un hombre en camiseta con el arma lista y otro agazapado |
+- p316 | 76,310,450,510 | C5 | Los peldaños como una masa diagonal oscura bajo los pies de los que trepan |
+- p316 | 720,57,1040,277 | C5 | Escalera vista desde abajo: la mujer y la nena paradas arriba, recortadas contra la luz |
+- p316 | 68,517,450,738 | C5 | Cuarto con puerta de paneles: un hombre de anteojos grita mientras el joven, con la ametralladora, abre |
+- p317 | 715,55,1030,276 | C5 | Altillo en perspectiva: vigas inclinadas, piso de tablas y cuatro hombres armados que entran |
+- p317 | 544,286,1023,507 | C5 | Altillo con vigas en triángulo, tablas en el piso y una radio portátil sobre un banco |
+- p317 | 425,56,710,276 | C5 | El cuarto del fondo, blanco y vacío, con un modelo de avión suspendido del techo |
+- p317 | 425,517,815,738 | C5 | Grupo oscuro inclinado sobre la radio; la luz los recorta desde atrás |
+- p317 | 64,57,420,276 | C5 | Marco de puerta blanca de paneles y pared de madera, en el altillo |
+- p317 | 820,517,1025,737 | C5 | Un hombre de barba agachado sobre la radio, girando la perilla con las dos manos |
+- p318 | 325,517,605,738 | C5 | Radio de perfil con dial vertical; un hombre de anteojos con un dedo en la perilla |
+- p318 | 415,287,679,507 | C5 | El grupo apiñado alrededor de la radio en el altillo, vigas y una ventanilla redonda |
+- p318 | 858,517,1037,737 | C5 | Escala del dial en detalle: filas LONG WAVE y SHORT WAVE, números Kc y Mc y siglas |
+- p318 | 76,57,639,277 | C5 | Cinco personas inclinadas sobre una radio grande en un cuarto oscuro; uno pide silencio |
+- p318 | 615,517,838,737 | C5 | Mano de dedos gruesos girando la perilla, con los números del dial a la vista |
+- p318 | 76,287,410,507 | C5 | Radio de mesa de frente: rejilla de listones, dial de vidrio y dos perillas redondas |
+- p318 | 76,517,315,738 | C5 | Radio en primer plano con la rejilla de listones y el dial encendido, líneas de sonido |
+- p318 | 689,287,1035,507 | C5 | Las espaldas del grupo en semicírculo frente a la radio, recortadas en la oscuridad |
+- p319 | 349,537,609,738 | C5 | Cuarto de trabajo: biblioteca llena de libros, un hombre sentado pensando y una radio de domo |
+- p319 | 63,57,325,276 | C5 | Radio de mesa en tres cuartos, oscura, con líneas de sonido saliendo del parlante |
+- p319 | 335,57,665,276 | C5 | Hombre visto desde atrás inclinado sobre la radio en el altillo, entre vigas de techo |
+- p319 | 404,329,771,488 | C5 | Tres hombres apoyados en la mesa con la radio: uno de anteojos y barba, un calvo de codos |
+- p319 | 675,56,1023,276 | C5 | Dos siluetas inclinadas hacia la radio sobre la mesa; el resto del cuarto en sombra |
+- p320 | 75,55,470,277 | C5 | Sillón de madera oscura con remates torneados y una pared negra detrás |
+- p320 | 77,631,570,739 | C5 | Rincón de la radio en primer plano, con un haz de luz diagonal y copos en el aire |
+- p320 | 216,288,1038,508 | C5 | Grupo apretado escuchando una radio portátil sobre la mesa, en un cuarto oscuro |
+- p320 | 647,111,1038,277 | C5 | Escritorio de noche: el anciano de perfil sobre papeles y revistas, biblioteca y lámpara |
+- p321 | 198,560,441,739 | C5 | Piso de tablas, vigas, una mesa con una caja y sillas alrededor de la radio |
+- p321 | 580,560,1024,739 | C5 | Radio grande de frente en tres cuartos: rejilla de listones, dial alargado y perillas |
+- p321 | 63,98,397,275 | C5 | Vigas del techo y un espacio oscuro sobre el grupo que escucha la radio |
+- p321 | 405,99,724,276 | C5 | Radio de mesa en tres cuartos junto a una viga, sobre una tabla, en el altillo |
+- p322 | 76,148,539,277 | C5 | Esquina del mueble de la radio en primer plano, la casa a oscuras |
+- p322 | 431,288,644,508 | C5 | Bloque de texto largo y, abajo, un dibujo chico de la radio sobre una repisa |
+- p322 | 77,536,546,738 | C5 | Cuarto con puerta y perchero: la mujer rubia, el chico con el brazo alzado y dos hombres alegres |
+- p322 | 548,148,822,277 | C5 | Vista picada del grupo alrededor de la radio: un chico, una mujer y tres hombres |
+- p322 | 676,536,1037,738 | C5 | Interior nocturno con biblioteca y ventana llena de copos; dos hombres conversando de perfil |
+- p323 | 320,330,539,508 | C5 | Dos siluetas sentadas a una mesa, una lámpara colgante y una ventana de vidrios detrás |
+- p323 | 630,145,830,276 | C5 | Mesa con un libro abierto: un viejo de camisa clara de perfil y otro hombre de espaldas, entre vigas |
+- p323 | 63,55,350,277 | C5 | Cuarto a oscuras: dos hombres en silueta junto a una biblioteca y una ventana, uno inclinado |
+- p323 | 63,518,528,739 | C5 | Escritorio de noche: un hombre sentado con la mano en la cara y el anciano inclinado sobre una radio de domo |
+- p324 | 75,87,368,277 | C5 | Living con puerta al fondo: el grupo reunido antes de la salida |
+- p325 | 710,548,1025,730 | C5 | Ventana de madera de dos hojas y el marco del cuadro en la pared del living |
+- p325 | 185,287,380,510 | C5 | Despensa: un hombre de espaldas frente a una mesa cargada de frascos y latas |
+- p325 | 410,55,505,278 | C5 | Rincón del comedor: Martita sentada a la mesa junto a botellas y vasos, con un cuadro enmarcado en la pared |
+- p325 | 340,548,700,735 | C5 | El viejo de saco mira hacia abajo junto a un cuadro y una mesa, en un cuarto oscuro |
+- p325 | 180,55,400,278 | C5 | Living junto a la ventana grande: Juan de pie frente al vidrio y Elena sentada con una cámara en las manos |
+- p325 | 735,55,1025,278 | C5 | Elena inclinada con una bolsa de compras y Martita a su lado, delante de una repisa de latas y frascos |
+- p325 | 385,287,700,510 | C5 | Pared con un retrato enmarcado y una repisa con un bol de fruta y frascos |
+- p325 | 64,548,330,735 | C5 | Cocina: la mujer rubia alcanza un frasco en la alacena y la nena de espaldas la mira |
+- p326 | 570,519,1036,739 | C5 | Living con la baranda de la escalera al fondo y el grupo reunido |
+- p326 | 540,98,700,277 | C5 | Escalera de madera: el viejo y un hombre de anteojos parados en los peldaños |
+- p326 | 204,318,450,508 | C5 | Hall de entrada con escalera y baranda: entran dos hombres y un chico, el viejo los recibe |
+- p327 | 360,133,690,278 | C5 | Ramo enorme de claveles envuelto en papel, en primer plano, con una mano y una barbilla arriba |
+- p327 | 64,133,350,278 | C5 | Entrega del ramo en el living: la mujer estira las manos, el joven se lo da, la nena y el viejo miran |
+- p327 | 817,561,1023,739 | C5 | Garaje a oscuras: dos trajes llevan cajones al camión, con copos en el aire |
+- p327 | 684,344,1025,508 | C5 | Mesa con botellas, una bandeja y un jarrón: el grupo de espaldas celebrando |
+- p328 | 75,56,390,276 | C5 | Puerta de garaje de chapa acanalada y cajones apilados en la nieve |
+- p328 | 76,341,361,506 | C5 | Radio de frente con haces de luz saliendo del parlante, sobre una mesa de madera |
+- p328 | 622,560,1036,738 | C5 | Tres hombres de espaldas y el viejo de pelo blanco inclinado sobre la radio |
+- p328 | 369,341,697,506 | C5 | Multitud en el altillo alrededor de la radio: chicos, mujeres y hombres en silencio |
+- p328 | 692,56,1035,275 | C5 | Taller con estantes de frascos, una lámpara y la radio sobre la mesa, seis personas alrededor |
+- p329 | 558,518,1024,739 | C5 | Cocina con ventana, calendario en la pared y un mueble bajo |
+- p329 | 700,100,1022,276 | C5 | Dos hombres frente al grabador de bobinas; tres personas de pie al fondo del galpón |
+- p329 | 378,100,692,277 | C5 | Grabador de cinta portátil con dos bobinas y asa, sobre la mesa, y una cabeza inclinada encima |
+- p330 | 468,286,805,506 | C5 | Living con ventanal a la derecha y el grupo formado en el centro |
+- p334 | 256,549,474,738 | C5 | Tablero del camión: radio con rejilla de listones y perillas |
+- p335 | 858,354,1024,507 | C5 | Fachada del almacén con puerta en arco, cartel arriba y árboles sin hojas |
+- p353 | 239,519,610,740 | C5 | Interior del aparato: cúpula con lente redonda, ductos y una escalerilla |
+- p354 | 463,597,740,738 | C5 | Dos personas frente a un tablero con muchas palancas verticales, cabina metálica |
+- p354 | 75,56,780,276 | C5 | Interior del aparato: siluetas de una mujer y una nena, un cono oscuro y una rejilla redonda |
+- p354 | 503,287,790,507 | C5 | Hombre parado detrás de una consola con una fila de palancas de punta redonda |
+- p354 | 75,287,500,507 | C5 | Gran sala metálica con un disco lleno de agujeros, un cono y dos figuritas caminando |
+- p354 | 750,597,1037,738 | C5 | Hombre inclinado sobre un tablero lleno de botones redondos y perillas |
+- p355 | 534,339,1024,508 | C5 | Hombre inclinado sobre la consola con una mujer y una nena al fondo |
+- p355 | 81,339,304,508 | C5 | Hombre de pie inclinado sobre una consola de palancas, en silueta |
+- p355 | 63,530,293,737 | C5 | Hombre agachado que tira de tres palancas negras en la oscuridad |
+- p355 | 64,57,290,188 | C5 | Una nena asomada a una consola con pantalla inclinada en la cabina oscura |
+- p356 | 76,350,290,502 | C5 | Mano que aprieta una palanca negra de punta redonda sobre la consola |
+- p356 | 760,350,1035,502 | C5 | Hombre de espaldas sobre un piso de rejilla, con rayos de luz y palancas |
+- p356 | 540,350,700,502 | C5 | Dedo que aprieta un botón redondo rayado en un tablero oscuro |
+- p359 | 704,560,1031,739 | C5 | El guionista se levanta de la mesa y se inclina hacia el viejo sentado de espaldas |
+- p359 | 64,120,600,277 | C5 | El viejo de pelo blanco de pie le habla al guionista sentado en un cuarto oscuro |
+- p359 | 613,354,800,507 | C5 | Hombre de camisa a cuadros junto a la biblioteca de estantes con libros |
+- p359 | 665,120,1035,277 | C5 | El guionista de anteojos junto a la ventana negra llena de estrellas; el viejo al lado |
+- p359 | 806,354,1024,507 | C5 | Silueta de dos hombres en una mesa con lámpara, ventana con cielo rayado detrás |
+- p360 | 76,57,393,277 | C5 | El viejo abre la puerta del cuarto con la llave puesta; el guionista de perfil abajo |
+- p372 | 212,125,884,598 | C5 | Fotografía: escritorio de dibujante con teléfono negro, papeles, lápices en latas, cinta y ventana con cortina atrás |
+
+## El traje y las armas (388)
+
+- p025 | 494,287,741,508 | C6 | Contador Geiger de caja oscura con dial redondo y aguja, unido por cable a auriculares grandes |
+- p030 | 546,512,670,739 | C6 | Dos figuras oscuras armadas con fusiles, recortadas sobre la nieve |
+- p031 | 227,288,848,509 | C6 | Sobre la mesa de costura: lata de cemento abierta, tijeras, tela clara y una lámpara de aceite encendida |
+- p032 | 581,517,1030,739 | C6 | Traje hermético todavía sin casco: overol claro y blando que cuelga arrugado de la mano de Juan |
+- p033 | 81,535,159,739 | C6 | Silueta chica de un hombre con el traje y el casco corriendo entre la nieve, junto a un bloque de texto |
+- p038 | 394,285,906,509 | C6 | La tela clara y brillante del traje extendida sobre la mesa bajo las manos de Juan |
+- p040 | 75,310,486,508 | C6 | El grupo rodea a Juan ya enfundado en el overol claro, delante de la puerta del garage |
+- p040 | 406,519,732,739 | C6 | Favalli calza el casco a Juan con las dos manos: visera redonda, aro metálico y válvula en la boca |
+- p040 | 495,310,789,508 | C6 | Favalli sostiene el casco ante Elena: domo oscuro, visera redonda de vidrio y válvula circular en la boca |
+- p041 | 608,55,897,277 | C6 | El casco de domo redondo visto de perfil, con el aro metálico y la válvula oscura en la boca |
+- p041 | 772,517,1015,739 | C6 | Silueta oscura de Juan con el traje y el rifle en el umbral iluminado del garaje |
+- p041 | 68,517,306,739 | C6 | Primer plano de la visera redonda: la cara de Juan adentro, el vidrio y la válvula en el mentón |
+- p041 | 903,215,1002,277 | C6 | Siluetas chiquitas de dos hombres armados con fusiles, dibujadas al pie de la columna de texto |
+- p041 | 316,517,643,739 | C6 | Juan agachado con el casco y el traje ante Elena y Martita, en el pasillo junto a la puerta |
+- p041 | 366,55,600,277 | C6 | Dos figuras de cuerpo entero en el garage de baldosas: una con overol claro y capucha, otra con abrigo |
+- p041 | 765,288,996,509 | C6 | Juan de cuerpo entero con el traje claro arrugado, el casco y el rifle apoyado en la pierna |
+- p041 | 67,288,347,509 | C6 | Busto de Juan con el casco puesto: visera circular, válvula redonda en la boca y el puño en alto |
+- p042 | 435,517,689,739 | C6 | La cara de Juan dentro del casco, entre copos, con la válvula redonda abajo |
+- p042 | 78,55,355,277 | C6 | Juan de cuerpo entero con el traje, la cartuchera y el rifle junto a la puerta del garage |
+- p042 | 365,55,610,277 | C6 | Juan con el traje y el casco junto a la puerta entornada, con algo en la mano y una silueta al lado |
+- p042 | 794,283,1026,509 | C6 | Primer plano de la visera circular: la cara de Juan adentro y copos pegados al vidrio |
+- p042 | 321,283,785,509 | C6 | Plano entero de Juan con el overol claro, el casco, el cinturón y el rifle, de pie sobre la nieve |
+- p042 | 716,517,1026,739 | C6 | Juan del traje de espaldas frente a la ventana donde lo miran los suyos |
+- p043 | 760,57,1022,277 | C6 | Juan en el traje y el casco, con el rifle al hombro, plantado en la nieve bajo el cielo estrellado |
+- p043 | 107,57,380,277 | C6 | Juan se golpea el pecho con el puño, con el casco y el rifle terciado, entre copos |
+- p043 | 740,318,1024,509 | C6 | Primer plano de la visera con la cara de Juan adentro y los copos adheridos al vidrio |
+- p044 | 79,55,700,276 | C6 | Juan de pie junto al portón de madera, con el casco y el rifle, sobre la nieve apisonada |
+- p044 | 400,283,748,509 | C6 | Primer plano del casco: visera circular con la cara de Juan, válvula redonda en la boca y pueblo nevado detrás |
+- p044 | 756,283,1020,509 | C6 | Juan con el traje y el casco, el rifle en la mano, inmóvil entre copos |
+- p044 | 452,515,684,742 | C6 | La cara de Juan dentro del casco, los ojos cansados y entrecerrados, con copos pegados |
+- p045 | 440,515,648,742 | C6 | Juan de cuerpo entero con el traje claro, el casco y el rifle vertical, plantado en la nieve |
+- p045 | 702,283,1014,509 | C6 | Primer plano de la visera: la cara de Juan adentro, el aro metálico y la válvula redonda en la boca |
+- p046 | 290,455,365,509 | C6 | Viñeta chica: dos siluetas agazapadas con fusiles en un paisaje nevado |
+- p046 | 411,55,658,277 | C6 | Primer plano del casco: visera circular y los ojos muy abiertos de Juan, con la válvula abajo |
+- p046 | 750,283,1035,509 | C6 | Juan de pie con el rifle en alto; una hoja de diario vuela en la nieve delante de él |
+- p046 | 667,55,1034,277 | C6 | Juan agazapado de espaldas, el rifle corto en las manos, sobre la nieve |
+- p046 | 68,283,365,509 | C6 | Juan agazapado tras el cerco de tablas, con el rifle apoyado y el traje arrugado |
+- p046 | 373,283,740,509 | C6 | El casco y las manos enguantadas aferradas al rifle, en un primer plano diagonal |
+- p047 | 310,288,500,507 | C6 | Primer plano del casco con la cara de Juan adentro y la válvula blanca redonda en la boca |
+- p047 | 69,518,332,735 | C6 | Primerísimo plano de los ojos de Juan dentro de la visera, con gotas de transpiración |
+- p047 | 513,288,1013,507 | C6 | Juan de medio cuerpo con el casco y el rifle en las manos, contra el fondo negro |
+- p047 | 500,518,1013,735 | C6 | Juan con el casco y la cara surcada de sudor, la visera redonda y el cuello del traje |
+- p047 | 730,59,1012,277 | C6 | Pared de la armería con escopetas y rifles apoyados y un estante con cajas; Juan de espaldas |
+- p047 | 68,288,298,507 | C6 | Escopeta de dos caños parada junto a Juan, que la mira con la mano enguantada en alto |
+- p048 | 280,519,501,738 | C6 | Primer plano del casco con la mirada dura y el entrecejo fruncido, gotas en el vidrio |
+- p048 | 452,58,708,276 | C6 | Otro ángulo del casco: la cara de Juan adentro, la válvula oscura y las arrugas del traje |
+- p048 | 77,58,444,276 | C6 | Primer plano del casco con la cara surcada de sudor, la visera redonda y el cuello acolchado |
+- p048 | 349,283,599,507 | C6 | Primer plano del casco: cara angustiada y, detrás, una fila de caños y objetos verticales |
+- p049 | 295,57,544,277 | C6 | El traje agazapado sobre un techo de tejas inclinado, cuerpo pesado y arrugado, rifle al hombro y copos |
+- p049 | 276,286,475,509 | C6 | Primer plano del casco: domo con aro metálico, visera redonda, cara adentro y válvula circular en la boca |
+- p049 | 66,57,284,277 | C6 | Hombre con traje hermético y casco redondo se inclina sobre una saliente de techo nevado, rifle corto en la mano |
+- p049 | 693,518,769,738 | C6 | Cartuchos vacíos, una vaina y una correa tirados en el piso, pequeño dibujo al pie del texto |
+- p050 | 78,57,383,258 | C6 | Hombre del traje de espaldas, casco y correa cruzada, rifle al hombro, caminando por un descampado nevado |
+- p051 | 66,518,350,738 | C6 | Hombre del traje arrodillado de tres cuartos: casco con visera y filtro redondo en la boca, rifle apoyado |
+- p051 | 403,286,567,509 | C6 | Hombre del traje agachado envolviendo a un chico en una tela clara, de pies a cabeza, sobre el piso |
+- p051 | 361,518,628,738 | C6 | Dos figuras con traje trotan por la nieve empujando una carretilla con un bulto envuelto; copos grandes |
+- p051 | 792,57,1015,277 | C6 | Casco redondo con visera circular: la cara de Favalli con anteojos adentro y el hombro oscuro de otro casco |
+- p052 | 75,96,714,268 | C6 | Dos figuras con traje cruzan la calle nevada: el primero con casco, visera y filtro, rifle; el otro empuja la carretilla |
+- p052 | 727,96,1033,268 | C6 | Espalda de una figura con traje y capucha, rifle en la mano, agachada en la nieve mirando a lo lejos |
+- p054 | 745,57,1027,278 | C6 | Favalli con el traje, brazo en alto y casco con visera y filtro redondo, junto a la puerta del furgón |
+- p055 | 672,57,1015,275 | C6 | Dos cascos enfrentados: la cara de Favalli con anteojos en la visera redonda y la nuca de otro casco |
+- p055 | 680,288,1015,509 | C6 | Interior de la cabina del furgón: dos cascos con visera cuadrada y redonda, filtros redondos en la boca |
+- p056 | 78,55,480,278 | C6 | Hombre con traje claro y casco de visera redonda asomado a la ventanilla del furgón; trapo oscuro colgando |
+- p056 | 65,518,290,740 | C6 | Dos figuras con traje en la calle nevada, una con la mano en el hombro de la otra, casi en silueta |
+- p056 | 760,290,1035,510 | C6 | Dos cascos juntos, uno con visera redonda y otro cuadrada: dos caras serias, copos alrededor |
+- p057 | 885,55,1035,278 | C6 | Dos figuras con traje y rifle de perfil, copos cayendo; una sostiene una pistola a la altura del pecho |
+- p057 | 705,518,1035,740 | C6 | Primer plano de casco con visera redonda y filtro cilíndrico en la boca; ventana de vidrios enrejados detrás |
+- p057 | 565,290,755,510 | C6 | Espalda de una figura con capucha y correa cruzada, rifle en mano, junto a un furgón en la nieve |
+- p057 | 65,290,200,510 | C6 | Primer plano de dos cascos enfrentados: la nuca oscura de uno y la visera redonda del otro, con un rifle |
+- p057 | 420,290,555,510 | C6 | Figura con traje y rifle con un brazo extendido, frente a la persiana de un negocio con letras pintadas |
+- p058 | 402,286,675,509 | C6 | Primer plano de dos botas gruesas del traje caminando en la penumbra, con copos brillantes en el piso |
+- p058 | 65,518,255,740 | C6 | Dos figuras con traje y rifle caminando de frente, cascos redondos, copos y fondo claro |
+- p059 | 88,518,292,740 | C6 | Hombre con mono claro y capucha echada atrás, agarrado al marco de una puerta, en la nieve |
+- p059 | 604,286,1024,509 | C6 | Interior: figura con traje y rifle girada a medias junto a una caja grande y un estante con frascos |
+- p059 | 253,54,321,275 | C6 | Primer plano de un guante grueso apoyado en el canto de una puerta de madera, onomatopeya SLAM |
+- p062 | 325,518,500,740 | C6 | Figura con traje de espaldas golpeando una puerta de madera con el puño, correa cruzada |
+- p062 | 735,518,1035,740 | C6 | Primer plano de un puño enguantado a punto de golpear una puerta, con líneas de fuerza |
+- p063 | 495,518,720,740 | C6 | Primer plano de una mano con pistola disparando: fogonazo y líneas de bala |
+- p063 | 325,518,490,740 | C6 | Hombre con traje y pistola agachado contra una puerta, en la nieve; copos y sombras |
+- p063 | 745,55,1030,275 | C6 | Dos cascos con visera en la oscuridad junto a una puerta cerrada con un hueco de luz |
+- p063 | 415,55,740,275 | C6 | Dos figuras con traje y rifle se acercan a un portón doble de garage, de noche |
+- p063 | 335,285,520,508 | C6 | Figura con traje agachada junto a una puerta en la nieve, rifle en mano; otra de pie detrás |
+- p064 | 65,285,330,508 | C6 | Dos figuras con traje y rifle apuntando de frente, cascos redondos, fondo rayado |
+- p064 | 695,285,1030,508 | C6 | Figura con traje y pistola de pie junto a la puerta agujereada, sombra alargada |
+- p064 | 335,518,640,740 | C6 | Detalle del traje aislante rajado por la cuchilla, con hilos y bordes abiertos sobre el cuerpo |
+- p065 | 710,285,930,508 | C6 | Radio a válvulas: mueble de madera, dial circular y parlante de rejilla en la penumbra |
+- p066 | 705,285,1010,508 | C6 | Tres figuras con traje y rifle de pie en la nieve, oscuras, una señala hacia adelante |
+- p066 | 550,518,740,740 | C6 | Tres figuras con traje y rifle en la calle nevada, una señala el cielo con el brazo extendido |
+- p067 | 695,55,1010,280 | C6 | Tres figuras con traje y rifle de pie en la nieve, una gesticula; cielo negro con copos |
+- p067 | 65,518,260,740 | C6 | Nuca de un casco nevado en primer plano; arriba, la esfera con cola cruza el cielo |
+- p067 | 65,285,320,508 | C6 | Tres figuras con traje y rifle juntas, cascos redondos, en la nieve nocturna |
+- p068 | 65,55,470,280 | C6 | Dos figuras con traje y rifle en primer plano, un tercer casco detrás, cielo negro con copos |
+- p068 | 825,285,1010,508 | C6 | Tres siluetas de cascos contra el cielo negro, copos cayendo; solo se ven las viseras |
+- p069 | 655,285,1010,508 | C6 | Cabina: tres cascos apretados, uno con anteojos; el de la derecha sostiene un rifle |
+- p070 | 65,285,300,508 | C6 | Dos figuras con traje corren agachadas con rifle por la nieve profunda, de perfil |
+- p070 | 415,55,640,280 | C6 | Figura con traje de pie junto al furgón, rifle en mano, mirando hacia un costado |
+- p070 | 435,518,700,740 | C6 | Explosión de vidrios: una botella estalla en la calle y las esquirlas salen despedidas |
+- p070 | 645,55,1010,280 | C6 | Dos siluetas con rifle y capucha junto al camión, de noche, casi negras contra la nieve |
+- p071 | 375,55,750,280 | C6 | Dos figuras con traje y rifle corren por la nieve, vistas de lado, copos grandes |
+- p071 | 645,518,1010,740 | C6 | Hombre con mono claro de pie en la nieve, pistola en alto apuntando al cielo, gritando |
+- p071 | 65,285,300,508 | C6 | Primer plano de una botella que estalla en grandes esquirlas facetadas, con destellos |
+- p071 | 755,55,1030,280 | C6 | Esquirlas de botella vuelan junto a una figura oscura; líneas de fuerza y nieve |
+- p072 | 305,55,570,278 | C6 | Dos figuras con traje y casco en la nieve; una toma del brazo a la otra, de noche |
+- p072 | 305,285,420,508 | C6 | Primer plano de una pistola humeante en la mano enguantada, con hilo de humo |
+- p073 | 665,519,885,721 | C6 | Dos cascos con visor redondo y filtro bucal, uno con anteojos, recortados contra el cielo nevado |
+- p073 | 261,317,473,511 | C6 | Tres cascos redondos de frente contra el negro, con aro metálico y filtro redondo sobre la boca |
+- p073 | 482,317,767,511 | C6 | Hombre del traje agazapado y corriendo con una escopeta; detrás otro se cubre la cabeza |
+- p073 | 62,317,253,511 | C6 | Primer plano de dos cascos redondos con visor y filtro bucal; uno con anteojos detrás del vidrio |
+- p073 | 423,56,626,278 | C6 | Dos figuras de mono engomado y arrugado en la nieve, una toma del brazo a la otra, cielo negro con copos |
+- p074 | 665,290,1028,510 | C6 | Casco redondo de frente con visor y filtro; dentro se ve la cara de un hombre joven, copos en el vidrio |
+- p074 | 78,290,402,510 | C6 | Visor circular gigante: aro metálico grueso, cara con anteojos detrás y filtro redondo en el mentón |
+- p074 | 478,521,691,740 | C6 | Dos siluetas negras con fusil de espaldas en la nieve, recortadas contra la noche |
+- p074 | 728,58,1027,278 | C6 | Casco redondo en primer plano con anteojos tras el visor y filtro redondo en la boca; copos alrededor |
+- p075 | 692,518,1030,745 | C6 | El hombre del traje abraza a la nena con el fusil colgado al hombro; al lado un compañero encapuchado |
+- p075 | 586,286,760,508 | C6 | Dos siluetas negras con fusiles apuntando desde la nieve, sobre fondo rayado |
+- p075 | 794,84,1022,278 | C6 | Dos figuras del traje en un descampado nevado; una frena a la otra tomándole el brazo |
+- p075 | 769,286,1023,508 | C6 | Hombre del traje con rifle y líneas de acción sujeta a otro encapuchado; "¡No, Fava, no!" |
+- p075 | 425,286,577,508 | C6 | Primer plano de un hombre con capucha y visor redondo que apunta un rifle, ojos duros |
+- p076 | 670,56,1035,277 | C6 | Dos hombres encapuchados de frente y la mujer de espaldas, con copos pegados a la tela |
+- p076 | 77,56,450,277 | C6 | Cuatro sobrevivientes con trajes caseros: dos hombres, la mujer y la nena, con visor rectangular y filtro |
+- p076 | 333,286,505,509 | C6 | Perfil de un hombre encapuchado que escucha; el filtro redondo sobresale y hay tapial de ladrillo detrás |
+- p076 | 477,519,710,741 | C6 | El grupo con los trajes caseros saluda con los brazos en alto en medio de la nieve |
+- p076 | 727,286,1036,509 | C6 | Casco con anteojos redondos tras el visor y filtro bucal; esquina de ladrillo y ventana al fondo |
+- p076 | 78,286,325,509 | C6 | Cuatro figuras de espaldas con capuchas de visor cuadrado y filtro redondo, mirando al cielo |
+- p076 | 453,56,662,276 | C6 | Primer plano de la nena con capucha de visor rectangular y filtro redondo; una mano enguantada en el hombro |
+- p077 | 62,289,248,509 | C6 | Capucha con visor rectangular y filtro redondo vista de tres cuartos, con copos sobre la tela |
+- p077 | 256,289,467,509 | C6 | Mujer encapuchada de frente junto a la nena con capucha, contra la noche nevada |
+- p077 | 724,56,1035,277 | C6 | Tres figuras del traje en la nieve: la mujer encapuchada se apoya en el hombre y un compañero fornido espera |
+- p077 | 475,289,688,509 | C6 | Dos hombres con capucha y visor en una calle nevada, uno de espaldas y otro con filtro al frente |
+- p079 | 67,519,227,740 | C6 | Primer plano de un hombre encapuchado que grita, visor rectangular y copos sobre la tela |
+- p079 | 837,290,1035,510 | C6 | Culata y caño de un fusil en primer plano apoyado contra la ventana; manos enguantadas |
+- p079 | 740,56,1037,278 | C6 | Hombre de camisa clara con un fusil en las manos, caminando; detrás asoma una figura encapuchada |
+- p080 | 67,290,365,509 | C6 | Tres figuras encapuchadas con fusiles en un cuarto, de espaldas, junto a una puerta |
+- p080 | 66,519,305,740 | C6 | Mujer encapuchada con la nena en brazos, ambas con visor rectangular, contra el fondo negro |
+- p080 | 815,519,1035,740 | C6 | Dos figuras encapuchadas de espaldas, una de frente con visor redondo; cara de mujer al borde |
+- p080 | 827,290,1037,509 | C6 | Grupo de tres figuras del traje con fusil en la puerta de una casa, portón nevado al lado |
+- p081 | 701,56,1023,270 | C6 | Grupo con capuchas y un soldado con casco y fusil detrás, contra un tapial de ladrillo |
+- p081 | 459,56,693,270 | C6 | Primer plano de un hombre encapuchado de frente con filtro redondo; ladrillo y ventana detrás |
+- p081 | 346,519,610,740 | C6 | Hombre del traje de espaldas levantando la mano en saludo, con el fusil, entre yuyos nevados |
+- p082 | 62,290,391,509 | C6 | Dos figuras en la nieve: un encapuchado de espaldas y un soldado con casco y filtro, ambos con fusil |
+- p082 | 683,519,1024,740 | C6 | Dos soldados con casco de acero, uno de frente con correa al mentón y otro de espaldas con fusil |
+- p082 | 258,56,710,275 | C6 | Primer plano frontal del casco redondo: visor circular, filtro redondo y hombros del traje |
+- p083 | 830,519,1022,740 | C6 | Primer plano del casco con visor redondo y filtro bucal, tela arrugada del traje |
+- p083 | 535,519,821,740 | C6 | Dos figuras se dan la mano en un campo nevado: un soldado con casco y un hombre del traje |
+- p085 | 67,519,304,740 | C6 | Dos soldados con casco parados en la nieve, uno con mochila de radio a la espalda |
+- p085 | 606,519,1022,740 | C6 | Soldados armados en la nieve: uno grande de espaldas alza el fusil, otro saluda más atrás |
+- p086 | 680,290,1035,509 | C6 | Mano enguantada que dibuja flechas y puntos con lápiz sobre un plano de papel |
+- p091 | 64,290,611,509 | C6 | Un cilindro metálico enorme con caño y remaches, tumbado en la nieve junto a los invasores (?) |
+- p091 | 431,519,708,740 | C6 | Dos soldados con casco y fusil apuntando desde un talud nevado |
+- p093 | 65,519,539,740 | C6 | Terraplén ferroviario: soldados con mortero y tubo al hombro, un casco en primer plano |
+- p094 | 600,519,955,740 | C6 | Dos soldados con casco: uno con prismáticos en las manos y otro de perfil con anteojos |
+- p094 | 440,290,865,510 | C6 | El aparato emisor del rayo: cápsula de metal con remaches, chimenea y tobera lateral |
+- p095 | 595,56,820,278 | C6 | Soldados con casco apuntando bazookas desde un talud nevado con matorrales |
+- p095 | 348,56,585,278 | C6 | Dos soldados agazapados junto a un tubo de mortero apoyado en su bípode |
+- p095 | 827,56,1022,278 | C6 | Nido de ametralladora: soldado con filtro y una metralleta de tambor redondo sobre trípode |
+- p095 | 790,290,1035,509 | C6 | Equipo de mortero en una trinchera de nieve, con la ciudad al fondo |
+- p096 | 797,56,1035,275 | C6 | Dos soldados cargando con un fusil ametralladora y un fusil, líneas de carrera |
+- p096 | 377,519,756,740 | C6 | Soldados disparando fusiles a quemarropa sobre la nieve, casquillos y humo |
+- p096 | 434,56,790,275 | C6 | Trinchera con una ametralladora pesada refrigerada por agua sobre trípode disparando; humo al fondo |
+- p097 | 745,50,1035,280 | C6 | Casco de acero con correa, cubrenuca y copa redonda metálica en el mentón; capote de tela pesada |
+- p099 | 741,60,1015,280 | C6 | Tres cabezas con tocados distintos: casco de acero, gorro de aviador con antiparras y capucha |
+- p110 | 75,55,370,276 | C6 | Cañón antiaéreo de varios tubos con los sirvientes alrededor, sobre un terraplén nevado |
+- p110 | 571,285,796,508 | C6 | Pieza de artillería pesada en el terraplén, con sirvientes y un soldado de espaldas en primer plano |
+- p111 | 62,55,188,276 | C6 | Dos soldados al pie de la escalinata junto a un aparato de señales con brazos y espejo (?) |
+- p111 | 65,519,381,741 | C6 | Soldado con rifle y casco contra un fondo de líneas radiales negras, de noche |
+- p112 | 837,286,1037,509 | C6 | Soldados cargando los morteros en la loma nevada, tubos inclinados y humo |
+- p112 | 75,286,250,509 | C6 | Batería de dos morteros disparando, con columnas de humo y soldados sirviendo las piezas |
+- p113 | 724,287,841,508 | C6 | Soldado en contrapicado con megáfono, el cielo rayado detrás |
+- p113 | 292,285,502,507 | C6 | Oficial en la escalinata con un megáfono en la mano, ordenando con el brazo en alto |
+- p114 | 285,285,540,508 | C6 | Cañón antiaéreo disparando desde detrás de un terraplén, humo y líneas de cielo |
+- p115 | 460,55,618,275 | C6 | Soldado inclinado sobre un aparato de señales con caño y espejo, mirando por la mira (?) |
+- p115 | 62,285,310,508 | C6 | Trípode de ametralladora caído, con los soldados disparando desde el piso |
+- p118 | 70,518,300,741 | C6 | Soldado que golpea con una barra una escotilla redonda en la pared de cemento |
+- p121 | 808,55,1023,277 | C6 | Casco de domo con aro claro y correa al mentón que remata en un disco redondo tipo filtro |
+- p122 | 396,55,754,277 | C6 | Fusiles y metralletas en acción: correajes, cartucheras y cascos con válvula redonda bajo el mentón |
+- p122 | 566,287,720,508 | C6 | Anteojos redondos dentro del casco de domo; la válvula circular cuelga del mentón sobre el pecho |
+- p123 | 312,285,564,508 | C6 | Canana al pecho, correajes y fusil junto a un sombrero de ala civil y un casco redondo |
+- p123 | 477,55,765,276 | C6 | Casco redondo con aro claro, orejeras y disco circular bajo el mentón; la cara al aire, con barba |
+- p124 | 79,287,358,508 | C6 | Cara barbuda dentro de una capucha clara con marco redondeado de vidrio y válvula oval en el mentón |
+- p125 | 344,519,707,741 | C6 | Ojo gigante pegado al ocular de los largavistas: primer plano extremo con líneas de fuerza |
+- p125 | 195,287,513,508 | C6 | Capucha clara con marco redondeado que enmarca el rostro y válvula oval; cigarrillo en la boca |
+- p126 | 752,287,1022,510 | C6 | Elena y Martita con capucha clara, marco de vidrio redondeado y válvula circular en la boca |
+- p127 | 66,520,430,740 | C6 | Fusil enorme en diagonal que cruza el cuadro; un casco agachado y una mano enguantada al otro lado |
+- p127 | 634,287,1023,508 | C6 | Metralleta apuntando al frente en manos de un soldado furioso, la cara iluminada de costado |
+- p128 | 313,522,533,741 | C6 | Dos rostros flotando en negro dentro de marcos redondeados de vidrio, con válvula circular abajo |
+- p130 | 795,56,1034,276 | C6 | Dos cañones largos apuntando al cielo con un penacho de humo blanco en la boca |
+- p131 | 315,520,506,741 | C6 | Soldado tendido sobre el afuste de un cañón, con la cinta de municiones a la vista |
+- p131 | 822,520,1024,741 | C6 | Mira circular de un cañón antiaéreo: aro con retícula de hilos en cruz sobre el cielo |
+- p131 | 66,520,305,741 | C6 | Cañón antiaéreo en el centro de una terraza con soldados tirados alrededor |
+- p131 | 65,287,350,508 | C6 | Dos figuras con capucha y visor en la nieve, una arrodillada que extiende el brazo |
+- p132 | 262,288,644,509 | C6 | Hombre encapuchado con pistola en alto avanza sobre un soldado que levanta las manos |
+- p132 | 837,288,1036,509 | C6 | Silueta negra de un cañón contra el cielo blanco y una explosión de humo oscuro arriba |
+- p133 | 554,520,726,740 | C6 | Soldado de pie junto a un cañón volcado, en una explanada rayada con otras figuras al fondo |
+- p136 | 407,522,696,741 | C6 | Aparato con disco parabólico sobre un pedestal y antena alta, disparando un abanico de luz |
+- p137 | 260,287,746,492 | C6 | Ametralladora sobre trípode atendida por un soldado agachado junto a un caparazón oscuro |
+- p137 | 63,57,318,276 | C6 | Soldado que levanta el brazo con una granada en la mano, recortado sobre negro |
+- p140 | 365,521,589,741 | C6 | Cañón del fusil en diagonal con un fogonazo blanco enorme que estalla en la oscuridad |
+- p141 | 67,520,219,732 | C6 | Hombre de anteojos apuntando con la escopeta, de pie y de perfil, sobre fondo claro |
+- p141 | 663,288,1023,509 | C6 | Escopeta de dos cañones con culata de madera en manos de un hombre de saco y anteojos |
+- p141 | 465,57,677,276 | C6 | Fusil en vertical con un fogonazo de luz blanca que atraviesa el panel |
+- p141 | 296,520,450,732 | C6 | El mismo hombre dispara la escopeta: humo y fogonazo en la boca del cañón |
+- p147 | 357,286,724,510 | C6 | Ametralladora pesada sobre trípode apuntando por una ventana, junto a un tronco nevado |
+- p147 | 57,519,377,742 | C6 | Joven musculoso se saca un traje negro engomado tipo cáscara y queda en camiseta y pantalón claro |
+- p148 | 74,56,603,277 | C6 | Dos hombres armados con pistola-ametralladora y fusil, de pie contra fondo negro |
+- p151 | 441,286,693,510 | C6 | Mástil con una esfera dentro de un aro metálico y una varilla; estallido de rayos sobre fondo negro |
+- p151 | 698,286,1025,510 | C6 | Remate de un poste con esfera luminosa dentro de un anillo y cono de luz blanca (¿el detector?) |
+- p152 | 753,285,1045,509 | C6 | Granada incrustada en un mástil con anillo y antena de trípode, con descargas eléctricas alrededor |
+- p155 | 787,54,1025,277 | C6 | El oficial, de espaldas, manipula la nuca de un hombre calvo para colocarle el aparato |
+- p155 | 74,54,380,277 | C6 | Gran consola inclinada llena de botones y diales; el oficial joven la opera y un hombre yace en el suelo |
+- p157 | 766,287,1045,508 | C6 | El teledirector: lenguas de energía salen del aparato redondo y acanalado |
+- p157 | 699,517,1045,737 | C6 | Primer plano de la espalda con el aparato de discos acanalados y una mano grande apretándolo |
+- p157 | 615,287,753,508 | C6 | El oficial de frente sostiene el teledirector redondo entre las manos, con rayos alrededor |
+- p158 | 78,58,363,280 | C6 | Teledirector cilíndrico con cables sobre la nuca de una cabeza rapada, en primer plano |
+- p159 | 57,56,351,279 | C6 | Manos con guantes sostienen el teledirector con púas y chispas, en primer plano |
+- p159 | 676,56,1025,279 | C6 | Teledirector visto de frente: disco con dientes triangulares y filo de púas, con chispas |
+- p161 | 371,54,715,277 | C6 | El oficial inclinado sobre una consola en diagonal, llena de hileras de botones y diales |
+- p162 | 345,518,575,742 | C6 | El oficial de espaldas ante un teclado de consola con diales redondos, en penumbra |
+- p162 | 755,518,1045,742 | C6 | Sala con una gran máquina de tubo curvo y diales; el oficial de pie y varios cascarudos agazapados |
+- p163 | 743,54,1024,276 | C6 | Panel de control con cuatro diales redondos y el perfil del oficial a la derecha |
+- p163 | 550,54,739,276 | C6 | Siluetas negras ante un aparato con un gran tubo curvo: un hombre de pie y una cabeza redonda a la derecha |
+- p163 | 714,285,1045,509 | C6 | El oficial levanta el teledirector de púas; un cuerpo desplomado en primer plano y otro hombre sentado |
+- p164 | 363,55,655,278 | C6 | El oficial sostiene un instrumento punzante sobre el antebrazo de Franco, que no reacciona |
+- p165 | 528,517,811,741 | C6 | El oficial de espaldas ante una consola con hileras de botones y palancas |
+- p165 | 800,285,1045,509 | C6 | El mástil del detector con esfera luminosa en un aro, sobre fondo negro rayado |
+- p166 | 74,54,347,277 | C6 | Franco en camiseta a rayas sostiene un fusil con lanzagranadas y dos granadas de piña sobre una repisa |
+- p169 | 385,55,745,277 | C6 | Cúpula oscura sobre una base baja en la nieve: el "lanzarrayos" que nombra el globo |
+- p169 | 660,286,748,509 | C6 | Cúpula chica de otro artefacto junto a un estallido de polvo, vista en picado |
+- p169 | 62,286,305,509 | C6 | Detrás del que corre, una cúpula oscura con rayos y vapor: el lanzarrayos encendido |
+- p169 | 510,286,655,509 | C6 | Cúpula del lanzarrayos en primer plano, oscura y abollada, humeando sobre la nieve |
+- p171 | 318,55,607,276 | C6 | Hombre agazapado empuñando un rifle corto junto a la pileta de la cocina |
+- p171 | 369,518,770,740 | C6 | Dos pistolas en mano, una apuntando de frente y otra apoyada sobre el mantel a cuadros |
+- p172 | 77,285,388,508 | C6 | Rifle apoyado sobre la mesa junto al cilindro de metal y una botella |
+- p173 | 867,57,1005,278 | C6 | Dos hombres armados de espaldas, con fusil al hombro, caminando hacia la oscuridad |
+- p173 | 370,56,732,278 | C6 | Joven con rifle terciado y canana cruzada al pecho, frenado por una mano |
+- p174 | 754,520,1026,738 | C6 | Hombre de pie con rifle terciado junto a la mesa, en una habitación en sombras |
+- p175 | 774,59,1015,277 | C6 | Joven inclinado sobre la mesa con metralleta al pecho y canana cruzada |
+- p177 | 395,519,590,740 | C6 | Soldado con casco y correajes grita agazapado detrás de una barricada |
+- p178 | 76,286,398,509 | C6 | Soldado con casco habla con dos compañeros; fila de defensores perfilados en la baranda |
+- p180 | 706,518,1035,739 | C6 | Soldado de perfil con casco de acero y rifle en diagonal, sobre fondo negro |
+- p181 | 665,55,782,277 | C6 | Micrófono de radio en primer plano con el cable, entre rayos de luz y nieve |
+- p182 | 77,287,532,510 | C6 | Casco de acero y correajes recortados en el centro de un halo de descarga |
+- p183 | 335,518,700,737 | C6 | Soldado con casco sostiene una radio de mano frente a la cara, fondo rayado |
+- p184 | 743,60,1035,276 | C6 | Metralleta y fusil en manos de soldados con bufanda y capote, en un campo nevado |
+- p186 | 70,515,390,742 | C6 | Soldado con casco sostiene la radio de mano en alto frente al parabrisas del jeep |
+- p186 | 76,372,416,508 | C6 | Tablero de radio con diales redondos y un fusil cruzado dentro del jeep |
+- p197 | 432,283,678,508 | C6 | Soldado con casco y fusil corre agachado entre cascotes que caen y nubes de polvo |
+- p202 | 86,285,455,431 | C6 | Soldado agachado dispara un tubo lanzacohetes; estela de humo y llamarada en la boca |
+- p207 | 781,285,1023,465 | C6 | Ametralladora pesada montada en un vehículo, con el tirador y el fogonazo, vista de costado |
+- p207 | 486,285,773,465 | C6 | Tres soldados disparan fusiles agachados tras una loma, entre humo, contra el cielo negro |
+- p208 | 100,97,358,275 | C6 | Afuste con rueda grande de rayos y caja de madera; un soldado agachado y otro cargando arriba |
+- p209 | 64,285,518,508 | C6 | Soldado de pie en un vehículo apunta un lanzacohetes al hombro; otro le alcanza un proyectil |
+- p211 | 64,518,244,742 | C6 | Hombre de anteojos y bigote empuña un lanzacohetes y grita, con la culata apoyada |
+- p213 | 309,59,590,277 | C6 | Hombre canoso dispara un lanzacohetes mientras un joven de pelo claro grita a su lado |
+- p217 | 533,66,870,276 | C6 | Soldados junto a un cañón encapuchado; un hombre de pie sobre la cureña grita con los brazos abiertos |
+- p217 | 60,64,290,276 | C6 | Grupo de soldados con fusiles y cascos; uno levanta el brazo y grita; a la derecha asoma un cañón |
+- p219 | 475,518,698,740 | C6 | Jóvenes soldados sobre un camión: uno apunta el fusil, otro pide la bazooka |
+- p220 | 80,285,380,508 | C6 | Hombre disparando un fusil al hombro; humo y fogonazo blanco a la derecha |
+- p222 | 375,48,700,278 | C6 | Dos hombres disparan fusiles hacia arriba; fogonazos, humo y un soldado agachado |
+- p222 | 77,285,300,476 | C6 | Dos fusileros disparando con fogonazos y nubes de humo, medio cuerpo |
+- p225 | 475,518,698,740 | C6 | Dos hombres disparan de pie en la oscuridad; dos fogonazos blancos a la cintura |
+- p225 | 385,285,654,508 | C6 | Soldado agachado que dispara un fusil en la oscuridad, fogonazo blanco |
+- p228 | 79,518,598,741 | C6 | El farol encendido en la mano del caminante, con rifles y una bolsa de correa |
+- p230 | 423,518,763,740 | C6 | Primer plano de un hombre disparando de frente, fogonazo que le tapa el pecho |
+- p230 | 78,518,415,740 | C6 | Tres hombres disparan con fogonazos en estrella detrás de una chapa inclinada |
+- p230 | 376,315,706,507 | C6 | Hombre agachado disparando junto al vagón inclinado; túnel oscuro y figuras al fondo |
+- p230 | 714,315,1035,506 | C6 | Soldado de espaldas con cinturón de municiones disparando; fogonazo y vehículo chico |
+- p234 | 101,517,410,740 | C6 | El hombre pálido apoyado con las dos manos sobre un teclado de botones |
+- p234 | 79,336,374,508 | C6 | Hombre disparando un fusil con un fogonazo blanco enorme; silueta a la derecha |
+- p235 | 316,315,614,508 | C6 | Fusil disparando con fogonazo blanco en estrella entre dos cuerpos |
+- p235 | 340,518,1035,740 | C6 | La mano del hombre pálido empujando una cadena curva sobre fondo negro |
+- p236 | 409,55,1035,276 | C6 | Brazo flaco y desnudo extendido sobre un teclado, con un cable largo cruzando |
+- p236 | 575,519,920,740 | C6 | Disco oscuro roto con un ojo blanco en el centro, colgado sobre fondo rayado |
+- p239 | 67,516,333,705 | C6 | Mano larga y huesuda sobre un teclado de botones cuadrados, con luz diagonal |
+- p239 | 468,516,637,705 | C6 | Mano abierta que se alza hacia una rejilla de varillas finas en la oscuridad |
+- p244 | 76,56,431,275 | C6 | Correa de cuero cruzada al pecho y cinturón con bolsas y municiones sobre saco oscuro |
+- p249 | 630,512,890,730 | C6 | Tres siluetas con fusiles: correas cruzadas y uno con el arma al hombro |
+- p257 | 839,518,1025,738 | C6 | Pistola en mano con la corredera echada atrás y una vaina volando; fondo rayado |
+- p259 | 62,55,487,276 | C6 | Cuatro hombres armados de pie: fusiles, correas y un tubo largo al hombro |
+- p259 | 697,55,995,275 | C6 | Granada de mano segmentada, oscura, girando en el aire; líneas de movimiento |
+- p260 | 665,285,920,508 | C6 | Un joven levanta un pequeño aparato metálico en la mano; otro lo mira de cerca |
+- p260 | 772,97,1035,277 | C6 | Tres hombres de perfil con fusiles, gorros y capotes, casi en silueta |
+- p265 | 195,55,458,275 | C6 | Silueta de un hombre agazapado con capucha y rifle terciado, recortada contra una pared blanca iluminada |
+- p266 | 74,58,1037,648 | C6 | Plataformas discoidales a ras del piso con figuras humanas paradas encima, como platos voladores estacionados |
+- p266 | 425,500,770,650 | C6 | Tres hombres de espaldas apoyados en la balaustrada, frente al domo: monos con capucha y un disco metálico en la nuca |
+- p268 | 75,55,385,276 | C6 | Tres cohetes suben en diagonal dejando estelas sobre un cielo rayado; cabezas de espaldas en el borde inferior |
+- p269 | 426,518,804,739 | C6 | El muchacho de camiseta apoya la mano en una caja de mandos con hileras de discos y luces |
+- p270 | 332,56,790,275 | C6 | Haces de luz salen en abanico desde la plaza y barren la noche; tres cabezas recortadas en el borde inferior |
+- p271 | 667,292,1024,506 | C6 | Tres bombas de artillería cayendo en la oscuridad, culotes y anillos visibles |
+- p272 | 75,518,311,738 | C6 | Tres bombas cayendo en picada contra el negro, con anillos y culotes dibujados |
+- p273 | 62,295,362,505 | C6 | Detalle del domo: esfera blanca con aguja en la punta, base acanalada y varillas radiadas, halo de rayos |
+- p274 | 352,288,690,508 | C6 | Favalli de frente con una manta al hombro y la correa del rifle; dos hombres detrás |
+- p276 | 76,287,440,507 | C6 | La torre de alarma en contraluz con su esfera de alambre, rayos en abanico y tipografía de sirena |
+- p276 | 76,56,335,276 | C6 | Antena de celosía con esfera de alambre en la punta lanza ondas de alarma; letras "¡FIIIIII!" a la derecha |
+- p278 | 76,287,393,508 | C6 | Hombre de mono con capucha y correajes, fusil ametralladora en las manos y cananas cruzándole el pecho |
+- p278 | 466,518,960,738 | C6 | Siluetas de fusiles, cananas y correas de una columna de hombres armados en fila |
+- p278 | 475,56,1037,276 | C6 | Tres hombres parapetados con armas: fusil ametralladora, un tubo enorme y un rifle de cerrojo |
+- p280 | 443,89,1034,274 | C6 | Dos hombres de perfil; uno levanta un disco pequeño con vástago, un "teledirector", y el otro lo mira |
+- p281 | 837,56,1023,276 | C6 | Primer plano del caño de un arma disparando: fogonazo y humo sobre fondo rayado |
+- p281 | 477,56,830,276 | C6 | Hombre de saco con fusil ametralladora al costado, frente a una sirena de ondas curvas |
+- p283 | 545,549,852,739 | C6 | Dos hombres disparando en la azotea, uno tendido atrás; fusiles y casquillos |
+- p283 | 63,549,365,739 | C6 | Grupo de hombres en silueta disparando, fusiles y brazos alzados, cielo rayado |
+- p283 | 797,56,1024,276 | C6 | Viejo de pelo blanco apoyado en un rifle y un joven armado detrás, sobre la azotea |
+- p283 | 369,549,541,739 | C6 | Hombre con casco y antiparras detrás de una ametralladora de tambor |
+- p284 | 488,288,668,509 | C6 | Primer plano de la mira de la bazooka: círculo, tubo y el ojo del tirador |
+- p284 | 75,77,308,277 | C6 | Joven corriendo con la bazooka al hombro, tubo largo y culata, sobre fondo claro |
+- p284 | 311,77,670,277 | C6 | Hombre de mono con la bazooka al hombro junto a Favalli; soldados detrás del pretil |
+- p284 | 671,288,1037,509 | C6 | Hombre de perfil disparando la bazooka, tubo apoyado al hombro, cielo con nubes rayadas |
+- p284 | 527,519,806,740 | C6 | Dos hombres apuntando la bazooka juntos desde detrás de un peto de hormigón |
+- p285 | 334,57,571,277 | C6 | Joven con la bazooka apuntando sobre el pretil, el tubo recortado en primer plano |
+- p285 | 62,57,330,277 | C6 | Favalli con el fusil y un hombre detrás, gritando; lleva granadas en las manos |
+- p285 | 63,288,258,508 | C6 | Hombre disparando la bazooka desde la azotea, estela blanca de humo que baja |
+- p292 | 767,375,1013,508 | C6 | Rifle con correa de cuero colgando junto al brazo del hombre, caño y culata recortados |
+- p299 | 294,571,653,741 | C6 | Rifle al hombro y cartuchera de balas cruzada sobre el pecho del que camina al frente |
+- p303 | 62,287,398,507 | C6 | Rifles y correas en las manos de los hombres que forcejean a la carrera |
+- p304 | 74,56,470,277 | C6 | Rifles y metralletas en manos de los que disparan, culatas y cañones bien marcados |
+- p314 | 134,524,568,738 | C6 | Rifle a medio alzar en manos de un joven de sweater, apuntando al descanso de la escalera |
+- p315 | 355,518,750,740 | C6 | Rifles y ametralladora en manos de los que suben, entre sombras y una luz lateral |
+- p315 | 755,518,1040,740 | C6 | Silueta de un hombre que apunta un rifle hacia arriba, en un panel vertical y oscuro |
+- p316 | 75,57,400,277 | C6 | Dos hombres frente a frente: el de la izquierda apunta una ametralladora con cargador y empuñadura |
+- p316 | 610,310,1040,510 | C6 | Ametralladora en manos del joven, con el cañón hacia arriba, junto a una viga oscura |
+- p317 | 65,286,535,507 | C6 | Ametralladora grande en primer plano, con el cañón hacia el lector |
+- p317 | 715,55,1030,276 | C6 | Uno levanta el rifle, otro lleva la ametralladora al pecho, junto a una puerta blanca cerrada |
+- p317 | 544,286,1023,507 | C6 | Dos hombres armados de espaldas, señalando hacia el fondo del altillo iluminado |
+- p324 | 408,519,591,739 | C6 | El arma del "mano": un cilindro alargado y redondeado que se deshace en la nieve con burbujas |
+- p324 | 554,288,877,508 | C6 | Dos trajes de frente en la nieve y, entre ellos, una pistola cilíndrica tirada en el suelo |
+- p324 | 85,288,395,509 | C6 | Dos trajes herméticos completos frente a una casa nevada: casco redondo con visor rectangular y rifle |
+- p324 | 637,87,832,277 | C6 | Tres figuras de traje con casco y rifle sobre la nieve del jardín |
+- p324 | 93,519,373,739 | C6 | Trajes en movimiento: el cuerpo arrugado del sobretodo, guantes y botas |
+- p326 | 77,98,355,280 | C6 | Dos trajes con casco junto a la caja de la camioneta, uno con rifle al hombro |
+- p327 | 817,561,1023,739 | C6 | Dos siluetas de traje con casco que cargan bultos entre las sombras del garaje |
+- p328 | 390,55,690,275 | C6 | Traje con el casco de visor grande y un brazo en alto, parado sobre la caja del camión |
+- p328 | 75,56,390,276 | C6 | Traje completo con casco y visor rectangular llevando una caja, otros dos detrás y cajas en el piso |
+- p330 | 525,512,935,738 | C6 | Primer plano del casco: visor rectangular con la cara de una mujer que mira hacia atrás |
+- p331 | 410,317,752,495 | C6 | Cinco cascos en fila en la cabina del camión, cada visor con una cara distinta |
+- p331 | 66,518,270,738 | C6 | Primer plano de un casco con la cara de anteojos adentro, con copos pegados en el vidrio |
+- p331 | 808,518,1025,738 | C6 | Manchas negras encadenadas y líneas de movimiento sobre blanco: algo se sacude con violencia (?) |
+- p331 | 277,518,800,738 | C6 | Cuatro cascos de espaldas en la cabina, manos enguantadas en los respaldos, parabrisas cubierto |
+- p331 | 128,99,356,241 | C6 | Dos cascos de frente con visor rectangular y placa perforada en la boca; adentro un viejo y una joven |
+- p332 | 77,519,451,739 | C6 | Tres cascos apretados en la cabina, el del medio enorme en primer plano |
+- p332 | 652,288,814,508 | C6 | Primer plano de un casco con la cara adentro, visor rectangular y copos |
+- p332 | 571,519,633,739 | C6 | Cabeza con casco en un panel angosto, el visor contra la ventanilla |
+- p333 | 480,288,1035,508 | C6 | Espejo retrovisor con el vehículo que sigue, visto por la ventanilla, y un casco en sombra |
+- p333 | 489,57,735,276 | C6 | Dos cascos en la cabina, uno con anteojos adentro; las manos en el volante |
+- p333 | 437,524,714,739 | C6 | Primer plano de un casco con la cara de anteojos adentro, copos pegados en el vidrio |
+- p333 | 743,56,1023,276 | C6 | Casco oscuro de espaldas contra la ventanilla, con el camión reflejado afuera |
+- p334 | 482,548,796,738 | C6 | Cinco cascos alineados en la cabina, cada cara detrás del visor |
+- p334 | 279,306,456,507 | C6 | Un casco de perfil mirando el campo nevado, con un bulto en el suelo |
+- p334 | 775,306,1036,507 | C6 | Casco con la cara adentro y, al borde, otro casco: dos miradas al frente |
+- p334 | 76,306,271,507 | C6 | Primer plano de un casco: la cara adentro con los ojos muy abiertos, casi llorando |
+- p334 | 77,548,247,738 | C6 | Silueta del conductor con casco de espaldas y la radio del tablero al lado |
+- p335 | 405,518,662,739 | C6 | Un casco de frente, la cara adentro iluminada, y el respaldo oscuro del asiento |
+- p335 | 62,56,336,277 | C6 | Primer plano de un casco con la cara adentro, ojos muy abiertos, copos sobre el vidrio |
+- p335 | 65,518,396,739 | C6 | El conductor de perfil con casco y el acompañante con casco al lado, en la cabina |
+- p335 | 356,354,591,508 | C6 | Dos cascos que conversan en la cabina, uno inclinado hacia el otro |
+- p335 | 670,518,1024,738 | C6 | Dos cascos juntos, uno con anteojos adentro, mirando algo con asombro |
+- p335 | 64,354,348,507 | C6 | Tres cascos alineados con los visores de frente y las caras adentro |
+- p336 | 76,289,377,509 | C6 | Primer plano enorme de un casco con la cara adentro, la boca abierta de asombro |
+- p336 | 702,76,1036,278 | C6 | Tres cascos en la cabina iluminados por rayos de sol que entran por la ventanilla |
+- p337 | 65,524,417,738 | C6 | Visera cuadrada con marco de metal y tela arrugada, vista frontal con reflejos |
+- p337 | 64,62,256,277 | C6 | Visor cuadrado de metal grueso con remaches y capucha de tela oscura alrededor |
+- p337 | 707,75,1023,277 | C6 | Tres hombres con visera cuadrada dentro de la cabina, las manos en el volante |
+- p338 | 339,348,608,507 | C6 | Hombre que se acomoda el cuello del traje y otro que lleva el casco bajo el brazo |
+- p338 | 433,57,702,277 | C6 | Hombre con visera cuadrada de frente, traje arrugado, y otro igual que señala atrás |
+- p338 | 68,340,395,507 | C6 | Casco de visera cuadrada sostenido en alto, con el óvalo del vidrio y cuello ancho |
+- p339 | 340,554,816,739 | C6 | Fila de seis soldados con casco de franja blanca y fusiles, de pie sobre el filo |
+- p340 | 785,288,1035,508 | C6 | Soldado de espaldas con casco y fusil al hombro que grita el alto a dos hombres |
+- p341 | 64,99,244,277 | C6 | Soldado de espaldas con casco y hombros anchos que habla con dos compañeros |
+- p341 | 753,100,1023,277 | C6 | Dos soldados armados y un hombre civil que entrega su fusil en la zona de seguridad |
+- p341 | 64,518,305,738 | C6 | Soldado que dispara el fusil de pie, fogonazo blanco y humo, vista baja |
+- p341 | 312,517,591,738 | C6 | Dos soldados agazapados disparando, uno arrodillado y otro inclinado sobre el arma |
+- p342 | 387,55,619,276 | C6 | Soldado de pie que apunta con el fusil, luz diagonal fuerte y compañero agachado |
+- p342 | 580,286,875,507 | C6 | Dos soldados agachados con fusil tras un talud y alambre de púas; camión que sube lejos |
+- p342 | 76,517,340,738 | C6 | Dos soldados de espaldas disparando con fogonazos grandes, un tercero más lejos |
+- p342 | 883,287,1035,507 | C6 | Gran plano de una bota claveteada pisando el acelerador en la cabina oscura |
+- p342 | 75,55,380,276 | C6 | Dos soldados de espaldas tras un terraplén, cascos de franja blanca y fusil apuntado |
+- p343 | 64,289,413,508 | C6 | Primer plano de una mano enguantada que acciona una palanca metálica en la oscuridad |
+- p343 | 392,561,538,739 | C6 | Soldado de espaldas que dispara con fusil, humo blanco, camioneta al fondo |
+- p343 | 557,561,717,739 | C6 | Dos soldados de espaldas disparando hacia las bestias, uno con casco de franja |
+- p346 | 507,341,751,507 | C6 | Hombre de espaldas con campera y fusil colgado que habla con otro asomado a la zanja |
+- p347 | 363,59,667,279 | C6 | Hombre con metralleta que avanza agachado con una mujer y una nena detrás |
+- p347 | 294,536,532,737 | C6 | Hombre de espaldas que mira un mortero oscuro plantado en la nieve |
+- p347 | 743,59,1001,278 | C6 | Soldado de espaldas que dispara con fusil; otro soldado y una descarga a lo lejos |
+- p347 | 865,535,1015,736 | C6 | Silueta de un soldado agachado que dispara con fusil desde la zanja |
+- p347 | 63,345,366,508 | C6 | Soldado agazapado que apunta desde la zanja hacia una fila de figuras en la loma |
+- p348 | 463,548,734,740 | C6 | Hombre agachado entre pastos altos con un fusil en las manos, de tres cuartos |
+- p349 | 372,305,744,508 | C6 | Hombre que dispara desde la zanja hacia una fila de hombres-robot, humo y pasto |
+- p350 | 75,56,448,277 | C6 | Hilera de soldados con casco detrás del terraplén y dos personas agachadas delante |
+- p355 | 312,339,524,508 | C6 | Primer plano de una mano que aprieta un botón redondo, con palancas al lado |
+
+## Primeros planos de personajes (1442)
+
+- p013 | 450,519,589,739 | C7 | Retrato ceñudo del anciano, frontal, con el pelo blanco peinado hacia atrás y camisa a cuadros |
+- p013 | 705,286,1023,508 | C7 | [Eternauta] Primer plano del anciano: frente amplia, pelo blanco ralo, ojos hundidos y boca abierta de asombro | ★
+- p013 | 785,519,1035,739 | C7 | El anciano ya materializado en la silla, de 3/4, con la cabeza gacha y el gesto cansado |
+- p013 | 418,286,697,508 | C7 | El anciano visitante de frente tras la mesa, entre la biblioteca y una pila de libros y revistas |
+- p014 | 763,288,1033,510 | C7 | Retrato frontal del anciano: frente alta, cejas caídas, ojos cansados y surcos muy marcados |
+- p014 | 410,56,616,279 | C7 | El guionista de frente sobre la mesa, camisa a cuadros y chaleco oscuro, lapicera en la mano |
+- p014 | 73,288,444,510 | C7 | Dos perfiles enfrentados sobre fondo blanco: uno de pelo corto y camisa lisa, otro calvo con camisa a cuadros |
+- p014 | 446,516,722,742 | C7 | [Eternauta y guionista] Dos caras en diálogo: el anciano de perfil y el guionista de frente, camisa a cuadros y chaleco | ★
+- p014 | 623,56,820,279 | C7 | Primer plano de las manos grandes y rugosas del anciano sobre una varilla, con las venas marcadas |
+- p014 | 731,516,1031,742 | C7 | [Eternauta] El anciano sonriendo de 3/4, pelo corto hacia atrás, camisa clara arrugada y un hombro en sombra | ★
+- p014 | 827,56,1033,279 | C7 | Primer plano del anciano de 3/4, la mano abierta delante y la ropa de trama cuadriculada y rara |
+- p014 | 73,56,403,279 | C7 | El anciano visitante de frente, sentado, mirada baja y camisa clara holgada; fondo oscuro tramado |
+- p015 | 381,57,700,278 | C7 | [Eternauta] Primer plano del anciano con la mano en la frente y los ojos cansados, sobre fondo blanco | ★
+- p015 | 63,290,358,510 | C7 | Gran primer plano 3/4 del anciano, boca apretada y mirada perdida; detrás, una cruz tramada |
+- p015 | 677,290,1023,510 | C7 | Primer plano frontal del anciano, muy arrugado, con el cuello abierto de la camisa |
+- p015 | 63,519,380,739 | C7 | El anciano de 3/4 mira hacia arriba con expresión angustiada, iluminado desde abajo |
+- p015 | 708,57,1025,278 | C7 | El anciano de frente sentado en la silla y, de espaldas en primer plano, la nuca del guionista |
+- p015 | 622,519,896,739 | C7 | Retrato frontal intenso del anciano, ojos fijos y surcos profundos, casi simétrico |
+- p015 | 63,57,372,278 | C7 | [guionista] El guionista de frente tras el escritorio: cara angulosa, pelo oscuro corto y camisa a cuadros | ★
+- p015 | 362,290,668,510 | C7 | El anciano de cuerpo entero en el sillón tallado: camisa clara, pantalón oscuro y manos en los apoyos |
+- p016 | 431,518,651,739 | C7 | Lucas de frente con las cartas en alto y la boca abierta; una raya blanca (?) cruza el panel |
+- p016 | 743,55,1034,278 | C7 | Favalli de frente con anteojos de marco grueso, cigarrillo humeante, cartas y saco de cuello alto |
+- p016 | 76,286,468,507 | C7 | [Lucas] Lucas, calvo y canoso, con camisa y corbata fina, sostiene las cartas; un gran puño con cigarrillo delante | ★
+- p016 | 491,55,676,278 | C7 | Mano con un abanico de naipes sobre la mesa; dos globos de diálogo ocupan la parte alta del panel |
+- p016 | 812,287,1034,507 | C7 | Polsky, viejo de pelo blanco peinado atrás, sostiene las cartas y habla con una sonrisa torcida |
+- p016 | 682,55,738,278 | C7 | [Juan] Retrato estrecho de Juan: joven, mandíbula fuerte, pelo corto y pañuelo oscuro al cuello | ★
+- p016 | 343,518,427,739 | C7 | Perfil en sombra de un jugador y un puño cerrado sobre la mesa, casi todo en negro |
+- p016 | 780,518,921,739 | C7 | Favalli de frente, anteojos gruesos y bigote, grita con el ceño fruncido sobre fondo oscuro |
+- p016 | 70,518,338,739 | C7 | Juan de frente, con una sonrisa leve, pelo corto y pañuelo oscuro anudado al cuello |
+- p017 | 649,519,1023,740 | C7 | Favalli con anteojos y cigarrillo le habla a Juan, que escucha de perfil a la derecha |
+- p017 | 384,519,641,740 | C7 | Martita dormida: la cara sobre la almohada y el pelo liso claro con flequillo tapándole los ojos |
+- p017 | 63,68,428,278 | C7 | Favalli de frente con anteojos y sweater de cuello alto, inclinado hacia la radio, entre los otros dos |
+- p017 | 677,68,1023,278 | C7 | Juan de frente apoyado en la mesa, cara fuerte y pelo corto, con Favalli, Lucas y Polsky detrás |
+- p017 | 63,519,376,740 | C7 | Elena de perfil, pelo claro ondulado y camisón, leyendo con el libro apoyado en la cama |
+- p018 | 408,337,674,508 | C7 | Juan de frente con una sonrisa incómoda, ojos claros y pañuelo oscuro, sobre fondo blanco |
+- p018 | 535,563,772,739 | C7 | [Favalli] Favalli de frente, anteojos gruesos de marco negro y bigote, habla con fastidio | ★
+- p018 | 427,57,663,246 | C7 | [Juan] Juan de frente, sonriendo, pelo corto, pañuelo oscuro al cuello y camisa clara | ★
+- p018 | 780,563,1035,739 | C7 | Juan sentado con las cartas en la mano, pensativo, mirando de reojo; pelo corto y pañuelo oscuro |
+- p019 | 380,288,680,510 | C7 | Cuatro jugadores sentados a la mesa: dos mayores de pelo blanco, uno con anteojos y un joven moreno |
+- p019 | 60,56,313,278 | C7 | [Juan] Primer plano de un hombre maduro de pelo claro que sonríe con los ojos cerrados y sostiene las cartas en abanico | ★
+- p019 | 62,287,296,509 | C7 | Rostro demacrado de un hombre mayor de pelo blanco que grita con los ojos desorbitados |
+- p020 | 380,55,700,280 | C7 | [Polsky] Perfil de un hombre mayor de pelo blanco, nariz grande y mejillas hundidas, mirando el resplandor | ★
+- p020 | 815,287,1036,510 | C7 | [Juan] Primer plano de un hombre joven de pelo oscuro y mandíbula cuadrada, ojos desorbitados de terror | ★
+- p020 | 590,287,810,510 | C7 | [Favalli] Cuatro rostros masculinos muy juntos y tensos; a la derecha, Favalli con anteojos de marco grueso | ★
+- p020 | 760,517,1036,739 | C7 | Rostro angustiado de un hombre mayor y una mano crispada sobre el marco vertical de la ventana |
+- p021 | 710,287,1030,510 | C7 | [Elena] Primer plano de Elena: pelo ondulado, ojos grandes asustados y cuello de vestido a cuadros | ★
+- p021 | 170,518,340,738 | C7 | [Juan] Retrato frontal de un hombre de pelo claro, cara muy surcada y mirada cansada, contra fondo rayado | ★
+- p021 | 395,287,705,510 | C7 | Elena de perfil con vestido a cuadros y Juan de frente con sweater; Martita entre ambos, luz lateral fuerte |
+- p021 | 665,58,900,278 | C7 | Rostros apretados contra el vidrio: un hombre mayor, una nena y un joven, con la nieve afuera |
+- p021 | 560,518,760,738 | C7 | Siluetas de Juan y Elena de perfil, ella con la mano en el pecho, recortadas contra un fondo blanco |
+- p021 | 305,58,488,278 | C7 | [Juan] Juan abraza a Martita contra su hombro; la nena en camisón y flequillo tiene cara de susto | ★
+- p021 | 493,58,660,278 | C7 | Juan de perfil y Elena de frente junto a la ventana, con puntos oscuros sobre la nieve al fondo (?) |
+- p022 | 785,287,1036,510 | C7 | Favalli, con anteojos, sujeta del saco a Polsky, que se resiste y señala la puerta |
+- p022 | 728,545,1036,739 | C7 | Polsky empuja con las dos manos a otro hombre para poder salir; rostros frontales muy expresivos |
+- p022 | 535,287,710,510 | C7 | [Polsky] Polsky se pone un sobretodo pesado con cinturón, jaloneándolo con las dos manos | ★
+- p022 | 357,57,568,278 | C7 | [Juan] Perfil de Juan con los ojos cerrados y el pelo claro, abrazando a Elena; columna de texto a la derecha | ★
+- p022 | 60,545,320,739 | C7 | Polsky de frente, furioso, con el puño levantado; en primer plano, la nuca de otro hombre |
+- p022 | 258,57,350,278 | C7 | [Elena] Primer plano de Elena con el pelo ondulado y los ojos bajos; una mano le roza la cabeza | ★
+- p022 | 800,57,1035,278 | C7 | Polsky baja la escalera encorvado, aferrado al pasamanos de bolas; traje oscuro y cara de agotamiento |
+- p022 | 75,57,250,278 | C7 | Un hombre abraza a Elena en la penumbra; dos siluetas oscuras y una alfombra rayada abajo |
+- p023 | 62,518,342,739 | C7 | Elena, Juan y Martita en primer plano, los tres mirando hacia la derecha, iluminados de costado |
+- p023 | 405,287,703,510 | C7 | [Polsky] Primer plano de Polsky con el abrigo como capucha, copos por todas partes y cara de pánico | ★
+- p023 | 727,518,990,739 | C7 | Polsky de cuerpo entero, brazos abiertos y abrigo al viento, tambaleándose en la nieve |
+- p023 | 775,57,1022,278 | C7 | [Elena] Elena de frente junto a la ventana, ojos abiertos y boca entreabierta; Juan asoma detrás | ★
+- p024 | 795,286,1035,510 | C7 | Juan de pie con la mano en el hombro de Favalli, que está sentado y cabizbajo con anteojos |
+- p024 | 597,286,790,510 | C7 | [Favalli] Primer plano de Favalli con anteojos negros, pelo ondulado y la mano tapando la boca | ★
+- p024 | 80,548,350,738 | C7 | [Favalli] Primer plano frontal de Favalli: anteojos gruesos, bigote y expresión grave | ★
+- p024 | 75,93,425,265 | C7 | Polsky encorvado, las manos abiertas y la boca desencajada, bajo una nevada de copos grandes |
+- p025 | 130,55,335,250 | C7 | [Eternauta] Retrato del Eternauta narrador: pelo blanco ralo, frente amplia y arrugas hondas, camisa abierta, fondo tramado | ★
+- p025 | 381,517,708,739 | C7 | Primer plano de Favalli: anteojos redondos de marco grueso, bigote tupido y sweater de cuello alto acanalado |
+- p025 | 494,287,741,508 | C7 | Lucas con auriculares redondos grandes, camisa y corbata, sosteniendo un contador con dial circular |
+- p026 | 434,285,760,509 | C7 | [Juan] Primer plano de un joven de mandíbula cuadrada y cejas marcadas, mirada fija y cansada | ★
+- p027 | 399,56,695,277 | C7 | [Favalli] Primer plano de Favalli: anteojos redondos de marco oscuro, bigote y sweater de cuello alto acanalado | ★
+- p027 | 360,287,645,509 | C7 | [Lucas] Retrato de Lucas: calvo, pelo blanco ralo, cara larga y surcada, camisa y corbata | ★
+- p028 | 77,287,405,509 | C7 | Tres bustos sobre fondo negro: un mayor de pelo claro con corbata, un joven y un hombre de anteojos |
+- p028 | 646,287,1035,509 | C7 | Lucas gritando con la boca abierta, encorvado sobre la mesa y las dos manos en el borde |
+- p028 | 746,515,1037,739 | C7 | Favalli de anteojos y cuello alto acanalado, la cara tensa y la boca abierta, contra un fondo rayado |
+- p028 | 751,55,1034,277 | C7 | [Favalli] Primer plano de Favalli: anteojos oscuros de marco grueso, bigote y sweater de cuello alto acanalado | ★
+- p028 | 414,287,637,509 | C7 | Primerísimo plano de unos ojos detrás de anteojos redondos de marco grueso y un bigote tupido |
+- p029 | 360,88,526,277 | C7 | [Lucas] Primer plano de un hombre mayor de frente amplia y pelo ralo, mirada angustiada, saco y camisa | ★
+- p029 | 706,300,902,509 | C7 | [Favalli] Primer plano de Favalli: anteojos redondos, bigote y sweater de cuello alto acanalado | ★
+- p029 | 775,88,1021,277 | C7 | Perfil de Favalli con anteojos de marco grueso y bigote, fondo tramado |
+- p029 | 698,517,1024,739 | C7 | Primer plano de Favalli con anteojos y cuello alto, mirada torva, fondo de trama gris |
+- p029 | 63,300,351,509 | C7 | [Juan] Primer plano de un joven de pelo corto que sonríe de medio lado, sweater oscuro de cuello alto | ★
+- p029 | 908,300,1030,509 | C7 | Joven de pelo corto con campera clara de cierre sobre camisa oscura, de pie contra fondo blanco |
+- p030 | 482,56,782,277 | C7 | Tres hombres de 3/4: un joven de sweater claro, uno de anteojos de marco grueso y un mayor de pelo ralo |
+- p030 | 77,325,405,509 | C7 | Primer plano de Favalli con anteojos y bigote, cuello alto acanalado; estante con libros y un reloj detrás |
+- p030 | 200,512,546,739 | C7 | [Juan] Primer plano de un joven de cara cuadrada y mirada dura, con sweater de cuello rayado | ★
+- p030 | 730,325,1037,509 | C7 | Primer plano de un hombre calvo que habla y sonríe, con un boceto de traje de buzo dibujado abajo |
+- p031 | 848,288,1024,509 | C7 | Primer plano de Lucas: calvo, pelo blanco ralo, cara larga y arrugada, mirada perdida |
+- p031 | 64,517,444,739 | C7 | [Lucas] Primer plano de Lucas con la boca entreabierta y el ceño fruncido, marco de ventana detrás | ★
+- p032 | 508,57,690,282 | C7 | [Elena] Primer plano de Elena: pelo claro ondulado a los hombros, ojos grandes y tristes, vestido oscuro con cuello blanco | ★
+- p032 | 477,288,846,509 | C7 | Retrato de Lucas con pelo blanco ralo, nariz grande y ojos bajos, delante de una pantalla tramada |
+- p032 | 76,57,499,282 | C7 | Grupo de tres bustos: perfil de un hombre mayor, cara frontal de Elena y perfil de un joven |
+- p033 | 643,280,1030,509 | C7 | Primer plano del rostro de un joven de pelo corto y mandíbula marcada, mirada baja y seria |
+- p033 | 852,535,1023,739 | C7 | Perfil de un joven de pelo corto que habla mirando a otro, contra el fondo claro |
+- p033 | 661,535,845,739 | C7 | Perfil de Favalli en la sombra: anteojos, cuello alto rayado y una pipa en la boca |
+- p033 | 667,55,1024,277 | C7 | Dos hombres de frente sobre fondo negro: uno mayor de pelo claro y otro con anteojos y cuello alto |
+- p033 | 63,55,426,277 | C7 | Primer plano de Favalli: anteojos de marco grueso, bigote espeso y cuello alto acanalado |
+- p034 | 412,519,651,738 | C7 | [Martita] Primer plano de Martita: pelo liso claro con flequillo, ojos enormes y boca abierta, fondo tramado | ★
+- p034 | 76,55,530,280 | C7 | Primer plano de Juan: cara angulosa, pelo corto, mirada fija y cansada; detrás asoma la cabeza de Favalli |
+- p034 | 76,315,483,510 | C7 | Primer plano de Lucas: calvo, pelo blanco ralo, cara larga y arrugada, camisa clara y saco |
+- p035 | 590,283,1023,509 | C7 | Perfil de Favalli: anteojos de marco grueso, bigote y cuello alto acanalado, fondo tramado |
+- p035 | 131,515,421,739 | C7 | Cinco caras apretadas contra la ventana: un joven, una nena, una mujer, un hombre de anteojos y un mayor |
+- p036 | 744,517,1036,739 | C7 | [Ramírez] Primer plano de Ramírez con los copos pegados en el pelo y los hombros, ojos redondos y boca abierta | ★
+- p036 | 484,55,740,277 | C7 | [Elena] Primer plano de Elena aterrada: ojos abiertos y las dos manos agarrando el pelo, sobre fondo rayado | ★
+- p036 | 513,287,772,509 | C7 | [Ramírez] Ramírez de pie con un candelabro de vela encendido, anteojos y saco a rayas, copos alrededor | ★
+- p037 | 624,517,1022,739 | C7 | Retrato de grupo de perfil: un hombre mayor de pelo blanco y otro de anteojos detrás |
+- p037 | 64,288,648,507 | C7 | Mujer de pelo corto rizado con camisón de tiras que se cubre la cara con la mano, junto a una cómoda |
+- p038 | 77,517,448,739 | C7 | Tres bustos de perfil: Lucas de pelo blanco ralo, Favalli con anteojos y un joven de mandíbula marcada |
+- p038 | 415,55,723,277 | C7 | Primer plano de Favalli: anteojos de marco grueso y cuadrado, bigote y cuello alto acolchado |
+- p038 | 774,517,1036,739 | C7 | Favalli con anteojos y sweater a franjas, el puño cerrado en alto para tirar un dado |
+- p039 | 373,517,742,739 | C7 | Elena y Juan de perfil, cara a cara, muy cerca, con el fondo vacío y una franja tramada abajo |
+- p039 | 66,288,414,509 | C7 | Lucas con el puño cerrado en alto y la cara angustiada; saco oscuro y fondo de líneas |
+- p039 | 423,288,772,509 | C7 | Favalli tirando el dado con la mano abierta, los dedos largos y los anteojos brillando |
+- p039 | 666,57,1024,277 | C7 | Grupo de tres: joven de pelo corto y sweater, Favalli de anteojos y Lucas de perfil con la boca abierta |
+- p039 | 66,517,364,739 | C7 | Cuatro bustos alineados: Lucas, Favalli de anteojos, Juan y Elena, todos mirando el resultado |
+- p040 | 75,519,406,739 | C7 | Tres bustos: Lucas de pelo blanco, Juan con el overol claro y Favalli de anteojos |
+- p040 | 789,310,1036,508 | C7 | Primer plano de Favalli con anteojos y bigote, la mirada seria, frente a un bloque de texto |
+- p041 | 68,55,366,277 | C7 | Primer plano de Favalli: anteojos, bigote y cuello alto, con un bloque de texto al lado |
+- p043 | 419,57,736,277 | C7 | Retrato de grupo en la ventana: dos hombres mayores y dos mujeres, muy juntos, apoyados en el marco |
+- p043 | 107,57,380,277 | C7 | Busto de Juan con el casco: visera redonda y la cara adentro, el puño en alto contra la nieve |
+- p049 | 788,57,1015,277 | C7 | Primer plano de un hombre de cara larga y surcada, pelo ralo y ojos cansados, enmarcado por una capucha oscura |
+- p049 | 276,286,475,509 | C7 | [Juan] Rostro de hombre joven dentro de la visera del casco, ceño fruncido y mirada fija hacia arriba | ★
+- p049 | 66,518,329,738 | C7 | Primer plano del hombre dentro del casco redondo con visera, mirada cansada y capucha oscura al fondo |
+- p050 | 556,57,706,258 | C7 | Primer plano del rostro dentro del casco, visera redonda oscura y mirada fija; copos alrededor |
+- p050 | 520,518,700,738 | C7 | Dos cabezas con casco en la oscuridad, viseras redondas y caras apenas iluminadas |
+- p051 | 64,57,290,277 | C7 | [Favalli] Primer plano de Favalli con anteojos redondos de marco grueso, bigote y cara angulosa, enmarcado por un círculo oscuro | ★
+- p052 | 700,518,1035,740 | C7 | Grupo familiar: mujer y nena rubias abrazadas, Favalli de anteojos y un hombre calvo con pipa junto a la mesa |
+- p052 | 350,518,530,740 | C7 | [Pablo] Primer plano de Pablo: chico de pelo oscuro revuelto y pecas, ojos grandes, soplando; dos cascos detrás | ★
+- p053 | 580,57,920,278 | C7 | [Favalli] Gran primer plano de Favalli: anteojos gruesos, bigote, pelo oscuro y cuello tejido; telas colgadas detrás | ★
+- p053 | 64,57,455,278 | C7 | Grupo de cinco: Pablo de perfil, Lucas calvo, Elena rubia, Martita nena y Favalli de anteojos y cuello alto |
+- p053 | 780,286,1025,509 | C7 | [Juan] Primer plano de Juan joven, pelo oscuro revuelto y mandíbula cuadrada, pensativo con el puño en el mentón | ★
+- p053 | 66,518,353,741 | C7 | [Pablo] Primer plano de Pablo gritando, boca abierta, pelo revuelto y ojos desorbitados | ★
+- p054 | 78,57,381,278 | C7 | Interior oscuro: cara de un hombre de pelo blanco, Pablo asustado y un hombre que grita señalando |
+- p054 | 860,518,1030,740 | C7 | Primer plano de Favalli con anteojos dentro del casco redondo, boca abierta, gesto desolado |
+- p055 | 805,518,1016,738 | C7 | Primer plano de un hombre viejo con casco, mirando hacia abajo, media cara en sombra de trama |
+- p055 | 66,518,408,738 | C7 | Primer plano de un hombre mayor y flaco dentro del casco de visera cuadrada, barba rala y gesto angustiado |
+- p056 | 295,518,487,740 | C7 | Primer plano de dos cascos: el de la visera redonda con la cara adentro y el compañero al lado, copos entre ellos |
+- p056 | 610,55,1035,278 | C7 | Enorme primer plano de un rostro surcado dentro del aro metálico de la visera, ceño y mirada cansada |
+- p057 | 205,290,415,510 | C7 | Rostro alargado dentro de una visera redonda, copos alrededor, mirada cansada y boca apretada |
+- p058 | 347,53,512,275 | C7 | Primer plano del hombre dentro del casco redondo, filtro cilíndrico en la boca, mirada cansada |
+- p059 | 327,55,521,275 | C7 | Cara sorprendida dentro del casco de visera redonda, ojos abiertos, fondo negro |
+- p060 | 400,520,597,738 | C7 | Primer plano de Favalli con anteojos gruesos y cuello tejido, gesto serio; fondo de trama |
+- p060 | 780,520,1038,738 | C7 | Juan con el brazo sobre el hombro de Pablo y Favalli de perfil al otro lado, en un interior oscuro |
+- p060 | 803,55,1040,275 | C7 | Primer plano del rostro dentro del casco, ceño fruncido, filtro redondo, copos en el vidrio |
+- p061 | 805,285,1030,508 | C7 | Dos hombres de perfil, uno con anteojos, conversando serios en un interior |
+- p061 | 360,55,500,275 | C7 | Dos bustos: Favalli con anteojos y bigote, y un hombre de pelo blanco de perfil |
+- p061 | 300,518,660,740 | C7 | [Elena] Elena de pelo claro ondulado y blusa rayada en el living, lámpara de pantalla al fondo | ★
+- p061 | 65,55,180,275 | C7 | Primer plano de Pablo de frente, pelo oscuro ondulado, boca abierta y puño en alto, protestando |
+- p061 | 335,285,560,508 | C7 | Primer plano de Favalli con anteojos gruesos, gesto adusto y fondo rayado |
+- p061 | 665,518,1035,740 | C7 | Primer plano de Favalli hablando con gesto duro, anteojos y sweater, fondo de trama |
+- p061 | 505,55,680,275 | C7 | [Juan] Primer plano de un hombre de pelo blanco y mandíbula cuadrada, mirada dura, fondo negro | ★
+- p061 | 65,285,330,508 | C7 | Favalli de anteojos y cuello alto de perfil frente a Juan, joven de pelo claro, discutiendo |
+- p061 | 65,518,295,740 | C7 | [Favalli] Enorme primer plano de Favalli: anteojos redondos, bigote y cuello tejido, fondo negro | ★
+- p062 | 780,285,1035,508 | C7 | Dos hombres de perfil frente a frente: uno de pelo blanco y otro de anteojos, en penumbra |
+- p062 | 505,518,730,740 | C7 | Favalli, Elena y Juan mirando hacia arriba con alarma; Pablo asoma detrás, fondo rayado |
+- p062 | 535,55,760,275 | C7 | Favalli de anteojos con los brazos abiertos, explicando, frente a la espalda oscura de otro hombre |
+- p062 | 765,55,1035,275 | C7 | Nuca rapada de un hombre en primer plano; al fondo, cortinas y un cuadro en la pared |
+- p062 | 65,518,320,740 | C7 | Primer plano de Favalli con anteojos y sweater, mano abierta, gesto conciliador |
+- p062 | 565,285,775,508 | C7 | Favalli de anteojos de perfil hablando con un hombre de pelo claro, fondo rayado |
+- p063 | 525,285,700,508 | C7 | Primer plano de un casco iluminado de costado, visera redonda y filtro, junto a la puerta |
+- p063 | 65,55,250,275 | C7 | Dos hombres en un interior: uno se lleva una taza a la boca y el otro con anteojos lo frena del brazo |
+- p063 | 65,518,320,740 | C7 | Primer plano de un casco con visera iluminado de refilón, la cara adentro y otra cabeza abajo |
+- p064 | 645,518,890,740 | C7 | Primer plano de Favalli con anteojos, boca apretada, fondo de trama oscura |
+- p064 | 335,285,520,508 | C7 | Dos caras dentro de los cascos mirando hacia abajo, una visera redonda y otra cuadrada |
+- p065 | 445,518,660,740 | C7 | Primer plano de Favalli con anteojos, cara tensa y boca entreabierta, fondo rayado |
+- p065 | 255,518,440,740 | C7 | Primer plano de Favalli con anteojos, mirada baja y gesto desanimado, fondo de trama |
+- p065 | 405,285,705,508 | C7 | [Elena] Primer plano de Elena de perfil, pelo claro ondulado, mirada baja y triste, fondo rayado | ★
+- p065 | 935,285,1035,508 | C7 | Primer plano de un hombre con anteojos en la penumbra, con la rejilla del mueble de radio detrás |
+- p065 | 65,518,250,740 | C7 | Favalli de anteojos de perfil, hablando con otro hombre que lo enfrenta; fondo rayado |
+- p066 | 185,55,345,275 | C7 | Pablo de frente, pelo oscuro, protestando con el puño cerrado frente a un hombre de pelo claro |
+- p066 | 605,55,1010,275 | C7 | Primer plano de Favalli con anteojos gruesos y bigote, gesto severo, fondo rayado |
+- p066 | 350,55,600,275 | C7 | Juan y Elena junto a Favalli de anteojos: el grupo decide quién sale, en un interior |
+- p066 | 355,518,545,740 | C7 | Primer plano de un casco con la cara adentro, mirando hacia arriba, copos en la visera |
+- p066 | 335,285,520,508 | C7 | Primer plano de un casco de visera cuadrada y filtro redondo, cara seria, copos |
+- p067 | 415,55,690,280 | C7 | Dos cascos muy cerca: visera redonda con la cara adentro y otro casco abajo, fondo negro |
+- p067 | 835,285,1010,508 | C7 | Primer plano de un casco con filtro redondo, boca abierta gritando; copos y fondo negro |
+- p067 | 515,518,700,740 | C7 | Primer plano de un casco con visera y filtro, cara iluminada, copos sobre el vidrio |
+- p068 | 65,285,420,508 | C7 | Primer plano de un casco de visera redonda con la cara huesuda adentro, copos y fondo negro |
+- p068 | 65,518,330,740 | C7 | Primer plano de casco con visera, cara gastada y mirada fija, en la oscuridad |
+- p069 | 455,518,640,740 | C7 | Tres caras dentro de cascos en la cabina, una con el dedo en alto, alarmadas |
+- p069 | 65,285,250,508 | C7 | Primer plano de un casco de visera redonda, cara tensa, fondo de trama rayada |
+- p069 | 65,55,230,280 | C7 | Silueta de perfil de un hombre con casco levantando la mano, contra un fondo blanco |
+- p069 | 255,285,430,508 | C7 | Primer plano de Favalli con casco y anteojos adentro de la visera, mirando hacia arriba |
+- p070 | 65,55,410,280 | C7 | Tres cascos con visera y filtro en la cabina, caras serias; copos y fondo oscuro |
+- p070 | 705,518,1010,740 | C7 | Dos cascos con visera y filtro mirando alarmados, copos sobre el vidrio |
+- p070 | 645,285,1010,508 | C7 | Dos cascos muy cerca, uno con anteojos dentro de la visera; pared de tablas y copos |
+- p071 | 65,518,330,740 | C7 | Hombre con mono claro y capucha caída, pistola en mano, gritando; fondo negro y un copo |
+- p072 | 65,55,300,278 | C7 | Primer plano de un hombre con capucha y mono claro, cara desencajada, gritando con la boca abierta |
+- p072 | 665,518,1030,740 | C7 | Primer plano de Favalli con anteojos y barba rala, mirada dura, fondo de trama |
+- p072 | 65,285,300,508 | C7 | Hombre con mono claro y pistola en mano, mirando hacia un costado, con un copo sobre el pecho |
+- p072 | 385,518,660,740 | C7 | Dos cascos redondos muy cerca, caras serias y copos entre ellos, fondo negro |
+- p072 | 425,285,650,508 | C7 | El hombre del mono claro tambaleándose, mano en el pecho, en la nieve, a punto de caer |
+- p074 | 728,58,1027,278 | C7 | Rostro de hombre mayor con anteojos y bigote dentro del casco, mirada cansada |
+- p074 | 78,290,402,510 | C7 | [Favalli] Cara con anteojos y bigote vista a través del vidrio del casco, copos pegados al visor | ★
+- p074 | 665,290,1028,510 | C7 | [Juan] Rostro joven de mandíbula cuadrada dentro del casco, serio, con nieve cayendo afuera | ★
+- p075 | 383,518,683,745 | C7 | Mujer con mono claro ceñido y capucha de cara abierta corre hacia el hombre del traje que alza a la nena |
+- p076 | 453,56,662,276 | C7 | [Martita] Cara de nena dentro de la capucha improvisada, ojos grandes, mirada asustada | ★
+- p077 | 256,289,467,509 | C7 | [Elena] Rostro de mujer joven en la capucha, ojos grandes y tristes; al lado la nena | ★
+- p077 | 62,289,248,509 | C7 | Primer plano de un hombre con anteojos y bigote en su capucha, mirando de costado |
+- p077 | 756,519,1028,745 | C7 | [Favalli] Primer plano de un hombre con anteojos y bigote, mirada seria, fondo oscuro | ★
+- p077 | 66,519,393,739 | C7 | Dos hombres de perfil conversando bajo una lámpara, caras claras y cansadas |
+- p078 | 78,290,354,510 | C7 | [Elena] Primer plano de la mujer de pelo ondulado y sweater de cuello alto, expresión preocupada | ★
+- p078 | 362,290,591,510 | C7 | [Martita] Perfil de la mujer con el pelo sobre la cara, boca entreabierta, fondo tramado | ★
+- p078 | 412,519,654,740 | C7 | Primer plano de un hombre con anteojos y bigote, ceño fruncido, fondo negro |
+- p078 | 78,519,404,740 | C7 | Dos hombres de sweater y saco hablando de noche, uno con anteojos, cortinas al fondo |
+- p080 | 553,519,806,740 | C7 | Primer plano de un hombre con anteojos y bigote en la capucha, mirada fija |
+- p080 | 375,290,597,509 | C7 | Primer plano de un hombre con anteojos y bigote dentro de la capucha, fondo tramado |
+- p080 | 66,519,305,740 | C7 | [Elena y Juan] Dos caras dentro de dos capuchas, la madre y la nena, mirando de frente | ★
+- p081 | 340,290,576,509 | C7 | [soldado] Primer plano de un soldado con casco de acero y correa al mentón, gesto duro | ★
+- p081 | 64,56,312,270 | C7 | Dos personas encapuchadas frente a frente: el hombre con anteojos y filtro, la mujer con la vista baja |
+- p081 | 66,290,331,509 | C7 | [Pablo] Joven de pelo claro dentro de la capucha, media sonrisa, mano al pecho | ★
+- p082 | 399,290,715,509 | C7 | Perfil de un hombre con bigote dentro de la capucha, ojo fijo, fondo tramado |
+- p082 | 258,56,710,275 | C7 | [Juan] Cara del protagonista dentro del casco, mirada cansada y bigote, frontal | ★
+- p082 | 66,519,361,740 | C7 | Primer plano de un hombre con anteojos y bigote en la capucha, filtro redondo |
+- p083 | 745,290,1022,509 | C7 | Soldado con casco y filtro de pie junto a un pilar de ladrillo, fondo tramado |
+- p083 | 62,290,329,509 | C7 | Dos soldados con casco y fusil hablando de noche; uno con filtro redondo en la boca |
+- p083 | 830,519,1022,740 | C7 | [Juan] Cara del protagonista dentro del casco, mirada seria, copos pegados al vidrio | ★
+- p083 | 62,519,408,740 | C7 | Dos soldados frente a frente, uno de perfil con casco y otro con capucha y visor |
+- p083 | 565,56,828,276 | C7 | Perfil de un soldado con casco y filtro, cansado, contra la nieve |
+- p083 | 62,56,308,276 | C7 | Rostro de soldado con casco y filtro redondo, gesto preocupado, copos sobre el fondo |
+- p084 | 190,56,427,278 | C7 | Grupo heterogéneo de milicianos: soldados con casco y civiles de sobretodo y sombrero |
+- p084 | 312,519,630,740 | C7 | [Mosca] Perfil de un hombre con anteojos y casco que sostiene unos papeles, mirada baja | ★
+- p084 | 79,519,303,740 | C7 | Dos soldados con casco de perfil, uno con anteojos, hablando de noche |
+- p084 | 302,290,545,509 | C7 | Primer plano de un hombre joven dentro de la capucha, cara sudada y bigote, frontal |
+- p084 | 694,290,1034,509 | C7 | Grupo armado con cascos y gorras junto a un camión; un soldado con fusil de pie a la derecha |
+- p084 | 816,56,1033,278 | C7 | Primer plano de un soldado con casco de acero y filtro, sonrisa torcida |
+- p085 | 195,290,600,509 | C7 | Fila de milicianos con cascos y gorras, fusiles al hombro, delante de un oficial y un camión |
+- p085 | 313,519,494,740 | C7 | [soldado] Primer plano frontal de un soldado con casco de acero y correa, rostro curtido | ★
+- p085 | 62,56,570,278 | C7 | Primer plano de un hombre con casco de acero, anteojos y filtro, transpirando, copos sobre el negro |
+- p085 | 722,290,1022,509 | C7 | Dos soldados con casco, uno sonriente y otro con filtro serio, bajo la nieve |
+- p086 | 62,290,306,509 | C7 | Primer plano de un soldado con casco y filtro, mirada fija; copos sobre el hombro |
+- p086 | 185,56,470,278 | C7 | Cuatro soldados con casco bajo un cobertizo de madera, uno de ellos con capote claro |
+- p086 | 755,56,1034,278 | C7 | Dos soldados con casco conversando en la nieve, uno de perfil con fusil al hombro |
+- p086 | 728,519,1035,740 | C7 | Dos soldados con casco: uno mayor con anteojos y filtro, un joven con galón en la manga |
+- p086 | 540,519,723,740 | C7 | Primer plano de un soldado con casco y filtro, mirada baja y seria |
+- p086 | 478,56,631,278 | C7 | [soldado] Primer plano de un soldado con casco y filtro redondo, sonrisa leve, fondo negro | ★
+- p086 | 315,290,672,509 | C7 | Tres soldados alrededor de un plano: uno con filtro y lápiz, un joven y un oficial inclinado |
+- p087 | 610,290,760,509 | C7 | Joven soldado con casco y filtro junto a un compañero más alto, ambos de perfil |
+- p087 | 62,519,313,740 | C7 | Dos soldados con casco en la nieve, uno de espaldas y un joven de frente con fusil |
+- p087 | 190,290,600,509 | C7 | Cuatro cabezas de soldados con casco y filtro en fila, rostros endurecidos |
+- p087 | 770,290,1035,509 | C7 | Dos soldados de perfil, uno con fusil al hombro, conversando en la nieve |
+- p087 | 195,56,495,278 | C7 | [Juan] Primer plano de un oficial con casco, insignia en el pecho y filtro redondo, sonrisa cansada | ★
+- p087 | 500,56,765,278 | C7 | [soldado] Primer plano de un soldado con casco y filtro, gesto grave; copos sobre la tela | ★
+- p087 | 322,519,640,740 | C7 | Tres soldados: uno de espaldas con casco que da la orden, un oficial y un fusilero |
+- p088 | 748,290,1035,509 | C7 | Tres soldados con casco y fusil, con manchas de nieve, mirando hacia el frente |
+- p088 | 357,519,607,740 | C7 | [Juan] Primer plano de un soldado con casco y filtro, mirada angustiada, fondo de copos | ★
+- p088 | 79,519,246,740 | C7 | Perfil de un soldado con casco y anteojos que escribe en una libreta |
+- p089 | 798,290,1022,509 | C7 | Primer plano de un soldado con casco de ala y filtro redondo, boca abierta |
+- p089 | 65,290,292,509 | C7 | Tres soldados con casco pegados al suelo; uno alza la mano y grita |
+- p089 | 594,290,789,509 | C7 | Dos soldados con casco y fusiles, uno gritando; nieve y humo alrededor |
+- p090 | 812,56,1022,277 | C7 | Cabezas con casco en primer plano y un tanque lejano en la nieve |
+- p090 | 187,56,410,277 | C7 | Dos soldados con casco gritando tras un muro, uno con el brazo en alto |
+- p090 | 738,519,1035,740 | C7 | [Juan] Dos soldados con casco y filtro, caras muy juntas, mirando algo fuera de cuadro | ★
+- p090 | 450,290,725,509 | C7 | Dos soldados cuerpo a tierra con fusil; uno con anteojos y filtro, nieve cayendo |
+- p091 | 716,519,1024,740 | C7 | Primer plano del protagonista con casco y filtro, expresión decidida |
+- p091 | 621,290,1023,509 | C7 | Dos soldados con casco y filtro tras un parapeto de nieve, fusiles apuntando |
+- p092 | 806,290,1035,509 | C7 | Dos soldados con casco entre yuyos y troncos; uno con el fusil a medio alzar |
+- p092 | 800,56,1035,275 | C7 | Primer plano del protagonista con casco y sombrero de ala, mirada triste |
+- p092 | 78,519,225,740 | C7 | Primer plano de un hombre con anteojos y casco, mirada baja |
+- p092 | 565,290,800,509 | C7 | Grupo de soldados y milicianos con cascos y gorras alrededor de un hombre |
+- p092 | 806,519,1035,740 | C7 | Primer plano del protagonista con casco y sombrero, ojos entrecerrados |
+- p092 | 190,290,470,509 | C7 | Un hombre con sobretodo y sombrero es sujetado por soldados junto a un tapial |
+- p093 | 63,290,392,509 | C7 | Tres soldados con casco hablando de perfil: uno mayor con pipa y otro con capote |
+- p093 | 766,56,1022,276 | C7 | Dos soldados con casco y fusil, uno muy cerca del borde del cuadro |
+- p093 | 871,519,1024,740 | C7 | Primer plano de un soldado con casco y canana, mirando a lo lejos |
+- p093 | 400,290,717,509 | C7 | Primer plano de un hombre con gorra y filtro, gesto de fastidio |
+- p093 | 470,56,646,276 | C7 | Dos soldados con casco se toman de los brazos; uno de espaldas y el otro de frente |
+- p093 | 654,56,758,276 | C7 | Primer plano de un hombre con anteojos y bigote dentro del casco, gotas de nieve |
+- p094 | 977,290,1035,510 | C7 | Primer plano del protagonista con casco, gesto de rabia contenida |
+- p094 | 178,519,355,740 | C7 | Primer plano de un soldado con casco y filtro, cara ancha, mirando de frente |
+- p094 | 365,519,590,740 | C7 | Primer plano de un hombre con anteojos y bigote en la capucha, boca apretada |
+- p095 | 62,290,268,509 | C7 | Perfil de un soldado con casco, media cara en sombra, hablando con dureza |
+- p095 | 70,519,270,740 | C7 | [soldado] Primer plano del oficial con casco y filtro gritando "¡FUEGO!" | ★
+- p095 | 605,290,780,509 | C7 | Primer plano del protagonista con casco y filtro, mirando de frente |
+- p095 | 62,56,340,278 | C7 | Soldados con casco: un oficial con prismáticos al pecho, un soldado que saluda y otro de espaldas |
+- p096 | 764,519,1036,740 | C7 | Primer plano de un soldado con casco y filtro que grita señalando algo fuera de cuadro |
+- p096 | 76,290,466,510 | C7 | Soldados cargando con bayoneta y pistola ametralladora, uno en primer plano |
+- p097 | 795,519,1024,741 | C7 | [soldado] Primer plano de un soldado joven con casco y copa al mentón, ojos muy abiertos y gesto de alerta ★
+- p097 | 330,519,490,741 | C7 | Soldado de casco que carga a un compañero herido sobre la espalda, entre humo y cascotes |
+- p097 | 511,519,710,741 | C7 | Soldado de pie con rifle al hombro y casco nevado; detrás, un caserón bajo y otros soldados |
+- p097 | 63,286,258,510 | C7 | Tres soldados con casco y correa que gritan: uno boquiabierto, otro tenso y un tercero más chico detrás |
+- p097 | 745,50,1035,280 | C7 | [soldado] Primer plano de soldado con casco de acero y copa redonda al mentón, gritando y señalando algo fuera de cuadro ★
+- p098 | 345,55,545,276 | C7 | Soldado con casco, pelo ralo y la boca abierta, señalando algo fuera de cuadro |
+- p098 | 393,519,660,741 | C7 | Soldado joven que se ríe con el casco puesto y un compañero barbudo que lo mira |
+- p098 | 76,286,238,509 | C7 | [soldado] Primer plano de soldado de casco con correa, los ojos bajos y la boca apretada ★
+- p098 | 555,56,780,277 | C7 | Dos soldados de casco y capote, uno de espaldas con rifle, mirando hacia la avenida |
+- p098 | 77,519,385,741 | C7 | Soldado de casco con emblema redondo, de perfil en primer plano; detrás, dos hombres junto al aparato |
+- p099 | 368,519,600,741 | C7 | Dos hombres de perfil, uno con anteojos y casco, hablando con tensión |
+- p099 | 741,60,1015,280 | C7 | Retrato de tres soldados juntos, uno joven al centro y dos mayores a los costados |
+- p099 | 527,60,735,279 | C7 | [Favalli] Primer plano de soldado con anteojos redondos y casco, la cara angulosa y la mirada de costado ★
+- p099 | 67,289,371,509 | C7 | Dos soldados juntos, uno barbudo y otro con anteojos, iluminados de frente contra fondo oscuro |
+- p099 | 379,289,592,509 | C7 | [soldado] Primer plano de un oficial con bigote y casco, el cuello del capote subido ★
+- p100 | 815,519,1035,741 | C7 | Filas de soldados caminando en la nieve; uno sostiene una placa o cartel pequeño (?) |
+- p100 | 590,519,810,741 | C7 | Primer plano de un soldado con anteojos que sonríe, cascarudos muertos al fondo |
+- p100 | 429,286,637,509 | C7 | [Juan] Dos soldados juntos: uno de casco con el ceño fruncido y otro con anteojos y bigote ★
+- p101 | 64,517,268,734 | C7 | [soldado] Primer plano de un soldado que grita, casco y correa al mentón, la boca enorme ★
+- p101 | 78,54,365,275 | C7 | Dos perfiles de soldados con casco frente a frente, uno con bigote, hablando en pleno combate |
+- p101 | 577,285,749,508 | C7 | Soldado de pie con capote y rifle, la mano en alto, dando una orden |
+- p101 | 372,54,700,276 | C7 | Grupo de soldados de espaldas, con capotes y rifles, caminando por un campo nevado |
+- p101 | 705,55,1035,276 | C7 | Soldado de espaldas con casco y brazo en alto, delante de un camión y una tropa |
+- p102 | 260,519,555,741 | C7 | Hombre harapiento con los brazos en alto y el rifle colgado, rindiéndose ante soldados lejanos |
+- p102 | 75,286,345,509 | C7 | Soldado de casco que apunta con el rifle y señala hacia arriba, la boca abierta |
+- p102 | 78,519,254,741 | C7 | De espaldas, un soldado apunta a un hombre que levanta los brazos con un trapo blanco |
+- p102 | 75,55,300,244 | C7 | Soldado de capote blanco y casco que avanza con el rifle junto a un cerco de chapa y escombros humeantes |
+- p102 | 765,286,1035,509 | C7 | [Juan] Primer plano de un rostro dentro del casco, con mentonera redonda, gritando ★
+- p102 | 310,55,580,244 | C7 | Hombre con antiparras asomando la cabeza detrás de un blindaje, con casco y capucha |
+- p102 | 560,519,1035,741 | C7 | Grupo de hombres andrajosos que avanzan con los brazos en alto hacia un soldado que los apunta |
+- p102 | 565,286,755,509 | C7 | Soldado de espaldas con el rifle terciado y las correas cruzadas, mirando la calle |
+- p103 | 466,56,722,276 | C7 | [Sosa] Cara redonda y sonriente de un hombre con gorro de cuero y casco, mandíbula ancha y ojos chicos ★
+- p103 | 540,519,780,741 | C7 | Primer plano de soldado con casco y correa, un vehículo a la distancia |
+- p103 | 300,285,560,509 | C7 | Tres soldados caminando hacia la cámara, con cascos y capotes, la nieve en el suelo |
+- p103 | 785,519,1035,741 | C7 | Soldados con rifle en un campo blanco, uno agachado y un vehículo al borde del cuadro |
+- p103 | 62,55,328,275 | C7 | [Sosa] Primer plano de un hombre corpulento y sonriente con gorro y casco, los hombros descubiertos ★
+- p103 | 63,285,300,508 | C7 | Soldados de casco frente a una fachada con columnas y reja, uno agachado con el rifle |
+- p104 | 694,518,1037,740 | C7 | Soldado que corre junto a un tanque apuntando con el rifle, la rampa de fondo |
+- p104 | 77,518,435,740 | C7 | Dos soldados que avanzan con la bayoneta calada, destellos de disparo y nieve por el aire |
+- p104 | 800,55,1035,332 | C7 | Soldado con rifle y mochila que levanta el brazo y grita, el casco brillante de nieve |
+- p105 | 555,519,760,740 | C7 | [soldado] Primer plano de un soldado que grita una orden con la boca abierta, el casco terroso ★
+- p105 | 63,285,342,508 | C7 | Tres soldados asomados sobre un muro, con cascos y correas, mirando hacia abajo |
+- p105 | 386,285,582,509 | C7 | [soldado] Primer plano de un oficial de casco, cara angulosa y boca apretada ★
+- p105 | 325,518,550,741 | C7 | Dos soldados que señalan hacia arriba con el brazo estirado, cascos y capotes |
+- p106 | 70,515,400,740 | C7 | [Juan] Cara de soldado dentro del casco redondo, la boca tras la mentonera metálica, y una pinza negra encima ★
+- p106 | 577,60,735,278 | C7 | Soldado que grita con el brazo en alto; cascarudos negros en el piso y el estadio al fondo |
+- p107 | 841,56,1023,277 | C7 | Soldado de perfil con casco, el rifle en las manos y copos sobre el capote |
+- p107 | 63,286,226,509 | C7 | [soldado] Primer plano de soldado de casco con la mirada cansada y la boca apretada ★
+- p107 | 571,286,748,509 | C7 | Soldado inclinado hacia adelante que habla con énfasis, casco y correa al mentón |
+- p107 | 62,55,246,276 | C7 | Soldado que ayuda a un compañero herido en la nieve, fusil al hombro y casco |
+- p107 | 597,56,754,277 | C7 | [Sosa] Primer plano de un hombre grande que ríe dentro de un casco redondo, cara ancha y mandíbula fuerte ★
+- p107 | 756,287,1024,509 | C7 | Grupo de soldados apostados detrás de un parapeto, un cuerpo tirado a la derecha |
+- p107 | 505,518,790,741 | C7 | Tres soldados que disparan con destellos en la boca del rifle, las tribunas de fondo |
+- p108 | 417,560,641,734 | C7 | [Juan] Primer plano de soldado con bigote y casco, la boca apretada y la mirada al frente ★
+- p108 | 513,55,720,277 | C7 | Hombre asomado por la escotilla del tanque, con antiparras y capucha, hablando |
+- p108 | 745,55,1035,277 | C7 | Soldado de cuerpo entero con rifle al pecho y capote, de pie en la nieve |
+- p108 | 89,286,317,509 | C7 | [Juan] Primer plano de soldado de casco con la cara surcada y la mirada fija ★
+- p108 | 565,286,760,509 | C7 | Dos caras con casco muy juntas, una delante y otra detrás, ambas serias |
+- p109 | 65,519,278,741 | C7 | Dos soldados de perfil, uno le pone la mano en el hombro al otro, cascos y capotes |
+- p109 | 369,519,540,741 | C7 | [Juan] Primer plano de soldado de casco con la cara ancha, mirando al frente con gravedad ★
+- p109 | 63,304,313,509 | C7 | Soldado con rifle en la escalinata, la mirada perdida, pensando en Elena y Martita |
+- p109 | 648,304,1024,508 | C7 | Grupo de soldados en la tribuna: uno de espaldas en primer plano y tres caras que lo escuchan |
+- p109 | 760,517,1025,739 | C7 | [Favalli] Primer plano de soldado de casco con mentonera redonda, hablando con seriedad ★
+- p110 | 900,285,1037,508 | C7 | [Juan] Primer plano de soldado con casco y copa redonda en la boca, la cara surcada ★
+- p110 | 396,55,574,276 | C7 | Soldado de casco que sonríe, con cascarudos negros al fondo como manchas |
+- p110 | 811,518,1037,739 | C7 | Un soldado sentado en la nieve y otro de pie con rifle al hombro, cielo rayado |
+- p110 | 88,518,226,740 | C7 | Soldado con gorro de tela y mirada pensativa, de perfil bajo |
+- p110 | 845,55,1035,276 | C7 | Dos soldados sonrientes cara a cara: uno con casco y otro con gorro y antiparras |
+- p110 | 601,518,803,739 | C7 | Soldado de casco que mira hacia arriba; otro de pie al fondo sobre el campo |
+- p110 | 595,55,830,276 | C7 | Grupo de soldados en la rampa, uno grande de espaldas en primer plano con casco y capote |
+- p111 | 726,519,1024,741 | C7 | Soldado que grita con la mano en alto, otros dos agachados en la tribuna |
+- p111 | 740,56,1016,277 | C7 | Soldado de frente con casco de domo y rifle en las manos, tribunas de fondo |
+- p111 | 773,287,1024,509 | C7 | [Juan] Primer plano de soldado con casco y mentonera, los ojos muy abiertos de sorpresa ★
+- p111 | 195,55,312,276 | C7 | [Juan] Primer plano de soldado de casco, cara flaca y mirada cansada ★
+- p111 | 424,286,756,509 | C7 | Dos figuras: una cara con casco en primer plano y un soldado subiendo la rampa al fondo |
+- p112 | 817,57,1036,278 | C7 | Tres soldados asomados tras un parapeto, con cascos y correas, mirando a la derecha |
+- p112 | 75,55,429,276 | C7 | Soldado con el brazo extendido y la boca abierta dando órdenes sobre la rampa |
+- p112 | 707,526,1037,742 | C7 | Dos soldados de espaldas que miran al cielo, donde se dibuja un arco lejano |
+- p112 | 429,526,699,741 | C7 | Tres soldados asomados tras un muro de tablas, con cascos y rifles |
+- p112 | 669,286,829,509 | C7 | [soldado] Primer plano de soldado de perfil con casco de emblema redondo, la boca abierta gritando ★
+- p113 | 309,517,590,739 | C7 | [soldado] Primer plano de soldado de casco que grita, con explosiones y humo por detrás ★
+- p113 | 64,517,302,739 | C7 | Soldados agachados con rifle en medio del humo, uno con las manos en la cabeza |
+- p113 | 871,287,1025,508 | C7 | Soldado con megáfono en la mano, la cabeza echada atrás para gritar |
+- p113 | 64,285,275,507 | C7 | Dos soldados asomados tras un parapeto, los cascos cubiertos de nieve |
+- p114 | 76,285,280,506 | C7 | Soldados agachados detrás de un muro, uno se cubre la nuca con las manos |
+- p114 | 75,517,229,739 | C7 | [Favalli] Primer plano de soldado con anteojos y casco, la boca abierta en un gesto de horror ★
+- p114 | 621,56,799,277 | C7 | [Favalli] Primer plano de soldado con anteojos redondos y casco, la boca abierta ★
+- p114 | 238,518,461,739 | C7 | Soldados detrás de un cañón humeante, uno agachado, junto a la tribuna |
+- p114 | 75,54,305,275 | C7 | Tres soldados que miran al cielo con el rifle listo, uno con gorro y antiparras |
+- p115 | 260,518,455,740 | C7 | [soldado] Primer plano de soldado de casco que grita "¡Atrás!", la boca abierta y los ojos salidos ★
+- p115 | 318,285,535,508 | C7 | Dos soldados agazapados tras una barricada, mirando al cielo con miedo |
+- p115 | 704,286,828,508 | C7 | Soldado con antiparras que grita, otro agachado con casco al lado |
+- p115 | 62,55,228,275 | C7 | Dos caras de soldados con casco, muy juntas, una barbuda y otra joven |
+- p115 | 291,55,453,275 | C7 | Soldado que corre por la rampa entre el humo, rifle en mano |
+- p116 | 414,287,712,507 | C7 | Dos soldados sentados en la escalinata, uno sostiene al otro herido por el hombro |
+- p116 | 465,582,678,737 | C7 | [soldado] Primer plano de soldado con casco y correa, mirando hacia abajo con gesto duro ★
+- p116 | 190,582,458,737 | C7 | Soldado con rifle detrás de bolsas de arena, gritando hacia la derecha; un casco asoma abajo |
+- p116 | 791,287,1027,506 | C7 | [Favalli] Primer plano de un soldado con anteojos redondos y capucha, la mirada baja y triste ★
+- p116 | 756,59,1027,276 | C7 | Soldados que corren entre el humo y una rueda enorme; uno levanta el brazo |
+- p116 | 492,59,748,277 | C7 | Soldado que se arrastra entre cascotes con el casco hundido, los ojos perdidos |
+- p117 | 660,286,1024,508 | C7 | Dos soldados en la nieve con rifle, cascos y correas, uno más alto detrás |
+- p117 | 64,517,430,740 | C7 | Soldados que disparan de pie, uno con el rifle levantado y un destello en la boca del arma |
+- p117 | 444,518,792,740 | C7 | [soldado] Soldado grande que dispara de frente con un destello enorme, dos compañeros a los lados ★
+- p117 | 862,60,1025,262 | C7 | [soldado] Primer plano de soldado de casco cubierto de nieve, la boca abierta, listo para contraatacar ★
+- p117 | 64,285,340,507 | C7 | Soldado que avanza agazapado por la nieve con el rifle, copos por todos lados |
+- p118 | 720,286,1035,509 | C7 | Tres soldados de pie en la nieve, cascos y capotes, con la rampa detrás |
+- p118 | 76,286,357,507 | C7 | [soldado] Dos soldados de casco en primer plano, con cascarudos muertos y tropa al fondo ★
+- p119 | 550,127,800,276 | C7 | Dos soldados de casco muy juntos, uno con bigote, hablando en la nieve |
+- p119 | 64,285,312,507 | C7 | [Favalli] Primer plano de soldado con anteojos redondos y casco, la cara seria y surcada ★
+- p119 | 735,519,1024,740 | C7 | [Favalli] Primer plano de Favalli con anteojos redondos y casco, la cara llena de arrugas, mirando fijo ★
+- p119 | 64,517,360,741 | C7 | Dos soldados con casco: uno habla y el otro escucha con la cabeza baja |
+- p119 | 470,519,730,740 | C7 | Dos soldados apostados detrás de un parapeto, con cascos y correas, uno mira al frente |
+- p119 | 63,127,290,275 | C7 | [Favalli] Primer plano de soldado con casco, bigote y barba, hablando con seriedad ★
+- p119 | 582,286,896,509 | C7 | Tres soldados en la nieve: dos de frente y uno de perfil con anteojos |
+- p120 | 605,287,1035,510 | C7 | Tres soldados de perfil, uno grita con la mano en la boca: la orden de no sacarse el casco |
+- p120 | 335,287,600,510 | C7 | [Favalli] Dos soldados de casco frente a frente; uno le toca la cara al otro con la mano ★
+- p120 | 76,287,330,510 | C7 | Soldados que levantan los brazos y se sacan los cascos, aliviados, en medio de la nieve |
+- p120 | 613,614,837,741 | C7 | Dos soldados con antiparras y prismáticos que miran a lo lejos desde un parapeto |
+- p120 | 196,614,390,741 | C7 | Soldado con casco y la boca abierta, señalando algo en la distancia |
+- p120 | 518,85,899,277 | C7 | Tres soldados con casco que miran al cielo, uno barbudo; a un lado, una cara con anteojos |
+- p120 | 75,85,258,277 | C7 | [Favalli] Primer plano de soldado con anteojos redondos y casco, la nieve derritiéndose sobre la cara ★
+- p121 | 584,519,876,741 | C7 | Cuatro soldados con casco y fusil avanzan entre matorrales hacia la cámara |
+- p121 | 63,55,412,275 | C7 | Cuatro cabezas de soldados con casco de domo; el del centro lleva antiparras redondas y mira el cielo |
+- p121 | 64,518,339,741 | C7 | [soldado] Cinco rostros de soldados con casco muy juntos; uno señala al frente con el índice extendido | ★
+- p121 | 740,287,1024,509 | C7 | Soldado con casco de ala ancha apoyado en una baranda, señala hacia afuera con la boca abierta |
+- p121 | 808,55,1023,277 | C7 | [soldado] Primer plano de un soldado con casco redondo y válvula circular en el mentón, los ojos desorbitados | ★
+- p121 | 883,519,1024,740 | C7 | Primer plano de un soldado que grita con la boca abierta; casco redondo y válvula en el mentón |
+- p122 | 285,519,676,741 | C7 | Emboscada: un soldado se incorpora con los brazos abiertos, otro agachado con fusil, otro que corre |
+- p122 | 396,55,754,277 | C7 | Tres soldados disparan fusiles de pie entre arbustos; fogonazos blancos y correajes cruzados |
+- p122 | 726,287,1037,509 | C7 | Soldado con la cara desencajada y una mano en el hombro; otros cascos asoman detrás |
+- p122 | 566,287,720,508 | C7 | [Favalli] Primer plano de un soldado con anteojos redondos bajo el casco y válvula redonda en el mentón | ★
+- p122 | 75,287,342,508 | C7 | Dos soldados asomados a una baranda con fusiles; el de la izquierda lleva sombrero oscuro y anteojos |
+- p123 | 60,55,271,276 | C7 | Perfil de un soldado con anteojos redondos en primer plano; abajo, una fila de soldados diminutos con fusil |
+- p123 | 282,517,483,738 | C7 | [Polsky] Anciano de pelo blanco revuelto, saco oscuro y corbata, que grita el nombre de un amigo (Polsky) | ★
+- p123 | 65,517,272,738 | C7 | Primer plano de un soldado con casco y cara de horror; la válvula redonda le cuelga del mentón |
+- p123 | 477,55,765,276 | C7 | [soldado] Primer plano de un soldado con casco de domo y válvula redonda en el mentón, con humo detrás | ★
+- p123 | 572,285,800,508 | C7 | Primer plano de un soldado con anteojos redondos bajo el casco; rayas diagonales de toldo detrás |
+- p123 | 808,286,1023,507 | C7 | Soldado con casco y fusil mira hacia abajo; nubes de humo blanco a su espalda |
+- p123 | 745,517,1024,738 | C7 | [Polsky] Perfil de un anciano de pelo blanco revuelto que grita con la boca abierta y una mano alzada | ★
+- p123 | 496,517,734,738 | C7 | Soldado con casco y cuello con tachas que grita el nombre de su amigo, el puño apretado |
+- p123 | 312,285,564,508 | C7 | Dos soldados: uno de pie con fusil y canana, otro sentado con sombrero de ala y anteojos |
+- p123 | 284,55,469,277 | C7 | Cinco soldados en fila sobre una loma, fusiles al hombro, vistos de perfil contra el cielo |
+- p123 | 773,55,1022,275 | C7 | Soldado de frente con casco y sweater oscuro; a la derecha, una columna de soldados marcha por la loma |
+- p124 | 385,57,630,276 | C7 | Soldados alrededor de un hombre sentado en el suelo, entre matorrales bajos y piedras |
+- p124 | 640,57,860,276 | C7 | Dos soldados inclinados hacia la cámara hablando, cascos redondos y correas al mentón |
+- p124 | 815,519,1038,740 | C7 | Soldado con vincha en la frente en primer plano; filas de compañeros detrás |
+- p124 | 869,57,1036,276 | C7 | Primer plano de un soldado con casco y correa clara; mirada perdida, sudor y tierra |
+- p124 | 368,287,615,508 | C7 | [Juan] Rostro desencajado que grita dentro del casco, ojos muy abiertos y boca negra | ★
+- p124 | 79,287,358,508 | C7 | [soldado] Primer plano de un soldado barbudo y curtido dentro del casco, con cigarrillo apagado en la boca | ★
+- p124 | 301,519,518,740 | C7 | Tres rostros juntos de soldados que miran algo; uno con casco y otro con la boca abierta |
+- p124 | 79,519,292,740 | C7 | Tres siluetas negras forcejeando sobre un fondo blanco cegador |
+- p124 | 77,57,374,276 | C7 | Tres soldados sostienen a un compañero desplomado; todos con casco y cara de cansancio |
+- p124 | 624,287,1038,508 | C7 | Soldado de cuerpo entero visto desde abajo, puños apretados y correa cruzada al pecho |
+- p125 | 523,287,766,508 | C7 | Soldado de espaldas con los largavistas en alto, recortado contra nubes enormes |
+- p125 | 595,57,811,276 | C7 | Soldado de pie con casco mira hacia abajo a un compañero sentado sobre una pendiente oscura |
+- p125 | 67,518,335,741 | C7 | [soldado] Primer plano de un soldado con casco, la mano junto a la boca, agotado y al borde del llanto | ★
+- p125 | 328,57,584,276 | C7 | Dos soldados conversan sentados entre rocas; uno con casco, el otro con gorro y cara agotada |
+- p125 | 775,287,1025,508 | C7 | Primer plano de un soldado con casco y gesto angustiado, pensando en su familia |
+- p126 | 752,287,1022,510 | C7 | [Elena y Martita] Primer plano de una mujer con la nena en brazos, las dos con la cara tras la ventanilla del casco | ★
+- p126 | 79,521,323,741 | C7 | Soldado con casco y largavistas en la mano que grita un nombre, desesperado |
+- p126 | 77,289,350,509 | C7 | [Juan] Primer plano de un soldado con casco, los ojos abiertos de incredulidad | ★
+- p126 | 756,58,1034,277 | C7 | Soldado de espaldas abrazado a un tronco enorme, mirando el campo blanco |
+- p127 | 345,57,659,276 | C7 | [Juan] Primer plano de un soldado con casco y válvula en el mentón, la mirada dura y decidida | ★
+- p127 | 700,520,1023,740 | C7 | Rostro furioso con casco y mentón adelantado, gritando a la cara del otro |
+- p127 | 140,287,530,508 | C7 | Dos soldados se trenzan en lucha, con fusiles y cananas colgando |
+- p127 | 62,57,336,276 | C7 | Soldado con casco y brazo extendido que señala y grita, alarmado |
+- p127 | 668,57,1022,276 | C7 | Dos soldados forcejean: uno agarra al otro desde atrás para frenarlo |
+- p127 | 439,520,675,740 | C7 | Siluetas negras sobre blanco: uno de pie con fusil sobre otro que yace en el suelo |
+- p128 | 79,522,305,741 | C7 | [Juan] Perfil de un soldado con casco y válvula, la boca abierta en un grito | ★
+- p128 | 75,75,545,277 | C7 | Soldado de espaldas con casco frente a otro agachado junto a una pared de ladrillo con metralleta |
+- p128 | 414,289,693,510 | C7 | Soldado que avanza hacia la cámara con el brazo extendido; otros corren escaleras arriba |
+- p128 | 541,522,800,741 | C7 | Dos soldados se cruzan en la escalera, uno con fusil, entre líneas de fuga |
+- p128 | 558,75,1030,277 | C7 | Dos soldados forcejean contra una pared de ladrillo; uno levanta al otro del suelo |
+- p128 | 78,289,405,510 | C7 | Soldado caído en la nieve que se incorpora con un brazo en alto; otro de pie lo mira |
+- p129 | 372,287,538,508 | C7 | Soldado con casco y un arma en diagonal que grita una orden; otro rostro abajo |
+- p129 | 805,57,1021,275 | C7 | Hombre con casco y piloto claro que dispara una pistola en un pasillo; otro se agacha |
+- p129 | 547,287,709,508 | C7 | [Mosca] Primer plano de un soldado con anteojos redondos y la boca abierta, sobre fondo negro | ★
+- p130 | 783,520,1036,740 | C7 | Primer plano de un soldado con casco que mira hacia arriba con la boca abierta |
+- p130 | 323,56,533,276 | C7 | Soldado con fusil a la carrera y compañero agachado, gritando una alarma |
+- p130 | 542,56,786,276 | C7 | [soldado] Primer plano de un soldado con casco que grita, la cara marcada por rayas de luz | ★
+- p130 | 79,520,462,740 | C7 | Dos soldados sostienen a un tercero en el suelo; uno grita y el otro lo calma |
+- p131 | 444,287,632,508 | C7 | Soldado que corre hacia la cámara con el brazo extendido, desesperado |
+- p132 | 400,521,552,740 | C7 | Primer plano de un soldado con casco que pregunta con la boca abierta sobre fondo rayado |
+- p132 | 251,110,846,276 | C7 | Multitud de hombres corriendo hacia la cámara: trajes, abrigos y cascos, uno de saco y corbata |
+- p132 | 654,288,826,509 | C7 | Rostro dentro de una capucha de tela arrugada, visto desde arriba, muy contrastado |
+- p132 | 855,110,1035,276 | C7 | [soldado] Primer plano de un soldado con casco, bigote y vincha clara, los ojos desorbitados | ★
+- p132 | 78,288,253,509 | C7 | Perfil de un soldado con casco y cara de espanto, iluminado de costado |
+- p132 | 77,110,241,276 | C7 | [soldado] Primer plano de un soldado con casco, la cara torcida por la sorpresa | ★
+- p133 | 456,288,772,508 | C7 | Cuatro soldados con casco se miran entre sí; una franja diagonal cruza el fondo blanco |
+- p133 | 65,288,300,508 | C7 | [Eternauta] Primer plano del anciano: pelo blanco ralo, arrugas hondas y ojos cansados | ★
+- p133 | 736,520,1025,740 | C7 | Dos soldados de perfil con casco recortados contra un cielo blanco con una nube oscura |
+- p133 | 344,57,685,276 | C7 | [Eternauta] Anciano de pelo blanco en un sillón oscuro, camisa clara de cuello alto, humo de cigarrillo alrededor | ★
+- p133 | 782,288,1024,508 | C7 | Primer plano de un soldado con anteojos redondos bajo el casco, gesto preocupado |
+- p134 | 522,56,774,275 | C7 | [Favalli] Primer plano de un soldado con anteojos redondos y válvula en el mentón, mirada fija | ★
+- p134 | 76,56,262,275 | C7 | [soldado] Primer plano de un soldado con casco que discute, el ceño muy fruncido | ★
+- p134 | 555,520,736,739 | C7 | Fila de siluetas con fusil, inmóviles sobre una cornisa y recortadas en negro |
+- p134 | 709,287,1018,508 | C7 | Soldado de medio cuerpo que abre los brazos al hablar, contra una franja de luz diagonal |
+- p134 | 271,56,513,275 | C7 | Dos soldados de perfil frente a frente, casi simétricos, sobre un fondo blanco rayado |
+- p134 | 78,287,405,508 | C7 | Tres soldados juntos: uno con capucha sobre el casco, otro con capote y otro de perfil |
+- p134 | 414,287,700,508 | C7 | Perfil de un soldado con casco delante de una chapa metálica con banda horizontal |
+- p134 | 80,520,426,739 | C7 | Tres siluetas negras sobre blanco: una señala con el puño y otra baja la cabeza |
+- p134 | 744,520,1038,739 | C7 | Dos soldados de perfil con casco, uno de espaldas, sobre fondo oscuro |
+- p135 | 567,289,882,509 | C7 | [Juan] Primer plano de un soldado con bigote y casco, mirada cansada, sobre fondo de rayas | ★
+- p135 | 252,289,559,509 | C7 | Dos soldados: uno de frente con casco y válvula, otro de perfil detrás |
+- p135 | 540,58,714,277 | C7 | [Juan] Primer plano de un soldado con casco sobre fondo negro y la válvula redonda bajo el mentón | ★
+- p135 | 719,58,1022,277 | C7 | Hombre tendido en el suelo en primer plano; dos soldados de pie detrás y un cacharro volcado |
+- p135 | 65,289,243,509 | C7 | Dos siluetas negras sobre blanco, una gesticulando con la mano abierta |
+- p135 | 649,521,903,741 | C7 | Perfil de un soldado con casco y válvula, la vista baja y el gesto duro |
+- p135 | 63,58,325,277 | C7 | Dos soldados de perfil, uno de espaldas, frente a una baranda baja; el de la derecha con casco y correa |
+- p135 | 364,521,640,741 | C7 | Soldado con capucha y casco en primer plano que mira hacia abajo, pensativo |
+- p136 | 77,289,419,509 | C7 | [Juan] Primer plano de un soldado con casco sobre fondo negro, salpicaduras blancas alrededor | ★
+- p136 | 63,522,402,741 | C7 | Dos soldados corren en un vacío blanco, dibujados solo con líneas |
+- p136 | 756,58,1034,277 | C7 | Soldado de frente con casco, la cara muy determinada, y un compañero asomando abajo |
+- p136 | 430,289,1035,509 | C7 | Dos soldados: uno de perfil y otro que echa a correr de espaldas con morral y granadas |
+- p137 | 822,57,1022,276 | C7 | [Franco] Perfil de un soldado con casco contra un fondo rayado, alarmado | ★
+- p137 | 65,287,251,492 | C7 | Dos soldados avanzan hacia la cámara en la oscuridad, el de adelante con casco gacho |
+- p137 | 756,287,1024,492 | C7 | Soldado disparando una metralleta con dos fogonazos, un caparazón enorme a su lado |
+- p138 | 79,520,335,740 | C7 | Primer plano de un soldado con casco que habla, el gesto cansado |
+- p138 | 352,56,665,276 | C7 | Dos soldados de perfil con casco, muy juntos, hablando en la oscuridad |
+- p138 | 77,287,312,508 | C7 | [Franco] Primer plano de un soldado con casco, la mirada fija y sombría | ★
+- p139 | 72,57,324,276 | C7 | Perfil de un soldado con casco sobre fondo negro, la mirada perdida |
+- p139 | 64,287,360,508 | C7 | Dos soldados armados en la oscuridad, uno con casco y otro con gorro |
+- p139 | 369,287,545,508 | C7 | [Juan] Primer plano de un soldado con casco y válvula, la cara larga y los ojos bajos | ★
+- p139 | 82,520,394,740 | C7 | Dos soldados agazapados tras un poste; uno levanta el fusil y grita |
+- p140 | 598,521,905,741 | C7 | Dos soldados con casco alertas, uno apuntando y el otro gritando |
+- p140 | 77,288,397,509 | C7 | Dos soldados con casco: uno sonríe de costado y el otro lo mira con bigote |
+- p140 | 679,57,1035,277 | C7 | Primer plano de un soldado con casco que explica con gesto serio |
+- p140 | 717,288,1036,509 | C7 | Dos soldados de espaldas con fusil, junto a un colectivo con ventanillas |
+- p140 | 77,57,368,277 | C7 | Dos soldados con casco muy juntos, uno habla y el otro escucha con la mandíbula tensa |
+- p140 | 406,288,681,509 | C7 | [Franco] Primer plano de un soldado con casco y válvula en el mentón, la mirada triste | ★
+- p141 | 65,288,276,509 | C7 | [Juan] Primer plano de un soldado con casco y válvula, la boca abierta, alarmado | ★
+- p141 | 295,288,643,509 | C7 | Dos soldados forcejean: uno frena al otro agarrándolo del brazo, sobre fondo negro |
+- p141 | 663,288,1023,509 | C7 | Hombre de anteojos y pelo claro con escopeta entre cascarudos oscuros de ojos redondos |
+- p142 | 78,520,359,740 | C7 | Tres hombres con fusil mirando hacia la izquierda sobre un horizonte blanco |
+- p142 | 335,56,500,277 | C7 | [Juan] Primer plano de un soldado con casco y válvula redonda en el mentón, los ojos muy abiertos | ★
+- p142 | 654,520,855,740 | C7 | Dos soldados con casco, uno habla con la boca abierta y el otro escucha |
+- p142 | 349,288,573,509 | C7 | Tres rostros de perfil y de frente; el mayor lleva un disco redondo en la nuca |
+- p142 | 76,56,327,277 | C7 | Dos soldados con casco en la oscuridad, uno habla y el otro aprieta la mandíbula |
+- p142 | 77,288,345,509 | C7 | Tres hombres armados avanzan hacia la cámara: dos con fusil y uno con piloto largo |
+- p142 | 582,288,752,509 | C7 | Dos soldados asomados gritan una revelación, los ojos desorbitados |
+- p143 | 351,57,725,275 | C7 | Dos soldados con casco corren por una pendiente nevada, uno señala hacia atrás |
+- p143 | 416,520,699,740 | C7 | Soldado que corre girando el torso para disparar hacia atrás, con un auto y un farol al fondo |
+- p143 | 741,57,1023,275 | C7 | Tres hombres armados de pie en un vacío blanco: uno de anteojos con fusil, otro con piloto |
+- p143 | 769,520,1025,740 | C7 | Soldado agazapado tras un poste grueso con la metralleta lista; otro corre a lo lejos |
+- p143 | 333,287,650,508 | C7 | Dos soldados corren agachados con metralletas, en plena carrera |
+- p144 | 295,288,703,509 | C7 | Soldado agachado que dispara el fusil junto a la puerta del auto, con el fogonazo blanco |
+- p144 | 820,520,1037,740 | C7 | Primer plano de un soldado con casco que mira hacia arriba, desencajado |
+- p144 | 750,57,1035,277 | C7 | [Juan] Soldado con casco asomado sobre el capó de un auto; el parabrisas con un impacto estrellado | ★
+- p144 | 445,57,742,277 | C7 | Tres hombres disparan pistolas y escopetas hacia la izquierda, sobre fondo blanco rayado |
+- p144 | 77,288,287,509 | C7 | Soldado dentro del auto con la metralleta apoyada en la ventanilla, decidido |
+- p145 | 748,54,1025,276 | C7 | Rostro 3/4 de otro soldado con casco, entrecerrado y tenso, contra fondo negro rayado |
+- p145 | 552,55,743,276 | C7 | [Franco] Retrato frontal de un soldado joven con casco de acero y correa al mentón, boca abierta, fondo negro | ★
+- p146 | 477,517,697,740 | C7 | Primer plano frontal del soldado con casco, ojos cansados y correa al mentón, fondo rayado |
+- p147 | 383,519,767,742 | C7 | Dos hombres en ropa interior de lana a oscuras, uno con pistola al cinturón y puño cerrado |
+- p147 | 692,55,1024,277 | C7 | Primer plano de soldado con casco, correa y hombrera remachada, fusil al hombro |
+- p147 | 728,286,1025,510 | C7 | Interior oscuro: joven de camiseta con fusil y soldado con casco de perfil, ambos armados |
+- p148 | 57,516,419,738 | C7 | [Franco] Primer plano frontal de Franco, pelo claro ondulado, cara angulosa y gesto preocupado | ★
+- p149 | 693,55,1025,277 | C7 | Perfil de un hombre joven de pelo ondulado y mentón fuerte, contra fondo de líneas radiadas |
+- p149 | 57,285,383,510 | C7 | Primer plano frontal de Franco, ojos grandes y boca entreabierta, fondo negro |
+- p149 | 582,517,1025,741 | C7 | Dos rostros frontales muy grandes, Franco y el hombre mayor, iluminados contra fondo negro |
+- p149 | 361,55,688,277 | C7 | Dos hombres de medio cuerpo: uno canoso que habla y señala, y un joven de pelo ondulado que se toca la nuca |
+- p150 | 764,55,1035,278 | C7 | Primer plano frontal de un hombre mayor de pelo corto, entrecerrando los ojos con gesto duro |
+- p150 | 393,286,705,510 | C7 | Dos hombres de pecho para arriba contra fondo blanco; el mayor, de sweater oscuro, señala con el pulgar |
+- p150 | 444,55,759,278 | C7 | Dos hombres de perfil, uno joven y otro canoso, contra un cielo blanco rayado |
+- p150 | 710,286,1035,510 | C7 | Retrato de Franco con el pelo revuelto y expresión decidida, fondo de líneas diagonales |
+- p151 | 57,286,437,510 | C7 | Dos hombres corren por la nieve, uno en camiseta con pistola al cinto y el otro con saco |
+- p151 | 375,518,645,742 | C7 | Primer plano del hombre mayor gritando, arrugas marcadas y boca abierta, fondo negro |
+- p151 | 547,55,747,277 | C7 | Dos hombres agazapados tras una forma oscura y curva que los oculta (¿un auto?), contra fondo negro |
+- p152 | 413,517,705,741 | C7 | Primer plano del hombre mayor con los ojos desorbitados, gritando un nombre, fondo negro |
+- p152 | 401,53,719,276 | C7 | Primer plano del hombre mayor gritando con la boca abierta, fondo blanco rayado |
+- p152 | 326,285,749,509 | C7 | Franco de perfil con el brazo en alto arrojando una granada, cara tensa, fondo blanco |
+- p152 | 57,53,370,276 | C7 | [Franco] Primer plano de Franco con el puño en alto y cara de furia, sobre fondo negro | ★
+- p153 | 489,54,800,277 | C7 | El hombre mayor gritando con una granada prendida al saco, entre manchas negras |
+- p153 | 57,517,354,741 | C7 | [Juan] Primer plano extremo del rostro del hombre mayor, ojos abiertos y sudor, fondo negro | ★
+- p153 | 830,54,1025,277 | C7 | Figura entera del hombre mayor encorvado, brazos caídos y granada en la mano, fondo blanco |
+- p153 | 432,284,687,509 | C7 | El hombre mayor tirado de espaldas, cara arriba, gesto desencajado y fondo negro |
+- p153 | 57,54,326,277 | C7 | Primer plano del hombre mayor con una granada en el puño y un fusil en primer plano, fondo negro |
+- p154 | 76,285,318,505 | C7 | Ojo enorme y arrugado en primer plano, párpado, cejas y pliegues muy marcados |
+- p154 | 292,508,494,741 | C7 | Mano grande y velluda abierta sobre el suelo, con dedos largos, en primer plano |
+- p154 | 78,508,289,741 | C7 | Dos primeros planos de manos y rostro: el hombre se tapa el ojo y después la cara |
+- p154 | 322,285,541,505 | C7 | Rostro del hombre mayor mirando hacia arriba, boca abierta, contra fondo rayado |
+- p154 | 825,54,1025,277 | C7 | Rostro del hombre mayor hacia arriba, desencajado, con una masa oscura moteada bajo el mentón |
+- p155 | 271,517,521,741 | C7 | Rostro del hombre mayor de frente, camisa a rayas, boca apretada y ojos fijos |
+- p155 | 72,285,340,509 | C7 | El hombre mayor le sostiene la cabeza al otro con las dos manos para hablarle al oído, fondo rayado |
+- p155 | 525,517,802,741 | C7 | El hombre mayor de 3/4 mira hacia arriba con expresión de horror, fondo oscuro |
+- p155 | 57,517,266,741 | C7 | Primer plano extremo del ojo y el entrecejo del hombre mayor, arrugas y sudor |
+- p156 | 583,517,738,737 | C7 | Primer plano del hombre mayor de 3/4, mirando hacia arriba, cara surcada y sin afeitar |
+- p156 | 628,286,1045,506 | C7 | Dos hombres tirados muy juntos, caras grandes, mirando al frente con furia |
+- p156 | 743,517,1045,737 | C7 | Cabeza de Franco echada hacia atrás, inconsciente y con la boca abierta; manos lo sostienen |
+- p157 | 57,57,386,278 | C7 | Primer plano de dos ojos arrugados y entrecerrados, con el entrecejo muy marcado |
+- p157 | 396,517,696,737 | C7 | Rostro del hombre mayor boca arriba y desencajado, con globo de grito y fondo negro |
+- p158 | 57,519,463,737 | C7 | Primer plano extremo de ojos cerrados y frente arrugada, con gotas de sudor |
+- p158 | 683,58,1045,280 | C7 | El oficial de pie, cara pálida y ojos oscuros, muy demacrado; Franco detrás, agotado |
+- p158 | 712,288,1045,510 | C7 | Rostro del hombre mayor en primer plano, demacrado, con un globo de pensamiento |
+- p159 | 357,56,672,279 | C7 | [Juan] Retrato frontal del hombre mayor, calvo con mechones laterales y arrugas hondas | ★
+- p159 | 775,515,1045,740 | C7 | Rostro del hombre mayor con las manos en las orejas, ojos apretados, fondo rayado |
+- p160 | 634,519,854,742 | C7 | El oficial de 3/4 con la mano en el pecho, cara demacrada y pelo erizado |
+- p160 | 549,286,784,510 | C7 | Hombre de perfil mira su puño cerrado con desconfianza, fondo negro |
+- p160 | 787,286,1045,510 | C7 | Puño cerrado en primer plano, nudillos marcados, contra fondo negro |
+- p160 | 57,519,304,742 | C7 | Primer plano extremo de dos ojos muy abiertos y arrugados, con brillo húmedo |
+- p160 | 773,55,1045,278 | C7 | Primer plano del hombre mayor de frente, ceño fruncido y pelo corto, fondo moteado |
+- p160 | 341,286,544,510 | C7 | Brazo velludo y mano abierta en primer plano; el hombre mira su propia mano |
+- p161 | 57,518,364,741 | C7 | Perfil del oficial contra una baranda calada, media cara en sombra |
+- p161 | 400,285,665,509 | C7 | Franco de camiseta a rayas frente al oficial de perfil, ambos tensos |
+- p161 | 720,54,1025,277 | C7 | [el Mano] Primer plano del oficial de pelo erizado y cara demacrada, con media sonrisa | ★
+- p161 | 57,54,368,277 | C7 | Perfil del hombre mayor calvo, arrugado y con saco, mirando de costado |
+- p161 | 709,518,1045,741 | C7 | Dos perfiles enfrentados, el hombre mayor y el oficial, bajo un toldo de flecos |
+- p162 | 397,55,746,277 | C7 | Otro plano del oficial de 3/4, entrecerrando los ojos con gesto calculador |
+- p162 | 74,55,393,277 | C7 | [el Mano] Primer plano del oficial, pelo claro erizado, cara huesuda y ojeras, fondo negro | ★
+- p162 | 580,518,750,742 | C7 | Primer plano del hombre mayor con la cara contraída, fondo negro |
+- p162 | 712,286,1045,510 | C7 | Primer plano del oficial sonriendo con los dientes apretados, fondo blanco rayado |
+- p162 | 57,286,441,510 | C7 | El oficial de 3/4 con líneas de luz detrás, mirada baja y sonrisa leve |
+- p163 | 57,285,354,509 | C7 | El oficial de frente bajo una pantalla metálica colgante, y un hombre de perfil que le grita a la derecha |
+- p163 | 747,517,1045,741 | C7 | El oficial sentado, encorvado y con la cabeza baja, casi en silueta |
+- p163 | 358,285,521,509 | C7 | Primer plano del oficial riendo con los dientes apretados, fondo rayado |
+- p164 | 660,55,1045,278 | C7 | [el Mano] Primer plano del oficial con la boca apretada y la mirada fija, fondo con baranda | ★
+- p164 | 726,519,1045,742 | C7 | Franco de pie con los puños cerrados frente al oficial encorvado, fondo blanco |
+- p164 | 607,286,764,511 | C7 | Primer plano de una mano de dedos largos que presiona un objeto pequeño |
+- p164 | 57,286,386,511 | C7 | Primer plano del hombre mayor con gesto angustiado, fondo negro |
+- p165 | 437,54,774,276 | C7 | [Franco] Primer plano de Franco sonriendo de lado con la mano en el mentón, fondo claro | ★
+- p165 | 57,54,433,276 | C7 | Franco en guardia con los puños cerrados; el hombre mayor sentado a la izquierda y un cuerpo en el piso |
+- p165 | 57,285,267,509 | C7 | Primer plano del hombre mayor con gesto satisfecho y arrugas marcadas |
+- p166 | 276,284,507,509 | C7 | Franco con el brazo sobre los hombros del hombre mayor, que se deja sostener; ambos de frente |
+- p166 | 717,517,940,740 | C7 | Franco sonriente con fusil y granadas junto al hombre mayor de cara grave, ambos de frente |
+- p168 | 404,519,711,742 | C7 | El hombre mayor de frente junto a un muro de ladrillo; al fondo, un vehículo destrozado |
+- p168 | 323,286,526,510 | C7 | Franco con chaleco y bolsa al hombro frente a una pared de ladrillo, el oficial asomado detrás |
+- p168 | 57,519,398,742 | C7 | [Juan] Primer plano del hombre mayor con una marca en la sien, mirada dura y fondo negro | ★
+- p169 | 310,286,505,509 | C7 | Dos hombres de perfil: uno calvo y mayor, otro joven de pelo oscuro y gesto duro |
+- p169 | 62,286,305,509 | C7 | Joven de tiradores corre hacia cámara; gran perfil de un hombre mayor a la derecha |
+- p169 | 62,55,377,277 | C7 | Hombre de camisa clara carga a un compañero desplomado sobre la espalda, contra fondo negro |
+- p169 | 800,519,1024,741 | C7 | [Juan] Primer plano de un hombre de pelo claro y mandíbula fuerte, mirada grave | ★
+- p170 | 760,518,1038,739 | C7 | Dos retratos sobre fondo negro: un joven de mandíbula fuerte y un hombre mayor de pelo claro |
+- p170 | 865,54,1036,276 | C7 | Un hombre mayor carga a un compañero inerte al hombro y un joven de pelo rizado grita detrás |
+- p170 | 76,286,238,509 | C7 | Dos rostros muy juntos y aterrados: un joven de pelo oscuro grita y un calvo mira fijo |
+- p170 | 568,55,857,276 | C7 | Hombre mayor de pelo claro, de perfil, carga un bulto pesado al hombro apretando los puños |
+- p171 | 64,518,362,742 | C7 | Hombre de pelo claro recostado con la cabeza echada atrás, cara crispada; otro lo sostiene de espaldas |
+- p171 | 526,286,618,508 | C7 | Perfil de un hombre mayor de pelo blanco mirando hacia abajo, ceño fruncido |
+- p171 | 61,55,285,276 | C7 | Dos hombres de tres cuartos escuchando: uno mayor de pelo blanco y un joven de pelo oscuro |
+- p171 | 777,518,1025,758 | C7 | Primer plano enorme de un anciano de cara surcada de arrugas y pelo blanco ralo |
+- p171 | 879,55,1022,276 | C7 | Dos caras asombradas muy juntas: el mayor de pelo blanco y el joven de pelo oscuro |
+- p172 | 350,518,630,740 | C7 | Primerísimo plano de unos ojos hundidos y surcados de arrugas, mirada fija |
+- p172 | 862,518,932,740 | C7 | Rostro de un anciano de pelo blanco que mira hacia abajo, gesto cansado |
+- p172 | 946,286,1037,508 | C7 | Perfil pequeño de un hombre de pelo blanco contra el fondo oscuro |
+- p172 | 78,518,333,740 | C7 | Retrato frontal del "Mano": pelo blanco, cara hundida y orejas largas sobre sweater negro |
+- p172 | 733,287,913,509 | C7 | El "Mano" sentado de frente, sweater negro y cinturón ancho, junto a una mesa a cuadros |
+- p172 | 395,286,726,509 | C7 | El "Mano" de perfil sostiene un cilindro metálico con anillos; la mano es huesuda y enorme |
+- p172 | 471,55,680,276 | C7 | [el Mano] Perfil del "Mano": cráneo enorme, oreja puntiaguda, pelo blanco ralo y cuello flaco | ★
+- p172 | 952,518,1025,740 | C7 | Perfil de un hombre calvo y bigotudo que habla en voz baja |
+- p172 | 209,54,455,277 | C7 | Figura flaca y desvaída sentada en una silla de madera junto a una mesa de mantel a cuadros |
+- p173 | 63,55,362,276 | C7 | Primer plano de un anciano de pelo blanco y cara muy surcada, mirando de costado |
+- p173 | 370,56,732,278 | C7 | Hombre mayor de pelo claro con abrigo sujeta del brazo a un joven armado que se acerca |
+- p173 | 585,287,726,510 | C7 | Rostro de un hombre de pelo claro y cuello grueso que mira fijo, sweater oscuro |
+- p173 | 71,286,291,508 | C7 | Perfil de un anciano de pelo blanco erizado, boca abierta por la sorpresa |
+- p173 | 753,288,1025,509 | C7 | Dos hombres hablan a los lados de una gran silueta oscura de espaldas con mechones erizados |
+- p173 | 606,536,954,741 | C7 | [el Mano] Gran primer plano del "Mano": cráneo alargado, pelo ralo erizado y sonrisa torcida | ★
+- p173 | 419,536,585,741 | C7 | Primer plano de un hombre joven de mandíbula ancha y pelo corto claro, ceño fruncido |
+- p174 | 669,289,1026,510 | C7 | Tres rostros: el anciano de pelo blanco cabizbajo y dos hombres jóvenes que lo escuchan |
+- p174 | 637,520,745,738 | C7 | Cabeza de un joven que gira y mira de costado, boca entreabierta, sobre fondo punteado |
+- p174 | 80,288,423,510 | C7 | Retrato frontal de un anciano de pelo blanco y piel muy surcada, ceño bajo y labios apretados |
+- p174 | 431,288,663,510 | C7 | Dos hombres de tres cuartos frente a frente: uno con abrigo claro y otro moreno, muy cerca |
+- p174 | 80,520,401,737 | C7 | [el Mano] Gran primer plano de una cara macilenta de ojos muy abiertos y pelo blanco ralo | ★
+- p174 | 554,59,1027,277 | C7 | Primer plano de un hombre de pelo blanco erizado sobre un fondo negro |
+- p175 | 329,286,496,507 | C7 | Primer plano de un joven angustiado que mira sus propias manos, con la piel colgando en tiras |
+- p175 | 446,59,766,277 | C7 | Perfil del "Mano" con los ojos cerrados y la boca abierta, cantando contra el fondo negro |
+- p175 | 67,286,322,507 | C7 | Dos hombres se inclinan sobre la cabeza blanca caída de un moribundo; uno lo toca con la mano |
+- p175 | 67,59,416,277 | C7 | Primer plano del "Mano" de pelo blanco erizado, entrecerrando los ojos, mandíbula apretada |
+- p176 | 77,518,417,740 | C7 | Dos hombres de tres cuartos junto a un tapial de ladrillo, uno mayor con abrigo claro |
+- p176 | 311,54,557,275 | C7 | Dos hombres hablan en voz baja: uno joven de pelo oscuro y uno calvo con abrigo claro |
+- p177 | 100,519,390,740 | C7 | [Favalli] Primer plano de un hombre de anteojos redondos oscuros y bigote, cara redonda y pelo oscuro | ★
+- p177 | 445,286,1035,508 | C7 | Cinco hombres en un cuarto: un joven, un oficial, un soldado con casco y un hombre de anteojos |
+- p177 | 63,285,392,509 | C7 | Retrato de un oficial de pelo oscuro ondulado y túnica con insignias al cuello, hablando serio |
+- p178 | 722,520,1038,741 | C7 | Soldado con casco de perfil y cabeza de un hombre calvo más abajo, fondo rayado |
+- p178 | 590,520,700,741 | C7 | Perfil de un hombre de anteojos redondos gruesos y bigote, gesto adusto |
+- p178 | 78,519,402,742 | C7 | [soldado] Primer plano de un soldado con casco cuya sombra le tapa media cara, gesto duro | ★
+- p178 | 767,55,1035,277 | C7 | Primer plano de un soldado con casco de acero y correajes, gritando enojado |
+- p179 | 68,55,300,277 | C7 | Perfil de un soldado con casco de acero y correajes, contra un fondo rayado |
+- p179 | 382,286,700,509 | C7 | [Favalli] Retrato frontal de un hombre de anteojos redondos oscuros, bigote y pelo ondulado | ★
+- p179 | 940,287,1035,509 | C7 | Retrato de un hombre de anteojos y bigote con fondo punteado, gesto seco |
+- p179 | 62,286,350,509 | C7 | Dos hombres frente a frente en la oscuridad: uno mayor de pelo claro y otro con anteojos gruesos |
+- p179 | 750,519,1035,750 | C7 | Primer plano de un hombre de anteojos gruesos y bigote, ceño fruncido, sobre fondo rayado |
+- p179 | 545,519,745,750 | C7 | Joven de pelo claro con sweater oscuro de cuello alto, mirando al frente con dureza |
+- p179 | 757,56,1025,277 | C7 | Grupo nocturno: dos soldados con casco, un hombre mayor con abrigo y otro de anteojos discuten |
+- p179 | 335,519,540,750 | C7 | Hombre de pelo claro inclinado, medio sumido en negro, con sweater oscuro |
+- p179 | 305,56,590,276 | C7 | Gran primer plano de un soldado con casco, bigote y cara ancha, mirada cansada |
+- p179 | 705,287,940,509 | C7 | Dos hombres de perfil y tres cuartos hablando: uno calvo con anteojos, otro de pelo claro |
+- p180 | 76,286,315,508 | C7 | Soldado de casco y abrigo claro grita algo, con compañeros y un camión atrás |
+- p180 | 530,55,780,277 | C7 | Soldado con casco de perfil en primer plano y un grupo armado detrás |
+- p180 | 83,518,323,740 | C7 | Dos soldados de espaldas miran el terreno nevado; uno con casco y capote |
+- p180 | 660,286,1035,508 | C7 | Tres soldados con casco uno al lado del otro, mirando al frente, sobre la nieve |
+- p181 | 405,55,660,277 | C7 | Soldado de espaldas con casco y fusil al hombro, hablando por la radio contra la nieve rayada |
+- p181 | 84,59,402,276 | C7 | Dos soldados con casco y correajes dentro de un vehículo, uno mira hacia afuera |
+- p181 | 551,516,789,737 | C7 | [soldado] Primer plano de un soldado con casco y abrigo, ojos muy abiertos, cara de pánico | ★
+- p181 | 330,516,540,737 | C7 | Soldados con casco miran alarmados hacia arriba; uno señala con el brazo extendido |
+- p181 | 328,286,712,506 | C7 | Soldado con casco y fusil en primer plano; árbol seco y compañeros detrás en la penumbra |
+- p182 | 75,55,631,277 | C7 | Grupo de soldados con casco en la nieve nocturna; uno de anteojos y bigote y un joven al centro |
+- p182 | 78,538,420,742 | C7 | Dos soldados con casco de perfil, uno con la correa al mentón, gesto cansado |
+- p182 | 895,287,1035,510 | C7 | Primer plano de un soldado con casco que grita con la boca abierta, fondo negro |
+- p182 | 641,54,1035,277 | C7 | Dos soldados con casco y fusil miran hacia arriba, alarmados, contra el cielo rayado |
+- p182 | 845,538,1035,742 | C7 | Soldado con casco de perfil habla con otro más chico; fila de soldados al fondo |
+- p183 | 345,59,710,277 | C7 | Dos soldados con casco de perfil en primer plano contra un cielo de líneas blancas |
+- p183 | 600,287,1015,507 | C7 | Dos soldados encorvados avanzan con el puño apretado junto a una pared de ladrillo |
+- p183 | 785,518,1015,737 | C7 | Dos soldados de perfil con casco, caras duras, fondo negro rayado |
+- p183 | 285,287,580,507 | C7 | Dos soldados con casco muy juntos, uno con anteojos, gesto tenso bajo la luz |
+- p184 | 645,285,800,509 | C7 | Dos soldados con casco en la oscuridad, uno mira hacia arriba, gesto duro |
+- p184 | 186,61,375,275 | C7 | Soldado con casco apoyado en el capó de un vehículo, hablando de perfil |
+- p184 | 754,569,1037,740 | C7 | Dos soldados con casco hablan apoyados en la ventanilla de un vehículo |
+- p184 | 743,60,1035,276 | C7 | Tres soldados hablan en la nieve: uno con bufanda y metralleta, otro con fusil |
+- p184 | 65,285,395,509 | C7 | Perfil de un soldado con casco que habla, contra un cielo de líneas oblicuas |
+- p184 | 78,569,363,740 | C7 | Dos soldados con casco y bufanda miran desde el interior de un vehículo, marco oscuro |
+- p184 | 383,60,727,275 | C7 | Dos soldados con casco muy juntos, uno de anteojos y bigote, mirando hacia arriba |
+- p185 | 734,55,1023,277 | C7 | Primer plano de un soldado con casco, gesto preocupado, sobre un fondo de nieve rayada |
+- p185 | 700,286,790,509 | C7 | Dos soldados con casco asoman y miran a lo lejos, casi en silueta |
+- p185 | 63,55,390,275 | C7 | Perfil de un soldado con casco que grita con la boca abierta, fondo de líneas blancas |
+- p185 | 63,518,402,729 | C7 | Primer plano de un soldado con casco, cara sucia y gesto serio, mirando de costado |
+- p185 | 398,55,719,277 | C7 | Dos soldados con casco sonriendo, aliviados, en un campo nevado |
+- p186 | 475,55,690,277 | C7 | Dos soldados con casco frente a frente, caras grandes, fondo negro |
+- p186 | 695,55,782,277 | C7 | Dos soldados con casco casi en silueta, uno de espaldas, en la oscuridad |
+- p186 | 787,55,1035,277 | C7 | Soldado con casco habla por una radio de mano junto a un árbol sin hojas |
+- p186 | 870,372,1036,508 | C7 | Primer plano de un hombre sonriente con auriculares y micrófono en la mano |
+- p187 | 835,518,1035,741 | C7 | Primer plano de un soldado con casco que habla con urgencia, ojos muy abiertos |
+- p187 | 65,285,350,470 | C7 | Dos soldados con casco, uno grande en primer plano y otro de anteojos y bigote detrás |
+- p187 | 355,285,650,470 | C7 | Primer plano de un soldado con casco, anteojos y bigote, boca apretada |
+- p187 | 64,518,254,741 | C7 | Primer plano de un soldado con casco y correa de gafas, cara sucia, gesto resuelto |
+- p188 | 65,285,330,509 | C7 | Soldado con casco y abrigo corre de frente con el arma al pecho, nieve levantada en los pies |
+- p188 | 305,55,665,276 | C7 | [soldado] Primer plano de un soldado con casco, cara angustiada y boca entreabierta | ★
+- p188 | 774,519,1037,740 | C7 | Tres soldados con casco de perfil discuten, caras marcadas por el cansancio |
+- p188 | 78,519,337,741 | C7 | Dos soldados de espaldas con casco miran el terreno, siluetas contra la nieve |
+- p188 | 820,285,1035,509 | C7 | Dos soldados con casco de perfil, uno habla y el otro escucha con el fusil al hombro |
+- p189 | 62,54,361,275 | C7 | [Favalli] Primer plano de un soldado con casco, anteojos redondos y bigote entrecano, gesto amargo | ★
+- p189 | 595,291,825,508 | C7 | Dos soldados hablan: uno con casco y otro con piloto claro; figuritas a lo lejos |
+- p189 | 315,291,588,508 | C7 | Grupo de soldados avanza de frente por la nieve, entre montañas de escombros |
+- p189 | 63,291,308,508 | C7 | Soldado con casco de espaldas en primer plano mira un campo de ruinas nevadas |
+- p189 | 750,54,1023,275 | C7 | Primer plano de un soldado con casco, piel curtida y mirada cansada |
+- p189 | 508,518,830,741 | C7 | Primer plano de un soldado con casco, cara desencajada, árboles secos y rayos detrás |
+- p190 | 809,286,1037,508 | C7 | Soldado de perfil con casco habla; otro compañero detrás, en la nieve |
+- p190 | 782,55,1035,268 | C7 | Grupo de soldados con casco y anteojos, todos inclinados mirando algo en el suelo |
+- p190 | 521,285,802,508 | C7 | Dos soldados con casco en primer plano, uno de anteojos y bigote, mirando abajo |
+- p190 | 791,524,1037,739 | C7 | Dos soldados con casco de perfil, uno habla en voz baja, fondo rayado |
+- p190 | 77,524,304,740 | C7 | Primer plano de un hombre con anteojos y bigote que se toca la frente, agotado |
+- p191 | 568,60,872,278 | C7 | Primer plano de un soldado con casco, cara grande y gesto resignado |
+- p191 | 345,518,560,738 | C7 | Primer plano de un hombre con casco, anteojos redondos gruesos y bigote, gesto duro |
+- p191 | 565,518,710,738 | C7 | Silueta de un soldado con casco que levanta el brazo y grita en medio de la nieve |
+- p191 | 356,59,561,278 | C7 | Dos soldados con casco de pie: uno con capote y fusil, otro con anteojos |
+- p191 | 68,518,338,738 | C7 | Dos soldados con casco en primer plano, uno de anteojos y bigote, junto a un compañero agachado |
+- p192 | 775,510,1035,745 | C7 | [Favalli] Primerísimo plano de un hombre con casco, anteojos y barba de días, mirada fija | ★
+- p192 | 76,285,324,508 | C7 | Soldado con casco y metralleta al costado, de pie en la avenida bajo un farol |
+- p192 | 617,285,879,508 | C7 | Primer plano de un soldado con casco sonriendo; compañeros armados detrás |
+- p192 | 330,285,615,509 | C7 | Dos soldados con casco muy cerca, uno de espaldas y otro de frente sonriendo |
+- p193 | 548,57,755,275 | C7 | [Favalli] Perfil de un soldado con casco de acero y capote, quijada tensa, contra un fondo de líneas | ★
+- p193 | 787,285,1024,508 | C7 | Primer plano de un soldado con casco y anteojos redondos, bigote y gesto duro |
+- p194 | 410,518,765,741 | C7 | [Favalli] Primer plano de un soldado con casco de acero, anteojos redondos y bigote, mirada fija | ★
+- p194 | 78,518,402,741 | C7 | Dos soldados de casco frente a cámara: uno con anteojos y bigote, otro joven de cara larga |
+- p194 | 75,285,555,508 | C7 | Dos soldados de casco muy juntos, el de adelante con anteojos; talud de nieve detrás |
+- p195 | 375,285,625,508 | C7 | Rostro frontal de soldado con casco de acero y anteojos redondos, bigote y sombra tramada |
+- p195 | 370,518,600,741 | C7 | Tres soldados de casco caminan de frente por la nieve, con fusiles y correajes |
+- p196 | 510,54,755,272 | C7 | [Favalli] Dos cascos en perfil, uno enorme en primer plano, con la cara hacia arriba y cielo rayado | ★
+- p196 | 62,54,320,272 | C7 | Tres soldados asoman sobre el pretil de una azotea, con cascos y fusiles, mirando a lo lejos |
+- p197 | 432,283,678,508 | C7 | Soldado de casco avanza con el fusil al pecho, rodeado de escombros en el aire |
+- p197 | 685,283,1035,508 | C7 | Hombre encorvado bajo una lluvia de piedras, casco redondo y espalda curva |
+- p197 | 66,518,312,741 | C7 | Soldado carga sobre el hombro a un compañero caído y camina entre escombros y polvo |
+- p197 | 675,55,1020,275 | C7 | Hombre de anteojos y gorra corre hacia cámara entre cascotes que caen y fachadas que se derrumban |
+- p197 | 322,518,600,741 | C7 | Soldado sostiene a Favalli, calvo y herido, de chaleco oscuro; cascotes caen alrededor |
+- p198 | 364,283,596,508 | C7 | Hombre mayor de pelo blanco y saco claro, frontal, junto a una silueta oscura que señala hacia arriba |
+- p198 | 78,522,308,741 | C7 | Soldado de casco en perfil grande; detrás, calle en llamas con figuras chicas y humo |
+- p198 | 70,54,338,272 | C7 | [Juan] Grupo de soldados de casco y un hombre mayor de cara ancha y pelo corto, frontal, contra el cielo | ★
+- p198 | 70,283,356,508 | C7 | Soldado de casco en perfil grande que mira de reojo; detrás, escombros en pico y otra figura |
+- p198 | 346,54,573,272 | C7 | Perfil de soldado con casco de acero, anteojos y bigote, mirada baja, cielo de tramas |
+- p199 | 322,515,605,741 | C7 | Dos soldados en una calle humeante, uno tambaleándose con el brazo tendido; masa negra ardiendo |
+- p199 | 66,515,312,741 | C7 | Dos caras juntas en el humo: un soldado joven de casco y un hombre mayor de pelo blanco |
+- p199 | 553,52,850,272 | C7 | Favalli de saco claro camina encorvado mientras un soldado de casco lo toma del brazo |
+- p199 | 64,52,275,272 | C7 | [soldado] Primer plano de soldado con casco y correa en el mentón, boca abierta gritando | ★
+- p199 | 615,515,1023,741 | C7 | [Juan] Primer plano frontal de Favalli, pelo corto claro, ojos abiertos de espanto, campera oscura | ★
+- p199 | 835,288,1035,508 | C7 | Dos figuras de espaldas caminan entre nubes de humo: un soldado de casco y un hombre de saco |
+- p199 | 858,52,1020,272 | C7 | Perfil de un hombre de pelo blanco rapado, en sombra, con la mirada perdida |
+- p200 | 78,515,398,740 | C7 | Cara de Favalli entre vigas caídas, con una mano extendida hacia la luz |
+- p200 | 406,515,764,740 | C7 | Dos hombres de espaldas forcejean con vigas para sacar a alguien de abajo |
+- p200 | 539,282,733,508 | C7 | Soldado de casco sostiene a un herido que se le cuelga del hombro, entre humo y escombros |
+- p200 | 356,282,532,508 | C7 | Cara de un hombre que mira hacia arriba en la oscuridad, boca abierta, humo detrás |
+- p200 | 771,515,1035,740 | C7 | Soldado de casco en primer plano gira la cara hacia la izquierda, alarmado |
+- p201 | 350,54,694,278 | C7 | Dos hombres semienterrados entre vigas y chispas, uno con el brazo alzado pidiendo ayuda |
+- p201 | 67,518,327,742 | C7 | [Juan] Primer plano de Favalli, cara angulosa y pelo blanco; un soldado de casco asoma detrás | ★
+- p201 | 64,288,261,505 | C7 | Favalli de pelo blanco, encorvado y con la mano en la cabeza, de perfil, entre humo |
+- p201 | 745,288,901,505 | C7 | Dos siluetas de espaldas miran el incendio: un casco y una cabeza de pelo blanco |
+- p201 | 553,288,738,505 | C7 | Soldado de casco con fusil y Favalli frontal, muy juntos, rodeados de humo |
+- p201 | 340,518,600,742 | C7 | Favalli se inclina con el brazo extendido hacia las llamas, de cuerpo entero y de perfil |
+- p201 | 610,518,1026,742 | C7 | Soldado arrastra a Favalli sobre escombros, rodeados de fuego blanco; otro soldado al fondo |
+- p202 | 79,524,362,742 | C7 | Un hombre levanta del suelo a un soldado caído entre maderas, ambos de perfil |
+- p202 | 556,524,1037,742 | C7 | Dos caras frontales juntas: un soldado de casco y bigote y Favalli de pelo blanco |
+- p202 | 369,524,549,742 | C7 | Dos figuras de cuerpo entero entre escombros: una sentada en el piso y otra de pie |
+- p202 | 86,54,344,275 | C7 | [soldado] Primer plano de soldado joven con casco de acero y cara de asombro, humo de fondo | ★
+- p202 | 700,54,1025,275 | C7 | Favalli de pelo blanco y chaleco oscuro avanza entre vigas con un brazo tendido; casa ardiendo |
+- p203 | 760,288,1016,506 | C7 | Soldado recostado con casco junto a un vehículo y un hombre de anteojos y bigote en perfil |
+- p203 | 67,288,276,506 | C7 | Dos soldados de casco en un campo nevado, uno frontal de ojos muy abiertos; bloque de texto abajo |
+- p203 | 693,517,1014,737 | C7 | Primer plano de una cara curtida, nariz grande y bufanda oscura, en sombra |
+- p203 | 457,517,687,737 | C7 | Dos soldados frente a frente: uno de casco en perfil y otro canoso que lo mira |
+- p203 | 67,59,422,278 | C7 | [Favalli] Tres rostros en la oscuridad: un hombre de anteojos y bigote, un soldado joven y un hombre canoso | ★
+- p203 | 590,288,754,506 | C7 | Primer plano de soldado con casco que mira hacia abajo, en penumbras |
+- p204 | 671,517,1037,739 | C7 | Soldados corren agachados en fila por la nieve; uno se arrastra por el piso a la izquierda |
+- p204 | 536,284,722,507 | C7 | Oficial de casco grita con la mano en alto; otro soldado en perfil detrás |
+- p204 | 730,284,1035,507 | C7 | Soldado de casco avanza con los brazos abiertos, gritando; otros retroceden con las manos en alto |
+- p204 | 326,54,606,276 | C7 | Oficial de casco con el puño en alto, de perfil, junto a una baranda |
+- p204 | 337,517,634,739 | C7 | Dos soldados de casco, frontales y serios, delante de una masa negra |
+- p204 | 78,517,331,739 | C7 | Tres cabezas de soldados con casco en la oscuridad, una frontal y dos de perfil |
+- p205 | 817,284,1023,508 | C7 | Perfil de un soldado de casco con la cara surcada, en penumbras |
+- p205 | 538,284,810,508 | C7 | Tres soldados de espaldas rodean a uno de casco que habla de frente |
+- p205 | 66,517,380,742 | C7 | Soldado de casco de espaldas habla a un grupo: dos caras frontales y un hombre de anteojos |
+- p205 | 386,517,638,742 | C7 | [soldado] Retrato frontal de un soldado con casco de acero, cara ancha y gesto grave, sobre negro | ★
+- p205 | 349,55,694,272 | C7 | Soldado de casco y capote, frontal, con los brazos extendidos y el equipo colgando |
+- p205 | 64,284,348,508 | C7 | Oficial de casco con la palma abierta hacia adelante, gritando; soldados chicos a la izquierda |
+- p206 | 76,61,571,275 | C7 | Hombre de sweater de pie, manos en los bolsillos, y otro apoyado en la rueda de un vehículo |
+- p206 | 596,328,872,508 | C7 | Primer plano de soldado con casco, anteojos redondos y cuello alto, cara arrugada |
+- p206 | 258,328,580,508 | C7 | Dos hombres de pie miran a la derecha: uno canoso de saco y un joven de sweater claro |
+- p206 | 790,573,1035,741 | C7 | Busto de un hombre de pelo claro que habla desde un vehículo; faro y espejo redondos al lado |
+- p206 | 79,573,408,741 | C7 | [Juan] Retrato de un hombre de pelo blanco con cigarrillo, cara larga y gesto cansado, sobre negro | ★
+- p206 | 878,328,1030,508 | C7 | Hombre de saco oscuro de espaldas, con fusil al hombro, mira el campo nevado |
+- p207 | 63,85,342,275 | C7 | Hombre de pelo claro sentado en un vehículo, de perfil, con la ventanilla oscura detrás |
+- p207 | 890,85,1022,275 | C7 | Primer plano de un hombre de anteojos redondos y bigote, cara en sombra |
+- p207 | 776,85,882,275 | C7 | Rostro de hombre joven con el pelo revuelto, boca abierta, sobre fondo negro |
+- p207 | 496,518,558,740 | C7 | Soldado de casco, de costado, con el fusil levantado y la boca abierta |
+- p207 | 373,518,489,740 | C7 | Dos soldados de casco disparan de frente; el de la derecha con fogonazo en el fusil |
+- p207 | 566,518,786,740 | C7 | Hombre de espaldas con fusil, frente a un auto oscuro con un cartel redondo "E.A." |
+- p207 | 659,85,762,275 | C7 | Dos hombres de perfil: uno de anteojos que mira a lo alto y un joven de pelo oscuro |
+- p208 | 364,97,711,275 | C7 | Tres soldados entre humo: uno de pie con fusil y dos encorvados sobre el piso |
+- p208 | 811,327,1036,508 | C7 | Tres hombres tras una baranda: un soldado con fusil, un joven de camisa clara y uno de anteojos |
+- p208 | 317,327,633,508 | C7 | Hombre canoso empuña un fusil de perfil y un joven de frente lo escucha; humo detrás |
+- p208 | 640,327,803,508 | C7 | Retrato frontal de un hombre de pelo blanco y cara larga, sobre fondo negro |
+- p208 | 78,327,310,508 | C7 | Dos hombres de perfil, uno canoso y un joven de pelo oscuro, con el fusil cruzado adelante |
+- p209 | 771,72,1023,274 | C7 | [Franco] Primer plano de un hombre joven de pelo oscuro y mandíbula ancha, mirada fija | ★
+- p209 | 345,599,775,741 | C7 | El jefe asoma del tanque con la cara tensa, aferrado al borde de la escotilla |
+- p209 | 63,72,469,274 | C7 | Cinco caras alineadas en la oscuridad: un soldado de casco con anteojos, dos canosos y dos jóvenes |
+- p210 | 74,54,245,276 | C7 | Perfil de un hombre de pelo oscuro que grita una orden, boca abierta, sobre fondo blanco |
+- p210 | 75,285,513,509 | C7 | Dos caras de espanto: un hombre canoso que grita y un joven de ojos muy abiertos |
+- p210 | 253,54,472,276 | C7 | Dos hombres en un vehículo: un canoso de perfil con fusil y otro de anteojos que se asoma |
+- p211 | 64,518,244,742 | C7 | Cara del hombre de anteojos apretando el lanzacohetes, gesto desesperado |
+- p211 | 402,54,630,276 | C7 | [Juan] Dos caras sobre negro: un hombre calvo y mayor, y un joven de pelo oscuro | ★
+- p211 | 638,54,766,276 | C7 | Perfil de un hombre que grita "¡FUEGO!", con rayos de luz detrás |
+- p211 | 672,518,1025,742 | C7 | Primer plano de un hombre de pelo claro con los ojos desorbitados, cara sudorosa |
+- p212 | 77,320,340,505 | C7 | Primer plano de un hombre de anteojos y bigote, boca abierta, cara muy surcada |
+- p212 | 323,518,565,740 | C7 | Primer plano de un hombre de pelo claro con la mano aferrada a una barra, cara de pánico |
+- p212 | 346,320,615,505 | C7 | Hombre con la cara tapada por el vapor de una lata humeante que sostiene entre las manos |
+- p213 | 780,287,1016,509 | C7 | Tres hombres en un vehículo: un canoso al mando, un soldado de casco y otro joven que se asoma |
+- p213 | 636,518,1016,737 | C7 | Dos caras frontales muy juntas: un hombre de anteojos y bigote y otro canoso, alarmados |
+- p213 | 309,59,590,277 | C7 | Dos caras de perfil y tres cuartos: el que dispara y el que grita, muy tensos |
+- p213 | 348,518,632,737 | C7 | Cuatro rostros en la oscuridad: dos canosos, dos jóvenes y uno de anteojos, todos serios |
+- p214 | 75,54,319,276 | C7 | [Favalli] Primer plano de un hombre de anteojos redondos y bigote, con gotas de sudor, cara angulosa | ★
+- p214 | 856,316,1038,508 | C7 | Rostro de un hombre canoso con fusil al hombro, mirada cansada |
+- p214 | 542,316,850,508 | C7 | Seis soldados armados avanzan en fila hacia cámara, con fusiles y lanzacohetes al hombro |
+- p214 | 78,518,254,740 | C7 | [Juan] Primerísimo plano de una cara sudorosa de ojos abiertos, en la oscuridad | ★
+- p214 | 77,316,273,508 | C7 | Cara de un hombre joven de pelo hacia atrás, gritando una orden, con el fusil al hombro |
+- p214 | 326,54,565,276 | C7 | El mismo hombre de anteojos, más cerca, mirando hacia abajo con gesto grave |
+- p215 | 651,286,1024,510 | C7 | Dos caras juntas: un hombre de anteojos de perfil y otro canoso que habla |
+- p215 | 64,286,488,510 | C7 | Soldados en penumbras: uno de casco a la izquierda y otro de perfil que señala con el brazo |
+- p215 | 65,518,438,742 | C7 | Primer plano de un hombre de anteojos redondos y bigote, cara grave sobre negro |
+- p216 | 76,54,295,276 | C7 | [Favalli] Primer plano de un soldado con casco y anteojos redondos, boca abierta, cara angulosa | ★
+- p216 | 695,54,1035,276 | C7 | Un hombre mayor toma de las solapas a otro; tanque y soldados detrás de una reja |
+- p216 | 435,518,790,745 | C7 | Perfil de un hombre de anteojos con la boca abierta, riendo o gritando, contra el cielo |
+- p216 | 800,518,1030,745 | C7 | Perfil de un joven de pelo claro y sweater a rayas, con la mirada baja y cansada |
+- p216 | 79,518,425,745 | C7 | Un hombre de saco forcejea con otro junto a un cañón; soldado de casco con fusil a la derecha |
+- p216 | 341,54,688,276 | C7 | Rostro risueño y arrugado de un hombre con casco y anteojos redondos, dientes apretados |
+- p217 | 877,66,1020,276 | C7 | Rostro de un hombre que grita, deslumbrado por un fogonazo blanco en estrella |
+- p217 | 500,285,640,489 | C7 | Retrato de un hombre de anteojos con fusil al hombro, cabeza gacha y boca apretada |
+- p217 | 296,66,526,276 | C7 | Primer plano de un hombre mayor de cejas espesas y pelo corto, mirada grave, fondo rayado |
+- p218 | 79,518,365,740 | C7 | Dos hombres tras un parapeto: uno de pelo blanco apunta el fusil, el otro de anteojos grita |
+- p218 | 769,518,1037,740 | C7 | [soldado] Rostro de un hombre con gorro y correaje que grita mirando arriba, muy iluminado | ★
+- p219 | 360,285,732,508 | C7 | Tres hombres con un tubo de bazooka: uno mayor, un joven y uno de anteojos |
+- p219 | 746,517,1024,740 | C7 | Perfil de un hombre mayor que grita en el borde derecho del cuadro |
+- p219 | 738,285,1023,508 | C7 | Primer plano del hombre de anteojos con el tubo del bazooka, fondo negro |
+- p219 | 60,50,366,278 | C7 | Soldado con casco y fusil a media figura, gritando; otro soldado y un jeep detrás |
+- p220 | 75,50,370,278 | C7 | Primer plano de un hombre mayor de pelo ondulado y cuello abierto, asustado, mirando arriba |
+- p220 | 375,50,720,278 | C7 | Hombre de perfil con fusil al hombro, entre dos gurbos |
+- p220 | 710,285,1035,508 | C7 | Dos rostros: un hombre mayor y un joven con el fusil, comentando el disparo |
+- p221 | 690,285,1030,508 | C7 | Tres hombres corren a la izquierda junto a una masa oscura rayada que ocupa la derecha |
+- p222 | 536,548,810,707 | C7 | Rostro de un hombre uniformado que grita desorientado, fondo rayado |
+- p222 | 820,547,1037,707 | C7 | Dos hombres con fusil, uno de anteojos y otro de pelo claro, en la penumbra |
+- p222 | 70,48,365,278 | C7 | [Franco] Rostro de un joven de pelo oscuro que grita con la boca muy abierta y el cuello abierto | ★
+- p223 | 498,518,1035,740 | C7 | Gran primer plano de un rostro asombrado, ojos muy abiertos y boca entreabierta |
+- p223 | 391,518,491,739 | C7 | Hombre joven de pie, de frente, con fusil colgado y correaje, fondo liso |
+- p223 | 66,300,360,508 | C7 | Primer plano del hombre de anteojos contra negro, boca apretada y entrecejo duro |
+- p223 | 470,50,700,278 | C7 | [Favalli] Primer plano del hombre de anteojos, cabeza muy grande, fondo negro | ★
+- p223 | 62,50,360,278 | C7 | Perfil del hombre de anteojos en primer plano y dos gurbos chicos peleando al fondo |
+- p223 | 66,518,370,740 | C7 | Tres hombres inclinados mirando fuera de cuadro y un cuarto de pie con cuchillo al cinto |
+- p224 | 261,285,582,508 | C7 | El hombre de anteojos sostiene a un viejo que se asoma; un joven detrás, todo en sombra |
+- p224 | 76,285,253,508 | C7 | Primer plano del mismo hombre de pelo claro contra fondo negro, boca tensa |
+- p224 | 405,517,667,740 | C7 | Tres rostros apretados: anteojos, joven y un mayor, cansados, fondo oscuro |
+- p224 | 801,50,1037,275 | C7 | Rostro de un hombre mayor de pelo claro y chaqueta de uniforme, luz dura, preocupado |
+- p226 | 433,518,820,737 | C7 | Silueta vuelta hacia cámara con el rostro blanco por la luz del fondo |
+- p226 | 727,288,1027,508 | C7 | [Juan] Rostro pálido y surcado, muy cerca, con la mitad iluminada | ★
+- p226 | 212,288,467,508 | C7 | Dos hombres con un farol redondo que los ilumina desde el centro de la viñeta |
+- p226 | 474,288,719,508 | C7 | Primer plano del hombre de anteojos iluminado por el farol redondo |
+- p226 | 412,50,694,275 | C7 | Tres rostros en la oscuridad: un joven, un hombre de anteojos y un mayor |
+- p227 | 62,48,1021,278 | C7 | Perfil grande de un hombre de mandíbula fuerte y pelo oscuro en el borde derecho |
+- p227 | 65,518,465,740 | C7 | Hombre corpulento de anteojos con la correa del fusil cruzada, encogido, fondo negro |
+- p227 | 430,285,648,508 | C7 | Un hombre de pie frente a la puerta abierta del vagón, linterna en mano |
+- p228 | 607,518,1037,740 | C7 | [Franco] Primer plano de un joven de pelo claro con la boca abierta de asombro | ★
+- p228 | 79,518,598,741 | C7 | Tres hombres caminando de perfil: uno con farol encendido y dos con fusiles |
+- p228 | 447,292,729,508 | C7 | Dos rostros frente a frente en la oscuridad del vagón, rayos de luz entre ellos |
+- p229 | 705,286,1023,509 | C7 | [Franco] Rostro de un joven de pelo claro, ojos fijos, contra fondo negro | ★
+- p229 | 193,519,657,741 | C7 | Tres hombres con fusiles en la penumbra: uno joven de pie, otro agachado |
+- p229 | 495,74,750,276 | C7 | Perfil del hombre de anteojos mirando el derrumbe, fondo rayado |
+- p229 | 64,286,329,509 | C7 | Primer plano del hombre de anteojos y bigote mirando hacia abajo, muy marcado |
+- p229 | 758,74,1021,276 | C7 | Dos rostros: un viejo de pelo blanco y un hombre de anteojos, serios |
+- p230 | 771,518,1036,740 | C7 | [Juan] Rostro de un hombre mayor de pelo blanco, muy surcado, contra negro | ★
+- p230 | 78,315,368,507 | C7 | Tres rostros en fila, joven, anteojos y mayor, decididos, fondo oscuro |
+- p231 | 774,286,1023,508 | C7 | Primer plano del hombre de anteojos contra negro, boca abierta a mitad de frase |
+- p231 | 64,285,213,507 | C7 | Perfil de un joven de pelo oscuro, ceño fruncido, fondo rayado |
+- p231 | 775,55,1021,276 | C7 | Hombre de anteojos gritando con un joven al lado, fondo negro |
+- p231 | 62,54,393,274 | C7 | [Juan] Primer plano de un hombre mayor de pelo claro y cara surcada, mirando hacia arriba | ★
+- p232 | 798,56,1035,277 | C7 | Dos cabezas asomadas en primer plano y, a la derecha, un caparazón pálido y curvo |
+- p232 | 76,54,282,275 | C7 | Dos hombres: el de anteojos gritando y un viejo de pelo claro detrás |
+- p232 | 474,519,1037,740 | C7 | Gran primer plano del hombre corpulento de anteojos y bigote, con una cabeza pálida detrás |
+- p232 | 400,285,737,508 | C7 | [Franco] Primer plano de un joven de pelo oscuro y mandíbula cuadrada, mirada cansada | ★
+- p232 | 77,285,391,508 | C7 | Dos hombres en penumbra: uno corpulento con anteojos y otro mayor, fondo rayado |
+- p232 | 745,287,1036,509 | C7 | Hombre con gorro iluminado de costado que grita; una silueta y una masa pálida curva |
+- p233 | 454,519,712,740 | C7 | Rostro pálido y surcado de un hombre de pelo blanco que sostiene un objeto chico |
+- p233 | 732,519,1022,740 | C7 | Primer plano del hombre de anteojos y bigote con la boca abierta |
+- p234 | 560,59,713,278 | C7 | Rostro de un hombre mayor de pelo claro, mirada perdida, luz dura desde arriba |
+- p234 | 565,336,1035,508 | C7 | Gran primer plano del rostro cadavérico de pelo blanco, muy surcado |
+- p234 | 400,336,540,508 | C7 | Rostro pálido y sonriente de pelo claro, con rayos de bala pasando cerca |
+- p234 | 358,59,504,277 | C7 | Figura entera de un hombre pálido de pelo blanco, túnica oscura sin mangas y cinturón |
+- p234 | 665,517,1026,737 | C7 | [el Mano] Primerísimo plano del rostro del hombre pálido: pelo blanco y arrugas | ★
+- p234 | 79,58,350,277 | C7 | Tres rostros: un viejo de pelo claro, un joven y un hombre de anteojos en primer plano |
+- p235 | 62,54,406,275 | C7 | El hombre pálido de pie, de frente y a lo lejos, entre las cabezas oscuras de los demás |
+- p235 | 64,337,193,508 | C7 | Perfil del hombre pálido con una sonrisa leve y rayos de luz |
+- p235 | 498,55,642,275 | C7 | Perfil alargado del hombre pálido de pelo blanco, boca fina, fondo rayado |
+- p235 | 316,315,614,508 | C7 | El hombre de anteojos grita mientras un fogonazo blanco estalla entre los dos |
+- p235 | 744,315,1023,508 | C7 | Rostro de un hombre mayor de pelo claro con cuello abierto que grita |
+- p235 | 66,518,330,740 | C7 | Perfil del hombre pálido, párpados bajos, fondo rayado claro |
+- p235 | 784,54,1022,275 | C7 | Tres cuartos del hombre pálido con la mano alzada junto al mentón |
+- p236 | 575,519,920,740 | C7 | El hombre de anteojos habla al oído de un joven iluminado, otra cara detrás |
+- p236 | 76,55,401,276 | C7 | Primer plano del hombre pálido de pelo blanco, cara surcada, fondo negro |
+- p236 | 77,285,383,508 | C7 | Primer plano en contrapicado del hombre corpulento de anteojos que grita |
+- p236 | 868,285,1025,508 | C7 | Rostro del hombre pálido con media sonrisa y arrugas profundas |
+- p236 | 488,285,708,508 | C7 | El hombre pálido de cuerpo entero sosteniendo un cable curvo junto a un panel oscuro |
+- p237 | 380,518,576,740 | C7 | Primer plano del hombre de anteojos con el pelo revuelto, fondo rayado |
+- p237 | 62,54,500,275 | C7 | [Favalli] Gran tres cuartos del hombre de anteojos y bigote, un objeto chico entre los dedos | ★
+- p237 | 64,285,305,508 | C7 | Perfil de un hombre de pelo claro contra un fondo de rayas |
+- p237 | 656,285,745,508 | C7 | Perfil del hombre pálido con el mentón levantado |
+- p237 | 641,54,1021,275 | C7 | Rostro de un hombre mayor de pelo claro, ojos hundidos, fondo iluminado |
+- p237 | 66,518,237,740 | C7 | Perfil del hombre pálido con la mano en el pecho |
+- p238 | 80,517,331,736 | C7 | Perfil del hombre de anteojos con los ojos muy abiertos, fondo rayado |
+- p238 | 455,516,1026,736 | C7 | Gran primer plano del hombre pálido con los ojos desorbitados y la boca caída |
+- p238 | 540,50,1035,282 | C7 | [el Mano] Perfil del hombre pálido de pelo blanco largo y oreja grande, muy surcado | ★
+- p238 | 353,316,574,506 | C7 | Tres rostros apretados: anteojos, joven y un mayor de pelo claro |
+- p238 | 583,316,791,506 | C7 | Primer plano del hombre de anteojos con bigote, ceño fruncido |
+- p238 | 80,58,432,276 | C7 | Tres cuartos del hombre de anteojos y bigote, muy sombreado, fondo rayado |
+- p239 | 403,286,678,506 | C7 | El hombre pálido de cuerpo entero en el túnel, hombros caídos, entre escombros |
+- p239 | 67,286,306,506 | C7 | Perfil de un hombre de pelo claro contra rayas, boca apretada |
+- p239 | 835,286,1013,506 | C7 | Tres cuartos del hombre pálido de cara surcada, mirando de costado |
+- p239 | 67,59,1013,277 | C7 | El hombre pálido de frente, cara enorme, dentro del túnel curvo y rayado |
+- p239 | 719,516,1014,705 | C7 | Primer plano del hombre de anteojos visto desde abajo, ceño brutal |
+- p240 | 791,59,1026,279 | C7 | [Favalli] Primer plano del hombre de anteojos con antiparras redondas y bigote | ★
+- p240 | 661,525,877,736 | C7 | El hombre pálido con las manos en la cabeza, boca abierta, junto a una silueta |
+- p240 | 80,288,499,509 | C7 | [el Mano] Gran primer plano del hombre pálido con los ojos desorbitados y la boca abierta | ★
+- p240 | 372,525,602,736 | C7 | Perfil del hombre de anteojos con la boca abierta, una cabeza chica detrás |
+- p240 | 80,525,364,736 | C7 | Tres cabezas de hombres en la sombra, una de perfil, apretadas |
+- p240 | 79,60,396,279 | C7 | El hombre pálido de perfil, brazo desnudo, junto a una palanca en la oscuridad |
+- p240 | 508,288,746,509 | C7 | El hombre pálido apoyado junto a un pilar de concreto y un armario técnico |
+- p241 | 500,54,686,277 | C7 | Favalli de tres cuartos, ceño fruncido y mirada dura, sobre fondo blanco rayado |
+- p241 | 745,285,1024,508 | C7 | Perfil de un hombre que grita con la boca desencajada; líneas radiales de tensión detrás |
+- p241 | 88,518,352,740 | C7 | Hombre de pelo blanco se cubre la cara con la mano; fondo rayado en diagonal, muy contrastado |
+- p241 | 504,285,745,508 | C7 | Retrato frontal de Favalli: anteojos gruesos, bigote, cejas alzadas, rayado vertical detrás |
+- p241 | 60,54,384,277 | C7 | Favalli de anteojos de marco grueso y bigote, boca abierta, señala con la mano |
+- p241 | 690,54,1015,277 | C7 | Hombre mayor de pelo blanco revuelto y camiseta oscura, encorvado sobre una baranda de listones |
+- p242 | 330,518,745,740 | C7 | Grupo de hombres en silueta: dos de pie con ropa oscura y uno caído a la izquierda |
+- p242 | 76,285,349,508 | C7 | Tres rostros alineados: Favalli de anteojos delante y dos jóvenes detrás, fondo rayado |
+- p242 | 755,518,1037,740 | C7 | Cara y mano del hombre moribundo en penumbra, casi todo negro y blanco |
+- p242 | 79,597,289,740 | C7 | [el Mano] Primer plano del rostro demacrado del hombre de pelo blanco, mejillas hundidas, fondo negro | ★
+- p243 | 721,59,1015,278 | C7 | El mismo rostro con los ojos bajos y gesto resignado, pelo blanco revuelto |
+- p243 | 67,59,326,278 | C7 | Hombre de pelo blanco y camiseta oscura en plano medio, rostro surcado, fondo rayado |
+- p243 | 357,559,585,737 | C7 | Un hombre de espaldas en penumbra mira a otro que se aleja; rayado de fondo |
+- p243 | 758,331,1014,507 | C7 | Favalli de anteojos con la cabeza gacha; detrás asoma un joven de pelo oscuro |
+- p243 | 66,559,348,737 | C7 | Dos siluetas de pie con correas cruzadas y fusil; un hombro oscuro en primer plano |
+- p243 | 384,59,712,277 | C7 | [el Mano] Retrato frontal del hombre de pelo blanco: ojos muy abiertos, cara huesuda y barba rala | ★
+- p244 | 78,285,447,505 | C7 | Rostro de un hombre de pelo claro con copos blancos alrededor, fondo negro |
+- p244 | 400,515,722,742 | C7 | Retrato de Favalli de anteojos, medio sonriendo con tristeza, sobre fondo blanco |
+- p244 | 78,517,383,737 | C7 | [el Mano] Perfil del hombre de pelo blanco contra un cielo negro con puntos blancos | ★
+- p244 | 76,56,431,275 | C7 | Dos figuras de espaldas: una clara de perfil y otra ancha con correa cruzada y cartuchera |
+- p245 | 62,287,499,508 | C7 | Tres hombres armados de frente: uno con fusil y tiradores, un mayor de sobretodo, un joven |
+- p245 | 509,287,795,508 | C7 | Primer plano frontal de Favalli de anteojos, ojos muy abiertos, fondo negro rayado |
+- p245 | 63,575,312,740 | C7 | Favalli de anteojos y de perfil, entrecerrando los ojos, rayado diagonal de fondo |
+- p245 | 832,575,1025,740 | C7 | Favalli de tres cuartos con un joven de pelo claro detrás, en penumbra |
+- p246 | 760,55,1036,276 | C7 | Hombre fornido de campera clara sobre sweater negro, de frente, con gesto duro |
+- p246 | 76,517,437,738 | C7 | Dos hombres frente a frente en la oscuridad: uno con la palma abierta, Favalli de perfil |
+- p246 | 721,518,1038,739 | C7 | Primer plano de Favalli de anteojos, frente amplia y gesto tenso, fondo negro |
+- p246 | 211,55,520,275 | C7 | [Juan] Retrato de un hombre de pelo oscuro corto y mandíbula fuerte, fondo de estrellas | ★
+- p246 | 76,376,307,507 | C7 | Hombre de pelo claro de perfil, ojos cerrados, gesticulando con la mano; fondo rayado |
+- p246 | 525,55,752,276 | C7 | Dos hombres armados caminan por un terreno oscuro y ondulado; uno con fusil al pecho |
+- p246 | 520,376,1036,508 | C7 | Favalli de anteojos discute de frente; un joven asoma la cabeza y un mayor gesticula de perfil |
+- p247 | 607,287,1015,505 | C7 | Tres rostros alineados mirando hacia arriba: pelo claro, Favalli de anteojos y un joven |
+- p247 | 62,515,552,738 | C7 | Tres hombres de pie entre escombros; Favalli con anteojos y el dedo en alto |
+- p247 | 465,58,608,277 | C7 | Joven de pelo oscuro señala hacia arriba con el brazo extendido, boca abierta |
+- p247 | 558,615,1013,736 | C7 | Dos hombres de perfil discuten; uno señala con el índice, polvo y pasto ralo alrededor |
+- p247 | 66,58,402,277 | C7 | Tres hombres de espaldas ante un cielo negro; Favalli gira la cara hacia cámara |
+- p248 | 345,515,660,740 | C7 | [Favalli] Primer plano de Favalli gritando con anteojos, cuello del sweater y horizonte raso detrás | ★
+- p248 | 391,329,753,508 | C7 | Gran primer plano frontal de Favalli: anteojos, bigote, cara ancha; ciudad baja detrás |
+- p248 | 762,329,1037,507 | C7 | Dos hombres de perfil frente a frente; Favalli habla con anteojos; escombros al fondo |
+- p249 | 612,286,1025,507 | C7 | Hombre de espaldas con rifle al hombro frente a una llanura gris de escombros |
+- p249 | 61,55,448,276 | C7 | Tres hombres conversan en la calle: un joven con fusil, Favalli señalando y un mayor de trinchera |
+- p249 | 63,286,468,507 | C7 | [Juan] Primer plano de un hombre de pelo claro y nariz fuerte; lomadas bajas detrás | ★
+- p249 | 710,55,1030,276 | C7 | Perfil de un hombre mayor de pelo corto claro, mano en el mentón, mirada baja |
+- p249 | 457,55,700,276 | C7 | Retrato de hombre de pelo claro y cara ancha con cuello de piel; fondo rayado |
+- p250 | 816,518,1038,739 | C7 | Primer plano frontal de Favalli con anteojos, gorra clara y gesto seco |
+- p250 | 579,518,780,739 | C7 | Tres hombres con fusiles avanzan en fila contra fondo oscuro, uno con el arma al hombro |
+- p250 | 880,75,1038,277 | C7 | Perfil de un hombre de pelo claro y nariz grande, gesto adusto, fondo negro |
+- p250 | 358,75,613,277 | C7 | Favalli de anteojos y camisa a rayas habla; un joven de pelo oscuro lo escucha |
+- p251 | 539,518,683,739 | C7 | Primerísimo plano de un rostro mayor arrugado, ojos muy abiertos |
+- p251 | 543,56,790,276 | C7 | Tres rostros apretados: un mayor de pelo claro, Favalli de anteojos y un joven |
+- p251 | 800,55,1024,276 | C7 | Perfil de un hombre de pelo corto y ralo, ojos oscuros, ramas secas detrás |
+- p251 | 812,286,1024,507 | C7 | Primer plano de un rostro demacrado de ojos hundidos, muy contrastado |
+- p251 | 323,518,530,739 | C7 | Rostro de pelo corto claro, mirada alerta, calle oscura detrás |
+- p252 | 75,55,300,265 | C7 | Dos figuras de espaldas en penumbra; una ancha con correa y fusil, otra con la mano alzada |
+- p252 | 306,55,500,265 | C7 | Rostro de un hombre de pelo corto y cara rellena, ojos muy abiertos, asombrado |
+- p252 | 755,285,1035,508 | C7 | Dos caras muy juntas: la muchacha de perfil y el hombre que la tranquiliza |
+- p252 | 300,265,760,508 | C7 | Brazos y fusil en diagonal sobre el forcejeo: manos que agarran muñecas y ropa |
+- p252 | 690,518,1037,740 | C7 | Rostro de la muchacha de pelo corto, grandes ojos, mano junto a la mejilla |
+- p252 | 755,55,1035,285 | C7 | [sin identificar] Muchacha de pelo corto con la cara de terror aplastada contra una pared oscura | ★
+- p253 | 513,74,658,276 | C7 | Muchacha de pie, manos al pecho, mirando de costado; edificio oscuro a la izquierda |
+- p253 | 62,530,340,742 | C7 | Dos caras en la penumbra: la muchacha de perfil y Favalli de anteojos, frente a frente |
+- p253 | 745,537,1025,740 | C7 | Grupo de espaldas en un zaguán: cabezas oscuras y una mujer de pelo claro |
+- p253 | 345,530,720,742 | C7 | [sin identificar] Gran retrato frontal de la muchacha: pelo oscuro corto, ojos abiertos, boca entreabierta | ★
+- p253 | 118,74,481,277 | C7 | Dos hombres armados hablan con una muchacha de pelo corto y un joven en la vereda |
+- p253 | 64,305,228,508 | C7 | Perfil de la muchacha de pelo corto ondulado, ojo grande, alto contraste |
+- p253 | 660,55,1035,277 | C7 | Perfil de Favalli con anteojos y bigote; edificio y árbol seco detrás |
+- p254 | 755,287,1038,508 | C7 | Enorme primer plano de Favalli con anteojos y bigote, en contrapicado |
+- p254 | 74,56,420,276 | C7 | [sin identificar] Gran primer plano de la muchacha de pelo corto; ramas secas y casa detrás | ★
+- p254 | 430,56,700,277 | C7 | Favalli de anteojos y un joven escuchan a la muchacha, que aparece de espaldas |
+- p254 | 85,287,250,508 | C7 | Rostro de la muchacha de pelo claro, boca abierta, mirando hacia arriba |
+- p254 | 337,525,469,729 | C7 | Rostro de la muchacha de tres cuartos, mirada baja y triste |
+- p254 | 618,520,1038,740 | C7 | [Franco] Franco, joven de mandíbula fuerte y rastrojo, con el fusil al hombro y copos en el cuello | ★
+- p255 | 62,290,250,508 | C7 | Rostro de la muchacha con los ojos bajos, pelo claro, fondo blanco |
+- p255 | 62,515,410,740 | C7 | Favalli de perfil y un joven de frente junto a una ventana; luz de interiores |
+- p255 | 395,290,700,508 | C7 | Favalli de perfil con anteojos, un joven de frente con correa al pecho y la muchacha de perfil |
+- p255 | 415,515,700,740 | C7 | Tres cabezas de perfil apiladas y Favalli de frente, todos apretados |
+- p255 | 529,75,1024,276 | C7 | Favalli con anteojos y escopeta al hombro junto a dos jóvenes; ramas secas al fondo |
+- p255 | 62,55,300,277 | C7 | [Juan] Primer plano de un hombre de pelo claro y cara ancha, mirada fija al frente | ★
+- p256 | 76,330,471,508 | C7 | Cuatro personas en la calle: la muchacha, un joven armado, un mayor y Favalli de anteojos |
+- p256 | 470,330,701,508 | C7 | Primer plano de Favalli con anteojos, mirando hacia abajo, árbol seco detrás |
+- p256 | 762,330,1037,507 | C7 | Rostro de un hombre de pelo corto claro y cara flaca, puerta oscura detrás |
+- p256 | 456,536,677,739 | C7 | Perfiles de la muchacha y un joven de pelo oscuro frente a una pared rayada |
+- p256 | 76,77,371,277 | C7 | La muchacha de tres cuartos, gesto preocupado; árbol seco y casa detrás |
+- p257 | 392,518,830,739 | C7 | Cuatro cabezas alineadas, dos frontales y dos de perfil, en la noche |
+- p257 | 63,290,500,508 | C7 | Cuatro personas de pie en la calle: la muchacha y tres hombres armados, uno con botas |
+- p257 | 708,317,1025,507 | C7 | El joven armado sujeta la muñeca de la muchacha; se miran de perfil, árbol seco detrás |
+- p257 | 587,86,737,276 | C7 | Retrato frontal de la muchacha, grandes ojos, boca entreabierta |
+- p257 | 506,317,688,507 | C7 | Tres cabezas: un joven con correa, Favalli de anteojos y la muchacha de espaldas |
+- p257 | 65,518,384,739 | C7 | La muchacha y el joven armado frente a frente, ella con la mano abierta |
+- p257 | 750,86,1035,276 | C7 | El hombre fornido toma del brazo a la muchacha; reja y árbol seco al fondo |
+- p258 | 755,285,1038,508 | C7 | [Favalli] Gran primer plano de Favalli con anteojos y bigote, en contrapicado, gesto seco | ★
+- p258 | 74,515,395,742 | C7 | Tres rostros: un mayor de pelo corto, un joven y Favalli de anteojos, muy juntos |
+- p258 | 905,515,1035,742 | C7 | Rostro de un joven de pelo oscuro que grita algo, boca abierta |
+- p258 | 74,55,412,507 | C7 | Grupo en la calle: la muchacha de espaldas, botas y pantalón oscuro, y tres hombres |
+- p258 | 728,56,1036,270 | C7 | Retrato de un joven de pelo oscuro y mandíbula fuerte, mirando de costado |
+- p259 | 514,55,670,275 | C7 | Franco, joven de pelo oscuro, avanza con el fusil en la mano, cuerpo entero |
+- p259 | 747,519,1025,740 | C7 | Tres hombres en un zaguán: un mayor de pelo claro, un joven con fusil y Favalli |
+- p260 | 76,287,331,507 | C7 | Primer plano de Favalli con anteojos y bigote, ceño fruncido, fondo rayado |
+- p260 | 77,536,253,739 | C7 | Favalli de perfil con anteojos, mirando por encima del hombro, fondo oscuro |
+- p261 | 419,330,689,507 | C7 | Dos hombres armados se alejan encorvados sobre un terreno claro, casi siluetas |
+- p261 | 343,55,569,276 | C7 | Favalli de anteojos al frente; un joven asomado detrás, vidriera con cartel |
+- p261 | 579,55,802,275 | C7 | Rostro de un hombre mayor de pelo corto claro, mirada cansada, fondo oscuro |
+- p262 | 732,56,1036,276 | C7 | [Favalli] Primer plano de Favalli con anteojos, rastrojo y gesto de alarma; rayado radial | ★
+- p262 | 74,56,404,276 | C7 | Tres rostros atentos; atrás una fachada con arco, vidriera y banda oscura |
+- p263 | 773,330,1023,508 | C7 | Rostro de un hombre mayor de pelo claro, gesto angustiado, fondo rayado |
+- p263 | 62,560,226,740 | C7 | Primer plano de Favalli con anteojos, rastrojo y boca abierta; nubes rayadas detrás |
+- p263 | 430,55,700,277 | C7 | Favalli de anteojos, cabeza baja y de perfil, contra el asfalto y una calle |
+- p263 | 770,555,1035,742 | C7 | Un joven de perfil con correa de fusil mira hacia arriba; Favalli de anteojos al lado |
+- p264 | 75,56,338,276 | C7 | [Juan] Gran retrato frontal de un hombre de pelo muy corto y cara fuerte, fondo negro | ★
+- p264 | 808,342,1036,507 | C7 | Gran primer plano de Favalli con anteojos y bigote, gesto preocupado, fondo blanco |
+- p264 | 76,524,354,739 | C7 | Favalli de perfil con anteojos, mirando hacia abajo, en penumbra |
+- p264 | 196,342,452,508 | C7 | Primer plano de Favalli con anteojos, mirando hacia abajo; rayado y sombra |
+- p264 | 560,56,719,276 | C7 | Tres rostros apretados: un joven con fusil, un mayor y Favalli de anteojos |
+- p264 | 460,342,702,507 | C7 | Dos hombres de perfil se miran: uno de pelo claro y Favalli de anteojos |
+- p265 | 61,285,519,507 | C7 | [Franco] Primer plano del joven de mandíbula cuadrada y pelo corto, mirada cansada y cuello del traje subido | ★
+- p265 | 530,286,690,506 | C7 | [Juan] Rostro de hombre mayor, pelo blanco ralo y piel surcada, mirando de reojo con dureza | ★
+- p265 | 465,55,669,275 | C7 | Dos cabezas juntas en la oscuridad: un joven de pelo espeso y un calvo de cara ancha, mirando fuera de cuadro |
+- p267 | 165,518,436,739 | C7 | [Juan] Viejo de pelo blanco, cuello grueso y gesto dolido, mirando hacia abajo con la boca abierta | ★
+- p267 | 84,56,538,276 | C7 | Tres cabezas asomadas sobre el pretil: un joven de pelo duro, un calvo angustiado y un hombre de anteojos |
+- p267 | 790,518,1025,739 | C7 | Hombre mayor de pelo claro de perfil, cara alzada, señalando algo fuera de cuadro |
+- p267 | 505,341,720,507 | C7 | Favalli frontal, anteojos redondos, barba corta y gesto adusto sobre fondo negro |
+- p267 | 575,518,780,739 | C7 | Favalli con anteojos, mano en la boca y cigarrillo, mirada fija y preocupada |
+- p267 | 62,341,290,507 | C7 | Favalli de perfil con anteojos de marco grueso y cigarrillo, cara iluminada de costado |
+- p268 | 412,518,678,739 | C7 | Tres hombres de frente, sucios y tensos, mirando hacia abajo: un joven, un viejo de pelo blanco y Favalli |
+- p268 | 800,55,1036,276 | C7 | Favalli en primer plano con anteojos y capucha, alarmado, sobre fondo negro rayado |
+- p268 | 474,286,710,507 | C7 | El viejo de pelo blanco, decidido, grita con la cara tensa y las manos apretadas |
+- p269 | 535,355,842,507 | C7 | Tres hombres juntos: viejo con barba, hombre grueso de bigote y anteojos, joven de perfil; una cúpula blanca detrás |
+- p269 | 850,355,1018,508 | C7 | Favalli con anteojos, barba de varios días y gesto de fastidio, sobre fondo rayado |
+- p269 | 62,57,385,277 | C7 | Favalli de tres cuartos con anteojos gruesos y bigote, el cigarrillo en la boca, fondo de rayas |
+- p269 | 300,355,527,508 | C7 | Primer plano frontal del joven de mandíbula fuerte y pelo ralo, gritando con los ojos duros |
+- p269 | 63,355,292,508 | C7 | Dos cabezas de perfil frente a frente: el viejo de pelo blanco y Favalli con anteojos, discutiendo |
+- p270 | 332,56,790,275 | C7 | Tres hombres de espaldas mirando al cielo: Favalli con anteojos a la izquierda y el viejo de pelo blanco a la derecha |
+- p270 | 377,286,589,508 | C7 | [Franco] El joven grita "¡ALLÍ!" con la cara transpirada y el pelo revuelto sobre fondo negro | ★
+- p270 | 772,518,1037,739 | C7 | Juan y Favalli, caras juntas y desencajadas, mirando al cielo con la boca abierta |
+- p271 | 370,86,664,275 | C7 | Favalli de tres cuartos con anteojos, hablando rápido, un parapeto oscuro y una torre detrás |
+- p271 | 513,292,655,506 | C7 | Favalli con anteojos, alerta, la boca abierta como si escuchara algo lejano |
+- p271 | 63,518,383,739 | C7 | Favalli grita con los anteojos brillantes y la boca abierta, sobre un fondo de rayos |
+- p272 | 318,286,656,507 | C7 | Tres hombres apretados tras el pretil, caras sucias y miradas bajas, humo detrás |
+- p273 | 63,525,423,739 | C7 | El joven apoyado en el pretil, cansado y con la ropa clara, mirando de costado |
+- p273 | 371,287,666,508 | C7 | Dos caras juntas: el viejo de pelo blanco y Favalli con anteojos, mirando hacia arriba |
+- p273 | 390,56,611,275 | C7 | Favalli frontal con anteojos y bigote, muy serio, sobre fondo negro |
+- p273 | 62,56,382,275 | C7 | Tres hombres en el pretil: un grueso de perfil, el joven con correa cruzada y Favalli con anteojos |
+- p273 | 431,525,683,739 | C7 | El muchacho rubio y flaco de camiseta, de espaldas, con el brazo levantado frente a un fondo rayado |
+- p274 | 75,550,318,740 | C7 | [Juan] Cara de un hombre de pelo corto y ralo, dedos en la boca, gesto de no creer lo que ve | ★
+- p274 | 700,288,1037,509 | C7 | Favalli con la mano en alto, angustiado, y un viejo de pelo blanco a su lado |
+- p274 | 810,57,1037,278 | C7 | Dos hombres de perfil frente a frente: uno barbudo y Favalli con anteojos, ante una celosía |
+- p274 | 757,550,1038,740 | C7 | Favalli con anteojos, mano cerca de la boca, explicando algo con la mirada baja |
+- p274 | 75,288,342,508 | C7 | Favalli con anteojos asomado al pretil habla con un joven agazapado que sostiene un rifle |
+- p274 | 630,57,800,278 | C7 | Favalli de perfil con anteojos, preocupado, sobre fondo oscuro |
+- p275 | 466,536,774,738 | C7 | Tres hombres: viejo de saco claro, Favalli tomando del brazo a un joven de mono y correas |
+- p275 | 784,536,1025,738 | C7 | [Juan] Primer plano del joven de mono y correas, cara sucia y mirada baja, sin esperanza | ★
+- p275 | 752,287,1024,507 | C7 | Joven de pelo oscuro y mandíbula fuerte de perfil, cansado, mirando de costado |
+- p275 | 391,56,767,277 | C7 | Tres hombres en la azotea: un joven de espaldas con correaje, un hombre de saco y Favalli que gesticula |
+- p275 | 62,57,383,277 | C7 | [Favalli] Favalli de perfil con anteojos de carey y barba, la cara rayada por el lápiz, fondo negro | ★
+- p275 | 63,287,380,507 | C7 | Favalli de perfil con anteojos; la baranda del balcón y un edificio oscuro detrás |
+- p276 | 76,518,300,738 | C7 | Favalli de frente con anteojos, la frente apoyada, mirada de soslayo y boca apretada |
+- p276 | 770,518,1037,739 | C7 | Dos caras: el joven por detrás y el viejo de pelo blanco, que mira de reojo con el ceño fruncido |
+- p276 | 344,56,890,277 | C7 | Tres caras: Favalli con anteojos, el joven de camisa rota y el viejo de pelo blanco, todos alertas |
+- p277 | 755,287,1024,508 | C7 | [Juan] Gran primer plano de un joven de pelo corto y mentón fuerte, los ojos muy abiertos | ★
+- p277 | 688,57,1024,277 | C7 | Favalli frontal con anteojos, la cara transpirada, mirando algo con horror |
+- p277 | 64,287,349,507 | C7 | [Franco] Hombre con camisa arremangada y fusil terciado, decidido, sobre fondo rayado | ★
+- p277 | 64,519,255,721 | C7 | Favalli con anteojos, tan cerca que solo se ve la cara, furioso y desafiante |
+- p277 | 382,287,745,507 | C7 | Tres hombres: uno de espaldas, un joven con rifle al centro y Favalli de perfil; todos armados |
+- p278 | 404,287,753,508 | C7 | Tres hombres de pie con armas, uno de perfil sujetando el fusil y otro hablando con las manos |
+- p278 | 763,287,1036,508 | C7 | Favalli con anteojos, la cara pegada al lente, fondo de trama gris |
+- p278 | 75,56,465,277 | C7 | Hombre de pelo entrecano asomado al pretil, pensativo, un objeto pequeño en la mano |
+- p279 | 63,377,270,508 | C7 | Viejo de pelo blanco de perfil, tranquilo; al fondo un hombre con fusil camina por el borde |
+- p279 | 354,518,694,739 | C7 | [hombre-robot] Gran primer plano del hombre-robot apoyando la cara en la mano, mirada muerta | ★
+- p279 | 392,377,821,509 | C7 | Primer plano de un hombre de pelo gris con la boca entreabierta; dos caras vacías detrás |
+- p279 | 855,377,1024,509 | C7 | [hombre-robot] Rostro de hombre-robot: pelo gris, mejillas hundidas, ojos sin fondo, cuello de abrigo subido | ★
+- p280 | 77,285,285,504 | C7 | Viejo de pelo blanco con camisa a rayas, un disco redondo en la mano, cara de pánico |
+- p280 | 88,519,416,739 | C7 | Cara de un hombre baqueteado, pelo corto, que mira de reojo con la boca apretada |
+- p280 | 300,285,620,506 | C7 | [hombre-robot] Primer plano brutal de una cara golpeada y rayada, ojos hundidos, sin fondo | ★
+- p280 | 830,518,1037,739 | C7 | Rostro de un hombre-robot con los ojos sin expresión y la boca abierta |
+- p281 | 63,288,418,509 | C7 | [Franco] Hombre de cara dura con el fusil listo, rodeado de rayos blancos, gesto de furia | ★
+- p282 | 74,57,314,277 | C7 | Favalli grita "¡A LA BALUSTRADA!" con los anteojos torcidos y la cara rayada |
+- p282 | 523,519,731,740 | C7 | Viejo de pelo blanco de perfil, boca abierta gritando, fondo rayado |
+- p282 | 750,519,1037,739 | C7 | Tres caras en fila: joven, viejo de pelo blanco y Favalli con anteojos, todas mirando al suelo |
+- p282 | 691,56,1035,277 | C7 | Dos caras de perfil muy juntas, casi superpuestas, mirando hacia arriba |
+- p282 | 695,287,1035,508 | C7 | Favalli inclinado sobre el pretil con el fusil, mueca de rabia y anteojos |
+- p282 | 76,519,404,739 | C7 | Hombre de mono con correajes y cuchillo al cinto, mirando de costado con dureza |
+- p283 | 62,56,529,277 | C7 | Dos hombres de espaldas asomados al pretil; abajo, en el patio, una pila de cuerpos caídos |
+- p283 | 856,549,1024,739 | C7 | Favalli con anteojos, la boca abierta gritando, fondo rayado |
+- p283 | 62,288,256,508 | C7 | Primer plano del joven disparando con el fusil, cara de furia y polvo en la piel |
+- p284 | 807,77,1037,277 | C7 | Dos hombres de espaldas con bazooka y rifle, mirando hacia la plaza |
+- p284 | 810,519,1036,740 | C7 | Favalli con el fusil ametralladora, cara grave, sudor y polvo |
+- p285 | 782,287,1025,508 | C7 | Dos caras de perfil tras el tubo de la bazooka, decepcionadas |
+- p285 | 574,57,750,277 | C7 | [Favalli] Favalli con una granada en cada mano, el cigarrillo en la boca y la mirada encendida | ★
+- p286 | 77,519,319,733 | C7 | Dos jóvenes mirando hacia arriba y un rostro mayor de pelo claro, con estrellas de fondo |
+- p286 | 646,56,1036,276 | C7 | Dos caras: un hombre desencajado y Favalli con anteojos, entendiendo algo terrible |
+- p286 | 397,56,637,277 | C7 | Favalli de perfil con anteojos en primer plano; tres hombres diminutos en la azotea al fondo |
+- p286 | 329,518,636,733 | C7 | Viejo de pelo blanco desmelenado, boca abierta y ojos redondos, entre formas oscuras |
+- p287 | 63,287,322,508 | C7 | Dos hombres con el cielo negro estrellado detrás, uno con rifle al hombro |
+- p287 | 625,56,1023,276 | C7 | Tres caras en fila: Favalli, el joven y un hombre mayor con gorra de visera, de perfil |
+- p287 | 332,287,551,508 | C7 | Favalli de perfil con anteojos, hablando, fondo rayado |
+- p287 | 436,56,616,277 | C7 | Gran primer plano del joven de mandíbula fuerte y pelo corto, mirada de cansancio |
+- p287 | 237,537,563,739 | C7 | Favalli con anteojos pasmado y dos hombres detrás, todos mirando algo arriba |
+- p288 | 556,519,1031,740 | C7 | [Favalli] Primer plano enorme de Favalli con anteojos, cigarillo en la boca, mirada baja | ★
+- p288 | 78,331,329,508 | C7 | Cuatro hombres de pie: uno señala al cielo; Favalli a la derecha con anteojos |
+- p288 | 77,86,378,278 | C7 | Favalli con anteojos y un viejo de pelo blanco, ambos serios, contra una pared de tablas |
+- p288 | 78,519,374,740 | C7 | Perfil del viejo de pelo blanco con el ceño fruncido, cielo rayado detrás |
+- p288 | 628,333,727,509 | C7 | Dos caras de perfil, joven y mayor, hablando con gravedad |
+- p288 | 387,87,600,278 | C7 | Rostro de un hombre de pelo blanco, resignado, sobre fondo negro |
+- p289 | 500,55,775,270 | C7 | Tres hombres avanzan hacia cámara: adelante uno corpulento de campera clara, detrás un joven de sweater oscuro con correa al hombro |
+- p289 | 63,285,387,500 | C7 | [Juan] Rostro de hombre mayor de pelo claro y cara muy surcada; detrás asoma un joven de barba rala | ★
+- p290 | 734,315,1036,506 | C7 | [tres hombres sin identificar] Tres hombres de frente: un calvo de pelo blanco, un flaco de pelo hirsuto y un joven de saco a cuadros | ★
+- p290 | 350,515,645,745 | C7 | Hombre de pelo blanco y brazos abiertos recibe el tirón del lazo, contra fondo rayado |
+- p291 | 574,294,1023,509 | C7 | Reencuentro: el hombre abraza al chico; un joven de anteojos y otro hombre miran, siluetas atrás |
+- p291 | 63,294,331,507 | C7 | [Juan] Primer plano de hombre mayor de pelo blanco, cara arrugada y sonrisa cansada | ★
+- p291 | 774,538,1025,740 | C7 | Cara de un joven de pelo corto y barba rala que mira de costado, ceño apretado |
+- p291 | 194,538,467,740 | C7 | Cara del chico Pablo, pelo oscuro revuelto, ojos muy abiertos y boca chica |
+- p291 | 651,56,1024,277 | C7 | [Pablo] Cara de un chico de pelo oscuro que grita, encajada entre espaldas de hombres de abrigo | ★
+- p291 | 339,294,565,508 | C7 | El hombre arrodillado toma de los hombros al chico; ambos de perfil, frente a frente |
+- p291 | 474,538,755,740 | C7 | [Favalli] Primer plano de un hombre de anteojos redondos gruesos y sweater de cuello alto, gesto duro | ★
+- p292 | 411,87,723,277 | C7 | [Mosca] Hombre con casco de cuero, anteojos y bufanda levanta una botella y grita entre siluetas | ★
+- p292 | 77,87,402,277 | C7 | Cuatro hombres alineados de frente: joven de pelo claro, calvo, hombre de anteojos y el chico moreno |
+- p292 | 731,87,1039,277 | C7 | Vecinos de frente: calvo con bufanda, chico de sweater oscuro y un hombre de anteojos |
+- p293 | 732,307,1024,508 | C7 | Cara de un joven de pelo oscuro y rasgos angulosos, media sombra y fondo tramado |
+- p293 | 800,75,1025,278 | C7 | [Juan] Primer plano de hombre de mandíbula cuadrada, pelo corto y campera clara, mirada fija | ★
+- p293 | 254,549,383,739 | C7 | Hombre de espaldas, pelo claro y chaleco oscuro sobre camisa, mirando el descampado nevado |
+- p293 | 391,549,656,739 | C7 | Joven inclinado sobre el manubrio de su bicicleta, cara grande y seria, hablando |
+- p294 | 831,287,1037,507 | C7 | Primer plano de hombre mayor de pelo blanco corto y cara cuadrada, gesto severo |
+- p294 | 460,518,700,739 | C7 | [Favalli] Primer plano de un hombre de anteojos negros gruesos que grita con la boca muy abierta | ★
+- p294 | 366,57,598,277 | C7 | [Juan] Retrato de hombre mayor de pelo blanco y barba rala, de tres cuartos, mirando de costado | ★
+- p294 | 77,518,455,739 | C7 | Tres hombres vistos de abajo: joven de cuello alto, mayor de pelo blanco y otro que señala el cielo |
+- p295 | 62,286,455,499 | C7 | Nuca rapada en primer plano entre matas de pasto seco y un hombre que asoma a la derecha |
+- p295 | 63,55,498,275 | C7 | Hombre de anteojos y pelo revuelto agazapado en el pasto alto, una mano extendida, rifle al hombro |
+- p295 | 508,55,788,276 | C7 | Hombre tumbado boca abajo en el pasto: solo la cara girada hacia cámara, ojos desorbitados |
+- p295 | 685,517,1025,738 | C7 | Hombre acostado de costado en el pasto, la mano junto a la cara, cara de agotamiento |
+- p296 | 634,519,1037,740 | C7 | Primer plano de un hombre de cara cuadrada, pelo claro corto y gesto desencajado |
+- p296 | 426,288,565,507 | C7 | [Mosca] Hombre con casco de cuero y anteojos, botella en mano y cara de borracho, muy cerca de cámara | ★
+- p296 | 75,57,297,269 | C7 | Hombre tumbado en la maleza con un objeto redondo en la mano (¿anteojo?) y una rama seca al lado |
+- p297 | 192,519,489,739 | C7 | Rostro de hombre mayor de pelo blanco asomado, puño apoyado; caras del chofer y del chico atrás |
+- p297 | 369,57,635,277 | C7 | Chico de pelo oscuro señala con el brazo extendido un camión lejano sobre el camino |
+- p298 | 413,55,667,276 | C7 | Dos hombres en la cabina: uno de anteojos y barba y el chofer joven de pelo claro, tensos |
+- p298 | 485,286,700,507 | C7 | En la cabina, el mayor de pelo blanco grita y el chico se aferra al tablero |
+- p298 | 710,287,1037,508 | C7 | De espaldas, dos hombres miran por la abertura trasera la mole del gurbo; una moto los sigue lejos |
+- p298 | 76,285,255,505 | C7 | [Juan] Primer plano del conductor calvo de cara grande, boca abierta y gritando | ★
+- p299 | 294,571,653,741 | C7 | Tres hombres caminan por la nieve agrietada: uno con rifle y otro con cartuchera cruzada |
+- p299 | 64,317,220,507 | C7 | Primer plano de un hombre de pelo blanco corto, campera remendada y gesto duro |
+- p299 | 661,571,895,740 | C7 | El hombre del casco de cuero apoyado en un joven de sweater, agotado, con chispas dibujadas |
+- p299 | 64,571,285,740 | C7 | Perfil de un hombre de nariz grande y pelo corto, hablando hacia la izquierda |
+- p299 | 831,89,1023,277 | C7 | Hombre mayor arrastrándose en cuatro patas, pelo revuelto y cara de aturdido |
+- p300 | 75,306,294,508 | C7 | El hombre del casco de cuero y anteojos en la ventanilla, rayos dibujados alrededor |
+- p300 | 725,306,1037,508 | C7 | Dentro del auto: perfil del hombre mayor a la izquierda y la cara del chico a la derecha |
+- p300 | 811,525,1038,739 | C7 | El hombre del casco de cuero y el chico de perfil dentro del auto, hablando |
+- p301 | 374,287,575,507 | C7 | Chofer joven de pelo claro y cara angulosa, las manos en el volante, mirando de reojo |
+- p301 | 350,56,526,276 | C7 | Primer plano del hombre del casco de cuero y anteojos, boca abierta y cara de alarma |
+- p301 | 772,518,1024,739 | C7 | [Pablo] Cara del chico de pelo oscuro revuelto, sonriendo con los ojos brillantes | ★
+- p301 | 63,517,328,738 | C7 | Primer plano del hombre mayor de pelo blanco y cara dura, mirada fija al frente |
+- p302 | 313,287,546,508 | C7 | Perfil del mismo hombre gritando, boca muy abierta, líneas de velocidad atrás |
+- p302 | 75,287,306,508 | C7 | Primer plano del hombre mayor gritando con la mano apoyada en la ventanilla |
+- p302 | 551,518,734,739 | C7 | Cara del hombre mayor gritando un nombre, ojos abiertos al máximo y pelo blanco erizado |
+- p303 | 658,286,1024,507 | C7 | El hombre agachado en el portón sostiene un cuerpo, contra la sombra enorme de un gurbo |
+- p303 | 443,286,651,507 | C7 | Primer plano del hombre de anteojos y barba, cara de derrota y cansancio |
+- p303 | 62,287,398,507 | C7 | Dos hombres armados sujetan a un tercero que se resiste, todos en pleno movimiento |
+- p303 | 367,518,621,739 | C7 | Rostro del hombre mayor destrozado, ojos húmedos, fondo de grietas y chispas |
+- p304 | 395,519,603,739 | C7 | El hombre de anteojos y gorra señala con el dedo; otro más joven se acerca |
+- p304 | 74,56,470,277 | C7 | Cuatro hombres disparan sus rifles de pie, en abanico, con líneas de velocidad detrás |
+- p305 | 461,64,640,277 | C7 | [Juan] Cara frontal del hombre mayor, mirada intensa y pelo blanco, sobre fondo tramado | ★
+- p305 | 645,64,1035,277 | C7 | Siluetas de pie a la izquierda y grupo agachado alrededor de la mujer desmayada |
+- p305 | 326,346,632,509 | C7 | Siluetas de un grupo que camina en fila llevando un cuerpo, frente a ventanas con rejas |
+- p305 | 695,518,1025,739 | C7 | Perfil del hombre mayor contra fondo negro, la luz marcándole las arrugas |
+- p305 | 724,345,1025,509 | C7 | Retrato del hombre mayor en sombras, labios apretados, con un objeto redondo oscuro al lado |
+- p305 | 62,64,227,278 | C7 | Hombre arrodillado que abraza el cuerpo de una mujer y una nena en el jardín, cabeza gacha |
+- p306 | 75,377,639,507 | C7 | La mujer joven de pelo ondulado y la nena sentadas juntas, caras de alivio |
+- p306 | 200,56,540,276 | C7 | Retrato del hombre mayor sonriendo, camisa clara y respaldo de silla detrás |
+- p306 | 375,549,687,739 | C7 | [Martita] Primer plano de la nena de pelo liso y largo, sweater a rayas y ojos grandes | ★
+- p306 | 647,377,1036,508 | C7 | [Elena y Martita] Primer plano de la mujer joven y la nena al lado, ambas mirando de frente | ★
+- p307 | 710,341,1024,508 | C7 | Dos cabezas en silueta de perfil, frente a frente, recortadas sobre blanco |
+- p307 | 63,341,377,507 | C7 | Joven de camisa a cuadros y pelo corto, de frente, apoyado en una pared clara |
+- p307 | 419,518,732,740 | C7 | Primer plano del hombre de anteojos negros y barba, cara muy marcada y gesto seco |
+- p307 | 62,56,383,275 | C7 | Primer plano de un hombre de anteojos negros gruesos y barba corta, cara seria |
+- p307 | 697,55,1024,276 | C7 | [Mosca] El hombre del casco de cuero y anteojos escribe en un cuaderno con lápiz, todo encorvado | ★
+- p307 | 384,341,702,507 | C7 | Cuatro caras juntas: la joven de pelo claro, la nena, el mayor de pelo blanco y el de anteojos |
+- p308 | 76,518,300,738 | C7 | Perfil del hombre mayor de pelo blanco mirando a la derecha, fondo tramado |
+- p308 | 75,318,230,507 | C7 | El hombre del casco de cuero y anteojos en la penumbra, agarrado a un rifle (?) |
+- p308 | 711,318,1028,508 | C7 | Rostro del hombre mayor de pelo blanco con sombras duras, mirada de cansancio |
+- p308 | 474,318,704,507 | C7 | Dos caras en la ventanilla del auto: el de anteojos y bigote y el mayor de pelo blanco |
+- p309 | 837,555,1024,740 | C7 | Hombre con gorra y campera camina encorvado hacia una ventana iluminada |
+- p309 | 313,555,532,740 | C7 | Perfil del mismo hombre de anteojos hablando, la mano cerca de la cara |
+- p309 | 64,555,306,740 | C7 | [Favalli] Primer plano de un hombre de anteojos gruesos, bigote y cara ancha, gesto preocupado | ★
+- p310 | 522,55,764,276 | C7 | Cara del hombre de anteojos gritando, desencajado y con la boca abierta |
+- p310 | 348,517,550,739 | C7 | Primer plano del hombre de pelo blanco con gesto seco y mirada fija |
+- p310 | 771,56,1037,277 | C7 | [Elena] Rostro de la mujer que grita, pelo claro ondulado, ojos enormes y manos en la cara | ★
+- p310 | 75,340,370,507 | C7 | Dos hombres de frente con cara de espanto: el mayor de pelo blanco y el de anteojos y bigote |
+- p311 | 246,287,407,508 | C7 | [Ramírez] Cara de un hombre mayor de pelo claro, aterrada, encuadrada por el marco de la ventana | ★
+- p311 | 63,518,476,720 | C7 | Hombre de pelo blanco cierra la ventana con las dos manos, junto a la cortina y el marco de madera |
+- p311 | 472,60,718,277 | C7 | Hombre mayor de pelo blanco cruza la nevada con los brazos por delante, encorvado |
+- p312 | 335,518,580,739 | C7 | Primer plano del hombre de anteojos y barba, cara cansada y seria |
+- p312 | 850,518,1035,739 | C7 | Rostro del hombre mayor de pelo blanco, ojos caídos y gesto de agotamiento |
+- p312 | 75,56,410,276 | C7 | [Favalli] Primer plano del hombre de anteojos gruesos y bigote, pelo corto, delante de una persiana veneciana | ★
+- p312 | 76,518,330,739 | C7 | Dos hombres muy cerca: el mayor de perfil y el joven de frente, hablando en voz baja |
+- p313 | 628,55,1040,280 | C7 | [Eternauta] Primer plano frontal de un anciano calvo y muy surcado, ojos hundidos, sobre fondo negro | ★
+- p313 | 288,518,538,738 | C7 | Rostro alarmado de un anciano calvo que mira hacia arriba; dos hombres más chicos por detrás |
+- p313 | 761,287,1023,509 | C7 | La mujer de remera rayada sonríe de perfil junto a la cortina rayada mientras el joven habla |
+- p313 | 550,518,1023,739 | C7 | Cinco caras alarmadas mirando al techo: un hombre de barba y anteojos, una rubia y un calvo |
+- p313 | 63,518,202,738 | C7 | Silueta negra de una muchacha de pelo ondeado con la cabeza gacha, recortada contra el blanco |
+- p313 | 433,287,753,509 | C7 | Uno joven inclinado sobre la mesa, un calvo y otro mayor conversando con gestos |
+- p313 | 63,286,424,508 | C7 | Perfil del mismo anciano, barba rala y cuello de abrigo, mirando hacia abajo en la sombra |
+- p314 | 76,305,539,507 | C7 | Dos cabezas grandes: un hombre de anteojos redondos y cuello alto y un joven de sweater tejido |
+- p314 | 75,56,327,277 | C7 | Tres rostros apretados y en contrapicado: un hombre de anteojos y barba, un calvo y una joven rubia |
+- p314 | 627,56,1035,276 | C7 | Grupo abrazado en la oscuridad: un calvo de pelo blanco, una rubia y una nena envuelta en manta rayada |
+- p315 | 63,518,350,740 | C7 | [Eternauta] Primer plano del anciano calvo, ojos muy abiertos, pensando, sobre fondo negro | ★
+- p315 | 385,283,830,510 | C7 | Dos perfiles contra el negro, uno de barba y anteojos y el calvo, bajo rayos de luz |
+- p315 | 722,55,1040,280 | C7 | Primer plano de un hombre de anteojos y bigote, mirando de reojo con desconfianza |
+- p315 | 405,55,720,280 | C7 | Dos caras de viejos: uno de bufanda y anteojos, otro de anteojos y bigote, ambos inquietos |
+- p316 | 405,57,715,277 | C7 | [Favalli] Primer plano enorme de un hombre de anteojos y bigote que grita, sobre negro | ★
+- p316 | 720,57,1040,277 | C7 | Silueta de una mujer y una nena en lo alto de la escalera, mirando hacia abajo |
+- p316 | 75,57,400,277 | C7 | El de la derecha, de perfil, grita con el gesto tenso mientras le apuntan |
+- p316 | 460,517,770,738 | C7 | El joven se detiene en el umbral de la puerta con la ametralladora baja, sorprendido |
+- p316 | 455,310,600,510 | C7 | Perfil de un hombre de anteojos y pelo oscuro que asoma desde la sombra, mirando a la derecha |
+- p316 | 610,310,1040,510 | C7 | Dos hombres agazapados tras un marco: uno de anteojos y bigote apunta, el joven espera |
+- p316 | 780,517,1035,738 | C7 | [Juan] Primer plano del joven de pelo oscuro, ojos y boca abiertos, sobre fondo negro | ★
+- p317 | 65,286,535,507 | C7 | Hombre de anteojos y barba apuntando una ametralladora hacia el frente, gesto duro |
+- p317 | 65,517,275,738 | C7 | Dos perfiles hablando: el calvo de pelo blanco y un hombre de anteojos y bigote, serios |
+- p317 | 64,57,420,276 | C7 | Cinco cabezas en primer plano mirando a una puerta: un joven, un hombre de anteojos y barba, dos mujeres y un calvo |
+- p318 | 325,517,605,738 | C7 | [Favalli] Perfil de un hombre de anteojos, cejas y bigote, con la mano sobre el dial | ★
+- p318 | 649,56,1035,276 | C7 | Primer plano de un hombre con anteojos y bigote, la mano alzada, escuchando atento |
+- p318 | 76,57,639,277 | C7 | Un joven señala con la mano abierta, un viejo calvo escucha y un chico se asoma |
+- p319 | 64,329,394,489 | C7 | [Juan] Primer plano de un hombre mayor de pelo claro y cara surcada, junto a una viga | ★
+- p319 | 404,329,771,488 | C7 | El calvo apoyado en la mesa escucha con los ojos bajos mientras los otros dos hablan |
+- p319 | 618,536,1023,738 | C7 | Primer plano de un anciano calvo de gesto grave, medio rostro en sombra |
+- p319 | 778,329,1023,489 | C7 | Cabeza de un joven de pelo oscuro junto al ángulo del mueble de la radio |
+- p320 | 75,55,470,277 | C7 | [Eternauta] El Eternauta sentado de frente en un sillón tallado, camisa clara, pelo blanco y manos en los apoyos | ★
+- p320 | 216,288,1038,508 | C7 | Caras de la mujer rubia, el viejo de pelo blanco, un hombre de anteojos y un chico atentos |
+- p321 | 379,328,743,506 | C7 | Primer plano de un joven de pelo oscuro junto a la radio, mirada atenta |
+- p321 | 63,98,397,275 | C7 | Cuatro caras iluminadas de costado escuchando: una mujer, un hombre de barba y anteojos y dos más |
+- p321 | 752,328,1023,506 | C7 | Dos hombres sobre la radio: uno joven de pelo claro y otro de anteojos y bigote |
+- p321 | 63,328,370,506 | C7 | Seis caras apretadas alrededor de la radio: una nena, una mujer y hombres jóvenes y mayores |
+- p322 | 76,288,430,508 | C7 | Un joven que gesticula con el brazo extendido, un hombre de anteojos y un chico en el altillo |
+- p322 | 830,148,1037,277 | C7 | Primer plano de un hombre de anteojos y bigote que sonríe, sobre trama oscura |
+- p322 | 76,148,539,277 | C7 | Un joven de anteojos de perfil y el perfil fuerte de un hombre mayor, junto al mueble de la radio |
+- p322 | 676,536,1037,738 | C7 | El anciano calvo de perfil, oreja grande y cara surcada, escuchando al otro |
+- p322 | 652,288,1037,508 | C7 | El viejo de pelo blanco con el brazo alzado, un hombre de anteojos y un joven de perfil, todos sonrientes |
+- p323 | 64,330,310,508 | C7 | Primer plano de un hombre mayor de pelo claro y frente amplia, mirando de costado |
+- p323 | 360,172,623,277 | C7 | Primer plano frontal del anciano de pelo blanco, cara muy surcada, sobre trama |
+- p323 | 556,518,904,738 | C7 | El anciano de pelo blanco, boca caída, iluminado de costado |
+- p323 | 646,330,800,507 | C7 | [Eternauta] Primer plano de un rostro que sonríe apenas, ojos grandes y nariz fuerte, sobre trama | ★
+- p323 | 808,330,1023,506 | C7 | Primer plano del anciano calvo de pelo blanco, mirada triste, sobre negro |
+- p324 | 841,87,1037,276 | C7 | Primer plano de un hombre de pelo blanco y cara angulosa, con luz lateral fuerte |
+- p324 | 774,518,1038,738 | C7 | Primer plano de un hombre mayor de pelo claro que explica con gesto grave |
+- p324 | 399,288,547,509 | C7 | Primer plano de un hombre mayor de pelo claro, ojos muy abiertos, alarmado |
+- p324 | 75,87,368,277 | C7 | Un hombre de barba y anteojos explica con las manos abiertas a un viejo, una mujer y una nena |
+- p324 | 486,87,607,277 | C7 | Perfil de un hombre mayor al pie de un bloque de texto, en la penumbra |
+- p324 | 886,287,1037,507 | C7 | Un hombre calvo en la puerta grita con la mano apoyada en el marco |
+- p325 | 64,548,330,735 | C7 | La nena de pelo liso y la mujer de perfil, juntas frente a la repisa de frascos |
+- p325 | 510,55,730,278 | C7 | [Juan] Retrato frontal de un hombre de pelo claro y sonrisa amplia, camisa abierta bajo el saco, sobre fondo negro | ★
+- p325 | 735,55,1025,278 | C7 | La mujer rubia de pelo ondulado y la nena de flequillo miran a cámara, con latas y frascos al pie |
+- p325 | 700,287,1025,510 | C7 | El viejo de pelo blanco levanta la mano y grita, delante de una biblioteca y una cortina |
+- p326 | 77,517,560,738 | C7 | Primer plano del anciano de pelo blanco, ojos brillantes, iluminado desde abajo |
+- p326 | 353,98,535,276 | C7 | Perfil del anciano de pelo blanco, gesto duro, con la mano apretada |
+- p326 | 710,98,1037,278 | C7 | Primer plano de un hombre de anteojos y bigote que escucha con seriedad |
+- p326 | 455,318,700,508 | C7 | [Pablo] Primer plano de un joven de pelo oscuro riéndose a carcajadas, sobre negro | ★
+- p326 | 570,519,1036,739 | C7 | El grupo reunido: el joven sonriente, el chico, el hombre de anteojos y la mujer rubia de perfil |
+- p327 | 65,344,283,508 | C7 | [Elena] Primer plano de la mujer de pelo claro con los ojos cerrados y la cara contra las flores | ★
+- p327 | 314,561,402,738 | C7 | La nena de pelo liso abrazada a un osito de peluche, sonriendo |
+- p327 | 700,133,1023,277 | C7 | El viejo de pelo blanco, la mujer con el ramo y el joven sonriente, los tres de perfil |
+- p327 | 65,566,297,738 | C7 | Dos hombres caminando de perfil, uno grande de anteojos y otro de pelo blanco; la nena atrás |
+- p327 | 291,344,556,508 | C7 | Los dos de perfil casi nariz con nariz, los ojos bajos sobre los claveles |
+- p328 | 336,560,614,737 | C7 | Tres cabezas de perfil giradas hacia la derecha: barba, anteojos y pelo oscuro |
+- p328 | 622,560,1036,738 | C7 | El viejo de pelo blanco de perfil, sonriendo con cansancio junto a la radio |
+- p328 | 706,341,1036,506 | C7 | Muchas caras alrededor de la radio vista desde abajo, la rejilla del aparato en primer plano |
+- p328 | 77,560,327,738 | C7 | [Mosca] Primer plano de un hombre de anteojos y bigote con la boca abierta, sobre negro | ★
+- p329 | 395,318,687,508 | C7 | Dos viejos sonriendo de perfil, uno de pelo blanco y otro de anteojos claros |
+- p329 | 64,318,347,508 | C7 | Un hombre de anteojos sonriente con el chico delante y dos hombres en el marco de la puerta |
+- p329 | 63,100,370,277 | C7 | Dos hombres riéndose, uno de anteojos y otro de bigote; un chico asoma por detrás |
+- p330 | 525,512,935,738 | C7 | La cara de la mujer dentro del visor, angustiada, con copos sobre el vidrio |
+- p330 | 468,286,805,506 | C7 | Seis personas de pie con abrigos, cabizbajas, reunidas antes de salir |
+- p330 | 75,56,330,276 | C7 | [Elena] Primer plano de la mujer rubia, ojos y boca muy abiertos, horrorizada | ★
+- p330 | 755,56,1035,276 | C7 | Tres caras pegadas en la penumbra, iluminadas de frente, muy apretadas |
+- p330 | 76,286,458,506 | C7 | Primer plano del anciano de pelo blanco, cara resuelta y cansada |
+- p337 | 305,330,552,507 | C7 | Dos caras asomadas al camino: un hombre de anteojos y bigote y un joven de pelo oscuro |
+- p337 | 65,524,417,738 | C7 | [Favalli] Gran primer plano de un hombre de anteojos redondos y bigote grueso tras el visor | ★
+- p337 | 64,62,256,277 | C7 | [Juan] Primer plano de un hombre de cara angulosa dentro de un marco metálico cuadrado con remaches | ★
+- p337 | 707,75,1023,277 | C7 | Tres rostros en fila con visores cuadrados, el de la izquierda girado hacia cámara |
+- p338 | 77,518,395,705 | C7 | [Favalli y Mosca] Cuatro rostros en fila: viejo de anteojos y mandíbula dura, un nene, un joven y otro de anteojos | ★
+- p338 | 710,57,1036,277 | C7 | Dos primeros planos con visera: un hombre joven de frente y otro de anteojos al lado |
+- p338 | 68,340,395,507 | C7 | Hombre de pelo oscuro rizado que levanta el casco de visera cuadrada con la mano |
+- p338 | 721,518,1035,705 | C7 | Hombre de pelo claro inclinado hacia la ronda con la mano en alto, rostros alrededor |
+- p338 | 742,347,1035,507 | C7 | Mujer de maillot oscuro abrazada a una nena de vestido blanco y a un hombre de anteojos |
+- p339 | 63,87,361,276 | C7 | Hombre de anteojos y pelo rizado que levanta un vaso para brindar, perfil tres cuartos |
+- p339 | 369,87,719,276 | C7 | Grupo que brinda con vasos y una botella; un rostro joven de perfil abajo a la izquierda |
+- p339 | 682,328,1024,506 | C7 | Tres rostros frontales: pelo rizado con anteojos, un calvo de anteojos y un viejo pesado |
+- p339 | 73,554,271,739 | C7 | [Martita] Nena de pelo liso y flequillo que grita con el dedo levantado, boca muy abierta | ★
+- p339 | 727,87,1024,276 | C7 | [Mosca] Primer plano de un hombre de anteojos redondos con la boca abierta de horror | ★
+- p340 | 75,561,407,740 | C7 | Grupo de espaldas: una mujer de pelo largo en primer plano y soldados adelante |
+- p340 | 668,562,889,739 | C7 | Primer plano de un soldado con casco y gesto duro que habla; un casco asoma abajo |
+- p340 | 415,561,629,739 | C7 | Dos hombres enfrentados: uno de anteojos y otro de pelo claro que gesticula |
+- p340 | 75,287,514,507 | C7 | Tres soldados de casco con franja blanca, uno con fusil, caras jóvenes y sonrientes |
+- p340 | 804,111,1035,276 | C7 | [Juan] Perfil de un hombre de pelo corto y barba rala; detrás, un compañero de anteojos | ★
+- p340 | 74,111,387,276 | C7 | Grupo apretado de sobrevivientes: un hombre de anteojos, un calvo, una mujer, una nena |
+- p340 | 898,561,1036,739 | C7 | Primerísimo plano de un ojo y una ceja muy abiertos, con rayado de tinta |
+- p341 | 870,518,1024,738 | C7 | Primer plano de un hombre de anteojos que grita con la mano levantada |
+- p341 | 230,293,535,507 | C7 | Soldados que forcejean con un hombre de brazo extendido; otro corre con el arma al hombro |
+- p341 | 64,293,222,507 | C7 | Cara joven que grita con la boca muy abierta, cuello tenso y pelo revuelto |
+- p341 | 538,99,746,277 | C7 | [Favalli] Primer plano sonriente de un hombre de anteojos redondos, pelo oscuro y bigote | ★
+- p341 | 293,99,530,277 | C7 | Hombre de pelo claro con la mano en alto frente a un joven; fusiles y humo detrás |
+- p342 | 395,286,572,507 | C7 | Perfil de un joven de pelo rizado con el ojo muy abierto, mordiéndose el labio |
+- p343 | 199,57,352,277 | C7 | Primer plano de un hombre que grita con los ojos desorbitados y la boca abierta |
+- p343 | 725,561,1024,739 | C7 | Dos hombres de perfil dentro de la cabina, uno de pelo claro y otro de anteojos |
+- p344 | 758,98,1036,277 | C7 | Primer plano de un hombre de anteojos redondos, pelo rizado y bigote ralo |
+- p344 | 377,98,743,277 | C7 | Cinco rostros en fila dentro del camión: un viejo, un chico, dos hombres y el conductor |
+- p344 | 77,518,380,739 | C7 | Conductor joven con las manos en el volante, cara tensa, dentro de la cabina |
+- p345 | 808,549,1026,738 | C7 | [Juan] Un hombre mayor de anteojos consuela a una mujer que se tapa la cara para llorar | ★
+- p345 | 578,148,1025,277 | C7 | El grupo trepa por la caja del camión volcado; un hombre ayuda a una mujer y una nena |
+- p345 | 469,549,799,739 | C7 | Tres rostros asomados al borde de la zanja: un viejo de bigote, un joven y una mujer |
+- p346 | 824,548,1038,737 | C7 | Primer plano de un joven de pelo claro que llama con la boca abierta |
+- p346 | 76,74,360,276 | C7 | Tres hombres en ronda en la penumbra: un viejo de anteojos, un joven y una silueta |
+- p346 | 77,341,292,507 | C7 | Primer plano tres cuartos de un hombre de anteojos, pelo oscuro y bigote |
+- p346 | 301,342,499,508 | C7 | El mismo hombre de perfil, hablando con la mano levantada |
+- p346 | 630,74,840,276 | C7 | Hombre de pelo claro que abraza a dos mujeres agachadas en la zanja |
+- p346 | 78,548,431,738 | C7 | Tres hombres al borde de la zanja: un viejo de perfil, un joven con una prenda y uno de anteojos |
+- p346 | 760,341,1037,506 | C7 | Fila de rostros en la zanja: un joven de pelo claro, una nena, un viejo y un hombre de anteojos |
+- p346 | 369,75,621,276 | C7 | Hombre de anteojos que habla con un joven y una nena de espaldas, en voz baja |
+- p346 | 849,74,1036,275 | C7 | Primer plano de un hombre de anteojos con gesto grave y ojos cansados |
+- p347 | 545,535,618,737 | C7 | Dos rostros pegados al borde de la zanja, uno mira de reojo |
+- p347 | 62,58,298,279 | C7 | [Eternauta] Perfil de un viejo de pelo blanco y nariz fuerte, mirada triste y cansada | ★
+- p347 | 627,535,834,737 | C7 | Un viejo de pelo blanco y una mujer muy juntos, la tierra del borde arriba |
+- p347 | 64,535,286,737 | C7 | Cara de viejo con la boca abierta y una nena al lado, cascotes volando detrás |
+- p347 | 374,344,618,508 | C7 | Un viejo de pelo blanco y una mujer de pelo largo cara a cara en la zanja |
+- p348 | 881,57,1035,277 | C7 | [Elena] Primer plano de una mujer joven de pelo ondulado, angustiada | ★
+- p348 | 75,318,272,508 | C7 | Un viejo de pelo blanco con la boca abierta, alarmado |
+- p348 | 569,57,871,277 | C7 | Grupo de espaldas al borde de la zanja mirando la columna de humo del camión |
+- p348 | 281,318,478,508 | C7 | Primerísimo plano de una cara con los ojos muy abiertos y la frente brillante |
+- p348 | 487,318,871,508 | C7 | Mujer de perfil, una nena entre ella y un viejo que la escucha; humo negro detrás |
+- p348 | 743,548,1036,739 | C7 | En la zanja: una mujer, la cabeza de una nena y un hombre que apunta con el fusil |
+- p348 | 76,548,422,739 | C7 | Cara de viejo de pelo blanco asomado sobre un borde de tierra, gesto grave |
+- p349 | 610,560,810,739 | C7 | En la zanja: una mujer con una nena y un hombre de perfil con fusil |
+- p349 | 63,305,363,508 | C7 | Nuca de un hombre en primer plano y una mujer diminuta de pie en el borde |
+- p349 | 820,560,1023,739 | C7 | Hombre y mujer abrazados en la oscuridad, la mano de él sobre la cabeza de ella |
+- p349 | 754,305,1023,508 | C7 | Primerísimo plano de unos ojos muy abiertos y la frente arrugada |
+- p349 | 410,62,682,277 | C7 | [Juan] Primer plano de un hombre de barba de días que grita con la boca abierta | ★
+- p349 | 62,62,402,277 | C7 | [Elena y Martita] Mujer joven de pelo ondulado que abraza a una nena de pelo liso, fondo oscuro | ★
+- p349 | 690,62,1023,277 | C7 | Viejo de pelo blanco agachado con un fusil entre el pasto alto |
+- p350 | 681,56,1036,276 | C7 | Dos hombres agachados: uno de pelo claro con la mano en alto y otro que se tapa la boca |
+- p350 | 474,327,807,507 | C7 | Grupo de sobrevivientes con un chico en el medio y dos hombres armados, uno de anteojos |
+- p350 | 77,524,278,738 | C7 | Primer plano de un hombre de barba rala con los ojos muy abiertos, atónito |
+- p350 | 287,524,492,738 | C7 | Mujer que abraza a una nena junto a un viejo de pelo blanco que les habla |
+- p350 | 76,327,465,507 | C7 | Fila de prisioneros de pie: un viejo al frente, una mujer, un joven; guardias detrás |
+- p350 | 457,56,673,277 | C7 | [Elena] Primer plano de una mujer joven de pelo recogido con la boca abierta de asombro | ★
+- p351 | 64,307,346,509 | C7 | Tres caras apretadas: un hombre de barba, una nena abajo y una mujer detrás |
+- p351 | 759,307,1025,508 | C7 | Primer plano de un hombre de barba con fusil entre las manos, hablando |
+- p351 | 545,125,1035,280 | C7 | Cinco hombres armados en fila: un viejo de anteojos, un chico, otro viejo con bufanda |
+- p351 | 65,537,280,740 | C7 | Primer plano de una mujer con una nena al lado; ella habla y el pelo le tapa la cara |
+- p351 | 487,537,663,740 | C7 | Perfil de un viejo de pelo blanco que mira hacia arriba, ojo muy abierto |
+- p351 | 354,307,526,509 | C7 | Perfil de una mujer joven con la cabeza de una nena asomando abajo |
+- p352 | 74,57,393,277 | C7 | Una nena tira del brazo de un hombre de sweater rayado y campera, en la oscuridad |
+- p352 | 641,537,1035,739 | C7 | Hombre agachado en la zanja que habla; dos mujeres acurrucadas detrás |
+- p352 | 402,57,720,277 | C7 | [Martita] Primer plano de una nena de pelo liso y ojos grandes que habla seria | ★
+- p352 | 792,294,1036,508 | C7 | Primer plano de un hombre de barba rala y cara sucia, mirada decidida |
+- p352 | 355,537,632,739 | C7 | Primer plano de un hombre de barba, ojos fijos y frente arrugada |
+- p352 | 728,57,1035,277 | C7 | Una mujer y un hombre muy juntos con una nena entre ellos, fondo negro |
+- p353 | 870,518,1024,739 | C7 | Primer plano de un viejo de pelo blanco, alarmado, con la boca abierta |
+- p353 | 620,519,861,739 | C7 | Hombre de perfil en primer plano y dos figuritas en la llanura detrás |
+- p353 | 64,519,230,739 | C7 | Hombre de barba con fusil en la penumbra del interior metálico |
+- p353 | 340,137,767,278 | C7 | Tres figuras caminan hacia el aparato: una nena, una mujer y un hombre con fusil |
+- p353 | 427,332,660,508 | C7 | Dos perfiles frente a frente, una mujer y un hombre barbudo, con una caja metálica entre ellos |
+- p354 | 76,597,400,738 | C7 | Cara de viejo de pelo blanco, triste, con el mentón apoyado |
+- p354 | 795,287,1036,507 | C7 | Primer plano de un viejo de barba y dos palancas negras grandes en primer plano |
+- p354 | 902,57,1035,277 | C7 | Primer plano de un viejo de cara surcada y pelo blanco, cansado |
+- p354 | 533,56,773,276 | C7 | Nuca y hombros de un hombre que mira una rejilla oscura, de espaldas |
+- p355 | 495,530,805,736 | C7 | Cara de viejo con los ojos entrecerrados, la piel marcada, luz dura |
+- p355 | 820,530,1000,736 | C7 | [Juan] Primer plano de un viejo que grita con la boca muy abierta y los ojos redondos | ★
+- p355 | 800,57,1035,188 | C7 | Primer plano de una mujer joven asustada y un hombre detrás, puerta abierta al lado |
+- p355 | 315,530,491,736 | C7 | Cara de viejo de pelo blanco, seria, en la penumbra |
+- p356 | 76,518,310,739 | C7 | Cara de viejo que grita con los ojos desorbitados, anillos de luz alrededor |
+- p356 | 625,56,799,276 | C7 | Figura de espaldas con los brazos en alto, envuelta en la luz, la cara tapada |
+- p356 | 300,350,520,502 | C7 | Una mujer y una nena gritan con las manos en alto, bocas muy abiertas |
+- p357 | 327,287,444,508 | C7 | Hombre arrodillado en la llanura vacía que llama con la mano en la boca |
+- p357 | 449,287,733,507 | C7 | [Juan] Primer plano de un hombre que grita con la boca abierta y el cuello tenso | ★
+- p357 | 711,57,1023,277 | C7 | Primer plano de un viejo que se inclina hacia adelante gritando |
+- p357 | 64,287,318,508 | C7 | Hombre caído boca abajo en la llanura, un brazo extendido sobre la nieve |
+- p358 | 76,518,361,739 | C7 | Primer plano de un viejo de pelo blanco con la mirada baja, muy arrugado |
+- p358 | 700,287,1036,507 | C7 | Perfil de un viejo a la izquierda y la cara de un hombre joven abajo a la derecha |
+- p358 | 803,111,1036,277 | C7 | Un viejo de perfil y una mujer de pelo largo de espaldas frente a él |
+- p358 | 715,518,1038,738 | C7 | Primer plano de un hombre de barba con los ojos muy abiertos |
+- p358 | 407,287,692,507 | C7 | Viejo sentado contra una roca que habla con un hombre parado, puño cerrado |
+- p358 | 353,111,588,277 | C7 | [el Mano] Primer plano de un viejo de pelo blanco y cara muy arrugada | ★
+- p358 | 76,287,399,508 | C7 | Perfil de un hombre de barba rala frente a un viejo arrugado que está al fondo |
+- p359 | 64,354,330,507 | C7 | [Eternauta] Primer plano del viejo de pelo blanco, cara arrugada, hablando | ★
+- p359 | 704,560,1031,739 | C7 | Hombre joven de remera clara que se levanta apoyado en el escritorio |
+- p359 | 381,561,701,738 | C7 | Dos hombres de perfil frente a frente en la mesa, uno con la mano en el mentón |
+- p359 | 64,560,378,738 | C7 | Primer plano de un hombre de pelo blanco con la boca abierta, asombrado |
+- p359 | 340,354,610,507 | C7 | Primer plano frontal del guionista de pelo corto y cara angulosa |
+- p360 | 734,524,1038,739 | C7 | Tres caras de perfil: un viejo con cuello alto, una mujer de pelo corto y un joven |
+- p360 | 463,524,725,739 | C7 | Grupo familiar abrazado: la nena a caballito, la madre de perfil y un joven detrás |
+- p360 | 867,306,1037,507 | C7 | [Martita] Primer plano de una nena de pelo liso que grita con una muñeca en brazos | ★
+- p360 | 733,57,1036,277 | C7 | Primer plano del viejo que grita; casa y cerco detrás, poste con aviso |
+- p360 | 76,525,450,739 | C7 | Mujer de pantalón estampado que camina con la mano extendida hacia la nena |
+- p361 | 781,519,1024,743 | C7 | [guionista] Primer plano sobre negro de un rostro flaco, pelo claro ralo, mirada fija y helada, cuello escocés | ★
+- p361 | 551,519,774,743 | C7 | Perfil sobre negro: hombre de pelo gris con la mano en la mejilla, ojos bajos y saco escocés al hombro |
+- p361 | 657,57,1025,278 | C7 | Cuatro figuras en la vereda: nena de abrigo, mujer de pollera ajustada, hombre fornido con manos en la cintura y otro que grita señalando |
+- p361 | 62,287,351,507 | C7 | [Juan y guionista] Dos hombres de pie: uno de pelo claro con sweater escote V, otro de chaleco a cuadros que abre las manos hablando | ★
+- p361 | 63,519,314,743 | C7 | Primer plano sobre negro de un hombre de pelo gris peinado hacia atrás, frente surcada y boca abierta |
+- p361 | 322,519,543,743 | C7 | Primer plano sobre negro: cara ancha de pelo gris, cejas caídas, mirada fija y cuello de camisa a cuadros |
+- p361 | 375,57,647,278 | C7 | Dos hombres de perfil cara a cara: el de chaleco a cuadros apunta con el índice, el de pelo claro escucha con calma |
+- p361 | 62,57,366,278 | C7 | [Juan] Primer plano de un hombre de pelo claro corto y frente amplia, mirada dudosa, camisa clara y pañuelo de trama oscura al cuello | ★
+- p361 | 358,287,740,507 | C7 | [Juan y Elena] Hombre de pelo claro que sonríe y señala con el índice, abrazando por los hombros a una mujer de pelo corto ondulado | ★
+- p362 | 75,519,297,742 | C7 | Primer plano sobre negro de un hombre de pelo gris que grita con la boca abierta y los ojos desorbitados |
+- p362 | 403,287,714,507 | C7 | Primer plano de un hombre de cara larga y pelo claro, ojos bajos y boca apretada, fondo de seto rayado |
+- p362 | 730,287,1038,507 | C7 | Hombre mayor de pie, sweater oscuro sin mangas sobre camisa a cuadros, brazos atrás, contra árbol negro |
+- p362 | 74,287,395,507 | C7 | Tres hombres de noche: el de anteojos y saco moteado habla, los otros dos de perfil escuchan frente a dos fachadas |
+- p362 | 293,57,737,278 | C7 | [Favalli, Polsky y Lucas] Tres hombres de medio cuerpo: uno de campera clara riendo, otro de anteojos y saco moteado, un viejo de pelo blanco y corbata | ★
+- p362 | 74,57,284,278 | C7 | Primer plano sobre negro de un hombre de pelo claro con la boca abierta en un grito ahogado, cuello a cuadros |
+- p362 | 305,519,633,742 | C7 | [guionista] Primer plano extremo: ojos desorbitados de pupilas chicas, arrugas concéntricas y gotas de sudor en la frente | ★
+
+## Criaturas y amenazas (295)
+
+- p019 | 450,519,1025,739 | C8 | Mano gigantesca cubierta de nieve apoyada sobre un tapial de ladrillo y ligustrina, junto a un chalet |
+- p048 | 716,58,1030,276 | C8 | Una mano gigantesca de nieve y piedra emerge del suelo nevado junto a un chalet y un poste de luz |
+- p055 | 174,288,660,509 | C8 | Un brazo o mano colosal y peludo asoma de un montículo de nieve en la calle, con los dedos curvados (?) |
+- p058 | 960,518,1035,740 | C8 | Rendija entre dos tablas: un ojo en la oscuridad y una mano con cuchillo asomando |
+- p091 | 64,290,611,509 | C8 | Invasores: cuerpos negros de caparazón redondo y manchado, de pie y agazapados en la nieve |
+- p091 | 64,56,1023,277 | C8 | Bultos oscuros y alargados sobre la nieve, vistos a distancia mientras los soldados los vigilan (?) |
+- p094 | 440,290,865,510 | C8 | Máquina extraña: cuerpo cilíndrico metálico con caño curvo sobre una base, rodeada de invasores |
+- p094 | 872,290,970,510 | C8 | Dos invasores inclinados sobre un compañero caído, devorándolo en la nieve |
+- p096 | 678,290,1035,510 | C8 | Invasor oscuro y lustroso en primer plano, con ojo redondo y patas finas, entre soldados |
+- p096 | 475,290,670,510 | C8 | Dos invasores de caparazón redondo manipulando el aparato del rayo, vistos de espaldas |
+- p097 | 760,288,1024,510 | C8 | Cascarudos que saltan por el aire sobre los soldados, con las patas abiertas y el caparazón redondo |
+- p097 | 268,286,520,510 | C8 | Horda de cascarudos negros y redondos corriendo en masa por la nieve hacia la cámara |
+- p097 | 73,519,285,741 | C8 | Soldado que arrastra a un herido mientras un cascarudo enorme se le viene encima, patas y pinzas abiertas |
+- p097 | 200,54,730,278 | C8 | Pila de cascarudos muertos amontonados contra el borde de la fuente, entre el agua y la nieve |
+- p097 | 525,286,712,510 | C8 | Ametralladora que dispara desde detrás de un muro bajo, humo negro y cascotes volando en diagonal |
+- p098 | 787,56,1035,278 | C8 | Aparato enemigo acampanado sobre un soporte que dispara una columna blanca de luz, con líneas radiales |
+- p098 | 75,55,335,276 | C8 | Aparato enemigo redondo y acorazado, con tapa ovalada y caño corto, plantado en una esquina nevada |
+- p098 | 245,286,470,509 | C8 | Aparato enemigo ovalado con caño y base de patas, dos soldados diminutos al lado para dar escala |
+- p099 | 74,59,251,279 | C8 | Tres soldados de pie alrededor de un cascarudo muerto en la nieve, uno con las manos en la cintura |
+- p099 | 257,60,508,279 | C8 | Soldado inclinado sobre un aparato redondo y negro con una protuberancia curva, como un receptor (?) |
+- p100 | 300,519,585,741 | C8 | Soldados parapetados detrás de una pila de cascarudos muertos, uno con el puño en alto |
+- p100 | 651,286,1035,509 | C8 | Artefacto enemigo con boca de embudo montado sobre un vehículo, humo y chispas alrededor |
+- p101 | 317,518,897,734 | C8 | Calle del pueblo en combate: soldados corriendo, un vehículo y cascarudos oscuros entre el humo |
+- p105 | 760,519,1035,740 | C8 | Cascarudos enormes avanzando sobre soldados diminutos al pie de la rampa del estadio |
+- p106 | 405,519,494,737 | C8 | Pinza negra gigante contra el fondo blanco, casi en silueta, con el interior de la garra detallado |
+- p106 | 91,59,296,278 | C8 | Soldado subido a un vehículo destruido que golpea con el arma a un cascarudo que trepa |
+- p106 | 303,60,558,277 | C8 | Soldado que apunta a una pinza gigante negra que entra al cuadro, la tropa detrás |
+- p106 | 100,320,295,509 | C8 | Soldado agachado que dispara el rifle a un cascarudo encima de él, destello en la boca del cañón |
+- p106 | 735,320,1026,509 | C8 | Grupo de soldados arrastrados por pinzas gigantes, cascos y brazos por el aire |
+- p106 | 300,320,530,509 | C8 | Cuerpo a cuerpo: un soldado forcejea contra una pinza negra enorme que le tapa media cara |
+- p106 | 535,320,730,509 | C8 | Soldado derribado con el casco volando, aplastado por un cascarudo oscuro |
+- p106 | 547,519,675,737 | C8 | Varios cascarudos negros saltando alrededor de un soldado con rifle |
+- p106 | 745,60,1035,278 | C8 | Soldados que disparan entre cascarudos negros desperdigados por la nieve |
+- p107 | 160,518,500,741 | C8 | Multitud de cascarudos negros ocupando tribunas y campo, como una alfombra de caparazones |
+- p108 | 75,55,305,276 | C8 | Tanque parado sobre un montículo de cascarudos muertos, el cañón apuntando a la izquierda |
+- p108 | 320,286,560,509 | C8 | Campo nevado con dos soldados diminutos de pie y una manada de cascarudos lejanos en la loma |
+- p108 | 649,560,910,734 | C8 | Aparato circular metálico abollado con una gran boca ovalada, tirado en la nieve |
+- p111 | 388,519,718,741 | C8 | Soldados que se tiran al piso en la escalinata mientras chispas y rayos cruzan el aire |
+- p112 | 436,55,810,278 | C8 | Vehículo enemigo redondo con boca de embudo avanzando por la nieve, explosiones alrededor |
+- p112 | 255,286,621,509 | C8 | La carcasa del lanzarrayos destruida y humeante, el tubo doblado y cascotes por el aire |
+- p112 | 78,526,421,741 | C8 | Humo hirviente sobre un galpón y la nieve, restos de la explosión |
+- p113 | 62,54,434,275 | C8 | El plato volador enemigo de cerca: domo elíptico, franja y remaches, con halo de líneas alrededor |
+- p114 | 468,519,796,739 | C8 | El plato volador disparando un rayo contra el campo mientras los soldados corren |
+- p114 | 806,56,1024,277 | C8 | El plato volador sobre el perfil de la ciudad, con rayos saliendo de su contorno |
+- p114 | 312,55,593,276 | C8 | El plato volador girando contra un bosquecillo, con chispas y humo saliendo del borde |
+- p115 | 64,518,255,740 | C8 | El plato volador disparando un rayo hacia la estructura del estadio, todo en sombra |
+- p116 | 760,582,1027,737 | C8 | Soldados que disparan desde una trinchera a una masa de cascarudos negros, con el aparato caído |
+- p116 | 105,59,486,276 | C8 | El plato volador averiado y humeando, inclinado sobre la rampa del estadio |
+- p117 | 347,285,652,508 | C8 | Entre humo y chispas, siluetas de cascarudos y soldados que se cruzan |
+- p117 | 799,518,1024,739 | C8 | Fila de soldados que dispara a la masa de cascarudos bajo la nieve que cae |
+- p117 | 552,60,855,262 | C8 | La horda negra avanzando entre explosiones y humo, con el muro del estadio abajo |
+- p118 | 476,518,720,740 | C8 | Soldados que corren alrededor del aparato enemigo, que brilla y humea |
+- p118 | 362,286,610,509 | C8 | Gran esfera negra tirada al pie de la tribuna, con figuras diminutas alrededor |
+- p118 | 757,55,1035,277 | C8 | Primer plano de un cascarudo negro manchado de nieve y un soldado que lo apunta |
+- p118 | 75,55,365,275 | C8 | Soldado que ensarta con la bayoneta a un cascarudo negro en la nieve, otros dos bichos caídos |
+- p118 | 372,55,750,277 | C8 | Soldado con bayoneta frente a dos cascarudos enormes, uno con el caparazón manchado de nieve |
+- p118 | 305,518,470,740 | C8 | Pinza negra gigante en primer plano, con el interior de la garra detallado |
+- p119 | 295,127,545,276 | C8 | Gran domo blanco que se deshace en líneas, con un soldado de espaldas mirando desde el borde |
+- p121 | 63,286,437,508 | C8 | Nube gigantesca con forma de calavera, cuencas y boca, sobre un soldado agachado que se cubre la cabeza |
+- p122 | 77,519,277,741 | C8 | Estallido radial: forma elíptica negra a la izquierda y lluvia de líneas blancas hacia la derecha (?) |
+- p126 | 75,58,403,277 | C8 | Vignette binocular sobre negro: cascarudos muertos en la nieve, uno devorando a otro; banco y tronco |
+- p126 | 653,521,1037,741 | C8 | Dos cascarudos enormes en primer plano rodean a un hombre arrodillado que abraza a dos figuras |
+- p128 | 809,522,1037,741 | C8 | Soldados arrastran a un cascarudo enorme escaleras abajo, con las patas al aire |
+- p129 | 313,57,560,275 | C8 | Escalera de hormigón con cascarudos trepando y soldados que disparan; un caparazón enorme adelante |
+- p129 | 63,57,305,275 | C8 | Un cascarudo enorme en primerísimo plano, la cabeza y las patas encima de la cámara |
+- p130 | 761,287,1036,508 | C8 | Esfera oscura suspendida sobre el humo, junto a una estructura metálica (?) |
+- p136 | 407,522,696,741 | C8 | El lanzarrayos: el disco negro emite rayos blancos en abanico; figuras diminutas alrededor |
+- p137 | 725,525,1035,741 | C8 | Enjambre de cascarudos alrededor de dos soldados que levantan los brazos |
+- p137 | 67,525,292,741 | C8 | Soldados agazapados entre caparazones negros, con una metralleta en el medio |
+- p138 | 571,287,797,508 | C8 | Un cascarudo enorme y redondo yace en la nieve junto a un árbol; dos soldados lo miran |
+- p140 | 378,57,669,277 | C8 | Cascarudos dispersos por la nieve, uno grande en primer plano, con el trolebús al fondo |
+- p142 | 864,520,1037,740 | C8 | Artefacto alienígena: poste con dos aros, dos bulbos puntiagudos y una esfera de alambres arriba |
+- p143 | 64,57,342,275 | C8 | El artefacto de aros sobre un poste, con un cono de luz blanca saliendo de uno de los bulbos |
+- p144 | 330,520,600,740 | C8 | Un cascarudo patas arriba en pleno salto, con otros caparazones en el piso nevado |
+- p145 | 827,285,1018,495 | C8 | Dos soldados corren pegados a la pared de un chalet hacia una puerta lateral nevada |
+- p145 | 62,54,548,276 | C8 | Decenas de caparazones negros redondos diseminados por la nieve de la plaza, como piedras |
+- p145 | 486,285,823,495 | C8 | Dos soldados con fusil corren agachados entre cascarudos negros y arbustos nevados, sombras largas |
+- p146 | 74,53,592,277 | C8 | Dos soldados retroceden disparando a una reja donde se amontonan cascarudos negros; muro oscuro y nieve |
+- p146 | 596,53,1035,277 | C8 | Cascarudos negros enganchados en la reja cubierta de nieve, con las patas colgando hacia la calle |
+- p147 | 57,286,352,510 | C8 | Casco y cara de soldado tras la persiana de la ventana, fogonazo y chispas del disparo |
+- p147 | 327,55,689,277 | C8 | Dos soldados disparan un tubo lanzacohetes por una ventana enrejada; montón de cascarudos en el patio |
+- p147 | 775,519,1025,742 | C8 | Hombre agachado revisa el cuerpo de un muchacho muerto en el suelo; otro cuerpo y fondo negro |
+- p150 | 735,519,1035,742 | C8 | Dos hombres asomados detrás de una rueda oscura, frente a un gran bulto negro en la nieve (?) |
+- p151 | 57,518,371,742 | C8 | Dos siluetas negras en una calle a oscuras, una con fusil; franjas de luz sobre el piso |
+- p152 | 57,517,409,741 | C8 | Franco con los brazos abiertos entre descargas negras, camiseta, cinturón y canana |
+- p152 | 708,517,1045,741 | C8 | Un hombre corre con pistola junto a cascarudos negros caídos y un cuerpo que se arrastra en la nieve |
+- p152 | 727,53,1045,276 | C8 | Dos hombres corren sobre fondo blanco: uno en camiseta con bolsa al cinto y el otro con pistola |
+- p152 | 57,285,322,509 | C8 | Pabellón blanco luminoso rodeado de cascarudos negros; dos figuras corren hacia él |
+- p153 | 335,54,485,277 | C8 | Fondo negro con un poste metálico y ramas de descargas eléctricas blancas |
+- p153 | 620,517,1025,741 | C8 | Hilera de cascarudos cargando dos cuerpos sobre el lomo, caminando por la nieve, horizonte blanco |
+- p153 | 358,517,616,741 | C8 | Dos cascarudos levantan y arrastran a un hombre por la nieve blanca, en silueta pequeña |
+- p153 | 57,284,416,509 | C8 | Dos cascarudos negros enormes con patas de zancudo junto a dos cuerpos caídos en un campo nevado |
+- p153 | 690,284,1025,509 | C8 | Un cascarudo de cuello largo se inclina sobre el hombre caído, entre líneas negras |
+- p154 | 640,290,1045,700 | C8 | Un joven flota inmóvil dentro de una masa negra moteada; camiseta oscura, pantalón y zapatillas |
+- p154 | 498,508,1045,741 | C8 | El joven flota de pie sobre una rejilla metálica mientras un hombre yace tirado en el piso |
+- p155 | 684,285,1025,509 | C8 | Figura de camisa a rayas y pañuelo en la cabeza, de pie junto al balde bajo un toldo de flecos |
+- p155 | 384,54,737,277 | C8 | Salón amplio con baranda: dos hombres-robot caminan rígidos entre dos cuerpos caídos |
+- p156 | 622,58,1045,277 | C8 | Dos hombres-robot suben una escalinata con baranda calada cargando dos cuerpos |
+- p156 | 57,286,323,506 | C8 | El oficial agachado levanta de la nuca al hombre caído, en un interior oscuro |
+- p156 | 62,58,616,277 | C8 | Mano colosal de dedos velludos bajando de un cielorraso de tubos y chapas remachadas |
+- p157 | 77,517,374,737 | C8 | Espalda desnuda de un joven con el aparato redondo en la nuca; manos del oficial lo sujetan |
+- p157 | 543,57,1015,278 | C8 | El oficial se inclina sobre el hombre tirado, que mira de costado; fondo negro moteado |
+- p158 | 466,519,1045,737 | C8 | El oficial presiona el aparato contra la nuca inclinada del hombre mayor, entre chispas |
+- p158 | 83,288,391,510 | C8 | El oficial levanta del piso a Franco, que está tirado sobre un colchón en un cuarto iluminado |
+- p158 | 408,288,709,510 | C8 | El oficial aplica el teledirector en la nuca del hombre mayor, con chispas y fondo negro |
+- p159 | 57,515,507,740 | C8 | Visión de un mundo extraño: montañas en punta, ciudad de cúpulas, planeta con anillo y luna |
+- p163 | 57,517,479,741 | C8 | El oficial sostiene a Franco desmayado de la camiseta; otro hombre de perfil mira desde la derecha |
+- p164 | 769,286,1045,511 | C8 | El oficial de perfil toma la cara de Franco con la mano, en penumbra |
+- p164 | 391,286,603,511 | C8 | Dos cabezas inclinadas: el oficial examina la nuca de Franco, casi en silueta |
+- p165 | 500,285,795,509 | C8 | Un hombre agachado revisa a otro caído en el piso; Franco de pie a la izquierda, en penumbra |
+- p165 | 271,285,494,509 | C8 | Franco y el hombre mayor de pie junto a un bulto en el piso, habitación a oscuras |
+- p166 | 739,54,1045,277 | C8 | Cascarudos negros amontonados en una esquina de la calle y el perfil del hombre mayor a la derecha |
+- p167 | 504,55,820,278 | C8 | Calle con cables en lo alto y dos figuras agachadas; un cascarudo negro enorme asoma a la derecha |
+- p167 | 57,519,394,742 | C8 | El prisionero en cuatro patas en la nieve junto a un cascarudo negro, frente a un auto claro |
+- p168 | 531,286,781,510 | C8 | Dos hombres de perfil miran a lo lejos un enjambre de cascarudos negros junto a un colectivo destrozado |
+- p170 | 246,286,682,509 | C8 | Objeto oval luminoso con hileras de luces redondas flotando sobre los techos, irradiando rayos |
+- p170 | 892,286,1038,509 | C8 | Cabeza de un hombre rodeada de líneas negras dentadas, como una descarga eléctrica |
+- p171 | 614,55,872,276 | C8 | Primer plano de una gallina clueca con varios pollitos apiñados entre plumas oscuras |
+- p175 | 590,519,760,736 | C8 | El plato volador envuelto en una nube de humo y chispas, ya partido |
+- p175 | 67,518,390,737 | C8 | Plato volador oval con hileras de luces redondas, alcanzado por proyectiles, sobre techos nevados |
+- p176 | 425,518,855,740 | C8 | Masa negra curva y gigantesca, como un tentáculo, entre escombros y nubes de humo |
+- p207 | 793,518,1022,740 | C8 | Hombres-robot mencionados por los globos: figuras altas y rígidas al fondo de la calle |
+- p207 | 67,518,365,740 | C8 | Cascarudo oscuro y redondo junto a otros caparazones negros esparcidos, con cuerpos caídos alrededor |
+- p210 | 77,560,796,741 | C8 | Fila de cascarudos de caparazón redondo avanza entre espuma y polvo blanco |
+- p210 | 806,560,1021,741 | C8 | Cascarudo grande de perfil camina con la cabeza baja; otro más chico detrás |
+- p211 | 63,314,254,489 | C8 | Gurbo agazapado de perfil, lomo redondo y brazos largos, con humo detrás |
+- p211 | 614,314,1025,489 | C8 | Dos gurbos vistos de espaldas avanzan hacia un tanque; cascos de soldados en el borde |
+- p211 | 61,54,349,276 | C8 | Dos gurbos enormes, uno de pie y otro agazapado, junto a un cartel en la calle nevada |
+- p211 | 341,314,591,489 | C8 | Gurbo agachado junto a un tanque que lo enfrenta de costado, entre polvo |
+- p212 | 327,53,1036,275 | C8 | Dos gurbos enormes de pelo oscuro avanzan por la ruta; un tanque dispara a lo lejos |
+- p212 | 572,518,1038,740 | C8 | Gurbo corriendo de perfil hacia un tanque que le apunta, entre nubes de polvo |
+- p213 | 68,518,344,737 | C8 | Gurbo en primer plano empuja la chapa de un vehículo; soldado con fusil abajo a la izquierda |
+- p213 | 66,287,477,509 | C8 | Gurbo gigante aplasta con las patas un tanque, visto de costado, entre humo y chispas |
+- p213 | 53,59,303,277 | C8 | Gurbo de lomo redondo agachado sobre una casa baja derrumbada, entre polvo |
+- p213 | 700,59,1035,277 | C8 | Gurbo de pie sostiene en alto un objeto metálico destrozado (¿oruga de tanque?), humo alrededor |
+- p214 | 280,316,535,508 | C8 | Tres gurbos chicos escarban y comen al pie del tanque, entre escombros |
+- p214 | 261,518,1038,740 | C8 | Cinco gurbos de lomo redondo en fila sobre una loma, frente a tres soldados de espaldas |
+- p215 | 63,117,729,276 | C8 | Cuatro gurbos de lomo redondo avanzan por el borde de un terraplén; soldados de espaldas abajo |
+- p216 | 77,283,480,466 | C8 | Dos patas enormes de gurbo enmarcan un campo nevado con camiones y árboles al fondo |
+- p216 | 490,283,1036,466 | C8 | Dos gurbos de perfil caminan entre árboles secos; una pata enorme entra por la derecha |
+- p217 | 85,519,450,740 | C8 | Gurbo enorme de perfil, cuerpo redondo y patas cortas, agazapado junto a un vehículo mínimo |
+- p217 | 650,285,1022,489 | C8 | Dos hombres armados detrás de un vehículo blindado; una fila de gurbos oscuros avanza en la nieve |
+- p217 | 455,518,690,740 | C8 | Lomo oscuro del gurbo en primer plano y un vehículo chico volcado a sus pies |
+- p217 | 700,518,1035,740 | C8 | Pata oscura y velluda del gurbo apoyada sobre el jeep, con pelaje rayado |
+- p218 | 370,518,762,740 | C8 | Gurbos vistos desde arriba, agazapados y rodeando a los hombres, sobre nieve pisoteada |
+- p218 | 662,285,1037,508 | C8 | Gurbo agazapado junto a un auto aplastado en la nieve, huellas largas alrededor |
+- p218 | 393,285,583,508 | C8 | Cabeza del gurbo de perfil con la boca abierta; rayos de acción y salpicaduras |
+- p218 | 70,48,1035,275 | C8 | Gurbo jorobado de caparazón pulido, inclinado sobre un vehículo de guerra destrozado junto a un árbol seco |
+- p219 | 65,518,456,740 | C8 | Tres gurbos en fila avanzan despacio por la nieve, del más grande al más chico |
+- p219 | 738,50,1025,278 | C8 | Cabeza acorazada de gurbo en primer plano y un casco con fusil apuntándole |
+- p219 | 370,50,693,278 | C8 | Un soldado diminuto en medio de una calle vacía, entre las patas de dos gurbos gigantes |
+- p219 | 66,285,354,508 | C8 | Gurbo de espaldas ladeándose sobre la nieve, caparazón rayado y huellas |
+- p220 | 730,50,1035,278 | C8 | Detalle del cuello del gurbo: un redondel metálico incrustado en la carne rayada |
+- p220 | 375,50,720,278 | C8 | Gurbo de perfil a la izquierda y el caparazón de otro detrás del tirador |
+- p220 | 505,518,1035,740 | C8 | Silueta del gurbo alzado sobre el terraplén, soldados mínimos en la ladera |
+- p220 | 79,518,487,740 | C8 | El cuerpo enorme del gurbo en perfil, caparazón redondo y pata que se posa |
+- p220 | 400,285,690,508 | C8 | Primer plano del redondel agujereado en la cabeza del gurbo y la línea de la bala |
+- p221 | 380,518,680,740 | C8 | Dos gurbos frente a frente, uno estira el brazo hacia el otro, casi tocándose |
+- p221 | 62,48,530,278 | C8 | Gurbo en zancada con el brazo levantado; boca abierta y caparazón brillante |
+- p221 | 690,518,1035,740 | C8 | Dos gurbos forcejeando abrazados, siluetas oscuras contra un cielo claro |
+- p221 | 70,285,350,508 | C8 | Media figura frontal del gurbo: caparazón inmenso y cabeza chica, muy oscura |
+- p221 | 65,518,365,740 | C8 | Gurbo caminando de perfil sobre la nieve, cuerpo pesado y pata delantera adelantada |
+- p221 | 845,48,1025,278 | C8 | Gurbo encorvado sobre el borde de un terraplén, manos apoyadas, cuerpo oscuro rayado |
+- p221 | 360,285,680,508 | C8 | Muchos gurbos pequeños desde arriba, desperdigados en la nieve junto a una reja |
+- p222 | 725,285,1035,476 | C8 | Dos gurbos revolcándose: uno dado vuelta patas arriba y el otro encima |
+- p222 | 810,48,1035,278 | C8 | Cabeza del gurbo que gira de golpe, con un "¡BANG!" enorme al lado |
+- p222 | 115,547,459,700 | C8 | Gurbo erguido junto a otro caparazón entre humo; un soldado con fusil a la izquierda |
+- p222 | 350,285,720,476 | C8 | Dos gurbos peleando en silueta sobre fondo negro, patas y caparazones enredados |
+- p223 | 682,300,1025,508 | C8 | Caparazón pálido y ovalado con tres hombres junto a él y más siluetas en la nieve |
+- p223 | 373,300,680,508 | C8 | Caparazones gigantes apilados, soldados diminutos midiéndolos y asomándose |
+- p223 | 740,50,1025,278 | C8 | Gurbo muerto: caparazón redondeado enorme en el suelo y soldaditos parados al lado |
+- p224 | 100,517,380,740 | C8 | Gurbo casi blanco que brama con la boca abierta; caparazones borrosos detrás |
+- p224 | 675,517,1037,740 | C8 | Caparazones gigantes usados como trinchera, con siluetas agachadas detrás |
+- p224 | 74,50,794,275 | C8 | Masa oscura rayada que ocupa casi todo el cuadro; tres hombres la miran desde la derecha |
+- p224 | 710,285,1035,508 | C8 | Gurbos oscuros agazapados en la nieve alrededor de un fogonazo de luz |
+- p231 | 401,54,767,276 | C8 | Dos hombres armados de espaldas y, al fondo del túnel, un gurbo que se acerca |
+- p231 | 66,518,469,740 | C8 | Gurbo encaramado sobre los restos del tren, cuerpo redondo entre hierros y vías |
+- p231 | 476,518,666,740 | C8 | Gurbo de espaldas empujando con el lomo el vagón volcado, todo en sombra |
+- p232 | 337,55,641,276 | C8 | Gurbo que empuja con la cabeza el vagón destrozado, hierros retorcidos y escombros |
+- p232 | 798,56,1035,277 | C8 | Caparazón pálido de gurbo que se retira, con su masa oscura al costado |
+- p233 | 640,56,1035,278 | C8 | Dos perfiles de hombres armados y el cuerpo oscuro de un gurbo a la derecha |
+- p245 | 803,288,1024,508 | C8 | Máquina semiesférica con torrecilla y boca oscura sobre la nieve, diminuta junto a un hombre |
+- p245 | 502,575,823,740 | C8 | Dos gurbos de lomo enorme y cabeza chica devoran un cuerpo en el suelo; cielo negro |
+- p248 | 665,515,1037,740 | C8 | Dos gurbos de lomo redondo y cabeza chica junto a escombros, horizonte plano |
+- p260 | 340,285,660,508 | C8 | Columna de hombres-robot en formación de cuña, pequeños y uniformes, sobre el asfalto |
+- p261 | 742,560,1024,738 | C8 | Fila compacta de cascarudos de caparazón ovalado y patas cortas, avanzando en masa |
+- p262 | 91,378,403,508 | C8 | Platillo ovalado translúcido con una cabina oscura encima, flotando sobre la calle |
+- p262 | 590,378,1037,508 | C8 | El "mano" de pelo blanco manipula una consola con hileras de botones redondos |
+- p265 | 62,517,505,738 | C8 | Un gato muerto y rígido en el suelo, patas estiradas y cola enroscada; un hombre de abrigo mira tras la reja |
+- p266 | 74,58,1037,648 | C8 | "Cascarudos", "manos" y "gurbos" embolsados en envolturas transparentes; domos chatos y discos apoyados en el suelo |
+- p268 | 445,55,790,276 | C8 | Aparato fusiforme con una aleta alta clavado en la plaza, humeando; una figura humana diminuta al lado |
+- p270 | 86,56,323,276 | C8 | Aparato negro con diales y perillas junto a la base de una estatua; un hombre diminuto al lado |
+- p270 | 799,56,1036,276 | C8 | Mano enorme de cuatro dedos manipulando diales y perillas en un tablero, uñas cuadradas y nudillos marcados |
+- p271 | 61,86,361,276 | C8 | Una bomba cae en diagonal con su estela sobre la azotea; dos hombres la siguen con la mirada |
+- p271 | 207,292,503,506 | C8 | Mano gigantesca aferrada a palancas y diales, dedos nudosos; de fondo una pared rayada |
+- p272 | 750,517,1038,738 | C8 | Mano negra gigante alzada en primer plano, dedos curvos, con una casa bombardeada y un cartel atrás |
+- p272 | 582,55,1037,276 | C8 | Entre humo y piedras, tres bultos acorazados avanzan encorvados: "cascarudos" entre escombros |
+- p273 | 692,525,1025,739 | C8 | Vista aérea de la plaza cubierta de caparazones y domos chatos, con estallidos entre ellos |
+- p274 | 74,57,620,278 | C8 | Animales colosales sin cabeza visible, cuerpo redondo y oscuro, con figuras humanas diminutas al pie |
+- p276 | 310,518,647,739 | C8 | El lomo redondo y las patas de un gurbo, enorme, con figuras humanas que le llegan a la rodilla |
+- p276 | 448,287,683,507 | C8 | Dedos de una "mano" recorriendo un tablero de teclas, vistos desde arriba, con una cabeza recortada al fondo |
+- p276 | 694,287,1037,508 | C8 | Cinco hombres-robot marchando hacia cámara con fusiles y escopetas, caras vacías, ropa de civil |
+- p277 | 64,56,434,276 | C8 | Un gurbo camina por la azotea de frente, cuerpo redondo y patas gruesas; un hombre de espaldas en primer plano |
+- p277 | 443,56,679,276 | C8 | Gurbo enorme pasando junto a una puerta: grupa redonda y pata trasera, el edificio empequeñecido al lado |
+- p277 | 263,518,629,721 | C8 | Manos gigantes de un hombre-robot agarrando el pretil desde el otro lado de la azotea |
+- p278 | 466,518,960,738 | C8 | Fila de hombres-robot caminando de perfil con fusiles al hombro, uno tras otro, sobre fondo claro |
+- p279 | 704,519,1024,741 | C8 | Primerísimo plano de una mano de dedos gruesos prendida de una nuca, pelo y piel rayados |
+- p279 | 62,109,395,277 | C8 | Dos hombres junto a una baranda de tablas en la azotea; uno de espaldas con correajes, el otro anciano |
+- p279 | 404,109,686,277 | C8 | Dos hombres-robot con las manos en alto, dedos abiertos y pose rígida, contra un cielo claro |
+- p279 | 62,518,350,738 | C8 | Hombre-robot de frente con la mano alzada, dedos curvados como garra, postura de títere |
+- p280 | 77,89,433,273 | C8 | Una mano grande y nudosa se aferra a la nuca de un hombre, con un disco redondo entre los dedos |
+- p280 | 631,287,1035,507 | C8 | Cuatro hombres-robot de frente, caras vacías (uno con anteojos), mirando un objeto que les muestra un hombre |
+- p281 | 63,56,469,277 | C8 | Picado: hombres-robot en fila sobre la losa, sombras largas y una hilera de granadas en el suelo |
+- p281 | 444,519,876,739 | C8 | Hombre disparando el fusil ametralladora entre cuerpos caídos; casquillos y siluetas al fondo |
+- p283 | 532,56,792,276 | C8 | Cuerpos tendidos a lo largo de un muro, brazos colgando del borde; bultos oscuros sobre el piso |
+- p283 | 62,56,529,277 | C8 | Cuerpos de hombres-robot amontonados en un patio, brazos y piernas rígidos, vistos desde arriba |
+- p284 | 314,519,524,740 | C8 | El domo de luz humeando, intacto, con sus varillas y el halo de rayos |
+- p285 | 388,518,580,739 | C8 | El domo de luz visto desde el pretil, un rayo en zigzag en el cielo y bultos chatos en el suelo |
+- p285 | 584,518,807,739 | C8 | Cielo negro con un rayo en zigzag sobre el domo humeante, la ciudad en sombra |
+- p286 | 742,343,1038,507 | C8 | Hombre inclinado junto a un objeto curvo enorme, con un instrumento redondo al lado |
+- p286 | 425,341,623,508 | C8 | Una "mano" negra gigante yace en el suelo como una escultura; un hombre flaco la mira de cerca |
+- p286 | 645,518,1037,733 | C8 | Primer plano de un brazo enorme apoyado en el suelo, la piel dibujada como red o encaje |
+- p287 | 675,537,807,739 | C8 | Un globo blanco e inmenso se eleva en el cielo estrellado sobre los techos |
+- p288 | 336,331,619,509 | C8 | Cielo estrellado con una bola luminosa que cae dejando estela; tres siluetas pequeñas abajo |
+- p289 | 700,285,1022,497 | C8 | Multitud de cascarudos rechonchos y oscuros dispersos por una pendiente nevada, chirriando en fila |
+- p289 | 63,512,364,745 | C8 | Hombre arrastrándose junto al caparazón redondo de un "mano" que agoniza, con una pinza asomando |
+- p289 | 530,512,1025,745 | C8 | Dos "gurbos" gigantescos y peludos avanzan entre la nieve, casi negros, olfateando el suelo |
+- p290 | 76,515,345,745 | C8 | Un lazo delgado se abre en el aire formando un rulo, sobre fondo blanco con tramado |
+- p290 | 440,55,775,275 | C8 | Dos "gurbos" enormes forcejean abrazados, casi todo en negro, delante de edificios bajos |
+- p291 | 365,57,642,277 | C8 | Vista rasante tras una cabeza calva: bosque de piernas y botas de hombres-robot y un lazo en el piso |
+- p292 | 77,538,341,740 | C8 | Dos hombres cargan una bicicleta entre los papeles del kiosco derribado, junto al muerto |
+- p297 | 496,519,1024,739 | C8 | Un gurbo enorme cruza el descampado a zancadas, con el camión diminuto al lado |
+- p298 | 675,55,752,276 | C8 | Recorte vertical: solo la cabeza y el párpado de un gurbo, casi abstracto, sobre blanco |
+- p298 | 409,549,842,741 | C8 | El gurbo salta detrás del camión que acelera entre nubes de tierra |
+- p298 | 75,548,401,739 | C8 | Gurbo de perfil salta a zancadas por el descampado, panza baja y brazos colgando |
+- p298 | 76,55,404,275 | C8 | Gurbo de frente, enorme y oscuro, corre levantando polvo sobre el pavimento resquebrajado |
+- p299 | 495,317,815,508 | C8 | Cuatro hombres diminutos de pie frente al cuerpo enorme de un gurbo caído, casi una pared negra |
+- p299 | 229,317,487,507 | C8 | El gurbo muerto en la nieve: mole redonda y oscura junto al camión volcado a lo lejos |
+- p301 | 534,56,1023,277 | C8 | Tres gurbos avanzan de frente sobre la nieve: cuerpos redondos, enormes y oscuros, con pinzas delanteras |
+- p301 | 584,287,1023,507 | C8 | Tres gurbos persiguen el auto por la nieve, en fila y con las patas abiertas |
+- p302 | 554,287,1037,507 | C8 | Un gurbo enorme se apoya contra la fachada del chalet, tapándola; auto chocado en la vereda |
+- p302 | 75,518,543,740 | C8 | De espaldas, dos cabezas miran el anca de un gurbo junto a una pared de ladrillo con ventana enrejada |
+- p303 | 565,56,1023,276 | C8 | La cabeza del gurbo en primer plano y la mole de su cuerpo tapando la pared de ladrillo |
+- p303 | 628,518,1025,739 | C8 | Primerísimo plano del pico curvo y grueso de un gurbo, casi una pinza negra |
+- p304 | 75,519,360,740 | C8 | Los hombres rodean el cuerpo del gurbo con los rifles todavía apuntando |
+- p304 | 75,287,267,507 | C8 | Cabeza y pinza del gurbo recortadas en blanco y negro, casi abstractas |
+- p304 | 682,285,1036,506 | C8 | El gurbo se desploma de costado frente a una casa de madera con un negocio en la planta baja |
+- p304 | 772,55,1035,277 | C8 | El pico del gurbo como una guadaña negra gigante sobre un hombre sentado en la nieve |
+- p304 | 326,285,675,506 | C8 | El gurbo da la vuelta hacia cámara: cuerpo y pico enormes, un hombre diminuto a sus pies |
+- p304 | 478,55,765,277 | C8 | El gurbo se yergue enorme en la nieve con el pico abierto; un hombre agazapado con rifle al lado |
+- p306 | 75,549,368,739 | C8 | Visto en picado: un gurbo agazapado junto a la medianera de una casa de chapa |
+- p308 | 584,518,1038,740 | C8 | Afuera, en el jardín nevado, dos gurbos oscuros esperan junto a un hombre diminuto |
+- p308 | 746,100,1037,278 | C8 | Pared de ladrillo y una hilera de ventanas con caras apretadas adentro, mirando hacia afuera |
+- p308 | 75,100,460,277 | C8 | Una mano negra gigantesca en primer plano y, al fondo, la casa con un auto y un bulto en la nieve |
+- p308 | 238,319,466,508 | C8 | Silueta de un hombre parado en el jardín, inmóvil, delante de una casa y un auto |
+- p308 | 615,100,730,278 | C8 | Figura de cuerpo entero con remera oscura y una faja clara a la cintura, brazos colgando |
+- p309 | 64,314,214,508 | C8 | Primer plano del pico curvo y pesado de un gurbo, casi todo en negro |
+- p309 | 598,308,1023,508 | C8 | Un gurbo se yergue tironeado por un hilo tenso; más gurbos detrás y el hombrecito adelante |
+- p309 | 284,308,590,508 | C8 | Dos gurbos agachados huelen el suelo y un hilo fino sale de la mano de la figurita |
+- p309 | 507,131,752,277 | C8 | El "mano" de remera oscura se lleva la mano a la cintura, ademán calmo, cara pálida |
+- p309 | 64,131,500,277 | C8 | Cuatro gurbos caminan por el llano nevado hacia la derecha; una figura diminuta los espera |
+- p309 | 760,131,1023,278 | C8 | El "mano" de pie, cuerpo entero: remera negra, faja clara a la cintura y pelo blanco |
+- p309 | 541,555,799,740 | C8 | Silueta del "mano" con el brazo levantado, saludando en medio de la nieve |
+- p310 | 75,518,340,739 | C8 | Siluetas de gurbos tendidos en la nieve, uno panza arriba, bajo la nevada |
+- p310 | 395,340,690,507 | C8 | El "mano" de pie con el brazo levantado en saludo, rodeado de copos de nieve |
+- p310 | 559,517,1036,738 | C8 | El "mano" muerto en la nieve, la faja clara en la cintura; el hombre mayor se inclina sobre él |
+- p310 | 700,340,1035,507 | C8 | Un hombre se abraza a sí mismo temblando en la nieve, el cuerpo cubierto de copos |
+- p332 | 440,113,810,247 | C8 | El gurbo pasando a la izquierda y el camino blanco libre en el centro |
+- p332 | 75,113,330,247 | C8 | Masa oscura enorme y redonda cubierta de copos, con una abertura arqueada al frente: el "gurbo" |
+- p341 | 734,293,1023,507 | C8 | Soldados que retroceden y uno que cae mientras disparan contra figuras oscuras |
+- p341 | 543,293,727,507 | C8 | Primer plano de una mano mecánica: pinza de dedos metálicos al final de una manga gruesa |
+- p343 | 790,57,1024,278 | C8 | Anca y pata de una bestia enorme en primer plano; la camioneta diminuta en la ruta |
+- p343 | 361,57,783,277 | C8 | Hilera de cascarudos enormes: cuerpo en cúpula oscura, cabeza chica y patas cortas |
+- p343 | 422,288,1024,509 | C8 | Dos cascarudos avanzando a la par de la camioneta que huye por la ruta |
+- p344 | 464,331,1037,508 | C8 | Plato volador ovalado con hileras de puntos en el cielo, sobre la camioneta |
+- p345 | 64,549,461,739 | C8 | Grupo en la zanja con un soldado armado; una media cúpula oscura asoma en el horizonte |
+- p347 | 63,345,366,508 | C8 | Fila de hombres-robot recortada en la cresta, chicos como hormigas, bajo humo |
+- p348 | 879,318,1036,508 | C8 | Perfil de un hombre que mira una loma con hombres-robot diminutos en fila |
+- p349 | 64,560,319,739 | C8 | Fila de hombres-robot cruzando la nieve, con una figura chica que dispara abajo |
+- p350 | 503,529,1037,739 | C8 | Hombres-robot con fusil al hombro custodiando a los sobrevivientes en hilera |
+- p350 | 816,328,1037,507 | C8 | Siluetas de guardias armados en el borde de la zanja, mirando la fila de prisioneros |
+- p352 | 75,294,417,508 | C8 | Una cúpula oscura y lisa en cuclillas en la llanura nevada, quieta |
+- p352 | 251,537,347,739 | C8 | Detalle de una cúpula oscura y redonda en medio de la nieve, sola |
+- p353 | 812,137,1023,277 | C8 | Caja metálica con rejillas que sobresale del suelo, inclinada; figuritas abajo |
+- p353 | 340,137,767,278 | C8 | Un aparato gigante inclinado, de superficie escamada, en medio de la llanura |
+- p353 | 696,332,1023,508 | C8 | Hombre de espaldas parado en una escotilla abierta, la coraza curva al lado |
+- p353 | 63,332,420,508 | C8 | Tres figuras diminutas frente a una gran chapa curva clavada en la nieve |
+- p355 | 300,57,795,188 | C8 | El aparato como un domo blanco redondo en la llanura, fila de hombres-robot a lo lejos |
+- p356 | 815,57,1035,277 | C8 | El domo oscuro y achatado sobre la llanura vacía, quieto |
+- p356 | 708,518,1030,739 | C8 | Un hombre enorme camina entre soldados armados con gorra de plato |
+- p357 | 64,519,355,739 | C8 | Garra escamosa gigante en primer plano y un hombre de espaldas frente a ella |
+- p357 | 365,518,690,739 | C8 | Cabeza calva y arrugada de un ser enorme con una garra al lado; un hombre chico abajo |
+- p357 | 741,288,1024,508 | C8 | Un hombre diminuto grita frente a una garra escamosa enorme que asoma |
+- p357 | 64,57,340,277 | C8 | Cabeza de dinosaurio enorme con las fauces abiertas entre rocas y vapor |
+- p358 | 76,111,300,277 | C8 | Dos figuras y una garra escamosa enorme a la izquierda, en la llanura blanca |

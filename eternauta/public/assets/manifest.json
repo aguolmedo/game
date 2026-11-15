@@ -1,0 +1,23 @@
+{
+ "assets": [
+  "title.png",
+  "tiles.png",
+  "tiles.json",
+  "objects.png",
+  "objects.json",
+  "buttons.png",
+  "buttons.json",
+  "chars.png",
+  "chars.json",
+  "portraits.png",
+  "portraits.json",
+  "items.png",
+  "items.json",
+  "font.json",
+  "snow.png",
+  "shadow.png",
+  "footprint.png",
+  "manifest.json"
+ ],
+ "version": 3
+}

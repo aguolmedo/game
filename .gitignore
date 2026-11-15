@@ -1,0 +1,30 @@
+# Dependencias
+node_modules/
+
+# Build (lo genera CI / `npm run build`)
+dist/
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+
+# Arte generado localmente
+eternauta/art/concept/out/
+
+# Material de referencia privado: escaneos del cómic (no redistribuir)
+eternauta/ref/
+
+# Archivo de proceso de desarrollo (briefs, logs, backups, probes)
+_archive/
+
+# Logs y backups sueltos
+*.log
+*.tar.gz
+
+# Sistema / editor
+.DS_Store
+Thumbs.db
+
+# Config local de Claude Code
+.claude/settings.local.json
