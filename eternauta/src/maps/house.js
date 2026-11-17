@@ -16,7 +16,7 @@ export const ROWS = 16;
 // Tamaños de los sprites que usa este mapa (frames de objects/interior2).
 const SIZE = {
   stairs_up: [32, 32], window_glow: [32, 32], shelf: [48, 29], sofa: [48, 24],
-  radio_cabinet: [32, 24], living_table: [32, 24], armchair: [16, 24],
+  radio_cabinet: [32, 24], living_table: [32, 24], kitchen_table: [48, 24], armchair: [16, 24],
   door_porthole: [20, 34], coat_stand: [16, 40], wall_clock: [12, 18],
   garage_door: [48, 34], garage_shelf: [48, 32], tire: [16, 16], cans: [8, 8],
   bucket: [8, 8], bed: [32, 34], nightstand: [16, 28], wardrobe: [32, 32],
@@ -89,9 +89,11 @@ for (let j = 0; j < 3; j++) {
 const objects = [];
 
 // ---- living
+// Decorativa: el click/hover lo maneja el warp `stairs_up`, que ocupa el
+// mismo rect. Si el objeto tambien fuera interactuable robaba el click y
+// mostraba un texto de bajada estando en la planta baja.
 objects.push(put('stairs_up', 'stairs_up', 16, 80, {
   flat: true, solid: false,
-  interact: { kind: 'look', talk: 'stairs', label: 'Subir al altillo' },
 }));
 objects.push(put('window_living', 'window_glow', 96, 48, {
   window: { view: 'living', openable: false },
@@ -111,7 +113,7 @@ const tableLiving = put('living_table', 'living_table', 104, 112, {
   surface: null,
   interact: { kind: 'look', talk: 'living_table', label: 'Mirar la mesa' },
 });
-tableLiving.surface = { slots: slots('living_table', tableLiving, [[6, 8], [16, 8], [26, 8]], 3).slots, maxItems: 3 };
+tableLiving.surface = { slots: slots('living_table', tableLiving, [[8, 12], [16, 13], [24, 12]], 3).slots, maxItems: 3 };
 objects.push(tableLiving);
 const armL = put('armchair_l', 'armchair', 160, 96, { solid: { x: 0, y: 1, w: 1, h: 1 } });
 objects.push(armL);
@@ -180,20 +182,18 @@ const stove = put('stove', 'stove', 404, 192, {
 });
 stove.surface = slots('stove', stove, [[8, 12]], 1);
 objects.push(stove);
-const ktable = put('kitchen_table', 'living_table', 336, 224, {
-  solid: { x: 0, y: 1, w: 2, h: 1 },
+const ktable = put('kitchen_table', 'kitchen_table', 336, 224, {
+  solid: { x: 0, y: 1, w: 3, h: 1 },
   interact: { kind: 'look', talk: 'kitchen_table', label: 'Mirar la mesa' },
 });
-ktable.surface = slots('living_table', ktable, [[6, 8], [16, 8], [26, 8], [6, 16], [16, 16], [26, 16]], 6);
+// Tapa en y 3..14: fila de atras (frascos, latas, lista) y adelante (lata, pan,
+// un lugar libre para dejar cosas). Atras a la izquierda va la lampara.
+ktable.surface = slots('kitchen_table', ktable, [[20, 8], [31, 8], [41, 9], [12, 15], [25, 15], [38, 15]], 6);
 objects.push(ktable);
-// La lampara y las latas van sobre la mesa: mismo anclaje que ella (fila 13)
-// para que se dibujen encima.
+// La lampara va sobre la mesa, atras a la izquierda: mismo anclaje que ella
+// (fila 13) para que se dibuje encima. Latas y frascos son surface items.
 objects.push({ id: 'oil_lamp', sprite: 'oil_lamp_lit', x: 21, y: 13, tw: 1, th: 1,
-  solid: false, offset: [7, -14], glow: true });
-objects.push({ id: 'kitchen_cans', sprite: 'cans', x: 22, y: 13, tw: 1, th: 1,
-  solid: false, offset: [2, -13] });
-objects.push({ id: 'kitchen_jar', sprite: 'jar', x: 21, y: 13, tw: 1, th: 1,
-  solid: false, offset: [-2, -13] });
+  solid: false, offset: [0, -16], glow: true });
 objects.push(put('kitchen_bucket', 'bucket', 420, 240, {}));
 
 export const house = {
@@ -230,9 +230,9 @@ export const house = {
   ],
   pickups: [],
   warps: [
-    { id: 'stairs_up', x: 1 * 16, y: 3 * 16, w: 32, h: 32, to: 'attic',
+    { id: 'stairs_up', x: 1 * 16, y: 3 * 16, w: 32, h: 32, to: 'attic', label: 'Subir',
       spawn: { x: 17 * 16 + 8, y: 12 * 16 + 8, dir: 'right' } },
-    { id: 'garage_door', x: 22 * 16, y: 3 * 16, w: 48, h: 16, to: 'garage',
+    { id: 'garage_door', x: 22 * 16, y: 3 * 16, w: 48, h: 16, to: 'garage', label: 'Entrar',
       spawn: { x: 5 * 16 + 8, y: 4 * 16 + 8, dir: 'down' } },
   ],
 };

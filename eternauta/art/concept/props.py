@@ -44,14 +44,14 @@ def naipe(palo='oro', back=False):
 
 
 def anotador():
-    """Anotador de truco con los porotos al lado (se cuentan los tantos)."""
-    p = P(14, 9)
-    p.rect(0, 1, 8, 8, CARD[1]); p.hline(0, 7, 1, hx('#b84040'))
+    """Anotador de truco con dos porotos al lado (se cuentan los tantos)."""
+    p = P(10, 9)
+    p.rect(0, 1, 7, 8, CARD[1]); p.hline(0, 6, 1, hx('#b84040'))
     for y in (3, 5, 7):
-        p.hline(1, 6, y, hx('#9a9688'))
-    p.vline(4, 2, 8, hx('#9a9688'))
-    for (x, y) in ((9, 3), (11, 2), (10, 5), (12, 6), (9, 7), (12, 4)):
-        p.set(x, y, hx('#e8d8b0')); p.set(x + 1, y, hx('#b89a6a'))
+        p.hline(1, 5, y, hx('#7a7668'))
+    p.vline(3, 2, 8, hx('#7a7668'))
+    for (x, y) in ((8, 4), (8, 7)):
+        p.set(x, y, hx('#f0e0b8')); p.set(x + 1, y, hx('#b89a6a'))
     return p
 
 
@@ -90,12 +90,32 @@ def cenicero():
 
 
 def mate():
-    """Mate de calabaza con bombilla."""
-    p = P(6, 8)
-    p.ellipse(3, 5, 2.6, 2.6, hx('#7a5230')); p.hline(1, 4, 3, hx('#4a7a3a'))
-    p.set(1, 5, hx('#a07448'))
-    p.vline(4, 0, 3, TIN[2]); p.set(5, 0, TIN[1])
+    """Mate de calabaza con virola de alpaca y bombilla: se lee sobre la madera."""
+    p = P(7, 10)
+    p.ellipse(3.5, 6.5, 3.2, 3.3, hx('#5a3418'))          # calabaza oscura
+    p.ellipse(3.0, 6.0, 1.6, 1.8, hx('#8a5a30'))          # brillo de la panza
+    p.set(2, 5, hx('#b07a44'))
+    p.hline(1, 5, 3, TIN[2]); p.hline(1, 5, 4, TIN[1])    # virola
+    p.hline(2, 4, 3, hx('#4a8a3a'))                       # yerba
+    p.vline(5, 0, 3, TIN[2]); p.set(6, 0, TIN[1])         # bombilla
     return p
+
+
+def outlined(p, dark=hx('#1a1426')):
+    """Contorno oscuro de 1 px alrededor de la silueta (agrega 1 px por lado)."""
+    q = P(p.w + 2, p.h + 2)
+    q.paste(p, 1, 1)
+    base = q.img.copy().load()
+    for y in range(q.h):
+        for x in range(q.w):
+            if base[x, y][3]:
+                continue
+            for dx, dy in ((1, 0), (-1, 0), (0, 1), (0, -1)):
+                xx, yy = x + dx, y + dy
+                if 0 <= xx < q.w and 0 <= yy < q.h and base[xx, yy][3] > 100:
+                    q.set(x, y, dark, 230)
+                    break
+    return q
 
 
 # ---------------------------------------------------------------- cocina

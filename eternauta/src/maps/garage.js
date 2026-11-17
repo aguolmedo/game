@@ -69,6 +69,8 @@ outerDoor.interact = { kind: 'look', talk: 'garage_door', label: 'Salir a la cal
 objects.push(outerDoor);
 objects.push(put('extractor', 'extractor', 124, 20, {
   station: 'extractor',
+  // Esta en lo alto de la pared: se usa desde el piso, frente a la puerta.
+  reach: 56,
   interact: { kind: 'look', talk: 'extractor', label: 'Mirar el extractor' },
 }));
 const shelfR = put('garage_shelf_r', 'garage_shelf', 180, 64, {
@@ -137,10 +139,10 @@ export const garage = {
   pickups: [],
   warps: [
     // puerta interior: vuelve a la casa, al lado del porton del garaje
-    { id: 'door_home', x: 5 * 16, y: 3 * 16, w: 16, h: 16, to: 'house',
+    { id: 'door_home', x: 5 * 16, y: 3 * 16, w: 16, h: 16, to: 'house', label: 'Entrar',
       spawn: { x: 23 * 16 + 8, y: 4 * 16 + 8, dir: 'down' } },
     // la puerta de dos hojas: recien se puede cruzar con el traje y todo listo
-    { id: 'garage_door', x: 7 * 16, y: 3 * 16, w: 48, h: 16, to: 'street',
+    { id: 'garage_door', x: 7 * 16, y: 3 * 16, w: 48, h: 16, to: 'street', label: 'Salir',
       needsSuit: true, needsFlag: 'listo_para_salir',
       spawn: { x: 4 * 16 + 8, y: 12 * 16 + 8, dir: 'down' } },
   ],

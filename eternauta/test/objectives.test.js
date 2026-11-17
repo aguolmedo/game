@@ -2,12 +2,15 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import {
   OBJECTIVES,
+  AIRLOCK_STEPS,
   SUIT_NEEDS,
+  airlockChecklist,
   airlockCount,
   canWearSuit,
   closedCount,
   countMaterials,
   currentObjective,
+  equipChecklist,
   equipSuit,
   exitOutcome,
   exitWarningFlow,
@@ -39,8 +42,14 @@ function stocked() {
   return slots;
 }
 
+// 'ramirez' y 'attic' son pasos nuevos entre Elena y los materiales: no son
+// textos del §6.2, así que el test canónico los ignora.
+const EXTRA_IDS = ['craft', 'ramirez', 'attic'];
+
 test('OBJECTIVES: los 12 textos del §6.2 en orden', () => {
-  const canonical = OBJECTIVES.filter((o) => o.id !== 'craft').map((o) => o.text);
+  const canonical = OBJECTIVES
+    .filter((o) => !EXTRA_IDS.includes(o.id))
+    .map((o) => o.text);
   assert.deepEqual(canonical, TEXTS);
   for (const o of OBJECTIVES) assert.ok(!o.text.startsWith('Objetivo:'));
 });
@@ -56,6 +65,16 @@ test('currentObjective: recorre toda la historia', () => {
     [{ flags: { ...base, martita_sprint: true } }, 'martita'],
     [{ flags: { ...base, martita_ventana: 'ok' } }, 'seal'],
     [{ flags: { ...base, martita_ventana: 'ok', casa_sellada: true } }, 'elena'],
+    // Elena hablada → ventana del living; con la ventana vista → altillo.
+    [{
+      flags: { ...base, martita_ventana: 'ok', casa_sellada: true, elena_hablada: true },
+    }, 'ramirez'],
+    [{
+      flags: {
+        ...base, martita_ventana: 'ok', casa_sellada: true, elena_hablada: true,
+        ramirez_muerto: true,
+      },
+    }, 'attic'],
     [{ flags: { ...base, martita_ventana: 'ok', casa_sellada: true, idea_traje: true } }, 'materials'],
     [{
       flags: { ...base, martita_ventana: 'ok', casa_sellada: true, idea_traje: true },
@@ -148,6 +167,74 @@ test('contador de la esclusa (0/3)', () => {
   const objective = currentObjective({ flags });
   assert.equal(objective.id, 'airlock');
   assert.equal(objective.text, 'Prepará la esclusa: nafta, extractor, traje (2/3).');
+});
+
+test('AIRLOCK_STEPS + airlockChecklist: pasos, etiquetas y hechos', () => {
+  assert.deepEqual(AIRLOCK_STEPS.map((s) => s.id), ['nafta', 'extractor', 'traje']);
+  assert.deepEqual(AIRLOCK_STEPS.map((s) => s.label), ['Nafta', 'Extractor', 'Traje']);
+
+  assert.deepEqual(airlockChecklist(), [
+    { id: 'nafta', label: 'Nafta', done: false },
+    { id: 'extractor', label: 'Extractor', done: false },
+    { id: 'traje', label: 'Traje', done: false },
+  ]);
+  assert.deepEqual(airlockChecklist({ electrogeno_on: true, traje_fabricado: true }), [
+    { id: 'nafta', label: 'Nafta', done: true },
+    { id: 'extractor', label: 'Extractor', done: false },
+    { id: 'traje', label: 'Traje', done: true },
+  ]);
+  assert.deepEqual(
+    airlockChecklist({ electrogeno_on: true, extractor_ok: true, traje_fabricado: true })
+      .map((row) => row.done),
+    [true, true, true],
+  );
+});
+
+test('equipChecklist: dados, traje puesto y rifle', () => {
+  assert.deepEqual(equipChecklist(), [
+    { id: 'dados', label: 'Dados', done: false },
+    { id: 'traje_puesto', label: 'Traje puesto', done: false },
+    { id: 'rifle', label: 'Rifle', done: false },
+  ]);
+  assert.deepEqual(equipChecklist({ flags: { dados: true }, hasSuit: true }), [
+    { id: 'dados', label: 'Dados', done: true },
+    { id: 'traje_puesto', label: 'Traje puesto', done: true },
+    { id: 'rifle', label: 'Rifle', done: false },
+  ]);
+  assert.deepEqual(
+    equipChecklist({ flags: { dados: true }, hasSuit: true, hasRifle: true })
+      .map((row) => row.done),
+    [true, true, true],
+  );
+});
+
+test('currentObjective: checklist en esclusa y equipado', () => {
+  const airlock = currentObjective({
+    flags: {
+      mate_tutorial: true, truco_jugado: true, apagon: true, vio_la_nevada: true,
+      martita_ventana: 'ok', casa_sellada: true, idea_traje: true, traje_fabricado: true,
+      electrogeno_on: true,
+    },
+  });
+  assert.equal(airlock.id, 'airlock');
+  assert.deepEqual(airlock.checklist.map((row) => [row.label, row.done]), [
+    ['Nafta', true], ['Extractor', false], ['Traje', true],
+  ]);
+
+  const equip = currentObjective({
+    flags: {
+      mate_tutorial: true, truco_jugado: true, apagon: true, vio_la_nevada: true,
+      martita_ventana: 'ok', casa_sellada: true, idea_traje: true, traje_fabricado: true,
+      esclusa_lista: true, dados: true,
+    },
+    hasSuit: true,
+    hasRifle: false,
+  });
+  assert.equal(equip.id, 'equip');
+  assert.equal(equip.text, 'Equipate: el traje y el rifle.');
+  assert.deepEqual(equip.checklist.map((row) => [row.label, row.done]), [
+    ['Dados', true], ['Traje puesto', true], ['Rifle', false],
+  ]);
 });
 
 test('currentObjective acepta el game directo (sceneName, flags, inventario)', () => {

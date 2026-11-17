@@ -2,6 +2,7 @@ import * as THREE from 'three';
 import { depthFor, imageSprite, regionTexture, makeGlow, buildFloorTexture }
   from './sprite.js';
 import { VIEW_W, VIEW_H } from './sprite.js';
+import { viewport, snapCamera } from './viewport.js';
 
 // Atlas donde buscar cada sprite de mapa, en orden. Las piezas viejas viven
 // en objects.png; las nuevas en los atlases del concepto.
@@ -104,13 +105,19 @@ export class WorldMap {
     }
 
     if (obj.interact) {
+      // `hitFromSprite`: la caja de hover/accion es la del sprite dibujado
+      // (con su offset), no la del tile de anclaje. La vela del altillo la usa.
+      const hit = obj.hitFromSprite
+        ? { x: px, y: py + h / 2, w, h }
+        : { x: anchorX, y: anchorY, w: obj.tw * 16, h: obj.th * 16 };
       this.candidates.push({
         id: obj.id,
         kind: 'object',
-        x: anchorX,
-        y: anchorY,
-        w: obj.tw * 16,
-        h: obj.th * 16,
+        ...(Number.isFinite(obj.priority) ? { priority: obj.priority } : {}),
+        x: hit.x,
+        y: hit.y,
+        w: hit.w,
+        h: hit.h,
         label: obj.interact.label,
         interact: obj.interact,
         ref: obj,
@@ -191,11 +198,14 @@ export class WorldMap {
   }
 
   cameraFor(x, y) {
-    const maxX = this.w - VIEW_W;
-    const maxY = this.h - VIEW_H;
-    const cx = maxX <= 0 ? maxX / 2 : clamp(x - VIEW_W / 2, 0, maxX);
-    const cy = maxY <= 0 ? maxY / 2 : clamp(y - VIEW_H / 2, 0, maxY);
-    return { x: Math.round(cx), y: Math.round(cy) };
+    // La vista del mundo puede estar zoomeada (viewport.worldW/H).
+    const vw = viewport.worldW || VIEW_W;
+    const vh = viewport.worldH || VIEW_H;
+    const maxX = this.w - vw;
+    const maxY = this.h - vh;
+    const cx = maxX <= 0 ? maxX / 2 : clamp(x - vw / 2, 0, maxX);
+    const cy = maxY <= 0 ? maxY / 2 : clamp(y - vh / 2, 0, maxY);
+    return { x: snapCamera(cx), y: snapCamera(cy) };
   }
 
   /** Rect del tile solido en (tx,ty) o null. */

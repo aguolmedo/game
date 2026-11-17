@@ -34,6 +34,8 @@ export class TitleScene {
   constructor(game) {
     this.game = game;
     this.pausable = false;
+    // Pantalla fija: sin zoom del mundo (T2).
+    this.worldZoom = false;
     this.scene = new THREE.Scene();
     this.data = game.assets.titleData || null;
     const size = (this.data && this.data.size) || [LAYER_W, LAYER_H];

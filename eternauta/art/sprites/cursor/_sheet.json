@@ -1,0 +1,62 @@
+{
+ "kind": "atlas",
+ "size": [
+  93,
+  28
+ ],
+ "layout": {
+  "arrow": [
+   1,
+   1,
+   22,
+   26
+  ],
+  "hand": [
+   24,
+   1,
+   22,
+   26
+  ],
+  "hand_press": [
+   47,
+   1,
+   22,
+   26
+  ],
+  "hand_far": [
+   70,
+   1,
+   22,
+   26
+  ]
+ },
+ "meta": {
+  "w": 93,
+  "h": 28,
+  "hotspots": {
+   "arrow": [
+    2,
+    2
+   ],
+   "hand": [
+    3,
+    2
+   ],
+   "hand_press": [
+    3,
+    3
+   ],
+   "hand_far": [
+    3,
+    2
+   ]
+  }
+ },
+ "keys": [
+  "w",
+  "h",
+  "frames",
+  "hotspots"
+ ],
+ "newline": true
+}

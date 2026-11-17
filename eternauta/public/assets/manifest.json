@@ -17,6 +17,8 @@
   "snow.png",
   "shadow.png",
   "footprint.png",
+  "cursor.png",
+  "cursor.json",
   "manifest.json"
  ],
  "version": 3

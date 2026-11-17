@@ -131,7 +131,7 @@ export function drawDeathPanel(ctx, assets, state) {
   // aviso "(A) Continuar" / tecla según el último dispositivo
   const glyphs = assets.font.glyphs;
   const label = 'Continuar';
-  const glyph = device === 'pad' ? 'a' : 'key_space';
+  const glyph = device === 'pad' ? 'a' : (device === 'mouse' ? 'mouse' : 'key_space');
   const g = glyphSize(assets, glyph);
   const w = g.w + 6 + measureText(glyphs, label);
   const x = Math.round((ctx.canvas.width - w) / 2);

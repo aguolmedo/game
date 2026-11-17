@@ -5,9 +5,119 @@ import {
   OUT, INK, PAR, PAR2, AM3, AM2, GOOD, SNOW, darkPanel, icon, count, slot,
 } from './uiSkin.js';
 import { drawPrompt, drawGlyph, glyphSize, promptWidth } from './glyphs.js';
+import { pointInRect } from './uiHit.js';
 
 export const VIEW_W = 480;
 export const VIEW_H = 270;
+
+// Toasts (T8): máximo 2, arriba-centro, 2 s. Los pickups se agrupan.
+export const TOAST_LIFE = 2.0;
+export const TOAST_MAX = 2;
+const TOAST_GROUP_WINDOW = 0.3;   // vida consumida para seguir agrupando
+const TOAST_MAX_CHARS = 40;
+
+/** Agrega un toast a la lista (agrupando si corresponde) y devuelve el último. */
+export function pushToast(toasts, text, { group = null, life = TOAST_LIFE } = {}) {
+  const last = toasts[toasts.length - 1];
+  if (last && group && last.group === group
+    && TOAST_LIFE - last.life <= TOAST_GROUP_WINDOW) {
+    const merged = `${last.text}, ${text}`;
+    if (merged.length <= TOAST_MAX_CHARS) {
+      last.text = merged;
+      last.life = life;
+      return last;
+    }
+  }
+  const toast = { text, group, life };
+  toasts.push(toast);
+  while (toasts.length > TOAST_MAX) toasts.shift();
+  return toast;
+}
+
+const HOTBAR_SIZE = 20;
+const HOTBAR_GAP = 2;
+const HOTBAR_N = 8;
+
+/** Rect del panel de la hotbar y de cada slot (dibujo y click comparten). */
+export function hotbarLayout() {
+  const total = HOTBAR_N * HOTBAR_SIZE + (HOTBAR_N - 1) * HOTBAR_GAP;
+  const x0 = Math.round((VIEW_W - total) / 2);
+  const y = VIEW_H - HOTBAR_SIZE - 6;
+  const slots = [];
+  for (let i = 0; i < HOTBAR_N; i++) {
+    slots.push({ x: x0 + i * (HOTBAR_SIZE + HOTBAR_GAP), y, w: HOTBAR_SIZE, h: HOTBAR_SIZE });
+  }
+  return {
+    x0, y, size: HOTBAR_SIZE, total, slots,
+    panel: { x: x0 - 5, y: y - 3, w: total + 10, h: HOTBAR_SIZE + 6 },
+  };
+}
+
+const PROMPT_H = 15;
+const PROMPT_MIN_Y = 18;   // debajo del panel de objetivo
+
+function overlaps(a, b) {
+  return a.x < b.x + b.w && b.x < a.x + a.w && a.y < b.y + b.h && b.y < a.y + a.h;
+}
+
+/**
+ * Rect de la etiqueta flotante (R4/B1). `x` es el centro del marco del objeto
+ * e `y` su tope, en coordenadas de la vista; `frameH` es el alto del marco
+ * también en vista. Prueba candidatos en orden fijo y devuelve el primero que
+ * entra en pantalla y no pisa ningún obstáculo (jugador, cursor, HUD):
+ *
+ *   1. arriba centrado            2. arriba corrido a la derecha del obstáculo
+ *   3. arriba corrido a la izquierda   4. arriba del obstáculo
+ *   5. abajo del marco (solo si ninguno de arriba entra)
+ *   6. si nada sirve: el 1 clampeado a la pantalla
+ */
+export function placeLabel({
+  x, y, w, h = PROMPT_H, frameH = 16, obstacles = [],
+  viewW = VIEW_W, viewH = VIEW_H, minY = PROMPT_MIN_Y,
+}) {
+  const list = (obstacles || []).filter(Boolean);
+  const clampX = (bx) => Math.max(4, Math.min(viewW - w - 4, Math.round(bx)));
+  const box = (bx, by) => ({ x: bx, y: by, w, h });
+  const fits = (c) => c.x >= 4 && c.x + c.w <= viewW - 4
+    && c.y >= minY && c.y + c.h <= viewH - 72
+    && !list.some((ob) => overlaps(c, ob));
+
+  const cx = clampX(x - w / 2);
+  const above = Math.round(y - 3 - h);
+  const centered = box(cx, above);
+  const candidates = [centered];
+  // Arriba corrida: solo tiene sentido respecto del obstáculo que pisa.
+  const hit = list.find((ob) => overlaps(centered, ob));
+  if (hit) {
+    candidates.push(box(clampX(hit.x + hit.w + 2), above));
+    candidates.push(box(clampX(hit.x - w - 2), above));
+    candidates.push(box(cx, Math.round(hit.y - 3 - h)));
+  }
+  // Abajo del marco: el único caso "abajo", y solo si arriba no entra.
+  candidates.push(box(cx, Math.round(y + frameH + 3)));
+
+  for (const candidate of candidates) {
+    if (fits(candidate)) return candidate;
+  }
+  // Nada entra: la de arriba, clampeada a la pantalla.
+  return box(cx, Math.max(minY, Math.min(viewH - 72, above)));
+}
+
+/**
+ * API vieja de la etiqueta: igual que placeLabel con UN obstáculo (`avoid`,
+ * la caja del jugador).
+ */
+export function promptRect(opts = {}) {
+  const { avoid = null, obstacles = [], ...rest } = opts;
+  return placeLabel({ ...rest, obstacles: avoid ? [avoid, ...obstacles] : obstacles });
+}
+
+/** ¿El punto (vista 480x270) cae sobre el HUD que tapa el mundo? */
+export function hudBlocksPoint(point, hintRects = []) {
+  if (!point) return false;
+  if (pointInRect(point, hotbarLayout().panel)) return true;
+  return (hintRects || []).some((rect) => pointInRect(point, rect));
+}
 
 export class Hud {
   constructor(scene, assets, game) {
@@ -25,13 +135,8 @@ export class Hud {
   show() { this.ui.mesh.visible = true; }
   hide() { this.ui.mesh.visible = false; }
 
-  toast(text, t = 0) {
-    this.toasts.push({ text, life: 2.6, t });
-    if (this.toasts.length > 3) this.toasts.shift();
-  }
-
-  setCamera(camX, camY) {
-    this.ui.mesh.position.set(camX + VIEW_W / 2, camY + VIEW_H / 2, 30);
+  toast(text, opts = {}) {
+    return pushToast(this.toasts, text, opts);
   }
 
   update(dt) {
@@ -50,6 +155,7 @@ export class Hud {
     this.ui.mesh.visible = true;
 
     if (!hidden) {
+      let bottom = 20;   // y donde termina el panel de arriba (objetivo o checklist)
       // objetivo arriba a la izquierda
       if (objective) {
         const text = `Objetivo: ${objective.text}`;
@@ -61,11 +167,27 @@ export class Hud {
         ctx.fillRect(12, 11, 2, 2);
         drawText(ctx, glyphs, 19, 9, text, '#fff0c0', { outline: OUT });
       }
-      // iconito del traje puesto
+      // checklist chica del objetivo (esclusa / equipado): sin íconos de check,
+      // la fuente no los tiene, así que va "(x)"/"( )".
+      if (objective?.checklist?.length) {
+        const rows = objective.checklist;
+        const texts = rows.map((row) => `${row.done ? '(x) ' : '( ) '}${row.label}`);
+        const w = Math.max(...texts.map((t) => measureText(glyphs, t))) + 14;
+        const h = rows.length * 9 + 6;
+        const y = 22;
+        darkPanel(ctx, 6, y, w, h, 0.68);
+        rows.forEach((row, i) => {
+          drawText(ctx, glyphs, 11, y + 5 + i * 9, texts[i],
+            row.done ? '#8fd6a0' : '#d4b47c', { outline: OUT });
+        });
+        bottom = y + h;
+      }
+      // iconito del traje puesto, debajo de todo lo anterior
       if (hasSuit) {
-        darkPanel(ctx, 6, 23, 22, 22, 0.68);
-        icon(ctx, this.assets, 'traje', 8, 25, 18);
-        drawText(ctx, glyphs, 25, 32, 'traje', PAR2, { outline: OUT });
+        const y = bottom + 3;
+        darkPanel(ctx, 6, y, 22, 22, 0.68);
+        icon(ctx, this.assets, 'traje', 8, y + 2, 18);
+        drawText(ctx, glyphs, 25, y + 9, 'traje', PAR2, { outline: OUT });
       }
 
       // prompt flotante junto al tile de accion
@@ -94,29 +216,46 @@ export class Hud {
 
   drawPrompt(ctx, device, prompt) {
     const glyphs = this.assets.font.glyphs;
-    const { action, label, x, y, color = '#fff0c0', left = false } = prompt;
+    const {
+      action, label, x, y, color = '#fff0c0', left = false, alpha = 1,
+      anchor = null,
+    } = prompt;
     const w = promptWidth(this.assets, device, action, label) + 12;
-    let bx = Math.round(left ? x : x - w / 2);
-    let by = Math.round(left ? y : y - 22);
-    bx = Math.max(4, Math.min(VIEW_W - w - 4, bx));
-    if (by < 4) by = Math.round(y + 14);
-    if (by > VIEW_H - 72) by = VIEW_H - 72;
+    let bx;
+    let by;
+    if (anchor === 'above') {
+      const rect = placeLabel({
+        x,
+        y,
+        w,
+        h: PROMPT_H,
+        frameH: prompt.frameH,
+        obstacles: prompt.obstacles || (prompt.avoid ? [prompt.avoid] : []),
+      });
+      bx = rect.x;
+      by = rect.y;
+    } else {
+      bx = Math.round(left ? x : x - w / 2);
+      by = Math.round(left ? y : y - 22);
+      bx = Math.max(4, Math.min(VIEW_W - w - 4, bx));
+      if (by < 4) by = Math.round(y + 14);
+      if (by > VIEW_H - 72) by = VIEW_H - 72;
+    }
+    // Lejos: misma etiqueta, más tenue (T4).
+    ctx.globalAlpha = Math.max(0, Math.min(1, alpha));
     darkPanel(ctx, bx, by, w, 15, 0.78);
     drawPrompt(ctx, this.assets, device, action, bx + 6, by + 3, this.t, { label, color });
+    ctx.globalAlpha = 1;
     void glyphs;
   }
 
   drawHotbar(ctx, device) {
     const glyphs = this.assets.font.glyphs;
-    const size = 20;
-    const gap = 2;
-    const n = 8;
-    const total = n * size + (n - 1) * gap;
-    const x0 = Math.round((VIEW_W - total) / 2);
-    const y = VIEW_H - size - 6;
-    darkPanel(ctx, x0 - 5, y - 3, total + 10, size + 6, 0.62);
-    for (let i = 0; i < n; i++) {
-      const x = x0 + i * (size + gap);
+    const layout = hotbarLayout();
+    const { x0, y, size, total } = layout;
+    darkPanel(ctx, layout.panel.x, layout.panel.y, layout.panel.w, layout.panel.h, 0.62);
+    for (let i = 0; i < layout.slots.length; i++) {
+      const x = layout.slots[i].x;
       const selected = i === this.game.selectedSlot;
       slot(ctx, x, y, size, selected, { bounce: selected });
       const bag = this.game.inventory[i];
@@ -138,22 +277,38 @@ export class Hud {
     }
   }
 
-  drawHints(ctx, device, actions) {
-    const pairs = [];
-    for (const action of actions) {
-      if (!action) continue;
-      pairs.push(action);
-    }
-    if (!pairs.length) return;
+  /** Coordenadas de la barra de pistas: dibujo y click comparten esto. */
+  hintLayout(device, actions) {
+    const pairs = (actions || []).filter(Boolean);
+    if (!pairs.length) return { x: 0, y: 0, total: 0, boxes: [] };
     let total = 0;
     for (const a of pairs) total += promptWidth(this.assets, device, a.action, a.label) + 9;
     total -= 9;
     const x = VIEW_W - total - 10;
     const y = VIEW_H - 46;
-    darkPanel(ctx, x - 7, y - 4, total + 14, 16, 0.66);
+    const boxes = [];
     let cx = x;
     for (const a of pairs) {
-      const w = drawPrompt(ctx, this.assets, device, a.action, cx, y - 1, this.t,
+      const w = promptWidth(this.assets, device, a.action, a.label);
+      boxes.push({
+        action: a.action,
+        label: a.label,
+        static: Boolean(a.static),
+        rect: { x: cx - 4, y: y - 5, w: w + 8, h: 17 },
+      });
+      cx += w + 9;
+    }
+    return { x, y, total, boxes };
+  }
+
+  drawHints(ctx, device, actions) {
+    const layout = this.hintLayout(device, actions);
+    if (!layout.boxes.length) return;
+    darkPanel(ctx, layout.x - 7, layout.y - 4, layout.total + 14, 16, 0.66);
+    let cx = layout.x;
+    for (const a of (actions || [])) {
+      if (!a) continue;
+      const w = drawPrompt(ctx, this.assets, device, a.action, cx, layout.y - 1, this.t,
         { label: a.label, bob: false });
       cx += w + 9;
     }
@@ -166,7 +321,8 @@ export class Hud {
       const alpha = Math.min(1, toast.life / 0.5);
       const w = measureText(glyphs, toast.text) + 18;
       const x = Math.round((VIEW_W - w) / 2);
-      const y = VIEW_H - 66 - i * 18;
+      // Arriba-centro, debajo del objetivo (T8).
+      const y = 22 + i * 16;
       ctx.globalAlpha = Math.max(0, Math.min(1, alpha));
       darkPanel(ctx, x, y, w, 14, 0.85);
       ctx.fillStyle = AM2;

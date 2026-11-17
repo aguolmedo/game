@@ -1,0 +1,226 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8">
+<title>El Eternauta · Enemigos</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Silkscreen&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<style>:root {
+  --night: #0f1426; --night2: #1b2440; --ink: #ece4d0; --dim: #a9b0c4;
+  --snow: #bdeffa; --lamp: #ecab4c; --wood: #8a5a34; --line: #2e3c5a;
+}
+@page { size: 1280px 720px; margin: 0; }
+* { box-sizing: border-box; }
+html, body { margin: 0; background: var(--night); }
+body { font-family: Inter, system-ui, sans-serif; color: var(--ink); }
+.slide {
+  width: 1280px; height: 720px; position: relative; overflow: hidden;
+  padding: 56px 72px; page-break-after: always; break-after: page;
+  background:
+    radial-gradient(ellipse at 85% -10%, rgba(236,171,76,.10), transparent 55%),
+    radial-gradient(ellipse at 0% 110%, rgba(189,239,250,.08), transparent 50%),
+    var(--night);
+}
+.slide::after {
+  content: ""; position: absolute; left: 72px; right: 72px; bottom: 34px; height: 2px;
+  background: repeating-linear-gradient(90deg, var(--line) 0 8px, transparent 8px 12px);
+}
+.kicker { font-family: Silkscreen, monospace; color: var(--lamp); font-size: 15px; letter-spacing: .08em; text-transform: uppercase; }
+h1 { font-family: Silkscreen, monospace; font-size: 76px; line-height: 1; margin: 14px 0 18px; color: var(--snow); text-shadow: 0 4px 0 #1b2440; font-weight: 400; }
+h2 { font-family: Silkscreen, monospace; font-weight: 400; font-size: 40px; margin: 8px 0 22px; color: var(--snow); line-height: 1.1; }
+h3 { font-size: 22px; margin: 8px 0; color: var(--ink); }
+p, li, td, figcaption { font-size: 19px; line-height: 1.45; }
+.lead { color: var(--dim); max-width: 980px; margin: 0 0 22px; }
+.label { font-family: Silkscreen, monospace; font-size: 13px; color: var(--dim); letter-spacing: .06em; margin-bottom: 10px; text-transform: uppercase; }
+code { font-family: ui-monospace, monospace; font-size: 14px; color: var(--dim); }
+img { image-rendering: pixelated; }
+img[src$=".jpg"] { image-rendering: auto; }
+
+.cover-slide { padding: 0; }
+.bleed { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; filter: brightness(.55) saturate(1.05); }
+.cover { position: absolute; left: 72px; bottom: 90px; max-width: 760px; }
+.cover p { font-size: 24px; color: var(--ink); }
+.cover .meta { font-family: Silkscreen, monospace; color: var(--dim); font-size: 14px; margin-top: 18px; }
+
+.two { display: grid; grid-template-columns: 1fr 1fr; gap: 36px; }
+.two img { width: 100%; height: 330px; object-fit: cover; border-radius: 6px; border: 2px solid var(--line); }
+figure { margin: 0; }
+figcaption { color: var(--dim); margin-top: 12px; font-size: 17px; }
+figcaption b { color: var(--ink); }
+
+.rules { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; margin-top: 10px; }
+.rule { background: var(--night2); border: 2px solid var(--line); border-radius: 10px; padding: 30px; min-height: 0; }
+.rule p { font-size: 21px; }
+.rule h3 { font-size: 26px; }
+.rule .n { font-family: Silkscreen, monospace; font-size: 46px; color: var(--lamp); }
+.rule p { color: var(--dim); }
+
+.split { display: grid; grid-template-columns: 1.1fr 1fr; gap: 40px; align-items: start; }
+.big li { margin-bottom: 10px; }
+.big b { color: var(--ink); }
+ul { padding-left: 22px; margin: 0; color: var(--dim); }
+.stack { display: flex; flex-direction: column; gap: 26px; }
+.wide { max-width: 100%; }
+.pixelated { image-rendering: pixelated; }
+.shot { width: 100%; border-radius: 6px; border: 2px solid var(--line); }
+
+.specs { border-collapse: collapse; width: 100%; }
+.specs td { padding: 9px 0; border-bottom: 1px dashed var(--line); font-size: 18px; }
+.specs td:first-child { color: var(--lamp); width: 44%; font-family: Silkscreen, monospace; font-size: 14px; }
+
+.palette { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px 36px; }
+.sw { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
+.sw span { display: block; height: 58px; border-radius: 6px; border: 2px solid rgba(0,0,0,.35); }
+.sw code { font-size: 12px; }
+
+.lineup { display: block; margin: 10px auto 0; max-width: 100%; }
+.names { display: grid; grid-template-columns: repeat(7, 124px); justify-content: center; text-align: center; font-family: Silkscreen, monospace; color: var(--dim); font-size: 14px; }
+
+.char-slide h2 { margin-bottom: 4px; }
+.role { color: var(--dim); margin: 0 0 18px; }
+.char { display: grid; grid-template-columns: 320px 280px 200px 1fr; gap: 28px; align-items: start; }
+.refs img { width: 100%; max-height: 236px; object-fit: cover; object-position: top; border-radius: 6px; border: 2px solid var(--line); margin-bottom: 12px; display: block; }
+.refs img:only-of-type { max-height: 410px; }
+.ref-empty { color: var(--dim); font-size: 15px; border: 2px dashed var(--line); border-radius: 6px; padding: 20px; }
+.portrait { width: 256px; height: 256px; background: #2a2236; border: 3px solid var(--wood); border-radius: 6px; padding: 6px; box-sizing: content-box; }
+.sprite { width: 176px; height: 352px; }
+.real { display: flex; align-items: flex-end; gap: 12px; margin-top: 12px; }
+.real .x1 { width: 16px; height: 32px; }
+.real .x2 { width: 32px; height: 64px; }
+.real span { font-size: 12px; color: var(--dim); }
+.chips { margin-top: 16px; display: flex; gap: 8px; }
+.chip { width: 30px; height: 30px; border-radius: 5px; border: 2px solid rgba(0,0,0,.4); display: inline-block; }
+.notes li { margin-bottom: 14px; font-size: 20px; }
+
+.todo li { margin-bottom: 8px; font-size: 17px; }
+.ref-small { width: 260px; border-radius: 6px; margin-top: 18px; }
+.foot { position: absolute; bottom: 52px; left: 72px; color: var(--dim); font-size: 15px; }
+
+.fill { width: 100%; height: auto; }
+.cover { background: rgba(15,20,38,.72); padding: 30px 36px; border-radius: 10px; border: 2px solid var(--line); }
+
+.suit { display: grid; grid-template-columns: 300px 270px 1fr; gap: 30px; align-items: start; }
+.suit .refs img { max-height: 200px; }
+.portrait.big { width: 240px; height: 240px; }
+.views { display: flex; gap: 18px; flex-wrap: wrap; }
+.views img { width: 112px; height: 224px; }
+.vlabels { display: grid; grid-template-columns: repeat(3, 112px); gap: 18px; width: 100%; text-align: center; font-family: Silkscreen, monospace; font-size: 12px; color: var(--dim); }
+.small { font-size: 17px; margin-top: 14px; }
+.wide-left { grid-template-columns: 1.45fr 1fr; gap: 28px; }
+.ref-strip { width: 48%; height: 110px; object-fit: cover; border-radius: 5px; border: 2px solid var(--line); margin: 0 1% 10px 0; }
+.pieces { display: block; max-width: 100%; max-height: 120px; margin-top: 14px; }
+.four { grid-template-columns: repeat(4, 1fr); }
+.four .rule { padding: 22px; }
+.four .rule p { font-size: 18px; }
+.foot2 { color: var(--dim); font-size: 14px; margin-top: 14px; }
+</style></head><body><section class="slide cover-slide">
+      <div class="cover" style="top:110px;bottom:auto">
+        <div class="kicker">El Eternauta · dirección de arte II</div>
+        <h1>Enemigos</h1>
+        <p>Los cascarudos y los Manos: la invasión con la misma técnica que el elenco.</p>
+        <img class="pixelated fill" src="img/enemy_lineup_x5.png" style="margin-top:28px">
+        <div class="meta">Versión 1 · noviembre 2026</div>
+      </div></section><section class="slide ">
+      <div class="kicker">La invasión</div>
+      <h2>Quién manda a quién</h2>
+      <div class="rules four">
+        <div class="rule"><span class="n">0</span><h3>Ellos</h3><p>Nunca se ven. "El odio cósmico." No tienen sprite: se sienten en la nieve, la luz y las órdenes.</p></div>
+        <div class="rule"><span class="n">1</span><h3>Los Manos</h3><p>Esclavos de Ellos que dirigen la invasión. Del tamaño de un hombre. Tienen <b>una mano con muchos dedos</b> y una <b>glándula del terror</b>: si sienten miedo, mueren.</p></div>
+        <div class="rule"><span class="n">2</span><h3>Teledirigidos</h3><p>Gurbos y hombres-robot: quedan para otra entrega.</p></div>
+        <div class="rule"><span class="n">3</span><h3>Cascarudos</h3><p>Escarabajos gigantes, la tropa de choque. Los Manos los manejan con un <b>teledirector</b> pegado al caparazón.</p></div>
+      </div>
+      <p class="foot">Este deck diseña los niveles 1 y 3, los que aparecen en la demo.</p></section><section class="slide ">
+      <div class="kicker">Escala</div>
+      <h2>Misma grilla, siluetas distintas</h2>
+      <div class="split">
+        <img class="pixelated fill" src="img/enemy_lineup_x5.png">
+        <table class="specs">
+          <tr><td>Mano</td><td>16×32, igual que Juan; flota 1–2 px sobre la nieve</td></tr>
+          <tr><td>Aura del Mano</td><td>+10 px por lado, capa aparte (aditiva)</td></tr>
+          <tr><td>Cascarudo de frente</td><td>32×28 (2×2 baldosas)</td></tr>
+          <tr><td>Cascarudo de perfil</td><td>36×22</td></tr>
+          <tr><td>Acorazado</td><td>mismo cuerpo, con placas y cuerno</td></tr>
+          <tr><td>Lectura</td><td>humanos cálidos · Manos lila/negro con halo · cascarudos negro-azul frío</td></tr>
+        </table>
+      </div></section><section class="slide ">
+      <div class="kicker">Color</div>
+      <h2>Paleta de la invasión</h2>
+      <p class="lead">Los enemigos son <b>fríos</b>: negro azulado y lila, con brillos de nieve. La única nota cálida es el <b>punto rojo del teledirector</b>, que dice "esto lo maneja alguien".</p>
+      <div class="palette"><div class="pgroup"><div class="label">Caparazón</div><div class="sw"><div><span style="background:#0c0a14"></span><code>#0c0a14</code></div><div><span style="background:#1c1a2a"></span><code>#1c1a2a</code></div><div><span style="background:#34324c"></span><code>#34324c</code></div><div><span style="background:#565a7e"></span><code>#565a7e</code></div><div><span style="background:#b4bce0"></span><code>#b4bce0</code></div></div></div><div class="pgroup"><div class="label">Teledirector</div><div class="sw"><div><span style="background:#4a5262"></span><code>#4a5262</code></div><div><span style="background:#7c8698"></span><code>#7c8698</code></div><div><span style="background:#c4ccd8"></span><code>#c4ccd8</code></div><div><span style="background:#ff6a4a"></span><code>#ff6a4a</code></div></div></div><div class="pgroup"><div class="label">Piel de Mano</div><div class="sw"><div><span style="background:#6a4262"></span><code>#6a4262</code></div><div><span style="background:#a06e8e"></span><code>#a06e8e</code></div><div><span style="background:#cf9cb4"></span><code>#cf9cb4</code></div><div><span style="background:#efc8d8"></span><code>#efc8d8</code></div></div></div><div class="pgroup"><div class="label">Ropa de Mano</div><div class="sw"><div><span style="background:#1a1622"></span><code>#1a1622</code></div><div><span style="background:#2a2434"></span><code>#2a2434</code></div><div><span style="background:#463e58"></span><code>#463e58</code></div><div><span style="background:#c4c0d4"></span><code>#c4c0d4</code></div></div></div><div class="pgroup"><div class="label">Pelo y aura</div><div class="sw"><div><span style="background:#9e98ae"></span><code>#9e98ae</code></div><div><span style="background:#dcd8e2"></span><code>#dcd8e2</code></div><div><span style="background:#a8bcff"></span><code>#a8bcff</code></div><div><span style="background:#f4f6ff"></span><code>#f4f6ff</code></div></div></div></div></section><section class="slide char-slide">
+      <div class="kicker">Enemigos · 01</div>
+      <h2>Los Manos</h2>
+      <p class="role">"Nosotros, los Manos, que sólo vivíamos pensando en lo bello…"</p>
+      <div class="char">
+        <div class="refs"><div class="label">En el cómic</div><img class="ref" src="img/m_cuerpo.png"><img class="ref" src="img/m_color.png"></div>
+        <div class="pix">
+          <div class="label">Retrato (diálogo)</div>
+          <img class="portrait" src="img/enemy_mano_dlg_ink_x6.png">
+        </div>
+        <div class="pix sprite-col">
+          <div class="label">Sprite 16×32</div>
+          <img class="sprite" src="img/enemy_mano_front_x8.png">
+          <div class="real"><img src="img/enemy_mano_front.png" class="x1"><img src="img/enemy_mano_front.png" class="x2"><span>tamaño real · ×2</span></div>
+        </div>
+        <div class="notes"><div class="label">Rasgos clave</div><ul>
+          <li>Pelado, con pelo blanco revuelto hacia atrás.</li>
+          <li>Ojos enormes y hundidos: triste, no monstruoso.</li>
+          <li>Piel lila, para separarlo de los humanos.</li>
+          <li>Remera negra, cinturón con barras, pantalón fruncido.</li>
+          <li>Mano de muchos dedos sobre el pecho.</li>
+        </ul></div>
+      </div></section><section class="slide ">
+      <div class="kicker">Los Manos · vistas</div>
+      <h2>Frente, perfil, espalda y la mano</h2>
+      <div class="split">
+        <div class="views" style="display:flex;gap:18px;align-items:flex-end">
+          <img class="pixelated" src="img/enemy_mano_front_x8.png" style="width:128px">
+          <img class="pixelated" src="img/enemy_mano_side_x8.png" style="width:128px">
+          <img class="pixelated" src="img/enemy_mano_back_x8.png" style="width:128px">
+          <img class="pixelated" src="img/enemy_mano_hand_x10.png" style="width:220px">
+        </div>
+        <ul class="big">
+          <li><b>Perfil:</b> frente que se va para atrás, nariz larga, boca fina caída; el brazo cuelga hasta la rodilla.</li>
+          <li><b>Espalda:</b> la mata de pelo blanco tapa la nuca; las dos manos cuelgan con los dedos largos.</li>
+          <li><b>La mano</b> (detalle para el retrato y las viñetas): palma chica y <b>nueve dedos finos en abanico</b>. Es su nombre: hay que mostrarla siempre que se pueda.</li>
+          <li>No caminan: <b>se deslizan</b> con un vaivén de 1 px, los brazos quietos.</li>
+        </ul>
+      </div></section><section class="slide ">
+      <div class="kicker">Los Manos · en el juego</div>
+      <h2>El aura y la glándula del terror</h2>
+      <div class="split">
+        <img class="pixelated fill" src="img/enemy_mano_aura_x6.png" style="max-height:520px;object-fit:contain">
+        <ul class="big">
+          <li><b>El aura punteada</b> de las viñetas: blanca y densa pegada al cuerpo, se deshace en puntos con bordes en llamarada. Va en una capa aparte, aditiva, y <b>tiñe la nieve</b> alrededor: en la oscuridad se lo ve venir.</li>
+          <li>El punteado <b>titila</b> (2–3 patrones que se alternan), no se mueve.</li>
+          <li><b>No se los mata a balazos:</b> la glándula del terror. Si Juan lo acorrala, el aura se pone roja, el Mano se tapa la cara con la mano de muchos dedos y se apaga en puntos.</li>
+          <li>Hablan en globos con <b>borde punteado</b>, no de línea, para que se note que no son humanos.</li>
+        </ul>
+      </div></section><section class="slide ">
+      <div class="kicker">Enemigos · 02</div>
+      <h2>Cascarudos: de mancha a escarabajo</h2>
+      <div>
+        <div class="label">Hoy en el juego</div>
+        <img class="pixelated" src="img/cascarudos_now.png" style="width:100%;height:auto;object-fit:contain">
+        <p class="lead small">Manchas negras de 14–28 px: de lejos no se sabe qué son ni para dónde miran.</p>
+        <div class="label" style="margin-top:14px">Rediseño</div>
+        <img class="pixelated" src="img/enemy_cascarudos_x5.png" style="width:100%;height:auto;object-fit:contain">
+        <p class="lead small"><b>Rediseño:</b> caparazón con volumen (luz arriba a la izquierda y brillo especular), costura del élitro, pronoto con borde, cabeza con mandíbulas, antenas segmentadas y <b>seis patas articuladas</b>. Arriba a la derecha, el <b>teledirector</b> con su luz roja. Común (2 pasos de frente y de perfil) y acorazado.</p>
+      </div></section><section class="slide ">
+      <div class="kicker">Cascarudos · en el juego</div>
+      <h2>Tres tipos, una silueta</h2>
+      <div class="rules">
+        <div class="rule"><span class="n">1</span><h3>Común</h3><p>32×28. Avanza en línea recta, en grupo. Patas alternadas en trípode: 4 cuadros por dirección.</p></div>
+        <div class="rule"><span class="n">2</span><h3>Veloz</h3><p>Mismo dibujo al 70% (22×20), sin teledirector visible. Corre en zigzag.</p></div>
+        <div class="rule"><span class="n">3</span><h3>Acorazado</h3><p>Placas transversales con filo claro y cuerno. Aguanta varios tiros; se lo da vuelta.</p></div>
+      </div>
+      <ul class="big" style="margin-top:22px">
+        <li><b>El teledirector es el punto débil:</b> si se le pega a la luz roja, el cascarudo queda dando vueltas, sin dueño.</li>
+        <li>Golpe: un cuadro blanco. Muerte: <b>patas arriba</b>, con la panza más clara y las patas pataleando 3 cuadros.</li>
+        <li>Sombra ovalada en la nieve, más ancha que la del Mano (que, al flotar, casi no tiene).</li>
+      </ul></section><section class="slide ">
+      <div class="kicker">Cómo seguimos</div>
+      <h2>Plan de construcción (DeepSeek)</h2>
+      <div class="rules four">
+        <div class="rule"><span class="n">1</span><h3>Mano</h3><p>Pasar las grillas de <code>art/concept/enemies.py</code> a <code>tools/art</code>: 4 direcciones, vaivén de 4 cuadros, cuadro de "se tapa la cara" y muerte en puntos.</p></div>
+        <div class="rule"><span class="n">2</span><h3>Aura</h3><p>3 patrones de punteado que titilan; capa aditiva y luz sobre la nieve.</p></div>
+        <div class="rule"><span class="n">3</span><h3>Cascarudos</h3><p>Reemplazar <code>tools/art/cascarudos.py</code> por el nuevo dibujo: 4 direcciones × 4 pasos, golpe, muerte, las tres variantes.</p></div>
+        <div class="rule"><span class="n">4</span><h3>Retrato</h3><p>Retrato de diálogo del Mano en tinta (56×56) y el globo de borde punteado.</p></div>
+      </div>
+      <p class="foot">Conceptos: <code>art/concept/enemies.py</code> → <code>art/concept/out/enemy_*.png</code> · referencias en <code>ref/manos/</code></p></section></body></html>

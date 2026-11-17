@@ -203,6 +203,32 @@ test('casa sellada: cuenta las cuatro aberturas y dispara la escena de Polsky', 
   assert.equal(currentObjective(game).id, 'elena');
 });
 
+test('Elena: hablar abre el paso a la ventana del living y después al altillo', async () => {
+  const { game, story } = makeGame();
+  story.shown.intro = true;
+  game.flags = {
+    mate_tutorial: true, truco_jugado: true, apagon: true, vio_la_nevada: true,
+    martita_ventana: 'ok', casa_sellada: true, polsky_muerto: true,
+  };
+  game.scene = makeScene('house');
+  game.sceneName = 'house';
+
+  // Sin hablar con Elena el objetivo sigue siendo hablar con ella.
+  assert.equal(currentObjective(game).id, 'elena');
+
+  game.emit('interact', { id: 'elena', kind: 'npc' });
+  await story.idle();
+  assert.equal(game.flags.elena_hablada, true);
+  assert.equal(currentObjective(game).id, 'ramirez');
+
+  // Volver de la vista del living mata a Ramírez y manda al altillo.
+  game.emit('viewEnd', { id: 'window_living' });
+  story.update(0.3, game);
+  await story.idle();
+  assert.equal(game.flags.ramirez_muerto, true);
+  assert.equal(currentObjective(game).id, 'attic');
+});
+
 test('Ramírez: al volver de la vista del living, la vela se apaga', async () => {
   const { game, story } = makeGame();
   game.flags = {

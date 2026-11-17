@@ -34,6 +34,19 @@ function optionLabel(option) {
   return (option && option.label) || '';
 }
 
+/** Rects clickeables de las dos opciones del resultado (mismas que dibuja draw). */
+export function resultOptionRects(assets) {
+  const glyphs = assets.font.glyphs;
+  const labels = RESULT_OPTIONS.map(optionLabel);
+  const maxW = labels.reduce((m, label) => Math.max(m, measureText(glyphs, label, 2)), 0);
+  const barW = Math.max(170, maxW + 36);
+  const barX = Math.round((VIEW_W - barW) / 2);
+  const optionY = [168, 188];
+  return labels.map((_, i) => ({
+    x: barX - 4, y: optionY[i] - 3, w: barW + 8, h: ROW_H + 6,
+  }));
+}
+
 /** Casquillo/medalla de bronce de 9x9 con contorno oscuro y brillo calido. */
 function drawCoin(ctx, x, y) {
   // contorno redondeado
@@ -111,7 +124,7 @@ export function drawResultScreen(ctx, assets, view, t) {
   const bestRound = Math.max(0, Math.floor(Number(best.round) || 0));
   const bestPoints = Math.max(0, Math.floor(Number(best.points) || 0));
   const newBest = !!v.newBest;
-  const device = v.device === 'pad' ? 'pad' : 'keyboard';
+  const device = v.device === 'mouse' ? 'mouse' : (v.device === 'pad' ? 'pad' : 'keyboard');
   const fade = Number.isFinite(v.fade) ? v.fade : 1;
   const time = Number.isFinite(t) ? t : 0;
   const sel = Math.max(0, Math.min(RESULT_OPTIONS.length - 1,
@@ -214,7 +227,7 @@ export function drawResultScreen(ctx, assets, view, t) {
 
   // Atajo de confirmacion debajo del tablon.
   const selectedLabel = labels[sel] || '';
-  const hint = device === 'pad' ? 'a' : 'key_space';
+  const hint = device === 'pad' ? 'a' : (device === 'mouse' ? 'mouse' : 'key_space');
   const size = glyphSize(assets, hint);
   const promptW = size.w + 4 + measureText(glyphs, selectedLabel);
   const px = Math.round((VIEW_W - promptW) / 2);

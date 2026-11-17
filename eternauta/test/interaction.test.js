@@ -7,6 +7,7 @@ import {
   actionTile,
   facingAway,
   inMagnetRange,
+  pickAt,
   pickTarget,
   tileOf,
   warpAt,
@@ -72,6 +73,47 @@ test('pickTarget: empate estable por orden de entrada', () => {
   assert.equal(res.target.id, 'a');
 });
 
+test('pickTarget: la prioridad gana aunque el otro sea de la pasada action', () => {
+  // Garaje: parado frente al porton (x=136, feet=54, mirando arriba) la
+  // puerta ocupa el tile de accion y el extractor solo queda adyacente. Con el
+  // secador en la mano el extractor (priority 2) tiene que ganar igual.
+  const puerta = {
+    id: 'garage_door', kind: 'object', priority: 0,
+    x: 136, y: 48, w: 48, h: 32, ref: { station: null },
+  };
+  const extractor = {
+    id: 'extractor', kind: 'object', priority: 2, reach: 56,
+    x: 136, y: 16, w: 16, h: 16, ref: { station: 'extractor' },
+  };
+  const player = { x: 136, feet: 54, dir: 'up' };
+  const res = pickTarget(player, [puerta, extractor], { dir: 'up', reach: 22 });
+  assert.equal(res.target.id, 'extractor');
+  assert.equal(res.via, 'adjacent');
+
+  // Sin prioridad (sin el secador en la mano) la pasada action sigue mandando.
+  const plain = pickTarget(player, [puerta, { ...extractor, priority: 0 }], { dir: 'up', reach: 22 });
+  assert.equal(plain.target.id, 'garage_door');
+  assert.equal(plain.via, 'action');
+});
+
+test('pickTarget: a igual prioridad la pasada action le gana a solo-adyacente', () => {
+  const action = { id: 'mesa', kind: 'object', x: 56, y: 104 };
+  const adjacent = { id: 'caja', kind: 'object', x: 24, y: 100 };
+  const res = pickTarget({ ...player, dir: 'right' }, [adjacent, action], { dir: 'right' });
+  assert.equal(res.target.id, 'mesa');
+  assert.equal(res.via, 'action');
+});
+
+test('pickTarget: el objeto apoyado (priority 2) le gana al mueble que lo sostiene', () => {
+  // Mesa en el tile de accion y el mate apoyado dentro del alcance de los pies:
+  // el objeto apoyado tiene que seguir ganando (comportamiento de la ronda 1).
+  const mesa = { id: 'mesa', kind: 'object', x: 56, y: 104, w: 48, h: 32 };
+  const mate = { id: 'mate', kind: 'surfaceItem', priority: 2, x: 40, y: 100, w: 10, h: 12 };
+  const res = pickTarget({ ...player, dir: 'right' }, [mesa, mate], { dir: 'right' });
+  assert.equal(res.target.id, 'mate');
+  assert.equal(res.via, 'adjacent');
+});
+
 test('pickTarget: sin candidatos o lejanos devuelve null', () => {
   assert.deepEqual(pickTarget(player, []), { target: null, via: null });
   const far = { id: 'lejos', kind: 'box', x: 300, y: 300 };
@@ -84,6 +126,46 @@ test('inMagnetRange: el borde de 16px entra, un poco más no', () => {
   assert.equal(inMagnetRange(player, { x: 40, y: 84 }), true);
   assert.equal(inMagnetRange(player, { x: 56.5, y: 100 }), false);
   assert.equal(inMagnetRange(player, { x: 40, y: 83.9 }), false);
+});
+
+test('pickAt: elige el objeto bajo el puntero y marca si llega', () => {
+  const radio = { id: 'radio', kind: 'object', x: 56, y: 104, w: 16, h: 16 };
+  const table = { id: 'mesa', kind: 'object', x: 40, y: 132, w: 48, h: 32 };
+  const candidates = [radio, table];
+
+  const near = pickAt({ ...player, dir: 'right' }, candidates, { x: 54, y: 98 });
+  assert.equal(near.target.id, 'radio');
+  assert.equal(near.near, true);
+
+  const far = pickAt({ x: 300, feet: 300 }, candidates, { x: 54, y: 98 });
+  assert.equal(far.target.id, 'radio');
+  assert.equal(far.near, false);
+
+  assert.equal(pickAt(player, candidates, { x: 0, y: 0 }).target, null);
+});
+
+test('pickAt: prioridad y caja chica ganan (objeto apoyado sobre el mueble)', () => {
+  const furniture = {
+    id: 'mesa', x: 40, y: 120, w: 48, h: 32,
+    cursorBox: { x: 16, y: 88, w: 48, h: 32 },
+  };
+  const mate = {
+    id: 'mate', x: 40, y: 112, w: 10, h: 12, priority: 2,
+    cursorBox: { x: 35, y: 100, w: 10, h: 12 },
+  };
+  const res = pickAt({ x: 40, feet: 120 }, [furniture, mate], { x: 40, y: 105 });
+  assert.equal(res.target.id, 'mate');
+  assert.equal(res.near, true);
+});
+
+test('pickAt: respeta cursorBox aunque el ancla quede lejos', () => {
+  const npc = {
+    id: 'lucas', kind: 'npc', x: 200, y: 200, w: 20, h: 52,
+    cursorBox: { x: 192, y: 168, w: 16, h: 32 },
+  };
+  const res = pickAt({ x: 400, feet: 400 }, [npc], { x: 196, y: 178 });
+  assert.equal(res.target.id, 'lucas');
+  assert.equal(res.near, false);
 });
 
 test('warpAt: devuelve el warp que contiene el punto de los pies', () => {
@@ -110,4 +192,41 @@ test('facingAway: mira al lado opuesto de la puerta', () => {
   assert.equal(facingAway('left'), 'right');
   assert.equal(facingAway('right'), 'left');
   assert.equal(facingAway('sideways'), 'down');
+});
+
+test('pickAt: objetos apoyados superpuestos desempatan por centro y orden de dibujo', () => {
+  // Mate y vaso de la mesa del altillo: cajas de 10x12 que se pisan 6 px.
+  const vaso = {
+    id: 'vaso', kind: 'surfaceItem', priority: 2, front: 6,
+    cursorBox: { x: 167, y: 105, w: 10, h: 12 },
+  };
+  const mate = {
+    id: 'mate', kind: 'surfaceItem', priority: 2, front: 9,
+    cursorBox: { x: 167, y: 111, w: 10, h: 12 },
+  };
+  const player = { x: 172, feet: 140, dir: 'up' };
+  const candidates = [vaso, mate];
+
+  // Centro del mate (y=117): su centro esta a 0 px, el del vaso a 6.
+  const atMate = pickAt(player, candidates, { x: 172, y: 117 });
+  assert.equal(atMate.target.id, 'mate');
+
+  // Centro del vaso (y=111): gana el vaso.
+  const atVaso = pickAt(player, candidates, { x: 172, y: 111 });
+  assert.equal(atVaso.target.id, 'vaso');
+
+  // La parte visible del vaso (arriba del mate) sigue siendo del vaso.
+  const vasoVisible = pickAt(player, candidates, { x: 172, y: 106 });
+  assert.equal(vasoVisible.target.id, 'vaso');
+});
+
+test('pickAt: misma caja y mismo centro, gana el que se dibuja mas al frente', () => {
+  const back = { id: 'fondo', priority: 2, front: 1, cursorBox: { x: 10, y: 10, w: 12, h: 12 } };
+  const front = { id: 'frente', priority: 2, front: 5, cursorBox: { x: 10, y: 10, w: 12, h: 12 } };
+  const player = { x: 16, feet: 30, dir: 'up' };
+  const res = pickAt(player, [back, front], { x: 16, y: 15 });
+  assert.equal(res.target.id, 'frente');
+  // El orden de entrada ya no decide el empate.
+  const swapped = pickAt(player, [front, back], { x: 16, y: 15 });
+  assert.equal(swapped.target.id, 'frente');
 });

@@ -127,6 +127,11 @@ export class Story {
   onInteract({ id, kind }, game) {
     const flags = game.flags;
 
+    // Elena en el living abre el hilo: primero la ventana, después el altillo.
+    if (kind === 'npc' && id === 'elena' && flags.casa_sellada && !flags.elena_hablada) {
+      flags.elena_hablada = true;
+    }
+
     // Sentarse a la mesa: después del diálogo ("Sentarse") corren las viñetas.
     if ((id === 'chair_juan' || id === 'chair') && flags.mate_tutorial
       && !flags.truco_jugado && !this.shown.chair) {

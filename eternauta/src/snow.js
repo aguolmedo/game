@@ -1,4 +1,5 @@
 import * as THREE from 'three';
+import { viewport } from './viewport.js';
 
 /** Nevada en pantalla (viaja con la camara). Con rafagas de viento. */
 export class Snowfall {
@@ -15,8 +16,9 @@ export class Snowfall {
       side: THREE.DoubleSide, opacity: 0.95,
     });
     this.particles = [];
-    this.width = 480;
-    this.height = 270;
+    // Tamaño de la vista del mundo (cambia con el zoom / resize).
+    this.width = viewport.worldW;
+    this.height = viewport.worldH;
     for (let i = 0; i < count; i++) {
       const large = i >= count - front;
       const mesh = new THREE.Mesh(geometry, large ? matFront : matBack);
@@ -44,7 +46,22 @@ export class Snowfall {
     this.group.position.y = Math.round(y);
   }
 
+  /** Ajusta el área de nieve al tamaño actual de la vista del mundo. */
+  syncViewSize() {
+    const w = viewport.worldW;
+    const h = viewport.worldH;
+    if (w === this.width && h === this.height) return;
+    this.width = w;
+    this.height = h;
+    for (const p of this.particles) {
+      if (p.x > w) p.x = Math.random() * w;
+      if (p.y > h) p.y = Math.random() * h;
+    }
+    this.draw();
+  }
+
   scatter() {
+    this.syncViewSize();
     for (const p of this.particles) {
       p.x = Math.random() * this.width;
       p.y = Math.random() * this.height;
@@ -53,6 +70,7 @@ export class Snowfall {
   }
 
   update(dt) {
+    this.syncViewSize();
     this.time += dt;
     this.nextGust -= dt;
     if (this.nextGust <= 0) {

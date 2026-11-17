@@ -95,44 +95,13 @@ def table_truco():
     p.hline(2, 45, 19, WD[0])
     p.hline(2, 45, 20, WD[2])
     p.hline(2, 45, 23, WD[0])
-    # tapa
-    p.rect(1, 8, 46, 12, WD[2])
-    p.hline(1, 46, 8, WD_HI)
-    p.hline(1, 46, 9, WD[3])
-    p.hline(1, 46, 18, WD[1])
+    # tapa lisa (los objetos van como surface items, no pintados)
+    flat_top(p, 1, 8, 46, 12)
     p.hline(1, 46, 19, WD[0])
-    for sx in (13, 25, 36):
-        p.vline(sx, 9, 17, WD[1])
-    p.set(8, 12, WD[1]); p.set(9, 12, WD[1]); p.set(31, 15, WD[1])
-    # punos de las esquinas
-    for cx, cy in ((2, 9), (45, 9), (2, 18), (45, 18)):
-        p.set(cx, cy, WD[0])
     # paño de juego
-    p.rect(7, 11, 23, 9, RD[1])
-    p.hline(7, 29, 11, RD[2])
-    p.hline(7, 29, 19, RD[0])
-    p.hline(8, 28, 13, mix(RD[1], RD[3], 0.25))
-    # naipes abanicados (separados por un pixel oscuro)
-    for (cx, cy, s) in ((13, 13, 0), (18, 12, 1), (23, 14, 2)):
-        p.rect(cx, cy, 4, 4, mix(CR[1], BK[0], 0.45))
-        p.rect(cx, cy, 4, 3, CR[3])
-        p.hline(cx, cx + 3, cy + 2, CR[1])
-        p.set(cx + 1, cy + 1, RD[1] if s != 1 else BK[0])
-        p.set(cx + 2, cy + 1, RD[0] if s != 1 else BK[0])
-    # vaso
-    p.rect(3, 13, 4, 5, CR[2])
-    p.hline(3, 6, 13, CR[3])
-    p.hline(3, 6, 17, CR[0])
-    p.set(2, 14, CR[1])
-    # botella
-    p.rect(39, 6, 4, 10, GR[1])
-    p.rect(40, 3, 2, 4, GR[0])
-    p.rect(39, 2, 4, 1, GR[2])
-    p.set(40, 1, BR[1]); p.set(41, 1, BR[1])
-    p.set(39, 8, GR[2]); p.set(39, 9, GR[2])
-    p.hline(39, 42, 15, GR[0])
-    p.rect(38, 10, 6, 3, CR[1])
-    p.set(40, 11, RD[1]); p.set(41, 11, RD[0])
+    p.rect(8, 11, 22, 8, RD[1])
+    p.hline(8, 29, 11, RD[2])
+    p.hline(8, 29, 18, RD[0])
     return finish(p, (24, 30, 22, 3))
 
 
@@ -716,30 +685,38 @@ def armchair():
     return finish(p, (8, 23, 7, 2))
 
 
+def flat_top(p, x, y, w, h):
+    """Tapa de mesa lisa y clara: fondo limpio para los objetos apoyados."""
+    p.rect(x, y, w, h, WD[3])
+    p.hline(x, x + w - 1, y, WD_HI)
+    p.hline(x + 1, x + w - 2, y + h - 1, mix(WD[3], WD[2], 0.5))
+    p.vline(x, y + 1, y + h - 1, WD[2]); p.vline(x + w - 1, y + 1, y + h - 1, WD[2])
+
+
 def living_table():
     p = Pix(32, 24)
     for lx in (3, 26):
         p.rect(lx, 16, 3, 8, WD[1])
         p.vline(lx + 1, 16, 23, WD[2])
         p.vline(lx + 2, 16, 23, WD[0])
-    p.rect(2, 13, 28, 4, WD[1])
-    p.hline(2, 29, 13, WD[2]); p.hline(2, 29, 16, WD[0])
-    p.rect(1, 7, 30, 7, WD[2])
-    p.hline(1, 30, 7, WD_HI)
-    p.hline(1, 30, 8, WD[3])
-    p.hline(1, 30, 13, WD[1])
-    p.hline(1, 30, 14, WD[0])
-    p.vline(16, 9, 12, WD[1])
-    p.set(2, 8, WD[0]); p.set(29, 8, WD[0])
-    # revista y cenicero
-    p.rect(5, 9, 8, 4, CR[2])
-    p.rect(5, 9, 8, 1, CR[3])
-    p.hline(5, 12, 12, CR[0])
-    p.set(7, 10, RD[1]); p.set(8, 10, RD[1])
-    p.circle(18, 11, 2, BK[2])
-    p.set(18, 11, BK[0]); p.set(19, 10, CR[2])
-    p.set(20, 10, CR[1]); p.set(21, 11, CR[1])
+    # faldon (canto frontal)
+    p.rect(1, 14, 30, 3, WD[1])
+    p.hline(1, 30, 14, WD[2]); p.hline(1, 30, 16, WD[0])
+    flat_top(p, 1, 6, 30, 8)
     return finish(p, (16, 23, 14, 3))
+
+
+def kitchen_table():
+    """Mesa de cocina de 3 tiles: tapa lisa amplia, dos filas de objetos."""
+    p = Pix(48, 24)
+    for lx in (3, 42):
+        p.rect(lx, 17, 3, 7, WD[1])
+        p.vline(lx + 1, 17, 23, WD[2])
+        p.vline(lx + 2, 17, 23, WD[0])
+    p.rect(1, 15, 46, 3, WD[1])
+    p.hline(1, 46, 15, WD[2]); p.hline(1, 46, 17, WD[0])
+    flat_top(p, 1, 3, 46, 12)
+    return finish(p, (24, 23, 22, 3))
 
 
 def oil_lamp():
@@ -1754,7 +1731,7 @@ NAMES = [
     'book', 'bottle', 'jar', 'cards', 'cup', 'violin', 'tools', 'rag',
     'sofa', 'armchair', 'living_table', 'oil_lamp', 'wardrobe', 'stairs_up',
     'exit_door', 'garage_shelf', 'workbench', 'tire', 'bucket', 'hose', 'cans',
-    'cot', 'stove',
+    'cot', 'stove', 'kitchen_table',
     'chalet_a', 'chalet_b', 'chalet_c', 'chalet_d', 'shop_ferreteria',
     'shop_almacen', 'fence', 'gate', 'hedge', 'tree_a', 'tree_b', 'streetlight',
     'car', 'bus', 'snow_mound', 'mailbox', 'trash', 'figure_snow',

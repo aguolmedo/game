@@ -12,16 +12,15 @@ export const INITIAL_ITEMS = {
   attic: {
     items: [
       // Mesa de truco: la partida servida.
-      { objectId: 'table', slot: 0, itemId: 'naipes', sprite: 'naipe_espada' },
-      { objectId: 'table', slot: 1, itemId: 'naipes', sprite: 'naipe_oro' },
-      { objectId: 'table', slot: 2, itemId: 'naipes', sprite: 'naipe_basto_back' },
-      { objectId: 'table', slot: 3, itemId: 'anotador' },
-      { objectId: 'table', slot: 4, itemId: 'sifon' },
-      { objectId: 'table', slot: 5, itemId: 'vino' },
-      { objectId: 'table', slot: 6, itemId: 'vaso' },
+      // (slots: 0-2 fila de atras, 3-5 naipes sobre el paño, 6-7 adelante)
+      { objectId: 'table', slot: 0, itemId: 'vino' },
+      { objectId: 'table', slot: 1, itemId: 'cenicero' },
+      { objectId: 'table', slot: 2, itemId: 'anotador' },
+      { objectId: 'table', slot: 3, itemId: 'naipes', sprite: 'naipe_espada' },
+      { objectId: 'table', slot: 4, itemId: 'naipes', sprite: 'naipe_oro' },
+      { objectId: 'table', slot: 5, itemId: 'naipes', sprite: 'naipe_basto_back' },
+      { objectId: 'table', slot: 6, itemId: 'mate_vacio' },
       { objectId: 'table', slot: 7, itemId: 'vaso' },
-      { objectId: 'table', slot: 8, itemId: 'cenicero' },
-      { objectId: 'table', slot: 9, itemId: 'mate_vacio' },
 
       // Estante izquierdo.
       { objectId: 'shelf_left', slot: 1, itemId: 'libros' },
@@ -43,12 +42,16 @@ export const INITIAL_ITEMS = {
   house: {
     items: [
       // Mesa de la cocina.
-      { objectId: 'kitchen_table', slot: 0, itemId: 'latas' },
-      { objectId: 'kitchen_table', slot: 1, itemId: 'frascos' },
-      { objectId: 'kitchen_table', slot: 2, itemId: 'lata' },
-      { objectId: 'kitchen_table', slot: 3, itemId: 'pan' },
-      { objectId: 'kitchen_table', slot: 4, itemId: 'lista' },
-      { objectId: 'kitchen_table', slot: 5, itemId: 'lampara_aceite' },
+      // (la lampara encendida es decorado del mapa, atras a la izquierda)
+      { objectId: 'kitchen_table', slot: 0, itemId: 'frascos' },
+      { objectId: 'kitchen_table', slot: 1, itemId: 'latas' },
+      { objectId: 'kitchen_table', slot: 2, itemId: 'lista' },
+      { objectId: 'kitchen_table', slot: 3, itemId: 'lata' },
+      { objectId: 'kitchen_table', slot: 4, itemId: 'pan' },
+
+      // Living: la mesa ratona con un libro y el cenicero.
+      { objectId: 'living_table', slot: 0, itemId: 'libros' },
+      { objectId: 'living_table', slot: 2, itemId: 'cenicero' },
 
       // Hall: las botas al pie del perchero.
       { objectId: 'coat_stand', slot: 0, itemId: 'botas' },

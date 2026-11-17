@@ -11,17 +11,29 @@ export class ActionCursor {
     scene.add(this.ui.mesh);
     this.t = 0;
     this.box = null;
+    this.mode = 'near';
+    this.grab = false;
   }
 
   hide() {
     this.ui.mesh.visible = false;
   }
 
-  showAt(box, t) {
+  /**
+   * opts.mode: 'near' (dorado, por defecto) | 'far' (ambar, mas tenue).
+   * opts.grab: agrega un brillo sutil en la esquina superior derecha.
+   */
+  showAt(box, t, opts = {}) {
     this.t = t;
     this.box = box;
+    this.mode = opts.mode === 'far' ? 'far' : 'near';
+    this.grab = Boolean(opts.grab);
     this.ui.mesh.visible = true;
     this.draw();
+  }
+
+  isVisible() {
+    return this.ui.mesh.visible;
   }
 
   draw() {
@@ -29,8 +41,13 @@ export class ActionCursor {
     const b = this.box;
     if (!b) return;
     this.ui.clear();
-    const pulse = 0.65 + 0.35 * (0.5 + 0.5 * Math.sin(this.t * 4));
-    const color = `rgba(255, 224, 150, ${pulse.toFixed(2)})`;
+    const far = this.mode === 'far';
+    const floor = far ? 0.42 : 0.65;
+    const amp = far ? 0.26 : 0.35;
+    const pulse = floor + amp * (0.5 + 0.5 * Math.sin(this.t * 4));
+    const rgb = far ? '255, 190, 120' : '255, 224, 150';
+    const color = `rgba(${rgb}, ${pulse.toFixed(2)})`;
+    const frameAlpha = far ? 0.18 : 0.30;
     const dark = 'rgba(26, 20, 38, 0.85)';
     // El plano esta centrado en el objeto: dibujamos en coordenadas locales.
     const w = Math.max(10, Math.min(SIZE - 8, Math.round(b.w - 4)));
@@ -55,7 +72,7 @@ export class ActionCursor {
       ctx.fillRect(qx, qy, Math.abs(dx) ? len - 1 : 1, Math.abs(dy) ? len - 1 : 1);
     }
     // marco tenue del tile/objeto seleccionado
-    ctx.fillStyle = 'rgba(255, 224, 150, 0.30)';
+    ctx.fillStyle = `rgba(${rgb}, ${frameAlpha.toFixed(2)})`;
     ctx.fillRect(left, top, w, 1);
     ctx.fillRect(left, top + h, w, 1);
     ctx.fillRect(left, top, 1, h);
@@ -63,6 +80,16 @@ export class ActionCursor {
     // puntito superior que marca el blanco
     ctx.fillStyle = color;
     ctx.fillRect(left + Math.round(w / 2), top - 4, 1, 2);
+    // destello tenue de "agarrable" junto a la esquina superior derecha
+    if (this.grab) {
+      const a = 0.35 + 0.55 * (0.5 + 0.5 * Math.sin(this.t * 7));
+      ctx.fillStyle = `rgba(255, 245, 210, ${a.toFixed(2)})`;
+      const gx = left + w - 3;
+      const gy = top + 3;
+      ctx.fillRect(gx, gy, 1, 1);
+      ctx.fillRect(gx - 1, gy + 1, 1, 1);
+      ctx.fillRect(gx + 1, gy - 1, 1, 1);
+    }
     this.ui.commit();
   }
 

@@ -26,11 +26,11 @@ export async function loadAssets(baseUrl = './') {
     tiles, objects, buttons, chars, items, portraits, title, shadow, snow, footprint,
     chars2, portraitsDlg, portraitsPanel, houses, street2, interior2, props,
     cascarudos, fx, viewAtticPan, viewAtticPanDark, viewLiving, titleSky,
-    deathPanel,
+    deathPanel, cursor,
     tilesData, objectsData, buttonsData, charsData, itemsData, portraitsData, font,
     chars2Data, portraitsDlgData, portraitsPanelData, housesData, street2Data,
     interior2Data, propsData, cascarudosData, fxData, titleData,
-    deathPanelData,
+    deathPanelData, cursorData,
   ] = await Promise.all([
     texture('tiles.png'),
     texture('objects.png'),
@@ -56,6 +56,7 @@ export async function loadAssets(baseUrl = './') {
     texture('views/living.png'),
     texture('title_sky.png'),
     texture('death_panel.png'),
+    texture('cursor.png'),
     fetchJson(url('tiles.json')),
     fetchJson(url('objects.json')),
     fetchJson(url('buttons.json')),
@@ -74,16 +75,17 @@ export async function loadAssets(baseUrl = './') {
     fetchJson(url('fx.json')),
     fetchJson(url('title.json')),
     fetchJson(url('death_panel.json')),
+    fetchJson(url('cursor.json')),
   ]);
 
   return {
     tiles, objects, buttons, chars, items, portraits, title, shadow, snow, footprint,
     chars2, portraitsDlg, portraitsPanel, houses, street2, interior2, props,
     cascarudos, fx, viewAtticPan, viewAtticPanDark, viewLiving, titleSky,
-    deathPanel,
+    deathPanel, cursor,
     tilesData, objectsData, buttonsData, charsData, itemsData, portraitsData, font,
     chars2Data, portraitsDlgData, portraitsPanelData, housesData, street2Data,
     interior2Data, propsData, cascarudosData, fxData, titleData,
-    deathPanelData,
+    deathPanelData, cursorData,
   };
 }

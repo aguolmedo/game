@@ -1,6 +1,7 @@
 import * as THREE from 'three';
 import { loadAssets } from './assets.js';
 import { Input } from './input.js';
+import { MouseCursor } from './mouseCursor.js';
 import { TitleScene } from './scenes/title.js';
 import { AtticScene } from './scenes/attic.js';
 import { HouseScene } from './scenes/house.js';
@@ -20,6 +21,7 @@ import { RECIPES, missingFor } from './recipes.js';
 import { currentObjective } from './objectives.js';
 import { canvasOverlay, VIEW_W, VIEW_H } from './sprite.js';
 import { drawText, measureText } from './font.js';
+import { viewport, updateViewport, viewToWorld } from './viewport.js';
 
 const W = VIEW_W;
 const H = VIEW_H;
@@ -36,9 +38,11 @@ async function boot() {
   const uiCamera = new THREE.OrthographicCamera(0, W, 0, H, 0.1, 1000);
   uiCamera.position.z = 100;
 
+  // Zoom del mundo según la escena activa (T2). Las pantallas fijas usan 1x.
+  let activeZoom = true;
   const resize = () => {
-    let scale = Math.floor(Math.min(window.innerWidth / W, window.innerHeight / H));
-    scale = Math.max(1, scale);
+    updateViewport(window.innerWidth, window.innerHeight, activeZoom);
+    const scale = viewport.scale;
     renderer.setSize(W * scale, H * scale, false);
     renderer.domElement.style.width = `${W * scale}px`;
     renderer.domElement.style.height = `${H * scale}px`;
@@ -48,9 +52,10 @@ async function boot() {
 
   const assets = await loadAssets(import.meta.env.BASE_URL);
   const input = new Input();
+  const mouseCursor = new MouseCursor(assets, renderer.domElement);
 
   const game = {
-    W, H, assets, input,
+    W, H, assets, input, mouseCursor,
     inventory: createInventory(),
     hasSuit: false,
     hasRifle: false,
@@ -74,6 +79,7 @@ async function boot() {
     fade: 0,
     transition: null,
     equipAnim: null,
+    chestOpen: false,
     go: () => {},
     changeScene: () => {},
     newGame: () => {},
@@ -85,6 +91,25 @@ async function boot() {
     onInventoryChanged: () => {},
     objective: () => currentObjective({}),
     missingParts: () => [],
+  };
+
+  /** Client px -> coordenadas de la vista (480x270), o null fuera del canvas. */
+  game.screenToView = (clientX, clientY) => {
+    const rect = renderer.domElement.getBoundingClientRect();
+    if (!rect.width || !rect.height) return null;
+    const x = ((clientX - rect.left) / rect.width) * W;
+    const y = ((clientY - rect.top) / rect.height) * H;
+    if (x < 0 || y < 0 || x >= W || y >= H) return null;
+    return { x, y };
+  };
+
+  /** Client px -> pixels del mundo (camara + zoom), para el mouse. */
+  game.screenToWorld = (clientX, clientY) => {
+    const v = game.screenToView(clientX, clientY);
+    if (!v) return null;
+    const cam = game.scene && game.scene.cam ? game.scene.cam : { x: 0, y: 0 };
+    const world = viewToWorld(v, cam, viewport.zoom);
+    return { x: world.x, y: world.y, vx: v.x, vy: v.y };
   };
 
   const scenes = {
@@ -112,8 +137,12 @@ async function boot() {
     if (!next) throw new Error(`Escena desconocida: ${name}`);
     pauseMenu.hide();
     chestPanel.hide();
+    game.chestOpen = false;
     game.scene = next;
     game.sceneName = name;
+    activeZoom = next.worldZoom !== false;
+    resize();
+    mouseCursor.setState('arrow');
     if (next.enter) next.enter(spawn);
   }
 
@@ -141,6 +170,7 @@ async function boot() {
     game.runId += 1;
     game.transition = null;
     game.equipAnim = null;
+    game.chestOpen = false;
     game.fade = 0;
     for (const scene of Object.values(scenes)) {
       if (scene.reset) scene.reset();
@@ -197,9 +227,9 @@ async function boot() {
   /** Id de item de la pava según su temperatura (helper de guion). */
   game.pavaItem = () => pavaItemId(game.pava.temp);
 
-  game.showToast = (text) => {
+  game.showToast = (text, opts = {}) => {
     const hud = game.scene && game.scene.hud;
-    if (hud) hud.toast(text);
+    if (hud) hud.toast(text, opts);
   };
 
   game.missingParts = () => missingFor(game.inventory, SUIT_RECIPE);
@@ -217,6 +247,7 @@ async function boot() {
     if (game.transition || game.sceneName === 'title') return;
     pauseMenu.hide();
     chestPanel.hide();
+    game.chestOpen = false;
     game.scene.hud?.hide();
     game.scene.player?.setFrozen(true);
     game.equipAnim = { t: 0, mid: false, on: !game.hasSuit, dur: 0.5 };
@@ -226,6 +257,7 @@ async function boot() {
     if (!game.scene || !game.scene.pausable || game.scene.blocksPause) return;
     if (game.transition || game.equipAnim) return;
     if (chestPanel.visible) return;
+    game.scene.cursor?.hide?.();
     pauseMenu.tab = tab;
     pauseMenu.syncCursor();
     pauseMenu.show();
@@ -235,7 +267,9 @@ async function boot() {
 
   game.openChest = (container) => {
     if (!container || !game.scene || game.transition) return;
+    game.scene.cursor?.hide?.();
     chestPanel.show(container);
+    game.chestOpen = true;
     game.scene.hud?.hide();
     game.scene.player?.setFrozen(true);
   };
@@ -250,7 +284,7 @@ async function boot() {
     const index = container.items.indexOf(entry);
     if (index >= 0) container.items.splice(index, 1);
     const item = getItem(id);
-    game.showToast(`+${result.added} ${item.name}`);
+    game.showToast(`+${result.added} ${item.name}`, { group: 'pickup' });
     game.onInventoryChanged();
     game.emit('itemPicked', { id, count: result.added });
     return true;
@@ -329,6 +363,7 @@ async function boot() {
     } else if (chestPanel.visible) {
       chestPanel.update(dt, state);
       if (!chestPanel.visible) {
+        game.chestOpen = false;
         scene.hud?.show();
         scene.player?.setFrozen(false);
       }
@@ -352,6 +387,13 @@ async function boot() {
     // Camara del mundo.
     scene.applyCamera(camera);
     renderer.render(scene.scene, camera);
+
+    // Capa de UI de la escena, fija en pantalla (coordenadas de vista).
+    if (scene.uiScene) {
+      renderer.autoClear = false;
+      renderer.clearDepth();
+      renderer.render(scene.uiScene, uiCamera);
+    }
 
     // Capa de UI/menus fija en pantalla.
     fadeUi.clear();
@@ -391,6 +433,7 @@ async function boot() {
   window.__eternauta = {
     game,
     scenes,
+    viewport,
     state: () => ({
       scene: game.sceneName,
       hasSuit: game.hasSuit,
@@ -400,6 +443,9 @@ async function boot() {
       objective: game.objective(),
       player: game.scene.player ? { x: game.scene.player.x, feet: game.scene.player.feet, dir: game.scene.player.dir } : null,
       device: game.input.device,
+      pointer: game.input.pointer ? { ...game.input.pointer } : null,
+      cursor: mouseCursor.state,
+      cursorVisible: mouseCursor.visible,
       dialogOpen: Boolean(game.scene.dialog && game.scene.dialog.open),
       choiceOpen: Boolean(game.scene.choice && game.scene.choice.open),
       menuOpen: pauseMenu.visible,
@@ -488,6 +534,7 @@ async function boot() {
     },
     closeChest: () => {
       chestPanel.hide();
+      game.chestOpen = false;
       game.scene.hud?.show();
       game.scene.player?.setFrozen(false);
     },

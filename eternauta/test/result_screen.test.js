@@ -69,3 +69,14 @@ test('tallyLayout reproduce las medidas de ArenaScene', async () => {
     marks: { full: 1, rest: 2 }, stroke: 1, gap: 4, groupGap: 3, width: 27,
   });
 });
+
+test('resultOptionRects: dos filas clickeables dentro del tablon', async () => {
+  const { resultOptionRects } = await import('../src/arena/resultScreen.js');
+  const rects = resultOptionRects(makeAssets());
+  assert.equal(rects.length, 2);
+  for (const rect of rects) {
+    assert.ok(rect.w > 100 && rect.h >= 16);
+    assert.ok(rect.x >= 0 && rect.x + rect.w <= 480);
+  }
+  assert.ok(rects[1].y > rects[0].y);
+});

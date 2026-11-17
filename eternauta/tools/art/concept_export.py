@@ -21,6 +21,8 @@ OUT = ROOT / 'public' / 'assets'
 sys.dont_write_bytecode = True
 sys.path.insert(0, str(CONCEPT))
 sys.path.insert(0, str(ART))
+sys.path.insert(0, str(ROOT / 'tools'))
+from sprites import skip_if_edited  # noqa: E402  hojas editadas a mano
 
 from pixel import Pix, hx, mix  # noqa: E402
 import characters as ch        # noqa: E402
@@ -50,6 +52,8 @@ def to_img(obj):
 
 
 def save_png(img, name):
+    if skip_if_edited(name):
+        return
     path = OUT / name
     path.parent.mkdir(parents=True, exist_ok=True)
     img.save(path)
@@ -57,6 +61,8 @@ def save_png(img, name):
 
 
 def save_json(data, name, detail=''):
+    if skip_if_edited(name):
+        return
     path = OUT / name
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(json.dumps(data, ensure_ascii=False, indent=1) + '\n',
@@ -90,6 +96,8 @@ def pack(items, maxw=512, pad=2):
 
 
 def save_atlas(atlas, png, meta, items, detail):
+    if skip_if_edited(png):
+        return
     save_png(atlas.img, png)
     save_json({'frames': dict(items)}, meta, detail)
 
@@ -231,6 +239,8 @@ def export_props():
         ('dressed_truco', props.dressed_truco_table()),
         ('dressed_kitchen', props.dressed_kitchen_table()),
     ]
+    # Los objetos chicos llevan contorno oscuro: se leen sobre cualquier tapa.
+    items = [(n, p if n.startswith('dressed_') else props.outlined(p)) for n, p in items]
     atlas, frames = pack(items, maxw=512)
     save_atlas(atlas, 'props.png', 'props.json', frames, f"{len(frames)} objetos")
 
@@ -279,10 +289,17 @@ def main():
     export_views()
     export_cascarudos()
     export_fx()
-    fx_shooting.main()  # efectos del disparo (atlas propio: fx_shooting.png/json)
-    title_bg.main()          # fondo del titulo con el mismo arte (casas, pinos, calle)
-    import item_icons
-    item_icons.build()       # iconos 16x16 de todos los items (mate, pava, balas...)
+    # estos tres escriben public/assets por su cuenta: se saltean si se
+    # editan a mano en art/sprites/ (ver docs/sprites_pipeline.md)
+    if not skip_if_edited('fx_shooting.png'):
+        fx_shooting.main()   # efectos del disparo (atlas propio)
+    editada = skip_if_edited('title.png')
+    editada = skip_if_edited('title_sky.png') or editada
+    if not editada:
+        title_bg.main()      # fondo del titulo (casas, pinos, calle)
+    if not skip_if_edited('items.png'):
+        import item_icons
+        item_icons.build()   # iconos 16x16 de todos los items
 
 
 if __name__ == '__main__':

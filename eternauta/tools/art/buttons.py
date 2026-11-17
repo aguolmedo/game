@@ -260,6 +260,25 @@ def key_arrow():
     return p
 
 
+def mouse_icon():
+    """Mouse de 11x13 para los prompts cuando se juega con el puntero."""
+    w, h = 11, 13
+    p = Pix(w, h)
+    rrect(p, 0, 0, w, h, 4, INK)
+    rrect(p, 1, 1, w - 2, h - 2, 3, GREY_DD)
+    rrect(p, 2, 2, w - 4, h - 4, 2, GREY)
+    p.hline(3, w - 4, 2, GREY_HI)
+    p.hline(3, w - 4, h - 3, GREY_MID)
+    # division de botones y ruedita
+    p.vline(5, 2, 6, GREY_DD)
+    p.hline(2, w - 3, 6, GREY_DD)
+    p.rect(5, 3, 1, 3, GREY_D)
+    # boton izquierdo iluminado
+    for x, y in ((3, 3), (4, 3), (3, 4), (4, 4), (3, 5), (4, 5)):
+        p.set(x, y, CREAM_HI)
+    return p
+
+
 def build():
     pixes = []
 
@@ -276,6 +295,7 @@ def build():
     pixes.append(('stick', stick(11)))
     pixes.append(('left', arrow_pill(11, 7, 'left', 2)))
     pixes.append(('right', arrow_pill(11, 7, 'right', 2)))
+    pixes.append(('mouse', mouse_icon()))
 
     # ---- set grande (pantalla de controles)
     for k in ('a', 'b', 'x', 'y'):

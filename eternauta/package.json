@@ -9,7 +9,10 @@
     "test": "node --test",
     "assets": "python3 tools/export_assets.py",
     "screens": "node tools/play_screens.mjs",
-    "concept": "python3 tools/art/concept_export.py"
+    "concept": "python3 tools/art/concept_export.py",
+    "sprites:split": "python3 tools/sprites.py split",
+    "sprites:pack": "python3 tools/sprites.py pack",
+    "sprites:check": "python3 tools/sprites.py check"
   },
   "dependencies": {
     "three": "^0.170.0"

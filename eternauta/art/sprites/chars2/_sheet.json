@@ -1,0 +1,120 @@
+{
+ "kind": "blocks",
+ "size": [
+  1152,
+  128
+ ],
+ "layout": {
+  "juan": [
+   0,
+   0,
+   128,
+   128
+  ],
+  "juan_suit": [
+   128,
+   0,
+   128,
+   128
+  ],
+  "juan_suit_rifle": [
+   256,
+   0,
+   128,
+   128
+  ],
+  "favalli": [
+   384,
+   0,
+   128,
+   128
+  ],
+  "lucas": [
+   512,
+   0,
+   128,
+   128
+  ],
+  "polsky": [
+   640,
+   0,
+   128,
+   128
+  ],
+  "elena": [
+   768,
+   0,
+   128,
+   128
+  ],
+  "martita": [
+   896,
+   0,
+   128,
+   128
+  ],
+  "polsky_coat": [
+   1024,
+   0,
+   128,
+   128
+  ]
+ },
+ "meta": {
+  "cell": {
+   "w": 16,
+   "h": 32
+  },
+  "cols": 8,
+  "rows": 4,
+  "dirs": [
+   "down",
+   "up",
+   "left",
+   "right"
+  ],
+  "walk": [
+   0,
+   1,
+   2,
+   3,
+   4,
+   5
+  ],
+  "idle": [
+   6,
+   7
+  ],
+  "times": [
+   150,
+   95,
+   95,
+   150,
+   95,
+   95
+  ],
+  "ids": [
+   "juan",
+   "juan_suit",
+   "juan_suit_rifle",
+   "favalli",
+   "lucas",
+   "polsky",
+   "elena",
+   "martita",
+   "polsky_coat"
+  ]
+ },
+ "keys": [
+  "cell",
+  "cols",
+  "rows",
+  "dirs",
+  "walk",
+  "idle",
+  "times",
+  "ids",
+  "blocks"
+ ],
+ "newline": true
+}

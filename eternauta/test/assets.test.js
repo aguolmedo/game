@@ -6,7 +6,8 @@ const ASSETS = [
   'title.png', 'tiles.png', 'tiles.json', 'objects.png', 'objects.json',
   'buttons.png', 'buttons.json', 'chars.png', 'chars.json',
   'portraits.png', 'portraits.json', 'items.png', 'items.json',
-  'font.json', 'snow.png', 'shadow.png', 'footprint.png', 'manifest.json',
+  'font.json', 'snow.png', 'shadow.png', 'footprint.png',
+  'cursor.png', 'cursor.json', 'manifest.json',
 ];
 
 const read = (name) => JSON.parse(
@@ -64,6 +65,17 @@ test('tiles/objects/buttons declaran frames con cajas válidas', () => {
     'a_l', 'b_l', 'x_l', 'y_l', 'key_e', 'key_f', 'key_i', 'key_esc']) {
     assert.ok(buttons.frames[size], `falta el glifo ${size}`);
   }
+});
+
+test('cursor.json tiene las cuatro formas del puntero', () => {
+  const cursor = read('cursor.json');
+  assert.ok(cursor.w > 0 && cursor.h > 0);
+  for (const name of ['arrow', 'hand', 'hand_press', 'hand_far']) {
+    assert.ok(cursor.frames[name], `falta el frame ${name}`);
+    assert.ok(cursor.hotspots[name], `falta el hotspot ${name}`);
+  }
+  const buttons = read('buttons.json');
+  assert.ok(buttons.frames.mouse, 'falta el glifo mouse para los prompts');
 });
 
 test('font.json cubre letras, acentos y signos del castellano', () => {

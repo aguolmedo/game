@@ -47,10 +47,14 @@ floor[12][19] = 'stair_3';
 
 // Slots de superficie en px relativos a la caja del mueble (x*16, y*16), que
 // es el origen que usa src/surfaces.js. Son puntos de apoyo (centro-abajo).
+// Mesa de truco (48x32, tapa en y 8..19): fila de atras (botella, cenicero,
+// anotador), naipes sobre el paño y adelante a la derecha el mate y el vaso.
+// El centro de atras queda libre para la vela del apagon. Las cajas no se
+// pisan entre si (salvo 1-2 px de los naipes sobre el anotador).
 const TABLE_SLOTS = [
-  { x: 8, y: 13 }, { x: 18, y: 13 }, { x: 28, y: 13 }, { x: 38, y: 13 },
-  { x: 8, y: 21 }, { x: 18, y: 21 }, { x: 28, y: 21 }, { x: 38, y: 21 },
-  { x: 18, y: 27 }, { x: 28, y: 27 },
+  { x: 4, y: 13 }, { x: 42, y: 8 }, { x: 14, y: 11 },
+  { x: 12, y: 20 }, { x: 19, y: 20 }, { x: 26, y: 20 },
+  { x: 37, y: 20 }, { x: 45, y: 20 },
 ];
 const SHELF_SLOTS = [
   { x: 6, y: 11 }, { x: 18, y: 11 }, { x: 30, y: 11 },
@@ -96,13 +100,13 @@ const objects = [
   { id: 'chair_pol', sprite: 'chair', x: 10, y: 5, tw: 1, th: 1, solid: false },
   { id: 'chair_luc', sprite: 'chair', x: 11, y: 5, tw: 1, th: 1, solid: false },
   { id: 'table', sprite: 'table_truco', x: 9, y: 6, tw: 3, th: 2, solid: { x: 0, y: 1, w: 3, h: 1 },
-    surface: { slots: TABLE_SLOTS, maxItems: 10 },
+    surface: { slots: TABLE_SLOTS, maxItems: 8 },
     interact: { kind: 'look', talk: 'table', label: 'Mirar la mesa' } },
   { id: 'chair_juan', sprite: 'chair_front', x: 10, y: 8, tw: 1, th: 1, solid: false,
     interact: { kind: 'look', talk: 'chair', label: 'Sentarse' } },
   // Favalli la prende sobre la mesa cuando se corta la luz (historia §8).
   { id: 'candle', sprite: 'oil_lamp_lit', x: 10, y: 7, tw: 1, th: 1, solid: false,
-    offset: [8, -2], glow: true, showIfFlag: 'apagon',
+    offset: [2, -20], hitFromSprite: true, priority: 2, glow: true, showIfFlag: 'apagon',
     interact: { kind: 'look', talk: 'candle', label: 'Mirar la vela' } },
   { id: 'cup1', sprite: 'cup', x: 12, y: 8, tw: 1, th: 1, solid: false, offset: [2, -2] },
 
@@ -121,7 +125,10 @@ const objects = [
   // ---- rincon derecho: el banco del laboratorio
   { id: 'workbench', sprite: 'workbench', x: 15, y: 8, tw: 3, th: 2, solid: true,
     surface: { slots: BENCH_SLOTS, maxItems: 5 },
+    // De lo apoyado, solo el calentador representa la estación (R3): la
+    // tijera o la tela no son "el fuego".
     station: 'heat',
+    stationItem: 'calentador',
     interact: { kind: 'look', talk: 'workbench', label: 'Mirar el banco' } },
   { id: 'tools1', sprite: 'tools', x: 16, y: 8, tw: 1, th: 1, solid: false, offset: [0, -14] },
   { id: 'rag1', sprite: 'rag', x: 14, y: 10, tw: 1, th: 1, solid: false, offset: [4, -2] },
@@ -163,7 +170,7 @@ export const attic = {
   // Nada tirado en el piso: los objetos del traje viven en las superficies.
   pickups: [],
   warps: [
-    { id: 'stairs', x: 18 * 16, y: 11 * 16, w: 32, h: 32, to: 'house',
+    { id: 'stairs', x: 18 * 16, y: 11 * 16, w: 32, h: 32, to: 'house', label: 'Bajar',
       spawn: { x: 2 * 16 + 8, y: 5 * 16 + 8, dir: 'down' } },
   ],
 };

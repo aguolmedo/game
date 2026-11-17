@@ -43,6 +43,8 @@ export class ViewScene {
     this.opts = opts;
     this.pausable = false;
     this.blocksPause = true;
+    // Pantalla fija: sin zoom del mundo (T2).
+    this.worldZoom = false;
     this.scene = new THREE.Scene();
     this.cam = { x: 0, y: 0 };
     this.t = 0;
@@ -50,8 +52,10 @@ export class ViewScene {
     this.mesh = null;
     this.snow = [];
     this.exited = false;
+    // Capa de UI fija en pantalla: se dibuja con uiCamera (no viaja con el mundo).
+    this.uiScene = new THREE.Scene();
     this.overlay = canvasOverlay(VIEW_W, VIEW_H, 30);
-    this.scene.add(this.overlay.mesh);
+    this.uiScene.add(this.overlay.mesh);
   }
 
   enter() {
@@ -63,7 +67,6 @@ export class ViewScene {
       ? { x: 0, y: PAN_Y }
       : { x: 0, y: 0 };
     this.snow = this.viewId === 'attic' ? createFlakes() : [];
-    this.placeOverlay();
     this.drawOverlay();
   }
 
@@ -109,10 +112,9 @@ export class ViewScene {
       this.cam.y = PAN_Y;
       this.updateFlakes(dt);
     }
-    this.placeOverlay();
     this.drawOverlay();
 
-    if (!this.exited && this.t > 0.15 && input && (input.bPressed || input.startPressed)) {
+    if (!this.exited && this.t > 0.15 && input && (input.bPressed || input.startPressed || input.click)) {
       this.exit();
     }
   }
@@ -137,13 +139,6 @@ export class ViewScene {
       return;
     }
     this.game.changeScene(this.opts.returnTo || 'attic', this.opts.spawn);
-  }
-
-  /** El canvas de UI viaja con la cámara: es fijo en pantalla. */
-  placeOverlay() {
-    this.overlay.mesh.position.set(
-      this.cam.x + VIEW_W / 2, this.cam.y + VIEW_H / 2, 30,
-    );
   }
 
   drawOverlay() {

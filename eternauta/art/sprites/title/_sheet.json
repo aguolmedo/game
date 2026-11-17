@@ -1,0 +1,18 @@
+{
+ "kind": "image",
+ "size": [
+  512,
+  286
+ ],
+ "layout": {
+  "title": [
+   0,
+   0,
+   512,
+   286
+  ]
+ },
+ "meta": {},
+ "keys": [],
+ "newline": true
+}

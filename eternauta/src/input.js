@@ -50,10 +50,11 @@ function clampWheel(value) {
 }
 
 /**
- * Último dispositivo usado. Si en el frame hubo teclado gana el teclado;
- * si no, gana el pad; si no hubo actividad, se mantiene el anterior.
+ * Último dispositivo usado. Si en el frame hubo mouse gana el mouse; después
+ * teclado, después pad; si no hubo actividad, se mantiene el anterior.
  */
-export function deviceAfter(previous, { keyboard = false, pad = false } = {}) {
+export function deviceAfter(previous, { keyboard = false, pad = false, mouse = false } = {}) {
+  if (mouse) return 'mouse';
   if (keyboard) return 'keyboard';
   if (pad) return 'pad';
   return previous || 'keyboard';
@@ -70,8 +71,11 @@ export class Input {
     this.prev = { ...NONE };
     this.lastDevice = 'keyboard';
     this.keyboardActivity = false;
+    this.mouseActivity = false;
+    this.pointer = null;
     this.wheel = 0;
     this.click = null;
+    this.rightClick = null;
 
     if (!target) return;
     target.addEventListener('keydown', (e) => {
@@ -90,10 +94,20 @@ export class Input {
       e.preventDefault();
       this.wheel = clampWheel(this.wheel + Math.sign(e.deltaY || 0));
     }, { passive: false });
-    target.addEventListener('mousedown', (e) => {
-      if ((e.button ?? 0) !== 0) return;
-      this.click = { x: e.clientX || 0, y: e.clientY || 0 };
+    target.addEventListener('pointermove', (e) => {
+      this.pointer = { x: e.clientX || 0, y: e.clientY || 0 };
+      this.mouseActivity = true;
     });
+    target.addEventListener('mousedown', (e) => {
+      const button = e.button ?? 0;
+      if (button !== 0 && button !== 2) return;
+      this.mouseActivity = true;
+      const point = { x: e.clientX || 0, y: e.clientY || 0 };
+      if (button === 2) this.rightClick = point;
+      else this.click = point;
+    });
+    // Click derecho = Mirar: sin menú contextual del navegador sobre el canvas.
+    target.addEventListener('contextmenu', (e) => e.preventDefault());
   }
 
   readGamepad() {
@@ -185,6 +199,7 @@ export class Input {
     const device = deviceAfter(this.lastDevice, {
       keyboard: this.keyboardActivity,
       pad: pad.active,
+      mouse: this.mouseActivity,
     });
     const tap = tapDirection(this.tapped);
     const state = {
@@ -205,6 +220,8 @@ export class Input {
       startPressed: (start && !prev.start) || anyTapped(this.tapped, START_KEYS),
       wheel: this.wheel,
       click: this.click,
+      rightClick: this.rightClick,
+      pointer: this.pointer,
       device,
     };
     this.lastDevice = device;
@@ -212,8 +229,10 @@ export class Input {
     this.prev = { a, b, start, x, y, lb: prevHotbar, rb: nextHotbar };
     this.tapped.clear();
     this.keyboardActivity = false;
+    this.mouseActivity = false;
     this.wheel = 0;
     this.click = null;
+    this.rightClick = null;
     return state;
   }
 }

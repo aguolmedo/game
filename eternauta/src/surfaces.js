@@ -344,6 +344,8 @@ export class SurfaceLayer {
         item,
         worldItem: wi,
         slot: wi.slot,
+        // Orden de dibujo: desempata objetos apoyados superpuestos.
+        front: Number.isFinite(wi.slot) ? wi.slot : 0,
         objectId: wi.objectId,
         grabbable,
       });

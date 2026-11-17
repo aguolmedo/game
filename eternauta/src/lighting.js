@@ -94,8 +94,9 @@ export class LightOverlay {
   }
 
   setCamera(camX, camY) {
-    this.camX = Math.round(camX || 0);
-    this.camY = Math.round(camY || 0);
+    // Sin redondear: la cámara puede estar en 1/worldPx (zoom del mundo).
+    this.camX = camX || 0;
+    this.camY = camY || 0;
   }
 
   update(dt) {

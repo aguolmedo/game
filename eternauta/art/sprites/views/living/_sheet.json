@@ -1,0 +1,18 @@
+{
+ "kind": "image",
+ "size": [
+  480,
+  270
+ ],
+ "layout": {
+  "living": [
+   0,
+   0,
+   480,
+   270
+  ]
+ },
+ "meta": {},
+ "keys": [],
+ "newline": true
+}

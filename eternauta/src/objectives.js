@@ -12,6 +12,8 @@ export const OBJECTIVES = [
   { id: 'martita', text: '¡Cerrá la ventana de Martita!' },
   { id: 'seal', text: 'Revisá que toda la casa esté cerrada (0/4).' },
   { id: 'elena', text: 'Hablá con Elena en el living.' },
+  { id: 'ramirez', text: 'Mirá la ventana del living.' },
+  { id: 'attic', text: 'Subí al altillo: Favalli tiene un plan.' },
   { id: 'materials', text: 'Juntá los materiales del traje (0/6).' },
   { id: 'craft', text: 'Armá el traje en el banco del garaje.' },
   { id: 'airlock', text: 'Prepará la esclusa: nafta, extractor, traje (0/3).' },
@@ -68,6 +70,31 @@ export function airlockCount(flags = {}) {
   return n;
 }
 
+// Checklist de la esclusa: los mismos tres pasos del contador, con etiqueta.
+export const AIRLOCK_STEPS = [
+  { id: 'nafta', label: 'Nafta', flag: 'electrogeno_on' },
+  { id: 'extractor', label: 'Extractor', flag: 'extractor_ok' },
+  { id: 'traje', label: 'Traje', flag: 'traje_fabricado' },
+];
+
+/** Estado de los tres pasos de la esclusa (nafta, extractor, traje). */
+export function airlockChecklist(flags = {}) {
+  return AIRLOCK_STEPS.map((step) => ({
+    id: step.id,
+    label: step.label,
+    done: Boolean(flags[step.flag]),
+  }));
+}
+
+/** Qué le falta ponerse a Juan para salir: dados, traje y rifle. */
+export function equipChecklist(state = {}) {
+  return [
+    { id: 'dados', label: 'Dados', done: Boolean(state.flags?.dados) },
+    { id: 'traje_puesto', label: 'Traje puesto', done: Boolean(state.hasSuit) },
+    { id: 'rifle', label: 'Rifle', done: Boolean(state.hasRifle) },
+  ];
+}
+
 function objective(id, extra = {}) {
   return { id, text: OBJECTIVES[INDEX.get(id)].text, index: INDEX.get(id), ...extra };
 }
@@ -122,7 +149,11 @@ export function currentObjective(state = {}) {
     const closed = state.closedCount ?? closedCount(flags);
     return withProgress('seal', closed, CLOSED_KEYS.length);
   }
-  if (!flags.idea_traje) return objective('elena');
+  if (!flags.idea_traje) {
+    if (flags.ramirez_muerto) return objective('attic');
+    if (!flags.elena_hablada) return objective('elena');
+    return objective('ramirez');
+  }
   if (!flags.traje_fabricado) {
     return materials >= SUIT_NEEDS.length
       ? objective('craft')
@@ -130,9 +161,14 @@ export function currentObjective(state = {}) {
   }
   if (!flags.esclusa_lista) {
     const steps = state.airlockCount ?? airlockCount(flags);
-    return withProgress('airlock', steps, 3);
+    return {
+      ...withProgress('airlock', steps, 3),
+      checklist: airlockChecklist(flags),
+    };
   }
-  if (!flags.listo_para_salir) return objective('equip');
+  if (!flags.listo_para_salir) {
+    return { ...objective('equip'), checklist: equipChecklist(state) };
+  }
   if (flags.arena || flags.afuera || map === 'arena') return objective('survive');
   return objective('exit');
 }

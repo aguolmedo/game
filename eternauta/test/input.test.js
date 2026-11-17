@@ -232,6 +232,29 @@ test('deviceAfter: teclado gana, después pad, si no hay actividad se mantiene',
   assert.equal(deviceAfter(undefined, {}), 'keyboard');
 });
 
+test('deviceAfter: el mouse gana sobre teclado y pad', () => {
+  assert.equal(deviceAfter('keyboard', { mouse: true }), 'mouse');
+  assert.equal(deviceAfter('pad', { mouse: true }), 'mouse');
+  assert.equal(deviceAfter('pad', { mouse: true, keyboard: true, pad: true }), 'mouse');
+});
+
+test('input mouse: guarda el puntero y marca el mouse como último dispositivo', () => {
+  const target = makeTarget();
+  const input = new Input(target);
+
+  target.fire('pointermove', { clientX: 120, clientY: 80 });
+  const first = input.poll();
+  assert.deepEqual(first.pointer, { x: 120, y: 80 });
+  assert.equal(first.device, 'mouse');
+  // sin actividad se mantiene el último dispositivo y la posición
+  const second = input.poll();
+  assert.equal(second.device, 'mouse');
+  assert.deepEqual(second.pointer, { x: 120, y: 80 });
+
+  target.fire('keydown', { code: 'KeyW' });
+  assert.equal(input.poll().device, 'keyboard');
+});
+
 test('input teclado: X (KeyF) e Y (KeyI o Tab) de flanco', () => {
   const target = makeTarget();
   const input = new Input(target);
@@ -346,11 +369,39 @@ test('input mouse: click izquierdo con coordenadas, una vez por frame', () => {
 
   assert.equal(input.poll().click, null);
 
-  // Botón derecho no cuenta.
+  // Botón derecho no cuenta como click izquierdo.
   target.fire('mousedown', { button: 2, clientX: 5, clientY: 6 });
   assert.equal(input.poll().click, null);
 
   target.fire('mousedown', { button: 0, clientX: 12, clientY: 34 });
   assert.deepEqual(input.poll().click, { x: 12, y: 34 });
   assert.equal(input.poll().click, null);
+});
+
+test('input mouse: click derecho va por su propio canal (y no por click)', () => {
+  const target = makeTarget();
+  const input = new Input(target);
+
+  assert.equal(input.poll().rightClick, null);
+
+  target.fire('mousedown', { button: 2, clientX: 7, clientY: 9 });
+  const frame = input.poll();
+  assert.deepEqual(frame.rightClick, { x: 7, y: 9 });
+  assert.equal(frame.click, null, 'el derecho no dispara el izquierdo');
+  assert.equal(frame.device, 'mouse');
+  assert.equal(input.poll().rightClick, null, 'se resetea cada frame');
+
+  // El izquierdo sigue intacto.
+  target.fire('mousedown', { button: 0, clientX: 1, clientY: 2 });
+  const left = input.poll();
+  assert.deepEqual(left.click, { x: 1, y: 2 });
+  assert.equal(left.rightClick, null);
+});
+
+test('input mouse: el menú contextual del canvas se cancela', () => {
+  const target = makeTarget();
+  new Input(target);
+  let prevented = 0;
+  target.fire('contextmenu', { preventDefault() { prevented += 1; } });
+  assert.equal(prevented, 1);
 });

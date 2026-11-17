@@ -5,6 +5,7 @@ import {
 } from './uiSkin.js';
 import { drawPrompt, promptWidth } from './glyphs.js';
 import { portraitFor } from './data/portraits.js';
+import { pointInRect } from './uiHit.js';
 
 // El cuadro ocupa a lo sumo un tercio de la pantalla (270 / 3 = 90 px).
 const BOX_W = 464;
@@ -15,6 +16,8 @@ const PORTRAIT_Y = 10;
 const TEXT_X = 84;
 const TEXT_W = BOX_W - TEXT_X - 14;
 const LINE_H = 11;
+const CHOICE_W = 300;
+const CHOICE_H = 92;
 
 function paginate(lines, perPage = 3) {
   const pages = [];
@@ -56,8 +59,30 @@ export class DialogBox {
     return this.shown < this.total;
   }
 
+  /** Rect del panel (480x270). Coincide con draw(). */
+  boxRect() {
+    return { x: Math.round((480 - BOX_W) / 2), y: 270 - BOX_H - 8, w: BOX_W, h: BOX_H };
+  }
+
+  /** Rect del prompt 'Cerrar' abajo a la derecha. */
+  closeRect(device = 'keyboard') {
+    const backW = promptWidth(this.assets, device, 'back', 'Cerrar');
+    const box = this.boxRect();
+    return { x: box.x + BOX_W - 10 - backW, y: box.y + BOX_H - 12, w: backW, h: 13 };
+  }
+
+  nextPage() {
+    if (this.page + 1 < this.pages.length) {
+      this.page += 1;
+      this.startPage();
+      return 'page';
+    }
+    this.close();
+    return 'closed';
+  }
+
   /** input = estado de src/input.js. Devuelve 'closed' | 'page' | null. */
-  update(dt, input, device = 'keyboard') {
+  update(dt, input, device = 'keyboard', viewPoint = null) {
     if (!this.open) return null;
     this.t += dt;
     const lines = this.pages[this.page] || [];
@@ -66,20 +91,27 @@ export class DialogBox {
       this.close();
       return 'closed';
     }
+    // Click: primero el prompt de cerrar, despues el panel.
+    if (input.click && viewPoint) {
+      if (pointInRect(viewPoint, this.closeRect(device), 3)) {
+        this.close();
+        return 'closed';
+      }
+      if (pointInRect(viewPoint, this.boxRect(), 2)) {
+        if (this.typing) {
+          this.shown = this.total;
+          return null;
+        }
+        return this.nextPage();
+      }
+      return null; // click afuera: no avanza
+    }
     if (this.typing) {
       this.shown = Math.min(this.total, this.shown + dt * 52);
       if (input.aPressed) this.shown = this.total;
       return null;
     }
-    if (input.aPressed) {
-      if (this.page + 1 < this.pages.length) {
-        this.page += 1;
-        this.startPage();
-        return 'page';
-      }
-      this.close();
-      return 'closed';
-    }
+    if (input.aPressed) return this.nextPage();
     return null;
   }
 
@@ -217,27 +249,93 @@ export class ChoiceBox {
     this.onPick = null;
   }
 
+  /** Origen del panel (480x270). Coincide con draw(). */
+  panelRect() {
+    const x = Math.round((480 - CHOICE_W) / 2);
+    const y = Math.round((270 - CHOICE_H) / 2) - 16;
+    return { x, y, w: CHOICE_W, h: CHOICE_H };
+  }
+
+  /** Rects de las opciones, en el mismo orden que draw(). */
+  optionRects() {
+    const glyphs = this.assets.font.glyphs;
+    const { x, y, w } = this.panelRect();
+    let total = 0;
+    for (const o of this.options) total += measureText(glyphs, o) + 34;
+    let ox = Math.round(x + (w - total + 20) / 2);
+    const rects = [];
+    for (const label of this.options) {
+      const tw = measureText(glyphs, label);
+      rects.push({ x: ox - 8, y: y + 54, w: tw + 16, h: 15 });
+      ox += tw + 34;
+    }
+    return rects;
+  }
+
+  /** Indice de la opcion bajo el punto (con unos px de tolerancia), o -1. */
+  hitOption(point) {
+    const rects = this.optionRects();
+    for (let i = 0; i < rects.length; i++) {
+      if (pointInRect(point, rects[i], 3)) return i;
+    }
+    return -1;
+  }
+
+  /** Rect del prompt 'Volver' abajo a la derecha. */
+  backRect(device = 'keyboard') {
+    const { x, y, w, h } = this.panelRect();
+    const backW = promptWidth(this.assets, device, 'back', 'Volver');
+    return { x: x + w - backW - 18, y: y + h - 24, w: backW, h: 13 };
+  }
+
+  /** Rect del prompt 'Elegir' abajo a la izquierda: elige la opcion actual. */
+  pickRect(device = 'keyboard') {
+    const { x, y, w, h } = this.panelRect();
+    const pickW = promptWidth(this.assets, device, 'interact', 'Elegir');
+    return { x: x + 14, y: y + h - 29, w: pickW + 8, h: 23 };
+  }
+
+  pick(index) {
+    const value = this.options[index];
+    const onPick = this.onPick;
+    this.hide();
+    if (onPick) onPick(value, index);
+    return { index, value };
+  }
+
   /** Devuelve {index, value} al elegir, 'cancel' con B, o null. */
-  update(dt, input) {
+  update(dt, input, device = 'keyboard', viewPoint = null) {
     if (!this.open) return null;
     this.t += dt;
     if (input.bPressed || input.startPressed) {
       this.hide();
       return 'cancel';
     }
-    const mv = input.menuMove || input.move;
+    // Mouse: hover mueve la seleccion; el click elige, vuelve o no hace nada.
+    if (viewPoint && input.click) {
+      if (pointInRect(viewPoint, this.backRect(device), 3)) {
+        this.hide();
+        return 'cancel';
+      }
+      // El prompt 'Elegir' no es decorativo: elige la opcion seleccionada.
+      if (pointInRect(viewPoint, this.pickRect(device), 3)) {
+        return this.pick(this.index);
+      }
+      const hit = this.hitOption(viewPoint);
+      if (hit >= 0) return this.pick(hit);
+      return null; // click afuera: no-op (consume el click)
+    }
+    if (viewPoint) {
+      const hover = this.hitOption(viewPoint);
+      if (hover >= 0) this.index = hover;
+    }
+    const mv = input.menuMove || input.move || { x: 0, y: 0 };
     if (mv.x < -0.4 || mv.y < -0.4) {
       this.index = (this.index + this.options.length - 1) % this.options.length;
     } else if (mv.x > 0.4 || mv.y > 0.4) {
       this.index = (this.index + 1) % this.options.length;
     }
-    if (input.aPressed) {
-      const value = this.options[this.index];
-      const onPick = this.onPick;
-      this.hide();
-      if (onPick) onPick(value, this.index);
-      return { index: this.index, value };
-    }
+    if (input.aPressed) return this.pick(this.index);
     return null;
   }
 
@@ -245,10 +343,9 @@ export class ChoiceBox {
     if (!this.open) return;
     const glyphs = this.assets.font.glyphs;
     dim(ctx, 0.45);
-    const w = 300;
-    const h = 92;
-    const x = Math.round((viewW - w) / 2);
-    const y = Math.round((viewH - h) / 2) - 16;
+    const { w, h } = this.panelRect();
+    const x = Math.round((viewW - CHOICE_W) / 2);
+    const y = Math.round((viewH - CHOICE_H) / 2) - 16;
     panel(ctx, x, y, w, h);
     const lines = wrapLines(glyphs, this.question, w - 36, 2);
     lines.forEach((line, i) => {

@@ -2,6 +2,7 @@
 // Todo se dibuja en el canvas 480x270. Sin dependencias nuevas.
 import { drawText, measureText, wrapText } from './font.js';
 import { portraitFor } from './data/portraits.js';
+import { drawGlyph, glyphName } from './glyphs.js';
 
 export const INK = '#16131c';
 export const PAPER = '#f6f1e4';
@@ -93,14 +94,14 @@ export class CaptionBox {
     if (!this.open) return null;
     this.t += dt;
     if (this.t < 0.2) return null;
-    if (input && (input.aPressed || input.bPressed || input.startPressed)) {
+    if (input && (input.aPressed || input.bPressed || input.startPressed || input.click)) {
       this.open = false;
       return 'closed';
     }
     return null;
   }
 
-  draw(ctx) {
+  draw(ctx, device = 'keyboard') {
     if (!this.open) return;
     const w = this.widthBox;
     const h = this.heightBox;
@@ -124,9 +125,11 @@ export function drawBalloon(ctx, camX, camY, spec = {}) {
   const bw = Math.max(...lines.map((l) => measureText(glyphs, l))) + 12;
   const bh = lines.length * 9 + 9;
 
-  const head = spec.head || { x: camX + VIEW_W / 2, y: camY + 120 };
-  const hx = head.x - camX;
-  const hy = head.y - camY;
+  // La cabeza viene en px de mundo; el globo se dibuja en la vista UI.
+  const zoom = spec.zoom || 1;
+  const head = spec.head || null;
+  const hx = head ? (head.x - camX) * zoom : VIEW_W / 2;
+  const hy = head ? (head.y - camY) * zoom : 120;
   const x = Math.round(clamp(hx - bw / 2, 4, VIEW_W - bw - 4));
   const y = Math.round(clamp(hy - bh - 22, 4, VIEW_H - bh - 4));
 
@@ -178,17 +181,17 @@ export class BalloonLine {
     if (!this.open) return null;
     this.t += dt;
     if (this.t < 0.2) return null;
-    if (input && (input.aPressed || input.bPressed)) {
+    if (input && (input.aPressed || input.bPressed || input.click)) {
       this.open = false;
       return 'closed';
     }
     return null;
   }
 
-  draw(ctx, camX, camY) {
+  draw(ctx, camX, camY, zoom = 1) {
     if (!this.open) return;
     drawBalloon(ctx, camX, camY, {
-      text: this.text, head: this.head, w: this.w, glyphs: this.glyphs,
+      text: this.text, head: this.head, w: this.w, glyphs: this.glyphs, zoom,
     });
   }
 }
@@ -313,7 +316,7 @@ export class ComicOverlay {
       this.timer -= 0.25;
       this.revealed += 1;
     }
-    if (input && (input.aPressed || input.startPressed)) {
+    if (input && (input.aPressed || input.startPressed || input.click)) {
       if (this.revealed < this.cells.length) {
         this.revealed += 1;
         this.timer = 0;
@@ -333,7 +336,7 @@ export class ComicOverlay {
     if (cb) cb();
   }
 
-  draw(ctx) {
+  draw(ctx, device = 'keyboard') {
     if (!this.open) return;
     const cols = this.layout.startsWith('3') ? 3 : 2;
     const n = Math.max(1, this.cells.length);
@@ -368,16 +371,20 @@ export class ComicOverlay {
       this.drawCell(ctx, this.cells[i] || {}, x, y, pw, ph);
     }
 
-    // indicador: una (A) chiquita sobre el borde de tinta
+    // indicador: el glifo del boton (A con joystick, mouse con mouse/teclado)
     if (this.done) {
-      const bx = VIEW_W - 15;
-      const by = VIEW_H - 14;
+      const name = glyphName(device, 'interact') || 'a';
+      const frame = this.assets.buttonsData?.frames?.[name];
+      const fw = frame ? frame[2] : 10;
+      const fh = frame ? frame[3] : 9;
+      const bx = VIEW_W - fw - 6;
+      const by = VIEW_H - fh - 5;
       ctx.fillStyle = CAPTION;
-      ctx.fillRect(bx, by, 10, 9);
+      ctx.fillRect(bx - 2, by - 2, fw + 4, fh + 4);
       ctx.fillStyle = INK;
-      ctx.fillRect(bx, by, 10, 1);
-      ctx.fillRect(bx, by, 1, 9);
-      drawText(ctx, this.glyphs, bx + 3, by + 1, 'A', INK);
+      ctx.fillRect(bx - 2, by - 2, fw + 4, 1);
+      ctx.fillRect(bx - 2, by - 2, 1, fh + 4);
+      drawGlyph(ctx, this.assets, name, bx, by);
     }
   }
 

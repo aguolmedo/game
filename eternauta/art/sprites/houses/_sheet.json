@@ -1,0 +1,38 @@
+{
+ "kind": "atlas",
+ "size": [
+  506,
+  136
+ ],
+ "layout": {
+  "salvo_7": [
+   2,
+   2,
+   124,
+   132
+  ],
+  "salvo_31": [
+   128,
+   2,
+   124,
+   132
+  ],
+  "californiano_11": [
+   254,
+   2,
+   124,
+   132
+  ],
+  "californiano_23": [
+   380,
+   2,
+   124,
+   132
+  ]
+ },
+ "meta": {},
+ "keys": [
+  "frames"
+ ],
+ "newline": true
+}

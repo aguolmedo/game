@@ -1,0 +1,18 @@
+{
+ "kind": "image",
+ "size": [
+  960,
+  300
+ ],
+ "layout": {
+  "attic_pan": [
+   0,
+   0,
+   960,
+   300
+  ]
+ },
+ "meta": {},
+ "keys": [],
+ "newline": true
+}

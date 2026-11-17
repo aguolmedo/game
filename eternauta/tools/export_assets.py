@@ -19,12 +19,15 @@ SCRIPTS = BOCETOS / 'scripts'
 OUT = ROOT / 'public' / 'assets'
 
 sys.dont_write_bytecode = True
+sys.path.insert(0, str(ROOT / 'tools'))
+from sprites import skip_if_edited  # noqa: E402  hojas editadas a mano
 sys.path.insert(0, str(ART))
 import chars as art_chars        # noqa: E402
 import items as art_items        # noqa: E402
 import tiles as art_tiles        # noqa: E402
 import objects as art_objects    # noqa: E402
 import buttons as art_buttons    # noqa: E402
+import cursor as art_cursor      # noqa: E402
 import font_extra                # noqa: E402
 import sidechars                 # noqa: E402
 from pixel import Pix            # noqa: E402
@@ -49,22 +52,29 @@ ASSETS = [
     'title.png', 'tiles.png', 'tiles.json', 'objects.png', 'objects.json',
     'buttons.png', 'buttons.json', 'chars.png', 'chars.json',
     'portraits.png', 'portraits.json', 'items.png', 'items.json',
-    'font.json', 'snow.png', 'shadow.png', 'footprint.png', 'manifest.json',
+    'font.json', 'snow.png', 'shadow.png', 'footprint.png',
+    'cursor.png', 'cursor.json', 'manifest.json',
 ]
 
 
 def save_img(img, name):
+    if skip_if_edited(name):
+        return
     img.save(OUT / name)
     print(f"{name:<16} {img.width}x{img.height} {img.mode}")
 
 
 def save_json(data, name, detail=''):
+    if skip_if_edited(name):
+        return
     text = json.dumps(data, ensure_ascii=False, indent=1) + '\n'
     (OUT / name).write_text(text, encoding='utf-8')
     print(f"{name:<16} {detail}")
 
 
 def export_atlas(mod, png, meta, detail):
+    if skip_if_edited(png):
+        return
     atlas, frames = mod.build()
     save_img(atlas.img, png)
     save_json({'frames': {k: list(v) for k, v in frames.items()}}, meta, detail)
@@ -72,6 +82,11 @@ def export_atlas(mod, png, meta, detail):
 
 def export_title():
     # el titulo usa el mismo arte que el resto del juego (casas, pinos, calle)
+    # title_bg.main() escribe title.png/title_sky.png por su cuenta.
+    editada = skip_if_edited('title.png')
+    editada = skip_if_edited('title_sky.png') or editada
+    if editada:
+        return
     if title_bg is not None:
         title_bg.main()
     else:
@@ -165,6 +180,13 @@ def export_footprint():
         save_img(img, 'footprint.png')
 
 
+def export_cursor():
+    atlas, frames, hotspots = art_cursor.build()
+    save_img(atlas.img, 'cursor.png')
+    save_json({'w': atlas.w, 'h': atlas.h, 'frames': frames, 'hotspots': hotspots},
+              'cursor.json', f"{len(frames)} cursores")
+
+
 def export_manifest():
     save_json({'assets': ASSETS, 'version': 3}, 'manifest.json',
               f"{len(ASSETS)} archivos")
@@ -179,11 +201,13 @@ def main():
     export_chars()
     export_items()
     sys.path.insert(0, str(Path(__file__).resolve().parent / 'art'))
-    import item_icons
-    item_icons.build()   # completa items.png con los iconos de los items nuevos
+    if not skip_if_edited('items.png'):
+        import item_icons
+        item_icons.build()  # completa items.png con los iconos nuevos
     export_font()
     export_snow_shadow()
     export_footprint()
+    export_cursor()
     export_manifest()
 
 

@@ -12,14 +12,17 @@ export class EndScene {
   constructor(game) {
     this.game = game;
     this.pausable = false;
+    // Pantalla fija: sin zoom del mundo (T2).
+    this.worldZoom = false;
     this.scene = new THREE.Scene();
+    // Capa de UI fija en pantalla: se dibuja con uiCamera (no viaja con el mundo).
+    this.uiScene = new THREE.Scene();
     this.world = new WorldMap(this.scene, game.assets, cloneMap(street));
     this.snow = new Snowfall(this.scene, game.assets.snow, { count: 90, front: 24 });
     this.player = new Player(this.scene, game.assets, 'juan_suit');
     this.cam = this.world.cameraFor(street.endX - 70, 8 * 16);
     this.ui = canvasOverlay(VIEW_W, VIEW_H, 40);
-    this.ui.mesh.position.set(this.cam.x + VIEW_W / 2, this.cam.y + VIEW_H / 2, 40);
-    this.scene.add(this.ui.mesh);
+    this.uiScene.add(this.ui.mesh);
     this.t = 0;
     this.blink = null;
   }
@@ -69,10 +72,12 @@ export class EndScene {
 
   update(dt, input) {
     this.t += dt;
+    // Pantalla fija: el cursor siempre es la flecha (T11).
+    this.game.mouseCursor?.setState('arrow');
     this.snow.update(dt);
     this.snow.setCamera(this.cam.x, this.cam.y);
     this.draw(this.t % 1.2 < 0.8);
-    if (input.aPressed && this.t > 0.4) this.game.changeScene('title');
+    if ((input.aPressed || input.click) && this.t > 0.4) this.game.changeScene('title');
   }
 
   get blocksPause() { return true; }

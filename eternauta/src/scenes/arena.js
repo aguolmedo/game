@@ -34,7 +34,9 @@ import { clearEnemyEntities, clearFxEntities, purgeArena } from '../arena/reset.
 import { createResultNav, stepResultNav, resultAction, isNewBest } from '../arena/results.js';
 import { tallyLayout, drawTally } from '../arena/tally.js';
 import { drawDeathPanel } from '../arena/deathPanel.js';
-import { drawResultScreen } from '../arena/resultScreen.js';
+import { drawResultScreen, resultOptionRects } from '../arena/resultScreen.js';
+import { pointInRect } from '../uiHit.js';
+import { firePressed } from '../arena/controls.js';
 
 // 'compra' = caja de municiones; 'infinita' = para pruebas.
 export const ARENA = { ammo: 'compra' };
@@ -90,7 +92,11 @@ export class ArenaScene {
     this.assets = game.assets;
     this.name = 'arena';
     this.pausable = true;
+    // La arena necesita ver el campo para disparar: zoom 1 (T2).
+    this.worldZoom = false;
     this.scene = new THREE.Scene();
+    // Capa de UI fija en pantalla: se dibuja con uiCamera (no viaja con el mundo).
+    this.uiScene = new THREE.Scene();
 
     // La calle se comparte con calle/muerte/final: cada escena necesita sus
     // propios objetos para poder apagar sus luces sin tocar las demas.
@@ -101,7 +107,7 @@ export class ArenaScene {
     this.footprints = new Footprints(this.scene, this.assets.footprint);
     this.ui = canvasOverlay(VIEW_W, VIEW_H, 30);
     this.ui.mesh.visible = false;
-    this.scene.add(this.ui.mesh);
+    this.uiScene.add(this.ui.mesh);
 
     // La arena es la calle después del apagón: solo la nieve brilla (§8).
     if (!this.mapData.lights.some((l) => l.kind === 'snow')) {
@@ -282,6 +288,7 @@ export class ArenaScene {
     this.nav = createResultNav();
     this.menuSign = 0;
     this.reloadHintAt = -9;
+    this.advanceBuffer = 0;
     this.toasts = [];
     // Estados de flanco: el botón que confirmó "Otra vez" no se arrastra
     // como disparo ni como movimiento del menú.
@@ -327,10 +334,19 @@ export class ArenaScene {
     const padTap = (i) => btn(i) && !this.prevPad[i];
     const padX = btn(2);
     const padY = btn(3);
-    let fire = this.mouse.down || keys.has('Space') || keys.has('KeyJ') || btn(7)
-      || Boolean(input.click)
-      // Toque corto de Space/Enter/J (el teclado pierde la tecla entre frames).
-      || (Boolean(input.aPressed) && input.device === 'keyboard' && !this.nearCrate());
+    // Con el mouse, un click cerca de la caja de municiones compra en vez de
+    // disparar: el cartel de la tienda ya usa el glifo del mouse.
+    const clickBuy = Boolean(input.click) && this.nearCrate();
+    // El click cerca de la caja compra y NO dispara: mouse.down tambien se gatea.
+    let fire = firePressed({
+      mouseDown: this.mouse.down,
+      click: Boolean(input.click),
+      nearCrate: this.nearCrate(),
+      // Space/J, gatillo derecho o toque corto de Enter (el teclado pierde la
+      // tecla entre frames).
+      keyboardFire: keys.has('Space') || keys.has('KeyJ') || btn(7)
+        || (Boolean(input.aPressed) && input.device === 'keyboard' && !this.nearCrate()),
+    });
     if (this.fireLock) {
       // Tras reiniciar, esperar a que se suelten los botones de disparo.
       if (fire) fire = false;
@@ -343,8 +359,12 @@ export class ArenaScene {
       // Y / I / Tab (pad) o F (teclado).
       patch: Boolean(input.yPressed) || (Boolean(input.xPressed) && !padX && !padY),
       // A del joystick o E del teclado (Space/Enter están reservados al disparo).
-      buy: Boolean(input.aPressed) && !keys.has('Space') && !keys.has('Enter'),
-      advance: Boolean(input.aPressed),
+      buy: clickBuy || (Boolean(input.aPressed) && !keys.has('Space') && !keys.has('Enter')),
+      // Click tambien continua viñeta/resultado (durante la partida no se usa).
+      advance: Boolean(input.aPressed) || Boolean(input.click),
+      // Confirmacion de teclado/pad (sin click): el resultado solo avanza con
+      // A/Enter/Space o con un click sobre una opcion.
+      confirm: Boolean(input.aPressed),
     };
     const nextPad = [];
     for (let i = 0; i < 16; i++) nextPad[i] = btn(i);
@@ -619,8 +639,13 @@ export class ArenaScene {
   updateVignette(input, dt) {
     this.deathT += dt;
     this.updateFx(dt);
-    // La viñeta se entinta en 0.4 s; recién ahí acepta "Continuar".
-    if (this.deathT > 0.45 && this.controls.advance) this.openResult();
+    // La viñeta se entinta en 0.4 s; un click temprano queda en buffer 0.3 s.
+    if (this.controls.advance) this.advanceBuffer = 0.3;
+    this.advanceBuffer = Math.max(0, this.advanceBuffer - dt);
+    if (this.deathT > 0.45 && (this.controls.advance || this.advanceBuffer > 0)) {
+      this.advanceBuffer = 0;
+      this.openResult();
+    }
   }
 
   openResult() {
@@ -637,13 +662,43 @@ export class ArenaScene {
     // el stick no elige por su cuenta ni la selección se dispara sola.
     this.nav = stepResultNav(this.nav, input.menuMove || { x: 0, y: 0 });
     this.resultSel = this.nav.sel;
-    if (this.resultT < 0.22) return;
-    if (this.controls.advance) {
-      if (resultAction(this.nav.sel) === 'retry') this.restart();
-      else this.game.changeScene('title');
+
+    // Mouse: el hover mueve la opcion y pone la manito; afuera, flecha.
+    const rects = resultOptionRects(this.assets);
+    const pointer = input.device === 'mouse' && input.pointer
+      ? this.game.screenToView(input.pointer.x, input.pointer.y) : null;
+    const click = input.device === 'mouse' && input.click
+      ? this.game.screenToView(input.click.x, input.click.y) : null;
+    const hitAt = (point) => rects.findIndex((rect) => pointInRect(point, rect));
+    const hover = pointer ? hitAt(pointer) : -1;
+    if (hover >= 0) {
+      this.resultSel = hover;
+      this.nav = { ...this.nav, sel: hover };
+    }
+    this.game.mouseCursor?.setState(hover >= 0 ? 'hand' : 'arrow');
+
+    // Un click SOLO actua si cae sobre una opcion: en zona vacia es no-op.
+    // Vale desde el primer cuadro visible (no se pierde el primer click).
+    const clicked = click ? hitAt(click) : -1;
+    if (clicked >= 0) {
+      this.pickResult(clicked);
       return;
     }
-    if (input.bPressed || input.startPressed) this.game.changeScene('title');
+    if (input.bPressed || input.startPressed) {
+      this.game.changeScene('title');
+      return;
+    }
+    if (this.resultT < 0.22) return;
+    // Teclado / pad: A/Enter/Space confirman la seleccion actual como siempre.
+    if (this.controls.confirm) this.pickResult(this.resultSel);
+  }
+
+  /** Elige una opcion del resultado ('retry' reinicia, 'title' vuelve). */
+  pickResult(sel) {
+    this.resultSel = sel;
+    this.nav = { ...this.nav, sel };
+    if (resultAction(sel) === 'retry') this.restart();
+    else this.game.changeScene('title');
   }
 
   restart() {
@@ -908,7 +963,6 @@ export class ArenaScene {
 
     const { ctx } = this.ui;
     this.ui.mesh.visible = true;
-    this.ui.mesh.position.set(this.cam.x + VIEW_W / 2, this.cam.y + VIEW_H / 2, 30);
     this.ui.clear();
     const device = input.device || 'keyboard';
 
@@ -1029,13 +1083,14 @@ export class ArenaScene {
 
   drawHints(ctx, device) {
     const pad = device === 'pad';
+    const mouse = device === 'mouse';
     const items = [
-      [pad ? 'rt' : 'key_space', 'Disparar'],
+      [mouse ? 'mouse' : (pad ? 'rt' : 'key_space'), 'Disparar'],
       [pad ? 'x' : 'key_r', 'Recargar'],
       [pad ? 'y' : 'key_f', 'Parche'],
     ];
     if (this.nearCrate() && ARENA.ammo !== 'infinita') {
-      items.push([pad ? 'a' : 'key_e', 'Comprar']);
+      items.push([pad ? 'a' : 'mouse', 'Comprar']);
     }
     const widths = items.map(([glyph, label]) => (
       glyphSize(this.assets, glyph).w + 3 + measureText(this.assets.font.glyphs, label)
@@ -1112,7 +1167,7 @@ export class ArenaScene {
       const lw = measureText(glyphs, label) + 20;
       const lx = clamp(Math.round(sx - lw / 2), 4, VIEW_W - lw - 4);
       darkPanel(ctx, lx, sy - 36, lw, 16, 0.84);
-      const glyph = this.game.input.device === 'pad' ? 'a' : 'key_e';
+      const glyph = this.game.input.device === 'pad' ? 'a' : 'mouse';
       const size = drawGlyph(ctx, this.assets, glyph, lx + 5, sy - 32);
       drawText(ctx, glyphs, lx + 8 + size.w, sy - 32, label, PAR, { outline: OUT });
     }

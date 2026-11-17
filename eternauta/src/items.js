@@ -200,7 +200,7 @@ export const ITEMS = {
     name: 'Latas',
     description: 'Latas de conserva de la despensa de Elena.',
     kind: 'decor',
-    worldSprite: 'lata_roja',
+    worldSprite: 'cans',
   },
   frascos: {
     id: 'frascos',

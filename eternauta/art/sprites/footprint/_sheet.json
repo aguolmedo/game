@@ -1,0 +1,18 @@
+{
+ "kind": "image",
+ "size": [
+  6,
+  3
+ ],
+ "layout": {
+  "footprint": [
+   0,
+   0,
+   6,
+   3
+  ]
+ },
+ "meta": {},
+ "keys": [],
+ "newline": true
+}
