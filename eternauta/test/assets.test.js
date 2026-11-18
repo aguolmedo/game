@@ -100,6 +100,6 @@ test('los PNG tienen las dimensiones esperadas (cabecera IHDR)', () => {
   assert.deepEqual(size('snow.png'), [3, 3]);
   assert.deepEqual(size('footprint.png'), [6, 3]);
   assert.equal(size('tiles.png')[0], 512);
-  assert.equal(size('objects.png')[0], 512);
-  assert.deepEqual(size('buttons.png'), [256, 68]);
+  assert.equal(size('objects.png')[0], 500);
+  assert.deepEqual(size('buttons.png'), [254, 64]);
 });

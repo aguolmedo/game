@@ -4,7 +4,7 @@ import {
   INK, INK2, PAR, PAR2, OUT, AM3, panel, namePlate, wrapLines, dim,
 } from './uiSkin.js';
 import { drawPrompt, promptWidth } from './glyphs.js';
-import { portraitFor } from './data/portraits.js';
+import { portraitFor, spriteHeadFor } from './data/portraits.js';
 import { pointInRect } from './uiHit.js';
 
 // El cuadro ocupa a lo sumo un tercio de la pantalla (270 / 3 = 90 px).
@@ -18,6 +18,86 @@ const TEXT_W = BOX_W - TEXT_X - 14;
 const LINE_H = 11;
 const CHOICE_W = 300;
 const CHOICE_H = 92;
+
+// Retrato recortado de chars2.png: 16 px de ancho x 21 de alto (cara + torso).
+const SPRITE_W = 16;
+const SPRITE_H = 21;
+const SPRITE_BG = '#2a2236';
+const PANEL = 32; // retrato cuadrado de las viñetas
+
+// Estos ids siguen usando portraits_dlg (el traje se lee mejor ahí).
+const SUIT_DLG = new Set(['juan_suit', 'juan_rifle', 'juan_suit_rifle']);
+
+// Fila del frame "quieto mirando abajo" por bloque: primera fila opaca de la celda.
+const headRowCache = new Map();
+
+function spriteReady(assets) {
+  return typeof document !== 'undefined'
+    && typeof ImageData !== 'undefined'
+    && Boolean(assets?.chars2?.image)
+    && Boolean(assets?.chars2Data?.blocks);
+}
+
+/**
+ * Primera fila opaca (0..h-1) del frame quieto-abajo, o null si no se puede
+ * leer el canvas. Los aciertos se cachean por bloque.
+ */
+function firstOpaqueRow(assets, blockId) {
+  if (headRowCache.has(blockId)) return headRowCache.get(blockId);
+  const data = assets.chars2Data;
+  const block = data.blocks[blockId];
+  const w = data.cell?.w || SPRITE_W;
+  const h = data.cell?.h || 32;
+  const restCol = data.idle?.[0] ?? 6;
+  let row;
+  try {
+    const canvas = document.createElement('canvas');
+    canvas.width = w;
+    canvas.height = h;
+    const off = canvas.getContext('2d', { willReadFrequently: true });
+    off.imageSmoothingEnabled = false;
+    off.drawImage(assets.chars2.image, block.x + restCol * w, block.y, w, h, 0, 0, w, h);
+    const pixels = off.getImageData(0, 0, w, h).data;
+    let found = h;
+    for (let y = 0; y < h && found === h; y++) {
+      for (let x = 0; x < w; x++) {
+        if (pixels[(y * w + x) * 4 + 3] > 0) { found = y; break; }
+      }
+    }
+    row = found >= h ? 0 : found;
+  } catch (err) {
+    return null; // sin canvas/ImageData (o canvas sucio): cae al atlas viejo
+  }
+  headRowCache.set(blockId, row);
+  return row;
+}
+
+/**
+ * Recorte del frame quieto-abajo en chars2: { image, sx, sy, sw, sh } o null.
+ * Arranca una fila arriba de la primera fila opaca y mide 21 px de alto.
+ */
+function spriteCrop(assets, blockId) {
+  if (!blockId || !spriteReady(assets)) return null;
+  const image = assets.chars2.image;
+  // imagen todavía sin decodificar: no hay nada que recortar
+  if (!(image.width > 0) || !(image.height > 0)) return null;
+  const data = assets.chars2Data;
+  const block = data.blocks[blockId];
+  if (!block) return null;
+  const w = data.cell?.w || SPRITE_W;
+  const h = data.cell?.h || 32;
+  const restCol = data.idle?.[0] ?? 6;
+  if (block.x + restCol * w + w > image.width) return null;
+  const top = block.y;
+  const bottom = block.y + h;
+  const row = firstOpaqueRow(assets, blockId);
+  if (row === null) return null;
+  const cropH = Math.min(SPRITE_H, h);
+  let sy = top + row - 1;
+  if (sy > bottom - cropH) sy = bottom - cropH; // no pasarse del borde de la celda
+  if (sy < top) sy = top;
+  return { image, sx: block.x + restCol * w, sy, sw: w, sh: cropH };
+}
 
 function paginate(lines, perPage = 3) {
   const pages = [];
@@ -134,6 +214,41 @@ export class DialogBox {
 
   drawPortrait(ctx, entry, px, py) {
     const kind = entry.portraitKind || 'dlg';
+    // El traje (y sus variantes) se sigue viendo en portraits_dlg.
+    const keepAtlas = kind === 'dlg' && SUIT_DLG.has(entry.portrait);
+    if (!keepAtlas) {
+      const crop = spriteCrop(this.assets, spriteHeadFor(entry.portrait));
+      if (crop) {
+        if (kind === 'panel') this.drawSpritePanel(ctx, crop, px, py);
+        else this.drawSpriteDialog(ctx, crop, px, py);
+        return;
+      }
+    }
+    this.drawAtlasPortrait(ctx, entry, px, py, kind);
+  }
+
+  /** Retrato del cuadro de diálogo: recorte 16x21 de chars2 escalado x3. */
+  drawSpriteDialog(ctx, crop, px, py) {
+    ctx.fillStyle = SPRITE_BG;
+    ctx.fillRect(px, py, PORTRAIT, PORTRAIT);
+    ctx.imageSmoothingEnabled = false;
+    ctx.drawImage(crop.image, crop.sx, crop.sy, crop.sw, crop.sh,
+      px + 8, py + 1, crop.sw * 3, crop.sh * 3);
+  }
+
+  /** Retrato de viñeta: recorte 1x, centrado y abajo en un cuadrado de 32. */
+  drawSpritePanel(ctx, crop, px, py) {
+    const dx = px + Math.round((PANEL - crop.sw) / 2);
+    const dy = py + PANEL - crop.sh;
+    ctx.fillStyle = SPRITE_BG;
+    ctx.fillRect(px, py, PANEL, PANEL);
+    ctx.imageSmoothingEnabled = false;
+    ctx.drawImage(crop.image, crop.sx, crop.sy, crop.sw, crop.sh,
+      dx, dy, crop.sw, crop.sh);
+  }
+
+  /** Camino viejo: atlas portraits_dlg / portraits (también el fallback). */
+  drawAtlasPortrait(ctx, entry, px, py, kind) {
     let image = null;
     let sx = 0;
     let sy = 0;

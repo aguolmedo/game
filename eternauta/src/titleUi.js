@@ -141,19 +141,3 @@ export function snowflake(ctx, x, y, bright = 1) {
   ctx.fillRect(cx, cy, 1, 1);
 }
 
-/** Chispa de nieve con vaiven (para el cielo del titulo). */
-export function sparkle(ctx, x, y, t, phase = 0) {
-  const a = 0.35 + 0.65 * (0.5 + 0.5 * Math.sin(t * 2.1 + phase));
-  ctx.save();
-  ctx.globalAlpha = a;
-  ctx.fillStyle = ICE;
-  ctx.fillRect(x, y, 1, 1);
-  if (a > 0.75) {
-    ctx.fillStyle = ICE3;
-    ctx.fillRect(x - 1, y, 1, 1);
-    ctx.fillRect(x + 1, y, 1, 1);
-    ctx.fillRect(x, y - 1, 1, 1);
-    ctx.fillRect(x, y + 1, 1, 1);
-  }
-  ctx.restore();
-}

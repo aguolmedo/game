@@ -38,7 +38,7 @@ test('mouse: la barra de pistas es fija y no cambia al hacer hover', () => {
   world.hoverNear = true;
   const hovered = world.hudParams({ device: 'mouse' }).hintActions;
   assert.deepEqual(hovered, idle);
-  assert.deepEqual(idle.map((h) => h.label), ['Usar', 'Click der. Mirar', 'Mochila']);
+  assert.deepEqual(idle.map((h) => h.label), ['Usar', 'Mirar', 'Mochila']);
 });
 
 test('mouse: solo Mochila es clickeable (Usar y Mirar son leyenda)', () => {

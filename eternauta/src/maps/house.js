@@ -9,18 +9,23 @@
 //
 // Las paredes intermedias de las filas 9-10 se ven de frente, como en el mockup.
 import { makeGrid, fillRect } from './grid.js';
+import { depthFor } from '../sprite.js';
 
 export const COLS = 28;
 export const ROWS = 16;
 
 // Tamaños de los sprites que usa este mapa (frames de objects/interior2).
 const SIZE = {
-  stairs_up: [32, 32], window_glow: [32, 32], shelf: [48, 29], sofa: [48, 24],
+  stairs_attic: [32, 48], window_back: [32, 16], back_wall: [16, 16],
+  snow_drift: [27, 5], kid_drawing: [14, 12], kid_bed: [20, 30],
+  sink: [32, 24], chair: [16, 24], chair_r: [16, 24], wedding_photo: [12, 11],
+  broom_bucket: [16, 26], bidon: [10, 13],
+  window_glow: [32, 32], shelf: [48, 29], sofa: [48, 24],
   radio_cabinet: [32, 24], living_table: [32, 24], kitchen_table: [48, 24], armchair: [16, 24],
   door_porthole: [20, 34], coat_stand: [16, 40], wall_clock: [12, 18],
   garage_door: [48, 34], garage_shelf: [48, 32], tire: [16, 16], cans: [8, 8],
   bucket: [8, 8], bed: [32, 34], nightstand: [16, 28], wardrobe: [32, 32],
-  crib: [28, 26], toy_horse: [16, 16], crate: [16, 16], alacena: [48, 36],
+  toy_horse: [16, 16], alacena: [48, 36],
   stove: [16, 24], oil_lamp_lit: [10, 14], jar: [8, 8],
 };
 
@@ -92,7 +97,7 @@ const objects = [];
 // Decorativa: el click/hover lo maneja el warp `stairs_up`, que ocupa el
 // mismo rect. Si el objeto tambien fuera interactuable robaba el click y
 // mostraba un texto de bajada estando en la planta baja.
-objects.push(put('stairs_up', 'stairs_up', 16, 80, {
+objects.push(put('stairs_up', 'stairs_attic', 16, 80, {
   flat: true, solid: false,
 }));
 objects.push(put('window_living', 'window_glow', 96, 48, {
@@ -108,6 +113,10 @@ const radio = put('radio_cabinet', 'radio_cabinet', 32, 104, {
   interact: { kind: 'look', talk: 'radio', label: 'Prender la radio' },
 });
 objects.push(radio);
+// Lámpara de aceite sobre el mueble de la radio: solo se ve en el apagón.
+objects.push(put('oil_lamp_lit', 'oil_lamp_lit', 43, 84, {
+  showIfFlag: 'apagon', glow: true, z: depthFor(96) + 0.02,
+}));
 const tableLiving = put('living_table', 'living_table', 104, 112, {
   solid: { x: 0, y: 1, w: 2, h: 1 },
   surface: null,
@@ -145,6 +154,8 @@ objects.push(put('entry_shelf', 'garage_shelf', 304, 64, {
 objects.push(put('entry_tire', 'tire', 306, 128, { solid: { x: 0, y: 0, w: 1, h: 1 } }));
 objects.push(put('entry_cans', 'cans', 340, 128, {}));
 objects.push(put('entry_bucket', 'bucket', 420, 96, {}));
+objects.push(put('broom_bucket', 'broom_bucket', 410, 112, {}));
+objects.push(put('bidon', 'bidon', 308, 112, {}));
 
 // ---- dormitorio
 objects.push(put('bed', 'bed', 20, 208, { solid: { x: 0, y: 1, w: 2, h: 1 } }));
@@ -158,23 +169,41 @@ objects.push(put('wardrobe', 'wardrobe', 104, 192, {
   solid: { x: 0, y: 1, w: 2, h: 1 },
   container: { name: 'Ropero', items: [{ id: 'rifle', n: 1 }, { id: 'balas', n: 30 }] },
 }));
+objects.push(put('wedding_photo', 'wedding_photo', 30, 162, {
+  interact: { kind: 'look', talk: 'wedding_photo', label: 'Mirar la foto' },
+}));
 
 // ---- cuarto de Martita
-objects.push(put('crib', 'crib', 164, 208, { solid: { x: 0, y: 1, w: 2, h: 1 } }));
+objects.push(put('kid_bed', 'kid_bed', 164, 214, { solid: { x: 0, y: 1, w: 1, h: 1 } }));
 objects.push(put('toy_horse', 'toy_horse', 212, 224, {
   interact: { kind: 'look', talk: 'toy_horse', label: 'Mirar el caballito' },
 }));
-objects.push(put('window_martita', 'window_glow', 192, 176, {
+objects.push(put('kid_drawing', 'kid_drawing', 200, 164, {
+  interact: { kind: 'look', talk: 'kid_drawing', label: 'Mirar el dibujo' },
+}));
+// La ventana va sobre el muro del fondo (fila 15): z un pelo mas alto que los
+// tiles del muro para que no pelee por el mismo plano.
+objects.push(put('window_martita', 'window_back', 192, 256, {
+  z: depthFor(256) + 0.01,
   window: { view: null, openable: true },
   interact: { kind: 'look', talk: 'window', label: 'Cerrar la ventana' },
 }));
-objects.push(put('martita_crate', 'crate', 240, 192, { solid: false }));
+objects.push(put('snow_drift', 'snow_drift', 194, 240, {
+  hideIfFlag: 'closed_window_martita',
+}));
 
 // ---- cocina
-objects.push(put('alacena', 'alacena', 276, 192, {
+objects.push(put('alacena', 'alacena', 342, 192, {
   solid: { x: 0, y: 1, w: 3, h: 1 },
   container: { name: 'Alacena', items: [{ id: 'guantes', n: 1 }] },
 }));
+objects.push(put('sink', 'sink', 274, 192, {
+  solid: { x: 0, y: 1, w: 2, h: 1 },
+  interact: { kind: 'look', talk: 'sink', label: 'Mirar la pileta' },
+}));
+// Sillas a los costados de la mesa (la puerta de la cocina queda libre).
+objects.push(put('kchair_l', 'chair', 320, 224, {}));
+objects.push(put('kchair_r', 'chair_r', 384, 224, {}));
 const stove = put('stove', 'stove', 404, 192, {
   solid: { x: 0, y: 1, w: 1, h: 1 },
   station: 'heat',
@@ -196,6 +225,11 @@ objects.push({ id: 'oil_lamp', sprite: 'oil_lamp_lit', x: 21, y: 13, tw: 1, th: 
   solid: false, offset: [0, -16], glow: true });
 objects.push(put('kitchen_bucket', 'bucket', 420, 240, {}));
 
+// ---- muro del fondo (fila 15): 26 tiles de pared, fuera de los limites.
+for (let i = 0; i < 26; i++) {
+  objects.push(put(`back_wall_${i + 1}`, 'back_wall', 16 + 16 * i, 256, {}));
+}
+
 export const house = {
   id: 'house',
   name: 'Casa',
@@ -205,6 +239,8 @@ export const house = {
   solidTiles: ['black', 'plaster_', 'trim_', 'plank_'],
   spawn: { x: 2 * 16 + 8, y: 5 * 16 + 8, dir: 'down' },
   bounds: { minX: 16 + 4, maxX: (COLS - 1) * 16 - 4, minFeet: 3 * 16 + 6, maxFeet: 15 * 16 - 3 },
+  // Deja ver un poco del muro del fondo al caminar por la fila de abajo.
+  camBottomPad: 17,
   objects,
   surfaces: objects.filter((o) => o.surface).map((o) => ({
     id: o.id, sprite: o.sprite, slots: o.surface.slots, maxItems: o.surface.maxItems,
@@ -222,7 +258,7 @@ export const house = {
   ],
   windows: [
     { id: 'window_living', x: 112, y: 48, view: 'living', openable: false },
-    { id: 'window_martita', x: 208, y: 176, view: null, openable: true },
+    { id: 'window_martita', x: 208, y: 248, view: null, openable: true },
   ],
   npcs: [
     { id: 'elena', who: 'elena', x: 8 * 16 + 8, feet: 8 * 16 + 8, dir: 'down' },
@@ -231,6 +267,7 @@ export const house = {
   pickups: [],
   warps: [
     { id: 'stairs_up', x: 1 * 16, y: 3 * 16, w: 32, h: 32, to: 'attic', label: 'Subir',
+      look: 'La escalera rebatible que sube al altillo.',
       spawn: { x: 17 * 16 + 8, y: 12 * 16 + 8, dir: 'right' } },
     { id: 'garage_door', x: 22 * 16, y: 3 * 16, w: 48, h: 16, to: 'garage', label: 'Entrar',
       spawn: { x: 5 * 16 + 8, y: 4 * 16 + 8, dir: 'down' } },

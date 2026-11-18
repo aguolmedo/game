@@ -25,3 +25,24 @@ export function portraitFor(id, kind = 'dlg') {
   }
   return null;
 }
+
+// Id de personaje -> bloque de chars2.png (hoja de personajes 16x32).
+// El cuadro de diálogo recorta de ahí la cara + el torso en vez de portraits_dlg.
+const SPRITE_HEADS = {
+  juan: 'juan',
+  juan_suit: 'juan_suit',
+  juan_rifle: 'juan_suit_rifle',
+  juan_suit_rifle: 'juan_suit_rifle',
+  favalli: 'favalli',
+  lucas: 'lucas',
+  polsky: 'polsky',
+  polsky_coat: 'polsky_coat',
+  elena: 'elena',
+  martita: 'martita',
+};
+
+/** Bloque de chars2 para un id de personaje, o null si no hay sprite. */
+export function spriteHeadFor(id) {
+  if (typeof id !== 'string') return null;
+  return SPRITE_HEADS[id] || null;
+}

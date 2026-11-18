@@ -79,7 +79,7 @@ export class WorldMap {
     const [ox, oy] = obj.offset || [0, 0];
     const px = Math.round(anchorX + ox);
     const py = Math.round(anchorY - h / 2 + oy);
-    const z = obj.flat ? 1.9 : depthFor(anchorY);
+    const z = Number.isFinite(obj.z) ? obj.z : (obj.flat ? 1.9 : depthFor(anchorY));
     mesh.position.set(px, py, z);
     this.scene.add(mesh);
     obj.mesh = mesh;
@@ -202,7 +202,10 @@ export class WorldMap {
     const vw = viewport.worldW || VIEW_W;
     const vh = viewport.worldH || VIEW_H;
     const maxX = this.w - vw;
-    const maxY = this.h - vh;
+    // Algunos mapas muestran un poco mas alla del borde de abajo (el fondo de
+    // la casa, el cielo en la calle).
+    const padBottom = this.map.camBottomPad || 0;
+    const maxY = this.h - vh + padBottom;
     const cx = maxX <= 0 ? maxX / 2 : clamp(x - vw / 2, 0, maxX);
     const cy = maxY <= 0 ? maxY / 2 : clamp(y - vh / 2, 0, maxY);
     return { x: snapCamera(cx), y: snapCamera(cy) };

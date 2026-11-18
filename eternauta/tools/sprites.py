@@ -25,8 +25,9 @@ SPRITES = ROOT / 'art' / 'sprites'
 ATLAS = ['buttons', 'cascarudos', 'fx', 'fx_shooting', 'houses', 'interior2',
          'objects', 'props', 'street2', 'tiles', 'items', 'cursor']
 BLOCKS = ['chars2', 'portraits_dlg', 'portraits_panel']
-IMAGES = ['title', 'title_sky', 'snow', 'shadow', 'footprint', 'death_panel',
-          'views/attic_pan', 'views/attic_pan_dark', 'views/living']
+IMAGES = ['title', 'title_sky', 'title_logo', 'snow', 'shadow', 'footprint',
+          'death_panel', 'views/attic_pan', 'views/attic_pan_dark',
+          'views/living', 'views/attic_frame']
 SHEETS = ATLAS + BLOCKS + IMAGES
 
 PAD = 2          # separación entre sprites al reempaquetar

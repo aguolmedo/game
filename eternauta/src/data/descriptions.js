@@ -32,6 +32,10 @@ export const LOOK_LINES = {
   piano: 'El piano de Elena. Nadie lo toca desde hace meses.',
   sillon: 'El sillón del living. Todavía guarda el calor de alguien.',
   sofa: 'El sillón del living. Todavía guarda el calor de alguien.',
+  kid_drawing: 'El dibujo de Martita, con crayón: una casa y la nieve.',
+  wedding_photo: 'La foto de casamiento de Juan y Elena.',
+  sink: 'La pileta de la cocina.',
+  stairs_up: 'La escalera rebatible que sube al altillo.',
 };
 
 /** Línea de (A) "Mirar" para un objeto; null si no tiene una propia. */

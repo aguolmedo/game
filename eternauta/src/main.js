@@ -2,6 +2,7 @@ import * as THREE from 'three';
 import { loadAssets } from './assets.js';
 import { Input } from './input.js';
 import { MouseCursor } from './mouseCursor.js';
+import { LightPost } from './lightpost.js';
 import { TitleScene } from './scenes/title.js';
 import { AtticScene } from './scenes/attic.js';
 import { HouseScene } from './scenes/house.js';
@@ -35,6 +36,7 @@ async function boot() {
 
   const camera = new THREE.OrthographicCamera(0, W, 0, H, 0.1, 1000);
   camera.position.z = 100;
+  const lightPost = new LightPost();
   const uiCamera = new THREE.OrthographicCamera(0, W, 0, H, 0.1, 1000);
   uiCamera.position.z = 100;
 
@@ -384,9 +386,17 @@ async function boot() {
       scene.update(dt, state);
     }
 
-    // Camara del mundo.
+    // En el combate solo manda la mira: el guante vuelve en menús y resultados.
+    const hideGlove = game.sceneName === 'arena'
+      && !pauseMenu.visible && !chestPanel.visible && !scene.blocksPause;
+    if (mouseCursor.hidden !== hideGlove) mouseCursor.setHidden(hideGlove);
+
+    // Camara del mundo. En el apagón (PI-1) la escena pasa por el shader de
+    // luz; el HUD va después en uiScene, así que nunca se oscurece.
     scene.applyCamera(camera);
-    renderer.render(scene.scene, camera);
+    const apagon = typeof scene.apagonParams === 'function' ? scene.apagonParams() : null;
+    if (apagon) lightPost.render(renderer, scene.scene, camera, apagon);
+    else renderer.render(scene.scene, camera);
 
     // Capa de UI de la escena, fija en pantalla (coordenadas de vista).
     if (scene.uiScene) {

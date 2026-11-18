@@ -78,13 +78,13 @@ def today(im):
 
 # ------------------------------------------------------------- propuesta
 NIGHT_MUL = (0.49, 0.55, 0.79)      # multiplicador frio de la noche
-CANDLE_COL = (1.10, 0.96, 0.76)     # recoloreo calido
+CANDLE_COL = (1.25, 1.06, 0.80)     # recoloreo calido (18/11: más brillante)
 SNOW_COL = (0.62, 0.92, 1.12)       # recoloreo frio de la nevada
 
 
 def night(c):
     L = lum(c)
-    d = tuple(c[i] * 0.45 + L * 0.55 for i in range(3))
+    d = tuple(c[i] * 0.70 + L * 0.30 for i in range(3))   # 18/11: menos gris (antes 55%)
     return tuple(d[i] * NIGHT_MUL[i] for i in range(3))
 
 

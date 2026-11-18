@@ -1,6 +1,6 @@
 # Rediseño de la luz del apagón (diseño, sin implementar)
 
-**Estado:** propuesta aprobada por el usuario el 2026-11-17 ("me gusta lo nuevo"). Falta extenderla a la calle y a la planta baja.
+**Estado:** propuesta aprobada el 2026-11-17 y extendida a la calle y a la planta baja el 2026-11-18. Diseño cerrado: es PI-1 en `art/direccion/DIRECCION.md`.
 
 Concepto: `art/concept/lighting2.py` → `out/light_compare_x3.png` (hoy | propuesta), `out/light_flicker.gif`.
 
@@ -19,7 +19,10 @@ Concepto: `art/concept/lighting2.py` → `out/light_compare_x3.png` (hoy | propu
 6. **Parpadeo:** el borde de las bandas se mueve 1–3 px. No se cambia el alpha.
 7. **La llama:** 2–3 px blanco-amarillo-ámbar sobre la vela.
 
-## Pendiente de decidir
-- Cuánta oscuridad: ¿se tienen que leer los objetos lejos de la vela, o queda casi negro como en el cómic?
-- La lamparita del techo (sprite pintado prendido) necesita un frame **apagado** en el sprite, no solo enfriarse.
-- Reglas para la calle (farolas apagadas, la nieve como luz del suelo) y para la casa (lámpara de aceite en la cocina).
+## Decisiones (cerradas el 2026-11-18)
+Todo está en `art/direccion/DIRECCION.md` → **PI-1**, con concepts en `art/concept/lighting3.py`:
+- **Oscuridad legible:** lejos de la luz todo se sigue leyendo.
+- **Lamparita del techo:** tiene un cuadro apagado propio (`art/concept/out/light3_hanging_lamp_off.png`).
+- **Calle:** farolas apagadas (su halo no se dibuja), la nieve es la luz del suelo y una sola ventana conserva una vela.
+- **Planta baja:** una lámpara de aceite junto a la escalera, y la ventana y el ojo de buey de la puerta como fuentes frías.
+- **El pucho:** Lucas fuma en el apagón, con una brasa que se aviva cuando pita.

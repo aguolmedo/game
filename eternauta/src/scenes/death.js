@@ -17,7 +17,7 @@ export class DeathScene {
     // Capa de UI fija en pantalla: se dibuja con uiCamera (no viaja con el mundo).
     this.uiScene = new THREE.Scene();
     this.world = new WorldMap(this.scene, game.assets, cloneMap(street));
-    this.snow = new Snowfall(this.scene, game.assets.snow, { count: 80, front: 20 });
+    this.snow = new Snowfall(this.scene, game.assets.snowFlakes, { count: 80, front: 20 });
     this.cam = this.world.cameraFor(6 * 16, 9 * 16);
     this.ui = canvasOverlay(VIEW_W, VIEW_H, 40);
     this.uiScene.add(this.ui.mesh);

@@ -24,6 +24,7 @@ import {
 import { INITIAL_ITEMS } from '../data/surfaces.js';
 import { lookLine } from '../data/descriptions.js';
 import { LightOverlay } from '../lighting.js';
+import { buildApagon, APAGON_MAPS } from '../apagon.js';
 import { ComicOverlay, CaptionBox, BalloonLine } from '../comic.js';
 import {
   putYerba, cebar, sip, share, dump, mateItemId,
@@ -62,7 +63,7 @@ export class WorldScene {
     this.hud = new Hud(this.uiScene, game.assets, game);
     this.cursor = new ActionCursor(this.scene);
     this.snow = opts.snow
-      ? new Snowfall(this.scene, game.assets.snow, { count: 120, front: 34 })
+      ? new Snowfall(this.scene, game.assets.snowFlakes, { count: 120, front: 34 })
       : null;
     this.footprints = opts.footprints
       ? new Footprints(this.scene, game.assets.footprint)
@@ -89,6 +90,11 @@ export class WorldScene {
     this.balloon = new BalloonLine(game.assets);
     this.extra = canvasOverlay(VIEW_W, VIEW_H, 31);
     this.uiScene.add(this.extra.mesh);
+    // Chispas del apagón (llama de la vela, pucho de Lucas): van en la capa de
+    // UI, debajo del HUD, así el post-proceso no las apaga.
+    this.apagonFx = canvasOverlay(VIEW_W, VIEW_H, 29);
+    this.apagonFx.mesh.visible = false;
+    this.uiScene.add(this.apagonFx.mesh);
     this.timedBar = null;
 
     this.t = 0;
@@ -210,6 +216,75 @@ export class WorldScene {
     this.scene.add(this.lightUi.mesh);
   }
 
+  /** Config del pase de luz del apagón, o null si esta escena no lo usa. */
+  apagonParams() {
+    if (this.game.lightingMode !== 'apagon') return null;
+    return buildApagon(this);
+  }
+
+  /** Llama y pucho: píxeles de mundo dibujados sobre la escena y bajo el HUD. */
+  drawApagonFx() {
+    const fx = this.apagonFx;
+    if (!fx) return;
+    const params = this.apagonParams();
+    if (!params || !params.fx.length) {
+      fx.clear();
+      fx.commit();
+      fx.mesh.visible = false;
+      return;
+    }
+    fx.mesh.visible = true;
+    fx.clear();
+    const ctx = fx.ctx;
+    const z = viewport.zoom || 1;
+    const s = Math.max(1, Math.round(z));
+    const px = (wx) => Math.round((wx - this.cam.x) * z);
+    const py = (wy) => Math.round((wy - this.cam.y) * z);
+    const dot = (wx, wy, col) => { ctx.fillStyle = col; ctx.fillRect(px(wx), py(wy), s, s); };
+    const smokeStep = Math.floor(this.t * 6) % 3;
+    const SMOKE = [[0, -3], [1, -5], [0, -7], [1, -9], [2, -11]];
+    for (const it of params.fx) {
+      if (it.type === 'flame') {
+        dot(it.x, it.y, '#fff6c8');
+        dot(it.x, it.y - 1, '#ffd678');
+        dot(it.x, it.y - 2, '#ffaa46');
+        dot(it.x + 1, it.y, '#ffdc8c');
+        continue;
+      }
+      if (it.type === 'smoke') {
+        ctx.globalAlpha = 0.42;
+        SMOKE.forEach(([dx, dy], i) => {
+          if ((i + smokeStep) % 3 === 0) return;
+          dot(it.x + dx, it.y + dy, '#9a9aa4');
+        });
+        ctx.globalAlpha = 1;
+        continue;
+      }
+      const k = it.k ?? 0;
+      if (it.type === 'ember') {
+        // cigarrillo: 2 px de papel desde la comisura, brasa en la punta
+        dot(it.x, it.y, '#c4beb2');
+        dot(it.x + 1, it.y, '#b0aaa0');
+        if (k < 0.3) {
+          dot(it.x + 2, it.y, '#b23a1e');
+        } else {
+          dot(it.x + 2, it.y, k > 0.8 ? '#ffd68c' : '#f07832');
+          dot(it.x + 3, it.y, '#e25424');
+          if (k > 0.8) dot(it.x + 2, it.y - 1, '#ff9646');
+        }
+        continue;
+      }
+      // cherry: la brasa del cenicero, sin papel
+      if (k < 0.3) dot(it.x, it.y, '#b23a1e');
+      else {
+        dot(it.x, it.y, k > 0.8 ? '#ffd68c' : '#f07832');
+        dot(it.x + 1, it.y, '#e25424');
+        if (k > 0.8) dot(it.x, it.y - 1, '#ff9646');
+      }
+    }
+    fx.commit();
+  }
+
   applyCamera(camera) {
     camera.left = this.cam.x;
     camera.right = this.cam.x + viewport.worldW;
@@ -265,9 +340,13 @@ export class WorldScene {
         (installingExtractor && c.ref && c.ref.station === 'extractor')
         || (fuellingGenerator && c.id === 'generator')
       );
+      // La ventana de Martita, mientras corre el objetivo, le gana al NPC que
+      // está al lado: cerrarla es lo urgente (con mouse igual se apunta bien).
+      const windowGoal = c.kind === 'object' && c.id === 'window_martita'
+        && this.game.flags?.martita_sprint && !this.game.flags?.closed_window_martita;
       list.push(heat
         ? { ...c, priority: 3 }
-        : stationUse ? { ...c, priority: 2 } : c);
+        : stationUse || windowGoal ? { ...c, priority: 2 } : c);
     }
     for (const npc of this.npcs) {
       if (npc.hidden || sharing) continue;
@@ -739,6 +818,10 @@ export class WorldScene {
       this.game.showToast(line);
       return;
     }
+    if (target.kind === 'warp' && target.warp && target.warp.look) {
+      this.game.showToast(target.warp.look);
+      return;
+    }
     if (target.label) this.game.showToast(target.label);
   }
 
@@ -997,7 +1080,7 @@ export class WorldScene {
     if (device === 'mouse') {
       // Leyenda fija (T7): no cambia con el hover. Solo "Mochila" se clickea.
       hints.push({ action: 'interact', label: this.useLabel(), static: true });
-      hints.push({ action: 'look', label: 'Click der. Mirar', static: true });
+      hints.push({ action: 'look', label: 'Mirar', static: true });
       hints.push({ action: 'bag', label: 'Mochila' });
     } else {
       if (target) hints.push({ action: 'interact', label: this.actionLabel(target) });
@@ -1034,15 +1117,22 @@ export class WorldScene {
     const objective = this.game.objective();
 
     // Pase de luz: debajo del HUD, para que la interfaz nunca se oscurezca.
+    // En el apagón de altillo/casa/calle la luz va por post-proceso (main.js):
+    // acá no se dibuja ningún velo para no oscurecer dos veces.
+    const post = this.game.lightingMode === 'apagon' && APAGON_MAPS.has(this.name);
     this.ensureLightUi();
-    this.light.setMode(this.game.lightingMode);
-    this.light.setCamera(this.cam.x, this.cam.y);
-    const lw = this.lightUi.canvas.width;
-    const lh = this.lightUi.canvas.height;
-    this.lightUi.mesh.position.set(this.cam.x + lw / 2, this.cam.y + lh / 2, 20);
-    this.lightUi.clear();
-    this.light.draw(this.lightUi.ctx, this.t, { ...this.player, mateCalma: this.game.mateCalma > 0 });
-    this.lightUi.commit();
+    this.lightUi.mesh.visible = !post;
+    if (!post) {
+      this.light.setMode(this.game.lightingMode);
+      this.light.setCamera(this.cam.x, this.cam.y);
+      const lw = this.lightUi.canvas.width;
+      const lh = this.lightUi.canvas.height;
+      this.lightUi.mesh.position.set(this.cam.x + lw / 2, this.cam.y + lh / 2, 20);
+      this.lightUi.clear();
+      this.light.draw(this.lightUi.ctx, this.t, { ...this.player, mateCalma: this.game.mateCalma > 0 });
+      this.lightUi.commit();
+    }
+    this.drawApagonFx();
 
     this.hud.draw({
       device: input.device,
@@ -1174,6 +1264,8 @@ export class WorldScene {
       return;
     }
     this.game.flags[key] = true;
+    // La nieve que había entrado (snow_drift) se va con la ventana cerrada.
+    this.applyStoryState();
     this.game.showToast('Ventana cerrada.');
     this.game.emit('interact', { id: obj.id, kind: 'windowClosed', obj });
   }

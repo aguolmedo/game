@@ -6,6 +6,7 @@
 // estantes, el electrogeno de Favalli con su bidon y la lamparita colgando;
 // a la izquierda el banco donde se arma el traje y la puerta a la casa.
 import { makeGrid } from './grid.js';
+import { depthFor } from '../sprite.js';
 
 export const COLS = 18;
 export const ROWS = 11;
@@ -15,7 +16,7 @@ const SIZE = {
   garage_shelf: [48, 32], hose: [16, 16], double_door: [40, 38], extractor: [16, 20],
   crate: [16, 16], box: [16, 16], generator: [28, 24], bidon: [10, 13],
   bulb: [8, 22], bench_suit: [48, 32], stool: [12, 14], tire: [16, 16],
-  broom_bucket: [16, 26], coat_stand: [16, 40], door: [16, 32],
+  broom_bucket: [16, 26], coat_stand: [16, 40], door: [16, 32], oil_lamp_lit: [10, 14],
 };
 
 // Igual que en house.js: el sprite se ubica por su esquina inferior izquierda.
@@ -103,6 +104,12 @@ const bench = put('bench_suit', 'bench_suit', 16, 128, {
 });
 bench.surface = slots('bench_suit', bench, [[8, 12], [20, 12], [32, 12]], 3);
 objects.push(bench);
+// La lámpara de aceite sobre la tabla del banco, a la izquierda: en el apagón
+// es la única luz cálida hasta que arranca el electrógeno. Sin `glow`: el piso
+// de baldosas claras ya recibe el charco cuantizado del pase de luz.
+objects.push(put('oil_lamp_bench', 'oil_lamp_lit', 19, 105, {
+  showIfFlag: 'apagon', z: depthFor(128) + 0.02,
+}));
 objects.push(put('stool', 'stool', 68, 144, {}));
 objects.push(put('garage_cardboard', 'box', 16, 160, { solid: true }));
 objects.push(put('garage_box2', 'box', 34, 160, { solid: true, offset: [2, 0] }));

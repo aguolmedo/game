@@ -1,6 +1,6 @@
 import * as THREE from 'three';
 import { imageSprite, getGlowTexture, VIEW_W, VIEW_H } from '../sprite.js';
-import { TitleSnow } from '../titleSnow.js';
+import { Snowfall } from '../snow.js';
 import { TitleMenu } from '../menus.js';
 
 const LAYER_W = 512;
@@ -48,8 +48,10 @@ export class TitleScene {
     this.near.position.set(VIEW_W / 2, VIEW_H / 2, 1);
     this.scene.add(this.near);
 
-    // nieve en tres capas con glow frio
-    this.snow = new TitleSnow(this.scene, game.assets.snow, { width: VIEW_W, height: VIEW_H });
+    // nevada nueva: tres capas a tamaño real, copos fosforescentes (z 6-8:
+    // delante del cielo y del barrio, detras de la UI del menu, z 40)
+    this.snow = new Snowfall(this.scene, game.assets.snowFlakes, { count: 90, front: 10 });
+    this.snow.setCamera(0, 0);
 
     this.addSmoke();
     this.addWindowLights();
@@ -126,6 +128,7 @@ export class TitleScene {
   update(dt, input) {
     this.t += dt;
     this.snow.update(dt);
+    this.snow.setCamera(0, 0);
 
     // parallax muy suave: el cielo se corre, el barrio queda quieto (asi el
     // cartel de madera sigue pegado a sus postes)

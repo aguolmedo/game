@@ -1,17 +1,18 @@
-// T8: toasts arriba-centro, máximo 2, 2 s, y los pickups se agrupan.
+// PI-5: toasts abajo a la izquierda, máximo 3, 2.5 s, y los pickups se agrupan.
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { pushToast, TOAST_LIFE, TOAST_MAX } from '../src/hud.js';
 
-test('toast: vida 2 s y máximo 2 (el más viejo se va)', () => {
+test('toast: vida 2.5 s y máximo 3 (el más viejo se va)', () => {
   const toasts = [];
   pushToast(toasts, 'uno');
   assert.equal(toasts[0].life, TOAST_LIFE);
-  assert.equal(TOAST_LIFE, 2.0);
+  assert.equal(TOAST_LIFE, 2.5);
   pushToast(toasts, 'dos');
   pushToast(toasts, 'tres');
+  pushToast(toasts, 'cuatro');
   assert.equal(toasts.length, TOAST_MAX);
-  assert.deepEqual(toasts.map((t) => t.text), ['dos', 'tres']);
+  assert.deepEqual(toasts.map((t) => t.text), ['dos', 'tres', 'cuatro']);
 });
 
 test('toast: los pickups seguidos se agrupan en una línea', () => {

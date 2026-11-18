@@ -27,6 +27,8 @@ test('glyphName: los demas atajos conservan su glifo de teclado', () => {
   assert.equal(glyphName('keyboard', 'bag'), 'key_i');
   assert.equal(glyphName('mouse', 'use'), 'mouse');
   assert.equal(glyphName('mouse', 'bag'), 'mouse');
+  // Mirar con mouse tiene glifo propio (click derecho).
+  assert.equal(glyphName('mouse', 'look'), 'mouse_r');
   assert.equal(glyphName('keyboard', 'menu'), 'key_esc');
   assert.equal(glyphName('pad', 'menu'), 'start');
 });

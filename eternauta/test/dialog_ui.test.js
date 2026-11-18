@@ -102,3 +102,63 @@ test('CaptionBox, globo y comic tambien avanzan con click', async () => {
   assert.equal(comic.open, false);
   assert.equal(done, 1);
 });
+
+test('spriteHeadFor: ids de diálogo apuntan a un bloque de chars2', async () => {
+  const { spriteHeadFor } = await import('../src/data/portraits.js');
+  const blocks = JSON.parse((await import('node:fs')).readFileSync(
+    new URL('../public/assets/chars2.json', import.meta.url), 'utf8',
+  )).blocks;
+  const ids = ['juan', 'favalli', 'lucas', 'polsky', 'polsky_coat', 'elena', 'martita',
+    'juan_suit', 'juan_rifle', 'juan_suit_rifle'];
+  for (const id of ids) {
+    const block = spriteHeadFor(id);
+    assert.ok(block, `${id} tiene bloque`);
+    assert.ok(blocks[block], `${id} -> ${block} existe en chars2`);
+  }
+  assert.equal(spriteHeadFor('juan_rifle'), 'juan_suit_rifle');
+  assert.equal(spriteHeadFor('nadie'), null);
+  assert.equal(spriteHeadFor(3), null);
+});
+
+test('drawPortrait: sin chars2 cae al atlas viejo y no rompe', () => {
+  const atlas = { image: { id: 'portraits_dlg' } };
+  const box = new DialogBox({
+    ...ASSETS,
+    snow: { image: {} },
+    portraitsDlg: atlas,
+    portraitsDlgData: { cell: { w: 64, h: 64 }, blocks: { lucas: { x: 128, y: 0 } } },
+  });
+  const calls = [];
+  const ctx = {
+    fillStyle: '', imageSmoothingEnabled: true,
+    fillRect: (...a) => calls.push(['fillRect', ...a]),
+    drawImage: (...a) => calls.push(['drawImage', ...a]),
+  };
+  box.drawPortrait(ctx, { portrait: 'lucas', lines: [] }, 10, 10);
+  assert.ok(calls.some((c) => c[0] === 'fillRect'), 'dibujó el marco de siempre');
+  const atlasDraw = calls.find((c) => c[0] === 'drawImage');
+  assert.equal(atlasDraw[1], atlas.image, 'usó portraits_dlg');
+  assert.deepEqual([atlasDraw[2], atlasDraw[3], atlasDraw[4], atlasDraw[5]], [128, 0, 64, 64]);
+  assert.deepEqual([atlasDraw[6], atlasDraw[7], atlasDraw[8], atlasDraw[9]], [10, 10, 64, 64]);
+});
+
+test('drawPortrait: juan_suit en diálogo sigue en portraits_dlg aunque haya chars2', () => {
+  const atlas = { image: { id: 'portraits_dlg' } };
+  const box = new DialogBox({
+    ...ASSETS,
+    snow: { image: {} },
+    chars2: { image: { id: 'chars2' } },
+    chars2Data: { cell: { w: 16, h: 32 }, idle: [6, 7], blocks: { juan_suit: { x: 128, y: 0 } } },
+    portraitsDlg: atlas,
+    portraitsDlgData: { cell: { w: 64, h: 64 }, blocks: { juan_suit: { x: 0, y: 0 } } },
+  });
+  const calls = [];
+  const ctx = {
+    fillStyle: '', imageSmoothingEnabled: true,
+    fillRect: () => {},
+    drawImage: (...a) => calls.push(a),
+  };
+  box.drawPortrait(ctx, { portrait: 'juan_suit', portraitKind: 'dlg', lines: [] }, 10, 10);
+  assert.equal(calls.length, 1);
+  assert.equal(calls[0][0], atlas.image, 'no recortó de chars2');
+});

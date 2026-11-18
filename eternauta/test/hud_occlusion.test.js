@@ -18,8 +18,8 @@ test('hotbarLayout: 8 slots de 20 px y panel que los contiene', () => {
     assert.ok(slot.x >= panel.x && slot.x + slot.w <= panel.x + panel.w);
     assert.ok(slot.y >= panel.y && slot.y + slot.h <= panel.y + panel.h);
   }
-  // El panel queda pegado al borde inferior (3 px de aire, como el original).
-  assert.equal(panel.y + panel.h, 267);
+  // El panel queda pegado al borde inferior de la vista (PI-5).
+  assert.equal(panel.y + panel.h, 270);
 });
 
 test('hudBlocksPoint: la hotbar tapa el mundo', () => {

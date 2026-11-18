@@ -345,6 +345,15 @@ export const TALK = {
   nightstand: look(['La mesa de luz. El secador de Elena y el velador.']),
   crib: look(['La cuna de Martita. El osito de siempre.']),
   toy_horse: look(['El caballito de juguete. Martita no lo suelta ni para dormir.']),
+  kid_drawing: look([
+    'El dibujo de Martita, con crayón: una casa y la nieve.',
+    'Hay un nene con un traje raro, del otro lado de la puerta.',
+  ]),
+  wedding_photo: look([
+    'La foto de casamiento de Juan y Elena.',
+    'Era verano y no había nieve en ninguna parte.',
+  ]),
+  sink: look(['La pileta de la cocina. El agua todavía sale, aunque sea un hilo.']),
   wall_clock(game) {
     const flags = game.flags || {};
     return entry('Juan', 'juan', [flags.apagon ? 'Las once y diez. El reloj se paró.' : 'Las once y diez.']);

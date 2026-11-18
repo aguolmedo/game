@@ -9,8 +9,7 @@ export const ACTIONS = {
   interact: { pad: 'a', key: 'mouse', label: 'Hablar' },
   use: { pad: 'x', key: 'key_f', label: 'Usar' },
   bag: { pad: 'y', key: 'key_i', label: 'Mochila' },
-  // Mirar con mouse: no hay glifo de click derecho en el atlas (mouse_r), así
-  // que usa el mismo glifo del mouse con la etiqueta larga "Click der. Mirar".
+  // Mirar con mouse: glifo propio del click derecho (mouse_r) en el atlas.
   look: { pad: 'a', key: 'mouse', label: 'Mirar' },
   back: { pad: 'b', key: 'mouse', label: 'Volver' },
   menu: { pad: 'start', key: 'key_esc', label: 'Menu' },
@@ -22,10 +21,12 @@ export const ACTIONS = {
 export function glyphName(device, action) {
   const entry = ACTIONS[action];
   if (!entry) return null;
+  // Mirar con mouse usa el glifo del click derecho.
+  if (device === 'mouse' && action === 'look') return 'mouse_r';
   // Con mouse, los hints que se pueden clickear muestran el mouse.
   if (device === 'mouse'
     && (action === 'interact' || action === 'back' || action === 'use'
-      || action === 'bag' || action === 'look')) {
+      || action === 'bag')) {
     return 'mouse';
   }
   // El joystick muestra A/B; con teclado, interactuar y volver son click

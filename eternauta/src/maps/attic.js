@@ -95,7 +95,11 @@ const objects = [
     interact: { kind: 'look', talk: 'coat', label: 'Mirar el perchero' } },
 
   // ---- la partida de truco: lampara, mesa, sillas
-  { id: 'lamp', sprite: 'hanging_lamp', x: 10, y: 4, tw: 1, th: 1, solid: false, glow: true, offset: [0, -6] },
+  { id: 'lamp', sprite: 'hanging_lamp', x: 10, y: 4, tw: 1, th: 1, solid: false, glow: true,
+    offset: [0, -6], hideIfFlag: 'apagon' },
+  // En el apagón la lamparita muestra su cuadro apagado (sin cono ni charco).
+  { id: 'lamp_off', sprite: 'hanging_lamp_off', x: 10, y: 4, tw: 1, th: 1, solid: false,
+    offset: [0, -6], showIfFlag: 'apagon' },
   { id: 'chair_fav', sprite: 'chair', x: 9, y: 5, tw: 1, th: 1, solid: false },
   { id: 'chair_pol', sprite: 'chair', x: 10, y: 5, tw: 1, th: 1, solid: false },
   { id: 'chair_luc', sprite: 'chair', x: 11, y: 5, tw: 1, th: 1, solid: false },

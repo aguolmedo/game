@@ -11,7 +11,7 @@ import { canCraft, craft } from './crafting.js';
 import { RECIPES } from './recipes.js';
 import { getItem } from './items.js';
 import {
-  woodSign, selectBar, snowflake, sparkle, introAlpha, easeOut,
+  woodSign, selectBar, snowflake, introAlpha, easeOut,
   CREAM, CREAM2, ROW_H, ROW_Y, SIGN_H,
 } from './titleUi.js';
 import {
@@ -20,6 +20,10 @@ import {
 
 const VIEW_W = 480;
 const VIEW_H = 270;
+// logo del titulo (art/concept/out/titulo3d_logo.png): tamano fijo, 1x
+const LOGO_W = 276;
+const LOGO_H = 63;
+const LOGO_Y = 22;
 
 // ------------------------------------------------- helpers de mouse y layout
 const PROMPT_PAD_X = 4;
@@ -183,21 +187,10 @@ export class TitleMenu {
   }
 
   drawMain(ctx, glyphs, device) {
-    // titulo grande en el cielo, subtitulo en ambar
-    const title = 'EL ETERNAUTA';
-    const tw = measureText(glyphs, title, 4);
-    const tx = Math.round((VIEW_W - tw) / 2);
-    drawText(ctx, glyphs, tx, 24, title, '#dff6fb',
-      { scale: 4, shadow: '#1b2440', outline: '#2a4a66' });
-    const sub = 'La nevada';
-    const sw = measureText(glyphs, sub, 2);
-    drawText(ctx, glyphs, Math.round((VIEW_W - sw) / 2), 66, sub, '#ecab4c',
-      { scale: 2, shadow: '#3a2418', outline: OUT });
-    // copos que titilan alrededor del titulo
-    sparkle(ctx, tx - 13, 40, this.t, 0);
-    sparkle(ctx, tx + tw + 10, 30, this.t, 1.7);
-    sparkle(ctx, tx + tw - 34, 12, this.t, 3.1);
-    sparkle(ctx, tx + 26, 15, this.t, 4.6);
+    // logo 3D en el cielo (imagen 276x63 a escala 1, sin estirar)
+    ctx.imageSmoothingEnabled = false;
+    const logo = this.assets.titleLogo && this.assets.titleLogo.image;
+    if (logo) ctx.drawImage(logo, Math.round((VIEW_W - LOGO_W) / 2), LOGO_Y, LOGO_W, LOGO_H);
     // cartel de madera chico con las cuatro opciones
     const sign = this.signBox();
     woodSign(ctx, sign.x, sign.y, sign.w, sign.h);

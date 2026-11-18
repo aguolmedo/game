@@ -1,36 +1,44 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { advanceFlake, layerSpecs } from '../src/titleSnow.js';
+import { Snowfall } from '../src/snow.js';
 
-const flake = (extra = {}) => ({ x: 100, y: 100, speed: 10, sway: 0, phase: 0, ...extra });
+const TEX = {
+  backOn: {}, backOff: {}, midOn: {}, midOff: {}, frontOn: {}, frontOff: {},
+};
+const scene = () => ({ add() {} });
 
-test('advanceFlake baja en y y reengancha arriba', () => {
-  const f = flake({ speed: 10 });
-  advanceFlake(f, 0.5, 0, 0, 480, 270);
-  assert.equal(f.y, 105);
+test('Snowfall arma tres capas en z 6 / 6.5 / 8', () => {
+  const s = new Snowfall(scene(), TEX, { count: 6, front: 2 });
+  // count (6) + count/2 (3) + front (2) copos, dos meshes por copo
+  assert.equal(s.flakes.length, 11);
+  const zs = [...new Set(s.flakes.map((f) => f.on.position.z))].sort((a, b) => a - b);
+  assert.deepEqual(zs, [6, 6.5, 8]);
+});
+
+test('update hace caer los copos y los reengancha arriba', () => {
+  const s = new Snowfall(scene(), TEX, { count: 1, front: 0 });
+  const f = s.flakes[0];
+  f.x = 100;
+  f.y = 100;
+  s.update(0.5);
+  assert.ok(f.y > 100);
 
   // por debajo de height+2 el copo reaparece arriba
-  const top = flake({ y: 280 });
-  advanceFlake(top, 0.1, 0, 0, 480, 270);
-  assert.equal(top.y, -2);
+  f.y = s.height + 3;
+  s.update(0.001);
+  assert.equal(f.y, -2);
 });
 
-test('advanceFlake envuelve en x por los dos lados con width+8', () => {
-  const left = flake({ x: -5 });
-  advanceFlake(left, 0, 0, 0, 480, 270);
-  assert.equal(left.x, 483);
-
-  const right = flake({ x: 485 });
-  advanceFlake(right, 0, 0, 0, 480, 270);
-  assert.equal(right.x, -3);
-});
-
-test('layerSpecs devuelve far/mid/near con velocidades crecientes', () => {
-  const specs = layerSpecs();
-  assert.equal(specs.length, 3);
-  assert.deepEqual(specs.map((s) => s.name), ['far', 'mid', 'near']);
-  assert.deepEqual(specs.map((s) => s.count), [40, 26, 14]);
-  assert.ok(specs[0].speed < specs[1].speed);
-  assert.ok(specs[1].speed < specs[2].speed);
-  assert.deepEqual(specs.map((s) => s.speed), [8, 16, 26]);
+test('los copos se dibujan en posiciones enteras y alternan on/off', () => {
+  const s = new Snowfall(scene(), TEX, { count: 1, front: 0 });
+  const f = s.flakes[0];
+  f.x = 10.4;
+  f.y = 20.6;
+  s.draw();
+  assert.equal(f.on.position.x, 10);
+  assert.equal(f.on.position.y, 21);
+  assert.equal(f.off.position.x, 10);
+  assert.equal(f.off.position.y, 21);
+  // fosforescencia: un mesh encendido y el otro apagado, nunca los dos
+  assert.notEqual(f.on.visible, f.off.visible);
 });

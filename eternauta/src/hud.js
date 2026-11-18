@@ -10,9 +10,9 @@ import { pointInRect } from './uiHit.js';
 export const VIEW_W = 480;
 export const VIEW_H = 270;
 
-// Toasts (T8): máximo 2, arriba-centro, 2 s. Los pickups se agrupan.
-export const TOAST_LIFE = 2.0;
-export const TOAST_MAX = 2;
+// Toasts (PI-5): máximo 3, abajo a la izquierda, 2.5 s. Los pickups se agrupan.
+export const TOAST_LIFE = 2.5;
+export const TOAST_MAX = 3;
 const TOAST_GROUP_WINDOW = 0.3;   // vida consumida para seguir agrupando
 const TOAST_MAX_CHARS = 40;
 
@@ -42,7 +42,8 @@ const HOTBAR_N = 8;
 export function hotbarLayout() {
   const total = HOTBAR_N * HOTBAR_SIZE + (HOTBAR_N - 1) * HOTBAR_GAP;
   const x0 = Math.round((VIEW_W - total) / 2);
-  const y = VIEW_H - HOTBAR_SIZE - 6;
+  // Pegada al borde inferior: el panel termina justo en VIEW_H.
+  const y = VIEW_H - HOTBAR_SIZE - 3;
   const slots = [];
   for (let i = 0; i < HOTBAR_N; i++) {
     slots.push({ x: x0 + i * (HOTBAR_SIZE + HOTBAR_GAP), y, w: HOTBAR_SIZE, h: HOTBAR_SIZE });
@@ -285,7 +286,8 @@ export class Hud {
     for (const a of pairs) total += promptWidth(this.assets, device, a.action, a.label) + 9;
     total -= 9;
     const x = VIEW_W - total - 10;
-    const y = VIEW_H - 46;
+    // Justo arriba de la hotbar: su panel queda 5 px sobre el de la hotbar.
+    const y = hotbarLayout().y - 20;
     const boxes = [];
     let cx = x;
     for (const a of pairs) {
@@ -317,12 +319,16 @@ export class Hud {
 
   drawToasts(ctx) {
     const glyphs = this.assets.font.glyphs;
+    const n = this.toasts.length;
     this.toasts.forEach((toast, i) => {
-      const alpha = Math.min(1, toast.life / 0.5);
+      const nFromEnd = n - i;   // 1 = el más nuevo
+      const isNewest = nFromEnd === 1;
+      const alpha = Math.min(1, toast.life / 0.5) * (isNewest ? 1 : 0.6);
       const w = measureText(glyphs, toast.text) + 18;
-      const x = Math.round((VIEW_W - w) / 2);
-      // Arriba-centro, debajo del objetivo (T8).
-      const y = 22 + i * 16;
+      const x = 6;
+      // Abajo a la izquierda: el más nuevo pegado al borde (top 256), los
+      // viejos apilados 14 px más arriba (256/242/228).
+      const y = 256 - (nFromEnd - 1) * 14;
       ctx.globalAlpha = Math.max(0, Math.min(1, alpha));
       darkPanel(ctx, x, y, w, 14, 0.85);
       ctx.fillStyle = AM2;

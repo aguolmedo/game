@@ -103,7 +103,7 @@ export class ArenaScene {
     this.mapData = cloneMap(street);
     this.world = new WorldMap(this.scene, this.assets, this.mapData);
     this.player = new Player(this.scene, this.assets, 'juan_suit_rifle');
-    this.snow = new Snowfall(this.scene, this.assets.snow, { count: 120, front: 34 });
+    this.snow = new Snowfall(this.scene, this.assets.snowFlakes, { count: 120, front: 34 });
     this.footprints = new Footprints(this.scene, this.assets.footprint);
     this.ui = canvasOverlay(VIEW_W, VIEW_H, 30);
     this.ui.mesh.visible = false;
@@ -302,6 +302,7 @@ export class ArenaScene {
   }
 
   enter(spawn) {
+    this.game.mouseCursor?.setHidden?.(true); // en combate solo apunta la mira
     this.game.hasSuit = true;
     this.game.flags.apagon = true;
     this.game.setLighting('apagon');
@@ -649,6 +650,7 @@ export class ArenaScene {
   }
 
   openResult() {
+    this.game.mouseCursor?.setHidden?.(false); // resultado: vuelve el guante
     this.vignetteOpen = false;
     this.resultOpen = true;
     this.resultT = 0;
@@ -685,6 +687,7 @@ export class ArenaScene {
       return;
     }
     if (input.bPressed || input.startPressed) {
+      this.game.mouseCursor?.setHidden?.(false);
       this.game.changeScene('title');
       return;
     }
@@ -698,10 +701,14 @@ export class ArenaScene {
     this.resultSel = sel;
     this.nav = { ...this.nav, sel };
     if (resultAction(sel) === 'retry') this.restart();
-    else this.game.changeScene('title');
+    else {
+      this.game.mouseCursor?.setHidden?.(false); // volver al titulo: guante
+      this.game.changeScene('title');
+    }
   }
 
   restart() {
+    this.game.mouseCursor?.setHidden?.(true); // de nuevo a combatir
     this.resultOpen = false;
     this.vignetteOpen = false;
     this.dead = false;
@@ -1069,8 +1076,13 @@ export class ArenaScene {
   }
 
   drawCrosshair(ctx) {
-    const cx = Math.round(this.player.x - this.cam.x + this.aim.x * 24);
-    const cy = Math.round(this.player.feet - 10 - this.cam.y + this.aim.y * 24);
+    // Con mouse la mira sigue al puntero; con joystick/teclado, 24 px al frente.
+    const input = this.game.input;
+    const p = input && input.device === 'mouse' && input.pointer
+      ? this.game.screenToView(input.pointer.x, input.pointer.y) : null;
+    const cx = p ? Math.round(p.x) : Math.round(this.player.x - this.cam.x + this.aim.x * 24);
+    const cy = p ? Math.round(p.y)
+      : Math.round(this.player.feet - 10 - this.cam.y + this.aim.y * 24);
     ctx.fillStyle = 'rgba(10, 10, 20, 0.75)';
     ctx.fillRect(cx - 3, cy, 7, 1);
     ctx.fillRect(cx, cy - 3, 1, 7);
