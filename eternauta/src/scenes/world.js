@@ -4,32 +4,98 @@ import { Player } from '../player.js';
 import { NPC } from '../npc.js';
 import { Pickup } from '../pickup.js';
 import { DialogBox, ChoiceBox } from '../dialog.js';
-import { Hud, hotbarLayout, hudBlocksPoint } from '../hud.js';
+import {
+  Hud, hotbarLayout, hudBlocksPoint, placeGhostLabel,
+} from '../hud.js';
 import { ActionCursor } from '../cursor.js';
 import { Snowfall } from '../snow.js';
 import { Footprints } from '../footprints.js';
-import { pickTarget, pickAt, actionBox, warpAt } from '../interaction.js';
+import {
+  pickTarget, pickAt, warpAt, playerInAccess, facesFootprint, actionInsideFoot,
+  actionTile,
+} from '../interaction.js';
 import { talkEntry, WARNING } from '../dialogs.js';
+import { TALK } from '../data/script.js';
 import { addItem, removeItem, countItem } from '../inventory.js';
 import { getItem } from '../items.js';
-import { resolveAction } from '../actions.js';
+import { resolveAction, resolveHands, typeOf } from '../actions.js';
 import { PLAYER_SPEED } from '../movement.js';
-import { VIEW_W, VIEW_H, depthFor, canvasOverlay } from '../sprite.js';
+import { playerFootTile, bumpMapVersion } from '../reach.js';
+import {
+  VIEW_W, VIEW_H, depthFor, canvasOverlay, iconSprite,
+} from '../sprite.js';
 import { viewport, snapCamera, worldToView as toView } from '../viewport.js';
 import { drawText, measureText } from '../font.js';
 import { mousePoint, pointInRect, hitIndex } from '../uiHit.js';
 import {
-  SurfaceLayer, applyContainers, itemsForMap, NO_SPACE_MESSAGE,
+  SurfaceLayer, applyContainers, itemsForMap, ensureWorldState, NO_SPACE_MESSAGE,
 } from '../surfaces.js';
 import { INITIAL_ITEMS } from '../data/surfaces.js';
+import {
+  canDropFloor, supportCheck, floorPos, surfacePlaceOf, adjacentToPlayer,
+} from '../placement.js';
+import { anySprite } from '../mapView.js';
+import { getItem as getItemById } from '../items.js';
 import { lookLine } from '../data/descriptions.js';
 import { LightOverlay } from '../lighting.js';
+import { darkPanel } from '../uiSkin.js';
 import { buildApagon, APAGON_MAPS } from '../apagon.js';
 import { ComicOverlay, CaptionBox, BalloonLine } from '../comic.js';
 import {
   putYerba, cebar, sip, share, dump, mateItemId,
   startHeating, stopHeating, heat, pavaItemId, drawThermometer,
 } from '../mate.js';
+
+// Prioridad única de superpuestos: apoyado > NPC > mueble > warp.
+export const PRIORITY = { warp: 0, object: 1, npc: 2, surface: 3 };
+
+// Tipos con verbo propio: en estos, la línea de mirar se dice la primera vez
+// que se usan (DIRECCION.md, "Tipos de objeto" regla 2). Las personas no:
+// Hablar ya las cubre. Decorado, cosa, superficie y mueble liviano tampoco:
+// su Hacer ya es Mirar.
+export const OWN_VERB_TYPES = new Set([
+  'container', 'device', 'passage', 'view', 'seat',
+]);
+
+// La silueta de Manos (§8) se dibuja encima del piso y de los muebles y del
+// overlay de luz (z=20), pero debajo de las etiquetas (capa extra z=31 y HUD).
+const GHOST_Z = 21;
+// Inválida: silueta plana al 45 % teñida #f09a7a (mezcla 55 % con el fondo).
+const INVALID_GHOST_COLOR = 0xf09a7a;
+
+/**
+ * Máscara blanca de un frame del atlas: mismos píxeles opacos que el sprite,
+ * todo lo demás transparente. Sirve para teñir la silueta de un color plano
+ * (multiplicar el color del sprite por un tinte casi no se nota en el piso).
+ */
+function silhouetteTexture(map) {
+  const img = map.image;
+  const w = Math.max(1, Math.round(map.repeat.x * img.width));
+  const h = Math.max(1, Math.round(map.repeat.y * img.height));
+  const sx = Math.round(map.offset.x * img.width);
+  const sy = Math.round(map.offset.y * img.height);
+  const canvas = document.createElement('canvas');
+  canvas.width = w;
+  canvas.height = h;
+  const ctx = canvas.getContext('2d');
+  ctx.imageSmoothingEnabled = false;
+  ctx.drawImage(img, sx, sy, w, h, 0, 0, w, h);
+  const data = ctx.getImageData(0, 0, w, h);
+  for (let i = 0; i < data.data.length; i += 4) {
+    data.data[i + 3] = data.data[i + 3] >= 128 ? 255 : 0;
+    data.data[i] = 255;
+    data.data[i + 1] = 255;
+    data.data[i + 2] = 255;
+  }
+  ctx.putImageData(data, 0, 0);
+  const tex = new THREE.CanvasTexture(canvas);
+  tex.magFilter = THREE.NearestFilter;
+  tex.minFilter = THREE.NearestFilter;
+  tex.generateMipmaps = false;
+  tex.flipY = false;
+  tex.colorSpace = THREE.SRGBColorSpace;
+  return tex;
+}
 
 const NPC_NAMES = {
   favalli: 'Favalli', lucas: 'Lucas', polsky: 'Polsky',
@@ -69,11 +135,14 @@ export class WorldScene {
       ? new Footprints(this.scene, game.assets.footprint)
       : null;
 
-    // Objetos apoyados en muebles (§4).
+    // Cosas de la partida (§3): game.world[mapId] = { items, moved }.
+    this.worldState = ensureWorldState(game, this.name, this.mapData);
+    // Objetos apoyados en muebles y cosas tiradas en el piso.
     this.surface = new SurfaceLayer(
       this.scene, game.assets, this.mapData,
-      itemsForMap(this.mapData.id, INITIAL_ITEMS, this.mapData),
+      this.worldState.items, this.worldState,
     );
+    this.applyWorldState();
 
     // Luz (debajo del HUD) + historieta (arriba del HUD).
     this.light = new LightOverlay(game.assets, this.mapData);
@@ -97,6 +166,23 @@ export class WorldScene {
     this.uiScene.add(this.apagonFx.mesh);
     this.timedBar = null;
 
+    // Manos (§4, §8): puntería, silueta, cuadradito de destino y aviso.
+    this.handsAim = null;
+    this.handsAction = null;
+    this.selfHover = false;
+    this.ghost = null;
+    this.ghostTex = null;
+    this.ghostMask = null;
+    this.ghostName = null;
+    this.ghostInfo = null;
+    this.handsFeedback = null;
+    this.ghostCursor = new ActionCursor(this.scene);
+    this.ghostCursor.hide();
+    this.carryMesh = null;
+    this.carryBase = 0;
+    this.supportCache = new Map();
+    this.supportCacheKey = null;
+
     this.t = 0;
     this.cam = { x: 0, y: 0 };
     this.target = null;
@@ -106,6 +192,8 @@ export class WorldScene {
     // Rects (vista 480x270) que dibujo el HUD en el ultimo cuadro: los usa la
     // oclusion real (hotbar y barra de pistas).
     this.hintRects = [];
+    // Entrada de la barra bajo el mouse (hoy solo "Mochila"): se resalta.
+    this.hoverHint = null;
     this.exitWarp = null;
     // Ultimo warp bloqueado avisado: una vez por aproximacion, sin spam.
     this.warpWarnId = null;
@@ -123,8 +211,186 @@ export class WorldScene {
     );
   }
 
+  /** Aplica a la escena los muebles movidos que persisten entre mapas (§3). */
+  applyWorldState() {
+    const moved = this.worldState?.moved || {};
+    for (const [id, pos] of Object.entries(moved)) {
+      const obj = this.mapData.objects.find((o) => o.id === id);
+      if (!obj || !Number.isInteger(pos?.tx) || !Number.isInteger(pos?.ty)) continue;
+      obj.x = pos.tx;
+      obj.y = pos.ty;
+      obj.hidden = false;
+      if (obj.mesh) obj.mesh.visible = true;
+      obj.solid = true;
+      this.world.updateObject(obj);
+    }
+    this.world.rebuildSolids();
+    this.invalidateReach();
+    this.surface.sync();
+  }
+
+  invalidateReach() {
+    this.supportCache?.clear();
+    this.supportCacheKey = null;
+  }
+
+  /** SupportCheck con caché por mueble + casillero + casillero de Juan (§6). */
+  checkSupportCached(args) {
+    const p = playerFootTile({ x: this.player.x, feet: this.player.feet });
+    const key = `${args.object?.id}:${args.tx},${args.ty}:${p.tx},${p.ty}`;
+    if (this.supportCache?.has(key)) return this.supportCache.get(key);
+    const result = supportCheck(args);
+    if (this.supportCache) this.supportCache.set(key, result);
+    return result;
+  }
+
+  /** Nombre del mueble que Juan lleva en la cabeza, o null. */
+  carryName() {
+    const carry = this.game.carry;
+    return carry && carry.mapId === this.name ? carry.object?.name || 'el mueble' : null;
+  }
+
+  /** Malla del mueble cargado sobre la cabeza de Juan (§7). */
+  updateCarryMesh() {
+    const carry = this.game.carry;
+    if (!carry || carry.mapId !== this.name) {
+      if (this.carryMesh) {
+        this.scene.remove(this.carryMesh);
+        this.carryMesh = null;
+      }
+      return;
+    }
+    if (!this.carryMesh && carry.object) {
+      try {
+        this.carryMesh = anySprite(this.game.assets, carry.object.sprite);
+        this.carryMesh.material = this.carryMesh.material.clone();
+        this.carryMesh.material.transparent = true;
+        this.scene.add(this.carryMesh);
+      } catch {
+        this.carryMesh = null;
+      }
+    }
+    if (!this.carryMesh) return;
+    const h = this.carryMesh.geometry.parameters.height;
+    const bob = this.player.moving ? (Math.floor(this.t * 7) % 2) : 0;
+    const base = Math.round(this.player.feet - 26) + bob;
+    this.carryMesh.position.set(
+      Math.round(this.player.x),
+      Math.round(base - h / 2),
+      depthFor(this.player.feet) + 0.001,
+    );
+  }
+
+  /** Suelta el mueble cargado: malla, estado y caché. */
+  clearCarry() {
+    if (this.carryMesh) {
+      this.scene.remove(this.carryMesh);
+      this.carryMesh = null;
+    }
+    this.game.carry = null;
+    this.invalidateReach();
+  }
+
+  /**
+   * La historia saca a Juan del lugar (§7): apoya el mueble en el casillero
+   * válido más cercano; si no hay ninguno, vuelve a su lugar original.
+   */
+  autoPlaceCarry() {
+    const carry = this.game.carry;
+    if (!carry || carry.mapId !== this.name || !carry.object) {
+      this.clearCarry();
+      return false;
+    }
+    const obj = carry.object;
+    const p = playerFootTile({ x: this.player.x, feet: this.player.feet });
+    const tiles = [];
+    for (let ty = 0; ty < this.mapData.rows; ty++) {
+      for (let tx = 0; tx < this.mapData.cols; tx++) {
+        tiles.push({ tx, ty, d: Math.abs(tx - p.tx) + Math.abs(ty - p.ty) });
+      }
+    }
+    tiles.sort((a, b) => a.d - b.d);
+    for (const tile of tiles) {
+      const check = supportCheck({
+        map: this.mapData,
+        objects: this.mapData.objects,
+        npcs: this.mapData.npcs,
+        warps: this.mapData.warps,
+        player: { x: this.player.x, feet: this.player.feet },
+        items: this.worldState.items,
+        object: obj,
+        tx: tile.tx,
+        ty: tile.ty,
+        requireAdjacent: false,
+      });
+      if (check.ok) {
+        this.placeCarryAt(obj, tile.tx, tile.ty, { moved: true });
+        this.game.showToast(`${capName(obj.name)} quedó apoyado.`);
+        return true;
+      }
+    }
+    // Sin lugar: vuelve a donde estaba.
+    const home = this.world.home.get(obj.id);
+    obj.x = home ? home.x : obj.x;
+    obj.y = home ? home.y : obj.y;
+    obj.solid = home ? home.solid : obj.solid;
+    delete this.worldState.moved[obj.id];
+    this.world.hideObject(obj, false);
+    this.world.updateObject(obj);
+    this.world.rebuildSolids();
+    this.surface.sync();
+    this.clearCarry();
+    this.game.showToast(`${capName(obj.name)} volvió a su lugar.`);
+    return false;
+  }
+
+  /** Levanta un mueble liviano: sale del mapa y va sobre la cabeza (§7). */
+  startCarry(obj) {
+    if (!obj || this.game.carry) return false;
+    const origin = { tx: obj.x, ty: obj.y };
+    this.world.hideObject(obj, true);
+    this.invalidateReach();
+    this.surface.sync();
+    this.game.carry = {
+      mapId: this.name, objectId: obj.id, object: obj, origin,
+    };
+    this.game.showToast(`Levantaste ${obj.name || 'el mueble'}.`);
+    return true;
+  }
+
+  /** Apoya el mueble cargado en (tx,ty) y lo persiste en `moved` (§7). */
+  placeCarryAt(obj, tx, ty, { moved = true } = {}) {
+    obj.x = tx;
+    obj.y = ty;
+    obj.hidden = false;
+    obj.solid = true;
+    if (obj.mesh) obj.mesh.visible = true;
+    this.world.updateObject(obj);
+    this.world.rebuildSolids();
+    if (moved) {
+      this.worldState.moved[obj.id] = { tx, ty };
+    }
+    this.surface.sync();
+    this.invalidateReach();
+    this.clearCarry();
+    return true;
+  }
+
+  supportCarry(tx, ty) {
+    const carry = this.game.carry;
+    if (!carry || carry.mapId !== this.name || !carry.object) return false;
+    this.placeCarryAt(carry.object, tx, ty);
+    this.game.showToast(`Apoyaste ${carry.object.name || 'el mueble'}.`);
+    this.game.emit('interact', {
+      id: carry.object.id, kind: 'support', obj: carry.object,
+    });
+    return true;
+  }
+
   reset() {
     this.clearHover();
+    this.clearCarry();
+    this.clearGhost();
     this.givePickups();
     this.dialog.hide();
     this.choice.hide();
@@ -133,11 +399,14 @@ export class WorldScene {
     this.comicUi.mesh.visible = false;
     this.captionUi.mesh.visible = false;
     this.timedBar = null;
+    this.world.resetPositions();
+    this.worldState = ensureWorldState(this.game, this.name, this.mapData);
     this.surface.dispose();
     this.surface = new SurfaceLayer(
       this.scene, this.game.assets, this.mapData,
-      itemsForMap(this.mapData.id, INITIAL_ITEMS, this.mapData),
+      this.worldState.items, this.worldState,
     );
+    this.applyWorldState();
     this.player.setSuit(this.game.hasSuit);
     this.player.setRifle?.(this.game.hasSuit && this.game.hasRifle);
     this.player.place(this.mapData.spawn.x, this.mapData.spawn.y, this.mapData.spawn.dir);
@@ -170,6 +439,8 @@ export class WorldScene {
     this.extra.mesh.visible = true;
     this.snow?.scatter();
     this.footprints?.reset();
+    this.applyWorldState();
+    this.updateCarryMesh();
     this.t = 0;
     this.silbatoAvisado = false;
     this.warpWarnId = null;
@@ -301,19 +572,24 @@ export class WorldScene {
     const sharing = Boolean(held && held.id === 'mate_cebado');
     const installingExtractor = Boolean(held && held.id === 'secador');
     const fuellingGenerator = Boolean(held && held.id === 'nafta');
-    const list = sharing ? [] : this.surface.candidates.slice();
+    const P = PRIORITY;
+    const list = sharing ? [] : this.surface.candidates.map((c) => ({
+      ...c, priority: c.kind === 'floorItem' ? P.object : P.surface,
+    }));
     if (sharing) {
       for (const npc of this.npcs) {
         if (npc.hidden) continue;
         list.push({
           id: npc.id,
           kind: 'npc',
-          priority: 1,
+          priority: P.npc,
           x: npc.x,
           y: npc.feet + 26,
           w: 20,
           h: 52,
           label: `Convidar mate a ${NPC_NAMES[npc.who] || npc.who}`,
+          type: 'person',
+          name: npc.name || NPC_NAMES[npc.who] || npc.who,
           cursorBox: { x: npc.x - 8, y: npc.feet - 32, w: 16, h: 32 },
           npc,
         });
@@ -321,16 +597,8 @@ export class WorldScene {
     }
     for (const c of this.world.candidates) {
       if (c.ref && c.ref.hidden) continue;
-      // Mueble con algo agarrable encima: apuntarle agarra ese objeto.
-      if (c.kind === 'object' && !sharing && c.id !== this.game.pavaStation && !(c.ref && c.ref.station)) {
-        // Solo si es lo unico agarrable del mueble (estantes altos); en mesas
-        // con varias cosas se apunta a cada objeto por separado.
-        const grabs = this.surface.candidates.filter((s) => s.objectId === c.id && s.grabbable);
-        if (grabs.length === 1) {
-          list.push({ ...grabs[0], x: c.x, y: c.y, w: c.w, h: c.h, priority: 1 });
-          continue;
-        }
-      }
+      // Un solo candidato por objeto: lo apoyado ya viene en la lista del
+      // SurfaceLayer y gana por prioridad, sin duplicar el mueble.
       // Con la pava sobre el calentador, ese mueble gana a los objetos
       // apoyados: A saca la pava en vez de mirar la tijera del banco.
       const heat = c.kind === 'object' && c.id === this.game.pavaStation;
@@ -344,21 +612,25 @@ export class WorldScene {
       // está al lado: cerrarla es lo urgente (con mouse igual se apunta bien).
       const windowGoal = c.kind === 'object' && c.id === 'window_martita'
         && this.game.flags?.martita_sprint && !this.game.flags?.closed_window_martita;
-      list.push(heat
-        ? { ...c, priority: 3 }
-        : stationUse || windowGoal ? { ...c, priority: 2 } : c);
+      const candle = c.kind === 'object' && c.ref?.id === 'candle';
+      const priority = heat ? P.surface + 1
+        : stationUse || windowGoal || candle ? P.surface
+          : P.object;
+      list.push({ ...c, priority });
     }
     for (const npc of this.npcs) {
       if (npc.hidden || sharing) continue;
       list.push({
         id: npc.id,
         kind: 'npc',
-        priority: 1,
+        priority: P.npc,
         x: npc.x,
         y: npc.feet + 26,
         w: 20,
         h: 52,
-        label: `Hablar con ${NPC_NAMES[npc.who] || npc.who}`,
+        label: `Hablar con ${npc.name || NPC_NAMES[npc.who] || npc.who}`,
+        type: 'person',
+        name: npc.name || NPC_NAMES[npc.who] || npc.who,
         cursorBox: { x: npc.x - 8, y: npc.feet - 32, w: 16, h: 32 },
         npc,
       });
@@ -369,7 +641,7 @@ export class WorldScene {
       list.push({
         id: `warp_${warp.id || 'x'}`,
         kind: 'warp',
-        priority: 0,
+        priority: P.warp,
         x: warp.x + warp.w / 2,
         y: warp.y + warp.h,
         w: warp.w,
@@ -382,7 +654,10 @@ export class WorldScene {
     for (const pickup of this.pickups) {
       if (pickup.taken) continue;
       const c = pickup.candidate;
-      c.label = `Levantar ${getItem(pickup.itemId).name}`;
+      c.priority = P.object;
+      c.type = 'thing';
+      c.name = getItem(pickup.itemId).name;
+      c.label = `Agarrar ${getItem(pickup.itemId).name}`;
       c.cursorBox = { x: pickup.x - 8, y: pickup.y - 20, w: 16, h: 20 };
       list.push(c);
     }
@@ -465,8 +740,15 @@ export class WorldScene {
 
     this.handleHotbar(input);
 
+    // La línea de mirar de la primera vez de un paso se lee antes de cambiar
+    // de ambiente (DIRECCION.md, "Tipos de objeto" regla 2).
+    if (this.updatePendingWarp(dt)) return;
+
     // Movimiento + camara suave (sin aceleracion rara: velocidad constante).
+    // Cargando un mueble liviano, Juan camina al 80 % (§7).
+    this.player.speedScale = this.carryData() ? 0.8 : 1;
     this.player.update(dt, input.move, this.world, this.mapData.bounds);
+    this.updateCarryMesh();
     if (this.footprints) this.footprints.update(dt, this.player, true);
     this.followCamera(dt);
     this.snow?.setCamera(this.cam.x, this.cam.y);
@@ -485,8 +767,17 @@ export class WorldScene {
 
     // Puertas / escaleras.
     this.exitWarp = warpAt(this.player.x, this.player.feet, this.mapData.warps);
-    if (this.exitWarp) {
+    if (this.pendingWarp) {
+      // Esperando que se lea la línea de la primera vez: no se pisa el paso.
+    } else if (this.exitWarp) {
       if (this.canWarp(this.exitWarp)) {
+        // Primera vez que se pisa el paso: la línea de mirar va antes de irse.
+        const line = this.firstWarpLine(this.exitWarp);
+        if (line) {
+          this.game.showToast(line);
+          this.pendingWarp = { warp: this.exitWarp, t: 1.2 };
+          return;
+        }
         this.warpNow(this.exitWarp);
         return;
       }
@@ -496,18 +787,37 @@ export class WorldScene {
       this.warpWarnId = null;
     }
 
-    // Apuntado: tile de accion (teclado/joystick) o hover del mouse.
+    // Apuntado por casilleros de acceso (teclado/joystick) o hover del mouse.
     const candidates = this.candidates();
     const found = pickTarget(
       { x: this.player.x, feet: this.player.feet, dir: this.player.dir },
       candidates,
-      { dir: this.player.dir, reach: 22 },
+      { dir: this.player.dir, map: this.mapData },
     );
-    this.target = found.target;
-    this.targetVia = found.via;
+    // Histéresis: si sigue en un acceso del objetivo actual no salta a uno
+    // vecino, salvo que el nuevo quede justo de frente (tile de acción).
+    let target = found.target;
+    if (this.target && target && this.target.id !== target.id) {
+      const current = candidates.find(
+        (c) => c.id === this.target.id && c.kind === this.target.kind,
+      );
+      const player = { x: this.player.x, feet: this.player.feet, dir: this.player.dir };
+      if (current
+        && playerInAccess(player, current, this.mapData)
+        && facesFootprint(player, current, this.mapData, this.player.dir)
+        && !actionInsideFoot(player, target, this.mapData, this.player.dir)) {
+        target = current;
+      }
+    }
+    this.target = target;
+    this.targetVia = target ? 'access' : null;
     this.updateMouseTarget(input, candidates);
 
     this.updateCursor(input);
+    const hands = this.handsActionFor(input);
+    this.handsAim = hands.aim;
+    this.handsAction = hands.action;
+    this.updateGhost(input, hands.aim, hands.action);
 
     // Barra de pistas del mouse (T7): leyenda fija; solo "Mochila" es clickeable.
     let hint = null;
@@ -524,10 +834,22 @@ export class WorldScene {
         if (hint) this.game.mouseCursor?.setState('hand');
       }
     }
+    this.hoverHint = hint ? hint.action : null;
 
-    if (input.rightClick && input.device === 'mouse') {
-      // Click derecho = Mirar (sin alcance: se puede mirar de lejos).
-      this.handleRightClick();
+    if (input.handsPressed) {
+      // Manos: click derecho o X (agarra / deja / levanta / apoya).
+      const blocked = input.device === 'mouse' && this.pointerOverHud(input);
+      if (blocked) {
+        this.drawHud(input, this.hudParams(input));
+        return;
+      }
+      if (!this.handsAction && input.device === 'mouse'
+        && (this.heldId() || this.carryData()) && this.handsAim?.tile
+        && !adjacentToPlayer(this.player, this.handsAim.tile.tx, this.handsAim.tile.ty)) {
+        this.warnNear();
+      } else {
+        this.runHands(this.handsAction, input);
+      }
       this.drawHud(input, this.hudParams(input));
       return;
     }
@@ -536,23 +858,12 @@ export class WorldScene {
       this.game.openMenu(0);
       return;
     }
-    if (input.xPressed) {
-      this.useSelected(input);
-      this.drawHud(input, this.hudParams(input));
-      return;
-    }
     if (input.click && input.device === 'mouse') {
-      // Hotbar: el click selecciona el slot y no pasa al mundo.
+      // Hotbar: el click solo elige el slot (ya no usa el ítem).
       const hotbar = hotbarLayout();
       if (pointInRect(clickPoint, hotbar.panel)) {
         const slot = hitIndex(clickPoint, hotbar.slots);
-        if (slot >= 0 && slot === this.game.selectedSlot && this.game.inventory[slot]) {
-          // Click en el item que ya tenes en la mano = usarlo (como la F).
-          this.target = null;
-          this.useSelected();
-        } else if (slot >= 0) {
-          this.game.selectedSlot = slot;
-        }
+        if (slot >= 0) this.game.selectedSlot = slot;
         this.drawHud(input, this.hudParams(input));
         return;
       }
@@ -561,11 +872,11 @@ export class WorldScene {
         this.game.openMenu(0);
         return;
       }
-      this.handleMouseClick();
+      this.handleMouseClick(input);
       this.drawHud(input, this.hudParams(input));
       return;
     }
-    if (input.aPressed) {
+    if (input.padAPressed) {
       this.interact(input);
       this.drawHud(input, this.hudParams(input));
       return;
@@ -585,6 +896,7 @@ export class WorldScene {
       obj.hidden = hidden;
       if (obj.mesh) obj.mesh.visible = !hidden;
     }
+    bumpMapVersion(this.mapData);
     const polskyLeft = Boolean(flags.polskyLeft || flags.polsky_muerto);
     for (const npc of this.npcs) {
       npc.hidden = (this.name === 'attic' && npc.id === 'polsky' && polskyLeft)
@@ -602,6 +914,7 @@ export class WorldScene {
       }
     }
     this.surface.sync();
+    this.invalidateReach();
   }
 
   applyModeVisuals() {
@@ -620,6 +933,8 @@ export class WorldScene {
 
   canWarp(warp) {
     if (!warp) return false;
+    // No se cambia de mapa cargando un mueble liviano (§7).
+    if (this.game.carry) return false;
     if (warp.needsSuit && !this.game.hasSuit) return false;
     if (warp.needsFlag && !this.game.flags[warp.needsFlag]) return false;
     return true;
@@ -637,6 +952,10 @@ export class WorldScene {
     const id = warp.id || 'warp';
     if (this.warpWarnId === id) return false;
     this.warpWarnId = id;
+    if (this.game.carry) {
+      this.game.showToast(`Primero apoyá ${this.carryName()}.`);
+      return true;
+    }
     this.game.showToast(this.exitBlocker());
     return true;
   }
@@ -680,6 +999,8 @@ export class WorldScene {
   }
 
   playComic(spec) {
+    // La historia abre una viñeta: si Juan lleva un mueble, lo apoya solo (§7).
+    if (this.game.carry) this.autoPlaceCarry();
     return new Promise((resolve) => {
       const onDone = spec.onDone;
       this.comic.play({
@@ -733,6 +1054,256 @@ export class WorldScene {
     }
   }
 
+  /** ¿El puntero (mouse) está sobre la hotbar o la barra de pistas? */
+  pointerOverHud(input) {
+    const client = input?.click || input?.rightClick || input?.pointer;
+    if (!client) return false;
+    const view = this.pointerView(input);
+    if (!view) return true;
+    if (pointInRect(view, hotbarLayout().panel)) return true;
+    return hudBlocksPoint(view, this.hintRects);
+  }
+
+  warnNear() {
+    const now = this.t || 0;
+    if (this.nearWarnAt == null || now - this.nearWarnAt >= 1) {
+      this.nearWarnAt = now;
+      this.game.showToast('Acercate un poco.');
+    }
+  }
+
+  /** Puntero en píxeles del mundo (cámara + zoom), solo con mouse. */
+  pointerWorld(input) {
+    const client = input && (input.click || input.pointer);
+    if (!client) return null;
+    return this.game.screenToWorld(client.x, client.y);
+  }
+
+  /** Caja del sprite de Juan en píxeles del mundo (§2: click sobre Juan). */
+  playerWorldBox() {
+    if (!this.player) return null;
+    return {
+      x: Math.round(this.player.x) - 8,
+      y: Math.round(this.player.feet) - 32,
+      w: 16,
+      h: 32,
+    };
+  }
+
+  carryData() {
+    const carry = this.game.carry;
+    return carry && carry.mapId === this.name ? carry : null;
+  }
+
+  /** Qué se apunta con Manos: el objeto bajo el puntero o el tile de adelante. */
+  aimFor(input) {
+    const device = input?.device || 'mouse';
+    const target = device === 'mouse' ? this.hoverTarget : this.target;
+    let tile = null;
+    let point = null;
+    if (device === 'mouse') {
+      const p = this.pointerWorld(input);
+      if (p) {
+        tile = { tx: Math.floor(p.x / 16), ty: Math.floor(p.y / 16) };
+        point = p;
+      }
+    } else {
+      const a = actionTile(this.player.x, this.player.feet, this.player.dir);
+      tile = { tx: a.tx, ty: a.ty };
+      point = { x: a.cx, y: a.cy };
+    }
+    return { target, tile, point, device, near: target ? this.hoverNear : true };
+  }
+
+  handsActionFor(input) {
+    const aim = this.aimFor(input);
+    const action = resolveHands(
+      this.ctx(), aim, this.heldId(), this.carryData(),
+    );
+    return { aim, action };
+  }
+
+  // ------------------------------------------------------------- siluetas (§8)
+
+  ghostSpriteFor(name, itemId) {
+    try {
+      return anySprite(this.game.assets, name);
+    } catch {
+      const data = this.game.assets.itemsData;
+      const sheet = this.game.assets.items;
+      const raw = data?.frames?.[itemId] || data?.frames?.[name];
+      if (!raw || !sheet) return null;
+      const box = Array.isArray(raw)
+        ? { x: raw[0], y: raw[1], w: raw[2], h: raw[3] } : raw;
+      return iconSprite(sheet, box, box.w, box.h);
+    }
+  }
+
+  setGhost(name, x, base, valid) {
+    if (!name) {
+      this.clearGhost();
+      return null;
+    }
+    if (!this.ghost || this.ghostName !== name) {
+      if (this.ghost) this.scene.remove(this.ghost);
+      if (this.ghostMask) this.ghostMask.dispose();
+      this.ghost = this.ghostSpriteFor(name);
+      this.ghostName = name;
+      if (!this.ghost) return null;
+      this.ghostTex = this.ghost.material.map;
+      this.ghostMask = silhouetteTexture(this.ghostTex);
+      this.ghost.material = this.ghost.material.clone();
+      this.ghost.material.transparent = true;
+      this.ghost.material.depthWrite = false;
+      this.ghost.material.depthTest = false;
+      // ¡Clave! El alphaTest del atlas (0.5) descartaba la silueta inválida,
+      // que va al 45 %: nunca se veía. La máscara ya tiene alfa duro.
+      this.ghost.material.alphaTest = 0;
+      this.ghost.renderOrder = 4;
+      this.scene.add(this.ghost);
+    }
+    const w = this.ghost.geometry.parameters.width;
+    const h = this.ghost.geometry.parameters.height;
+    this.ghost.position.set(Math.round(x), Math.round(base - h / 2), GHOST_Z);
+    this.ghost.material.opacity = valid ? 0.55 : 0.45;
+    this.ghost.material.map = valid ? this.ghostTex : this.ghostMask;
+    this.ghost.material.color.setHex(valid ? 0xffffff : INVALID_GHOST_COLOR);
+    this.ghost.visible = true;
+    this.ghostInfo = {
+      x, base, w, h, valid, name,
+      box: { x: x - w / 2, y: base - h, w, h },
+    };
+    return this.ghost;
+  }
+
+  showGhostCursor(box) {
+    this.ghostCursor.showAt(box, this.t, { mode: 'near', grab: false, id: 'ghost' });
+    this.ghostCursor.setPosition(box.x + box.w / 2, box.y + box.h / 2);
+  }
+
+  clearGhost() {
+    if (this.ghost) {
+      this.scene.remove(this.ghost);
+      this.ghost = null;
+    }
+    if (this.ghostMask) this.ghostMask.dispose();
+    this.ghostMask = null;
+    this.ghostTex = null;
+    this.ghostName = null;
+    this.ghostInfo = null;
+    this.handsFeedback = null;
+    this.ghostCursor?.hide();
+  }
+
+  /** Silueta + cuadradito del lugar apuntado (o el aviso rojo si no entra). */
+  updateGhost(input, aim, action) {
+    const device = aim?.device || 'mouse';
+    this.handsFeedback = null;
+    if (!aim || !aim.tile) {
+      this.clearGhost();
+      return;
+    }
+    if (device === 'mouse') {
+      const view = this.pointerView(input);
+      if (view && hudBlocksPoint(view, this.hintRects)) {
+        this.clearGhost();
+        return;
+      }
+    }
+    if (!this.carryData() && this.selfHover) {
+      // Sobre Juan manda el uso propio: no es un lugar de dejar (§2).
+      this.clearGhost();
+      return;
+    }
+    const carry = this.carryData();
+    if (carry && carry.object) {
+      const obj = carry.object;
+      const check = this.checkSupportCached({
+        map: this.mapData,
+        objects: this.mapData.objects,
+        npcs: this.mapData.npcs,
+        warps: this.mapData.warps,
+        player: { x: this.player.x, feet: this.player.feet },
+        items: this.worldState.items,
+        object: obj,
+        tx: aim.tile.tx,
+        ty: aim.tile.ty,
+      });
+      if (check.ok) {
+        this.showFurnitureGhost(obj, aim.tile.tx, aim.tile.ty, true);
+        return;
+      }
+      if (device === 'mouse' && adjacentToPlayer(this.player, aim.tile.tx, aim.tile.ty)) {
+        this.showFurnitureGhost(obj, aim.tile.tx, aim.tile.ty, false);
+        this.handsFeedback = {
+          text: check.reason === 'taparia' ? 'Taparía el paso.' : 'No entra ahí.',
+          box: this.ghostInfo?.box || null,
+          x: aim.tile.tx * 16 + 8,
+          y: aim.tile.ty * 16,
+        };
+        return;
+      }
+      this.clearGhost();
+      return;
+    }
+
+    const held = this.heldId();
+    if (!held) {
+      this.clearGhost();
+      return;
+    }
+    if (action && action.kind === 'drop') {
+      const pos = action.payload.pos;
+      const name = getItemById(held).worldSprite;
+      this.setGhost(name, pos.x, pos.y, true);
+      const box = action.payload.tx != null
+        ? {
+          x: action.payload.tx * 16,
+          y: action.payload.ty * 16,
+          w: 16,
+          h: 16,
+        }
+        : { x: pos.x - 6, y: pos.y - 12, w: 12, h: 12 };
+      this.showGhostCursor(box);
+      return;
+    }
+    // Con mouse, apuntar a un lugar inválido muestra la silueta rojiza.
+    const surfaceTarget = aim.target && aim.target.surface;
+    const blockedTarget = aim.target && !aim.target.surface
+      && action && action.kind !== 'drop';
+    const reachable = aim.target
+      ? this.hoverNear
+      : adjacentToPlayer(this.player, aim.tile.tx, aim.tile.ty);
+    if (device === 'mouse' && !blockedTarget && reachable) {
+      const pos = surfaceTarget ? aim.point : floorPos(aim.tile.tx, aim.tile.ty);
+      const name = getItemById(held).worldSprite;
+      this.setGhost(name, pos.x, pos.y, false);
+      this.ghostCursor.hide();
+      this.handsFeedback = {
+        text: 'No entra ahí.',
+        box: this.ghostInfo?.box || null,
+        x: pos.x,
+        y: surfaceTarget ? pos.y - 12 : aim.tile.ty * 16,
+      };
+      return;
+    }
+    this.clearGhost();
+  }
+
+  showFurnitureGhost(obj, tx, ty, valid) {
+    const tw = Math.max(1, obj.tw || 1);
+    const th = Math.max(1, obj.th || 1);
+    const [ox, oy] = obj.offset || [0, 0];
+    const x = (tx + tw / 2) * 16 + ox;
+    const base = (ty + th) * 16 + oy;
+    this.setGhost(obj.sprite, x, base, valid);
+    if (valid) {
+      this.showGhostCursor({ x: tx * 16, y: ty * 16, w: tw * 16, h: th * 16 });
+    } else {
+      this.ghostCursor.hide();
+    }
+  }
+
   /** Puntero en coordenadas de la vista (480x270), solo con mouse. */
   pointerView(input) {
     if (input && input.click) {
@@ -750,6 +1321,7 @@ export class WorldScene {
   updateMouseTarget(input, candidates) {
     this.hoverTarget = null;
     this.hoverNear = false;
+    this.selfHover = false;
     let state = 'arrow';
     if (input.device === 'mouse') {
       // Con el mouse manda el puntero, no la direccion de la mirada.
@@ -763,11 +1335,27 @@ export class WorldScene {
       if (point && !hudBlocksPoint(view, this.hintRects)) {
         const hit = pickAt(
           { x: this.player.x, feet: this.player.feet, dir: this.player.dir },
-          candidates, point, { dir: this.player.dir, reach: 28 },
+          candidates, point, { dir: this.player.dir, map: this.mapData },
         );
+        const self = resolveAction(this.ctx(), null, this.heldId());
+        const pbox = this.playerWorldBox();
+        const overPlayer = Boolean(self && pbox
+          && point.x >= pbox.x && point.x < pbox.x + pbox.w
+          && point.y >= pbox.y && point.y < pbox.y + pbox.h);
+        // Cargando un mueble no hay uso propio: primero se apoya (§4, §7).
+        this.selfHover = overPlayer && !this.carryData();
         if (hit.target) {
           this.setHover(hit.target, hit.near);
           state = hit.near ? 'hand' : 'far';
+        } else if (overPlayer) {
+          // Puntero sobre Juan con un ítem con uso propio: cuadradito y
+          // barra [click] Tomar mate (§2).
+          this.hoverNear = true;
+          this.cursor.showAt(pbox, this.t, {
+            mode: 'near', grab: false, id: 'player',
+          });
+          this.cursor.setPosition(pbox.x + pbox.w / 2, pbox.y + pbox.h / 2);
+          state = 'hand';
         } else {
           this.cursor.hide();
         }
@@ -785,34 +1373,73 @@ export class WorldScene {
     this.target = target;
     this.targetVia = 'mouse';
     const box = target.cursorBox || boxOf(target);
+    // El cuadradito anticipa: dorado si hay acción propia, tenue si solo se
+    // mira (decorado), y ámbar fijo de lejos.
+    const primary = resolveAction(this.ctx(), target, this.heldId());
+    const own = Boolean(primary && primary.kind !== 'look') || isGrabbable(target);
     this.cursor.showAt(box, this.t, {
-      mode: near ? 'near' : 'far',
+      mode: near ? (own ? 'near' : 'faint') : 'far',
       grab: isGrabbable(target),
+      id: target.id,
     });
     this.cursor.setPosition(box.x + box.w / 2, box.y + box.h / 2);
   }
 
-  /** Click derecho sobre el objeto hovereado: lo mira, sin requisito de alcance. */
-  handleRightClick() {
-    const target = this.hoverTarget;
+  /** Mirar un objetivo puntual (Hacer en lo que solo se mira). No pide alcance. */
+  handleLook(target = this.target) {
     if (!target) return;
     this.faceTarget(target);
-    this.runAction(
-      resolveAction(this.ctx(), target, this.heldId(), 'look'), target,
-    );
+    this.lookTarget(target, { emit: true });
   }
 
-  /** Texto de "mirar" del objetivo (el mismo que la interacción look). */
-  lookAt(target) {
+  /**
+   * Mirar unificado (DIRECCION.md): diálogo propio (`talk`) si existe, si no
+   * la línea corta. Hacer en un decorado llama acá.
+   */
+  lookTarget(target, { emit = true } = {}) {
     if (!target) return;
-    if (target.kind === 'surfaceItem') {
-      this.game.showToast(this.surface.describe(target.itemId, this.game.flags));
+    if (target.kind === 'surfaceItem' || target.kind === 'floorItem') {
+      const itemId = target.itemId || target.item?.id || target.worldItem?.itemId;
+      this.game.showToast(this.surface.describe(itemId, this.game.flags));
+      if (emit) this.game.emit('interact', { id: target.id, kind: 'lookItem' });
       return;
     }
-    if (target.kind === 'object') {
+    if (target.kind === 'pickup') {
+      const item = getItem(target.itemId || target.item?.id);
+      this.game.showToast(`${item.name}: ${item.description}`);
+      return;
+    }
+    if (target.kind === 'npc') {
+      if (typeof this.talkTo === 'function') this.talkTo(target.npc);
+      return;
+    }
+    if (target.kind === 'warp') {
+      const warp = target.warp || {};
+      this.game.showToast(warp.look || warpLabel(warp));
+      return;
+    }
+    const obj = target.ref || target;
+    if (obj?.window) this.game.emit('interact', { id: target.id, kind: 'window', obj });
+    const entry = talkEntry(obj?.talk || obj?.interact?.talk, this.game);
+    if (entry && typeof this.openDialog === 'function') this.openDialog(entry, target.id);
+    else this.lookAt(target);
+    if (emit) this.game.emit('interact', { id: target.id, kind: 'object', obj });
+  }
+
+  /** Texto de "mirar" del objetivo (fallback corto, sin diálogo propio). */
+  lookAt(target) {
+    if (!target) return;
+    if (target.kind === 'surfaceItem' || target.kind === 'floorItem') {
+      const itemId = target.itemId || target.item?.id || target.worldItem?.itemId;
+      this.game.showToast(this.surface.describe(itemId, this.game.flags));
+      return;
+    }
+    if (target.kind === 'object' || target.kind === 'container') {
       const obj = target.ref || target;
       const line = lookLine(target.id, this.game.flags)
         || lookLine(obj.id, this.game.flags)
+        || lookLine(obj.talk, this.game.flags)
+        || lookLine(obj.interact?.talk, this.game.flags)
         || obj.description
         || 'No hay nada que ver acá.';
       this.game.showToast(line);
@@ -825,11 +1452,93 @@ export class WorldScene {
     if (target.label) this.game.showToast(target.label);
   }
 
+  // ------------------------------------- línea de mirar de la primera vez
+  // Un objeto con verbo propio (ropero, radio, escalera, portón) conserva su
+  // línea de mirar: Juan la dice la primera vez que lo usa y no la repite
+  // (DIRECCION.md, "Tipos de objeto" regla 2). Se guarda por partida en
+  // `game.seenLook` y la borra `reset()` (main.js).
+
+  /** Texto de mirar de un objetivo, sin abrir nada. */
+  lookTextFor(target) {
+    if (!target) return null;
+    const obj = target.ref || target;
+    if (target.kind === 'warp') {
+      const warp = target.warp || {};
+      const line = lookLine(warp.id, this.game.flags)
+        || lookLine(warp.talk, this.game.flags)
+        || warp.look;
+      if (line) return line;
+      // Sin texto propio: la primera línea de su entrada de mirar del guion
+      // (la escalera que baja del altillo se llama `stairs`).
+      const talkId = warp.talk || warp.id;
+      const entry = talkId && TALK[talkId] ? talkEntry(talkId, this.game) : null;
+      return entry?.lines?.[0] || null;
+    }
+    const line = lookLine(obj?.id, this.game.flags)
+      || lookLine(obj?.talk, this.game.flags)
+      || lookLine(obj?.interact?.talk, this.game.flags)
+      || lookLine(target.id, this.game.flags)
+      || obj?.description;
+    if (line) return line;
+    // Sin línea corta: la primera línea de su diálogo propio.
+    if (obj?.talk && TALK[obj.talk]) {
+      return talkEntry(obj.talk, this.game)?.lines?.[0] || null;
+    }
+    return null;
+  }
+
+  /** Id estable del objetivo para recordar la línea dicha. */
+  firstLookKey(target) {
+    if (!target) return null;
+    if (target.kind === 'warp') return target.warp?.id || target.id || null;
+    const obj = target.ref || target;
+    return obj?.id || target.id || null;
+  }
+
+  /**
+   * Marca y devuelve la línea de mirar de la primera vez, o null si ya se
+   * dijo / el objetivo no tiene verbo propio / la acción ya es Mirar.
+   */
+  firstUseLine(target, action) {
+    if (!target || !action) return null;
+    if (action.kind === 'look' || action.kind === 'warp') return null;
+    if (!OWN_VERB_TYPES.has(typeOf(target))) return null;
+    const key = this.firstLookKey(target);
+    if (!key) return null;
+    if (!this.game.seenLook) this.game.seenLook = {};
+    if (this.game.seenLook[key]) return null;
+    const text = this.lookTextFor(target);
+    if (!text) return null;
+    this.game.seenLook[key] = true;
+    return { key, text };
+  }
+
+  /** Igual que firstUseLine, para un paso (la línea va antes de irse). */
+  firstWarpLine(warp) {
+    if (!warp) return null;
+    if (!this.game.seenLook) this.game.seenLook = {};
+    const key = warp.id || null;
+    if (!key || this.game.seenLook[key]) return null;
+    const text = this.lookTextFor({ kind: 'warp', warp });
+    if (!text) return null;
+    this.game.seenLook[key] = true;
+    return text;
+  }
+
   // ------------------------------------------------------------- acciones
 
   /** Contexto del resolvedor (ver src/actions.js): sin `this` adentro. */
   ctx() {
-    return { game: this.game, objects: this.mapData?.objects || [] };
+    return {
+      game: this.game,
+      objects: this.mapData?.objects || [],
+      map: this.mapData,
+      items: this.worldState?.items || [],
+      npcs: this.npcs || [],
+      warps: this.mapData?.warps || [],
+      player: this.player,
+      checkSupport: (args) => this.checkSupportCached(args),
+    };
   }
 
   /** Id del ítem en la mano, o null. */
@@ -855,22 +1564,29 @@ export class WorldScene {
       }
       return;
     }
+    // Primera vez que se usa un objeto con verbo propio: antes del resultado,
+    // Juan dice su línea de mirar. Si el uso abre un diálogo propio de la
+    // historia, ese manda y la línea solo queda marcada como dicha.
+    const first = this.firstUseLine(target, action);
+    if (first && action.kind !== 'talk') this.game.showToast(first.text);
+
     const obj = action.payload?.object;
     switch (action.kind) {
       case 'warp':
         this.tryWarp(action.payload?.warp || (target && target.warp));
         break;
       case 'talk':
-        this.talkTo(target.npc);
+        if (action.payload?.npc) this.talkTo(target.npc);
+        else this.lookTarget(target, { emit: true });
         break;
       case 'open':
-        this.game.openChest(target.container);
-        this.cursor.hide();
-        this.game.emit('interact', { id: target.id, kind: 'container' });
-        break;
-      case 'take':
-        if (target.kind === 'pickup') target.pickup.take();
-        else if (target.kind === 'surfaceItem') this.takeSurfaceItem(target);
+        if (target.container) {
+          this.game.openChest(target.container);
+          this.cursor.hide();
+          this.game.emit('interact', { id: target.id, kind: 'container' });
+        } else {
+          this.runAction({ ...action, kind: 'ammo' }, target);
+        }
         break;
       case 'ammo':
         this.game.showToast('Las balas se compran en la arena.');
@@ -883,16 +1599,18 @@ export class WorldScene {
           this.game.emit('viewEnd', { id: target.id });
         });
         break;
+      case 'window':
+        this.setWindow(obj, action.payload?.to);
+        break;
       case 'closeWindow':
         this.game.emit('interact', { id: obj.id, kind: 'window', obj });
         this.closeWindow(obj);
         break;
+      case 'toggle':
+        this.toggleDevice(obj, action.payload?.device);
+        break;
       case 'takePava':
         this.takePava();
-        break;
-      case 'drop':
-        this.dropSelectedOn(obj);
-        this.game.emit('interact', { id: target.id, kind: 'surface', obj });
         break;
       case 'use':
         this.runItemUse(action, target);
@@ -901,10 +1619,9 @@ export class WorldScene {
         this.runSelfUse(action);
         break;
       case 'look':
-        // Click derecho: solo describe. Click/E: como interact() de siempre
-        // (diálogo propio del objeto si lo tiene, si no la línea de "mirar").
-        if (action.payload?.via === 'look') this.lookAt(target);
-        else this.lookObject(target);
+        // Hacer = Mirar para decorados y aparatos sin verbo propio. Es el
+        // mismo camino que Q/B/click derecho: diálogo propio o línea corta.
+        this.lookTarget(target, { emit: true });
         break;
       case 'none':
         if (action.label) this.game.showToast(action.label);
@@ -959,29 +1676,143 @@ export class WorldScene {
     }
   }
 
-  /** Click izquierdo = acción principal, igual que E/A (sin warp bajo los pies). */
-  handleMouseClick() {
-    const target = this.hoverTarget;
-    if (target) this.faceTarget(target);
-    this.runAction(resolveAction(this.ctx(), target, this.heldId(), 'primary'), target);
-  }
-
   /**
-   * "Mirar" del click/E sobre un objeto: su diálogo propio si tiene uno (como
-   * hacía interact()) y, si no, la línea de siempre.
+   * Click izquierdo = Hacer. Sobre Juan (o sin objetivo con joystick) es el
+   * uso propio del ítem; con mouse, el click en piso vacío no hace nada (§11.5).
    */
-  lookObject(target) {
-    if (!target) return;
-    if (target.kind !== 'object') {
-      this.lookAt(target);
+  handleMouseClick(input = null) {
+    // Cargando un mueble Hacer apoya (salvo hablar con una persona).
+    if (this.carryData()) {
+      const carried = this.hoverTarget;
+      if (carried && typeOf(carried) === 'person') {
+        this.faceTarget(carried);
+        this.runAction(
+          resolveAction(this.ctx(), carried, this.heldId()), carried,
+        );
+        return;
+      }
+      this.runHands(this.handsAction, input);
       return;
     }
-    const obj = target.ref || target;
-    if (obj.window) this.game.emit('interact', { id: target.id, kind: 'window', obj });
-    const entry = talkEntry(obj.interact?.talk, this.game);
-    if (entry) this.openDialog(entry, target.id);
-    else this.lookAt(target);
-    this.game.emit('interact', { id: target.id, kind: 'object', obj });
+    if (this.selfHover) {
+      const self = resolveAction(this.ctx(), null, this.heldId());
+      this.runAction(self, null);
+      return;
+    }
+    const target = this.hoverTarget;
+    if (!target) return;
+    this.faceTarget(target);
+    this.runAction(resolveAction(this.ctx(), target, this.heldId()), target);
+  }
+
+  /** Manos: agarra, deja, levanta o apoya según resolveHands (§4). */
+  runHands(action, input = null) {
+    if (!action) return;
+    if (action.needsNear && this.hoverTarget && !this.hoverNear) {
+      this.faceTarget(this.hoverTarget);
+      this.warnNear();
+      return;
+    }
+    if (action.blocked === 'full') {
+      this.game.showToast('La mochila está llena.');
+      return;
+    }
+    switch (action.kind) {
+      case 'grab': {
+        const target = action.payload?.target;
+        if (!target) break;
+        if (target.kind === 'pickup') target.pickup.take();
+        else this.takeSurfaceItem(target);
+        break;
+      }
+      case 'takePava':
+        this.takePava();
+        break;
+      case 'lift':
+        this.startCarry(action.payload?.object);
+        break;
+      case 'drop':
+        this.dropHeld(action.payload);
+        break;
+      case 'support':
+        this.supportCarry(action.payload.tx, action.payload.ty);
+        break;
+      default:
+        break;
+    }
+    this.invalidateReach();
+    this.clearGhost();
+    void input;
+  }
+
+  /** Deja el ítem elegido en el piso o en un mueble (§5). */
+  dropHeld(payload) {
+    if (!payload) return;
+    const slot = this.game.selectedSlot;
+    if (payload.object) {
+      const result = this.surface.dropSelected(
+        this.game.inventory, slot, payload.object.id, payload.slot,
+      );
+      if (!result) {
+        this.game.showToast(NO_SPACE_MESSAGE);
+        return;
+      }
+      this.game.inventory = result.inventory;
+      this.game.showToast(`Dejaste ${getItem(result.placed.itemId).name}.`);
+      this.game.emit('itemUsed', {
+        id: result.placed.itemId, targetId: payload.object.id, action: 'drop',
+      });
+      return;
+    }
+    const item = this.game.inventory[slot];
+    const itemName = item ? getItem(item.id).name : 'la cosa';
+    const result = this.surface.dropOnFloor(
+      this.game.inventory, slot, payload.tx, payload.ty,
+    );
+    if (!result) {
+      this.game.showToast(NO_SPACE_MESSAGE);
+      return;
+    }
+    this.game.inventory = result.inventory;
+    this.game.showToast(`Dejaste ${itemName}.`);
+    this.game.emit('itemUsed', {
+      id: result.placed.itemId, targetId: null, action: 'drop',
+    });
+  }
+
+  /** Alias histórico de lookTarget (click/E sobre un objeto). */
+  lookObject(target) {
+    this.lookTarget(target, { emit: true });
+  }
+
+  /** Aparato con estado: prender/apagar (radio, vela). */
+  toggleDevice(obj, dev) {
+    if (!obj || !dev?.toggle) return;
+    const flags = this.game.flags || (this.game.flags = {});
+    flags[dev.toggle] = !flags[dev.toggle];
+    this.applyStoryState();
+    const stateId = typeof dev.state === 'function' ? dev.state(this.game) : 'on';
+    const on = stateId !== 'off' && stateId !== 'apagada' && stateId !== 'closed';
+    if (dev.light) this.setLightState(dev.light, on);
+    const msg = dev.messages && dev.messages[stateId];
+    if (msg) this.game.showToast(msg);
+    this.game.emit('interact', { id: obj.id, kind: 'device', obj, state: stateId });
+  }
+
+  /** Ventana abrible: abrir/cerrar según el estado que eligió el resolvedor. */
+  setWindow(obj, to) {
+    if (!obj) return;
+    const flags = this.game.flags || (this.game.flags = {});
+    const closing = to === 'closed' || to === 'cerrada';
+    if (closing) {
+      this.game.emit('interact', { id: obj.id, kind: 'window', obj });
+      this.closeWindow(obj);
+      return;
+    }
+    delete flags[`closed_${obj.id}`];
+    this.applyStoryState();
+    this.game.showToast(obj.openToast || 'Ventana abierta.');
+    this.game.emit('interact', { id: obj.id, kind: 'windowOpened', obj });
   }
 
   faceTarget(target) {
@@ -998,10 +1829,19 @@ export class WorldScene {
   updateCursor(input) {
     // Con mouse el cuadrado ya lo maneja updateMouseTarget.
     if (input.device === 'mouse') return;
-    const box = this.target
-      ? (this.target.cursorBox || boxOf(this.target))
-      : actionBox(this.player, this.player.dir);
-    this.cursor.showAt(box, this.t);
+    // Sin objetivo no hay cuadradito: nunca sobre piso o pared vacíos.
+    if (!this.target) {
+      this.cursor.fadeOut(this.t);
+      return;
+    }
+    const box = this.target.cursorBox || boxOf(this.target);
+    const primary = resolveAction(this.ctx(), this.target, this.heldId());
+    const own = Boolean(primary && primary.kind !== 'look') || isGrabbable(this.target);
+    this.cursor.showAt(box, this.t, {
+      mode: own ? 'near' : 'faint',
+      grab: isGrabbable(this.target),
+      id: this.target.id,
+    });
     this.cursor.setPosition(box.x + box.w / 2, box.y + box.h / 2);
   }
 
@@ -1010,7 +1850,7 @@ export class WorldScene {
    * Sale del mismo resolvedor que ejecuta la acción, así no pueden divergir.
    */
   actionLabel(target) {
-    return resolveAction(this.ctx(), target, this.heldId(), 'primary')?.label ?? null;
+    return resolveAction(this.ctx(), target, this.heldId())?.label ?? null;
   }
 
   /**
@@ -1021,7 +1861,7 @@ export class WorldScene {
     const obstacles = [];
     const player = this.playerViewBox();
     if (player) obstacles.push(player);
-    const device = input?.device || this.game.input?.device || 'keyboard';
+    const device = input?.device || this.game.input?.device || 'mouse';
     if (device === 'mouse') {
       const point = this.pointerView(input);
       if (point) obstacles.push({ x: point.x - 2, y: point.y - 2, w: 14, h: 16 });
@@ -1032,19 +1872,60 @@ export class WorldScene {
   }
 
   hudParams(input = null) {
+    const device = input?.device || this.game.input?.device || 'mouse';
     const target = this.target;
-    const device = input?.device || this.game.input?.device || 'keyboard';
+    const held = this.heldId();
     const obstacles = this.labelObstacles(input);
+    const carry = typeof this.carryData === 'function' ? this.carryData() : null;
+    const self = resolveAction(this.ctx(), null, held);
+    let primary = null;
+    // El puntero sobre Juan manda: Hacer es el uso propio (§2, §11.5).
+    if (this.selfHover) primary = self;
+    else if (target) primary = resolveAction(this.ctx(), target, held);
+    else if (device !== 'mouse') primary = self;
+
+    // Manos (§4): misma decisión que ejecuta el click derecho / RT.
+    let aim = this.handsAim;
+    if (!aim && typeof this.aimFor === 'function') aim = this.aimFor(input);
+    if (!aim) {
+      aim = { target, tile: null, point: null, device };
+    }
+    const hands = this.handsAction
+      || resolveHands(this.ctx(), aim, held, carry);
+    if (carry) {
+      primary = target && typeOf(target) === 'person'
+        ? resolveAction(this.ctx(), target, held)
+        : hands;
+    }
+
     let prompt = null;
     const warp = this.exitWarp
       || (target && target.kind === 'warp' ? target.warp : null);
     // Si el puntero/objetivo es un objeto (p. ej. el extractor), su prompt
     // manda sobre el "Salir sin traje" del warp bloqueado bajo los pies.
     const overObject = Boolean(target && target.kind !== 'warp');
-    const warpBlocked = !overObject && warp
+    const warpBlocked = !overObject && warp && !carry
       && ((warp.needsSuit && !this.game.hasSuit)
         || (warp.needsFlag && !this.game.flags[warp.needsFlag]));
-    if (warpBlocked) {
+    if (this.selfHover && primary) {
+      // Puntero sobre Juan: el aviso va sobre su cabeza (§2).
+      const pbox = this.playerViewBox();
+      if (pbox) {
+        const p = this.worldToView(this.player.x, this.player.feet - 30);
+        prompt = {
+          action: 'interact',
+          anchor: 'above',
+          label: primary.label,
+          color: '#fff0c0',
+          alpha: 1,
+          x: p.x,
+          y: p.y,
+          frameH: pbox.h,
+          frameW: pbox.w,
+          obstacles,
+        };
+      }
+    } else if (warpBlocked) {
       const b = boxOfWarp(warp);
       const needSuit = warp.needsSuit && !this.game.hasSuit;
       const far = Boolean(this.hoverTarget && !this.hoverNear);
@@ -1055,11 +1936,13 @@ export class WorldScene {
         label: needSuit ? 'Salir sin traje' : this.exitBlocker(),
         x: p.x, y: p.y,
         frameH: b.h * viewport.zoom,
+        frameW: b.w * viewport.zoom,
+        side: warp.labelSide || null,
         obstacles,
         color: far ? '#ffb07a' : '#ff9a8a',
         alpha: far ? 0.75 : 1,
       };
-    } else if (target) {
+    } else if (target && !carry) {
       const far = Boolean(this.hoverTarget && !this.hoverNear);
       const b = target.cursorBox || boxOf(target);
       // Etiqueta centrada arriba del marco del objeto, en coordenadas de vista.
@@ -1067,26 +1950,35 @@ export class WorldScene {
       prompt = {
         action: 'interact',
         anchor: 'above',
-        label: this.actionLabel(target),
+        label: primary?.label || null,
         color: far ? '#ffb07a' : '#fff0c0',
         alpha: far ? 0.75 : 1,
         x: p.x,
         y: p.y,
         frameH: b.h * viewport.zoom,
+        frameW: b.w * viewport.zoom,
+        side: target.warp?.labelSide || null,
         obstacles,
       };
     }
+
+    // Barra: Hacer (si hay algo que hacer), Manos (si resolveHands devuelve
+    // algo) y Mochila siempre. Nunca una entrada Mirar aparte: cuando Hacer
+    // mira, el texto ya dice "Mirar <objeto>".
     const hints = [];
-    if (device === 'mouse') {
-      // Leyenda fija (T7): no cambia con el hover. Solo "Mochila" se clickea.
-      hints.push({ action: 'interact', label: this.useLabel(), static: true });
-      hints.push({ action: 'look', label: 'Mirar', static: true });
-      hints.push({ action: 'bag', label: 'Mochila' });
+    const primaryLabel = primary?.label || null;
+    const handsLabel = hands?.label || null;
+    if (primaryLabel && handsLabel && primaryLabel === handsLabel) {
+      hints.push({ action: 'hands', label: handsLabel, static: true });
     } else {
-      if (target) hints.push({ action: 'interact', label: this.actionLabel(target) });
-      hints.push({ action: 'use', label: this.useLabel() });
-      hints.push({ action: 'bag', label: 'Mochila' });
+      if (primaryLabel) {
+        hints.push({ action: 'interact', label: primaryLabel, static: true });
+      }
+      if (handsLabel) {
+        hints.push({ action: 'hands', label: handsLabel, static: true });
+      }
     }
+    hints.push({ action: 'bag', label: 'Mochila' });
     return { prompt, hintActions: hints, showHotbar: true };
   }
 
@@ -1103,11 +1995,11 @@ export class WorldScene {
     return 'Todavía no está todo listo.';
   }
 
-  /** Etiqueta del ítem en la mano (leyenda del mouse y barra de teclado). */
+  /** Etiqueta del uso propio del ítem en la mano (helper interno). */
   useLabel() {
     const held = this.heldId();
     if (!held) return 'Usar';
-    return resolveAction(this.ctx(), null, held, 'item')?.label || 'Usar';
+    return resolveAction(this.ctx(), null, held)?.label || 'Usar';
   }
 
   drawHud(input, params) {
@@ -1141,6 +2033,7 @@ export class WorldScene {
       prompt: params.prompt ?? null,
       showHotbar: params.showHotbar !== false,
       hintActions: params.hintActions ?? null,
+      hoverHint: this.hoverHint,
       hidden: this.comic.open,
     });
     // Rects reales del HUD para la oclusion del hover/click del proximo cuadro.
@@ -1156,10 +2049,19 @@ export class WorldScene {
     const ex = this.extra.ctx;
     if (this.game.pava && this.game.pava.heating) {
       drawThermometer(ex, VIEW_W - 24, 92, this.game.pava.temp);
-      drawText(ex, this.game.assets.font.glyphs, VIEW_W - 52, 126, 'pava', '#fff0c0',
-        { outline: '#1a1426' });
+      // La etiqueta va en tablita oscura ARRIBA del termómetro: antes flotaba
+      // sin fondo encima de la pava de la cocina y la tapaba.
+      const glyphs = this.game.assets.font.glyphs;
+      const label = 'pava';
+      const lw = measureText(glyphs, label) + 12;
+      const lx = Math.max(4, Math.min(VIEW_W - lw - 4,
+        Math.round(VIEW_W - 21 - lw / 2)));
+      const ly = 70;
+      darkPanel(ex, lx, ly, lw, 15, 0.78);
+      drawText(ex, glyphs, lx + 6, ly + 4, label, '#fff0c0', { outline: '#1a1426' });
     }
     this.drawTimedBar(ex);
+    this.drawHandsFeedback(ex);
     if (this.balloon.open) this.balloon.draw(ex, this.cam.x, this.cam.y, viewport.zoom);
     this.extra.commit();
 
@@ -1181,6 +2083,39 @@ export class WorldScene {
       this.choice.draw(this.hud.ui.ctx, VIEW_W, VIEW_H, input.device);
       this.hud.ui.commit();
     }
+  }
+
+  /**
+   * Aviso rojo de Manos con mouse (§8): "No entra ahí." / "Taparía el paso."
+   * Va en la capa extra, arriba del HUD, junto al lugar apuntado.
+   */
+  drawHandsFeedback(ctx) {
+    const fb = this.handsFeedback;
+    if (!fb || !fb.text) return;
+    const glyphs = this.game.assets.font.glyphs;
+    const z = viewport.zoom;
+    // Caja de la silueta en la vista (arriba de ella va la etiqueta).
+    const boxWorld = fb.box || { x: fb.x - 8, y: fb.y - 16, w: 16, h: 16 };
+    const topLeft = this.worldToView(boxWorld.x, boxWorld.y);
+    const box = {
+      x: topLeft.x, y: topLeft.y, w: boxWorld.w * z, h: boxWorld.h * z,
+    };
+    // La caja de Juan es obstáculo: la etiqueta se corre para no taparlo.
+    const pb = this.playerWorldBox();
+    let playerBox = null;
+    if (pb) {
+      const p = this.worldToView(pb.x, pb.y);
+      playerBox = { x: p.x, y: p.y, w: pb.w * z, h: pb.h * z };
+    }
+    const w = measureText(glyphs, fb.text) + 12;
+    const rect = placeGhostLabel({ box, playerBox, w });
+    const x = rect.x;
+    const y = rect.y;
+    ctx.fillStyle = 'rgba(20, 14, 24, 0.86)';
+    ctx.fillRect(x, y, w, 15);
+    ctx.fillStyle = 'rgba(240, 154, 122, 0.55)';
+    ctx.fillRect(x, y, w, 1);
+    drawText(ctx, glyphs, x + 6, y + 4, fb.text, '#f09a7a', { outline: '#1a1426' });
   }
 
   drawTimedBar(ctx) {
@@ -1247,14 +2182,30 @@ export class WorldScene {
    * sobre el warp que el jugador tiene bajo los pies; si no hay objeto (o el
    * objetivo es el propio warp), manda el warp de los pies.
    */
-  interact() {
+  interact(input = null) {
+    const carry = this.carryData();
     const target = this.target;
+    // Cargando un mueble Hacer apoya (salvo hablar con una persona).
+    if (carry) {
+      if (target && typeOf(target) === 'person') {
+        this.faceTarget(target);
+        this.runAction(
+          resolveAction(this.ctx(), target, this.heldId()), target,
+        );
+        return;
+      }
+      this.runHands(this.handsActionFor(input).action, input);
+      return;
+    }
     const targetIsObject = Boolean(target && target.kind !== 'warp');
     if (this.exitWarp && !targetIsObject) {
       this.tryWarp(this.exitWarp);
       return;
     }
-    this.runAction(resolveAction(this.ctx(), target, this.heldId(), 'primary'), target);
+    const action = target
+      ? resolveAction(this.ctx(), target, this.heldId())
+      : resolveAction(this.ctx(), null, this.heldId());
+    this.runAction(action, target);
   }
 
   closeWindow(obj) {
@@ -1266,7 +2217,7 @@ export class WorldScene {
     this.game.flags[key] = true;
     // La nieve que había entrado (snow_drift) se va con la ventana cerrada.
     this.applyStoryState();
-    this.game.showToast('Ventana cerrada.');
+    this.game.showToast(obj.closeToast || 'Ventana cerrada.');
     this.game.emit('interact', { id: obj.id, kind: 'windowClosed', obj });
   }
 
@@ -1293,36 +2244,12 @@ export class WorldScene {
     this.game.showToast('No podés agarrar eso.');
   }
 
-  dropSelectedOn(obj) {
-    const result = this.surface.dropSelected(
-      this.game.inventory, this.game.selectedSlot, obj.id,
-    );
-    if (!result) {
-      this.game.showToast(NO_SPACE_MESSAGE);
-      return;
-    }
-    this.game.inventory = result.inventory;
-    this.game.showToast(`Dejaste ${getItem(result.placed.itemId).name}.`);
-    this.game.emit('itemUsed', {
-      id: result.placed.itemId, targetId: obj.id, action: 'drop',
-    });
-  }
-
   replaceItem(fromId, toId, count = 1) {
     const removed = removeItem(this.game.inventory, fromId, count);
     if (removed.removed <= 0) return false;
     this.game.inventory = addItem(removed.slots, toId, removed.removed).slots;
     this.game.onInventoryChanged();
     return true;
-  }
-
-  /**
-   * F / X y el click sobre el ítem elegido: uso del ítem en la mano, sobre el
-   * objetivo apuntado o sobre uno mismo.
-   */
-  useSelected() {
-    const target = this.target;
-    this.runAction(resolveAction(this.ctx(), target, this.heldId(), 'item'), target);
   }
 
   /** Poner la pava al fuego (`heatPava`). */
@@ -1497,9 +2424,29 @@ export class WorldScene {
     });
   }
 
+  /**
+   * Cuenta regresiva del paso que espera a que se lea la línea de la primera
+   * vez. Devuelve true el frame en que cambia de ambiente.
+   */
+  updatePendingWarp(dt) {
+    if (!this.pendingWarp) return false;
+    this.pendingWarp.t -= dt;
+    if (this.pendingWarp.t > 0) return false;
+    const warp = this.pendingWarp.warp;
+    this.pendingWarp = null;
+    this.warpNow(warp);
+    return true;
+  }
+
   /** Warp con las mismas reglas al pisarlo o al clickearlo. */
   tryWarp(warp) {
     if (!warp) return;
+    // Ya se está leyendo la línea de la primera vez de este paso.
+    if (this.pendingWarp) return;
+    if (this.game.carry) {
+      this.game.showToast(`Primero apoyá ${this.carryName()}.`);
+      return;
+    }
     if (warp.needsSuit && !this.game.hasSuit) {
       this.openWarning();
       return;
@@ -1508,11 +2455,19 @@ export class WorldScene {
       this.game.showToast(this.exitBlocker());
       return;
     }
+    // Primera vez: la línea de mirar del paso, antes de cambiar de ambiente.
+    const line = this.firstWarpLine(warp);
+    if (line) {
+      this.game.showToast(line);
+      this.pendingWarp = { warp, t: 1.2 };
+      return;
+    }
     this.warpNow(warp);
   }
 
   warpNow(warp) {
     if (!this.canWarp(warp)) return;
+    this.pendingWarp = null;
     this.game.changeScene(warp.to, warp.spawn);
   }
 
@@ -1522,10 +2477,17 @@ export class WorldScene {
   }
 }
 
-/** Objetos que se pueden levantar: muestran el destello del cursor. */
+/** "el balde" -> "El balde" (para avisos que empiezan por el nombre). */
+function capName(name) {
+  const text = name || 'El mueble';
+  return text.charAt(0).toUpperCase() + text.slice(1);
+}
+
+/** Cosas agarrables (type thing): muestran el destello del cursor. */
 function isGrabbable(target) {
   if (!target) return false;
-  return target.kind === 'surfaceItem' || target.kind === 'pickup';
+  if (typeOf(target) !== 'thing') return false;
+  return target.kind === 'pickup' || target.grabbable !== false;
 }
 
 function boxOf(target) {

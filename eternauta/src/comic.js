@@ -101,7 +101,7 @@ export class CaptionBox {
     return null;
   }
 
-  draw(ctx, device = 'keyboard') {
+  draw(ctx, device = 'mouse') {
     if (!this.open) return;
     const w = this.widthBox;
     const h = this.heightBox;
@@ -336,7 +336,7 @@ export class ComicOverlay {
     if (cb) cb();
   }
 
-  draw(ctx, device = 'keyboard') {
+  draw(ctx, device = 'mouse') {
     if (!this.open) return;
     const cols = this.layout.startsWith('3') ? 3 : 2;
     const n = Math.max(1, this.cells.length);

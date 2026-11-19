@@ -67,7 +67,7 @@ export const INITIAL_ITEMS = {
 
   garage: {
     items: [
-      // Estante del garaje: el casco de buzo adaptado.
+      // Estante del garaje: el casco del traje adaptado.
       { objectId: 'garage_shelf', slot: 0, itemId: 'casco' },
       // El bidón de nafta, listo para el electrógeno.
       { objectId: 'bidon', slot: 0, itemId: 'nafta' },

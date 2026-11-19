@@ -53,18 +53,23 @@ test('input teclado: movimiento, interactuar y pausa', () => {
   target.fire('keyup', { code: 'KeyW' });
   assert.deepEqual(input.poll().move, { x: 0, y: 0 });
 
+  // E ya no es Acción en el mundo: Enter/Espacio confirman en menús/diálogos.
   target.fire('keydown', { code: 'KeyE' });
-  const interact = input.poll();
-  assert.equal(interact.a, true);
-  assert.equal(interact.aPressed, true);
+  assert.equal(input.poll().a, false);
+  target.fire('keyup', { code: 'KeyE' });
+
+  target.fire('keydown', { code: 'Enter' });
+  const confirm = input.poll();
+  assert.equal(confirm.a, true);
+  assert.equal(confirm.aPressed, true);
   assert.equal(input.poll().aPressed, false);
 
-  target.fire('keyup', { code: 'KeyE' });
+  target.fire('keyup', { code: 'Enter' });
   target.fire('keydown', { code: 'Escape' });
   assert.equal(input.poll().startPressed, true);
 });
 
-test('input gamepad: deadzone, ejes, cruceta, A y Start', () => {
+test('input gamepad: deadzone, ejes, cruceta, A, B, X, Y y Start', () => {
   const target = makeTarget();
   const input = new Input(target);
 
@@ -100,36 +105,52 @@ test('input gamepad: deadzone, ejes, cruceta, A y Start', () => {
     input.prev = { a: false, b: false, start: false };
     assert.equal(input.poll().startPressed, true);
   });
+
+  // X (botón 2) = Manos, con flanco.
+  withPad(makePad({ buttons: { 2: true } }), () => {
+    input.prev = { ...input.prev, hands: false };
+    const hands = input.poll();
+    assert.equal(hands.hands, true);
+    assert.equal(hands.handsPressed, true);
+    assert.equal(input.poll().handsPressed, false);
+  });
+
+  // RT (botón 7) ya no es Manos: no hace nada.
+  withPad(makePad({ buttons: { 7: true } }), () => {
+    input.prev = { a: false, b: false, start: false };
+    const pressed = input.poll();
+    assert.equal(pressed.hands, false);
+    assert.equal(pressed.handsPressed, false);
+  });
 });
 
-test('input teclado: Q/R cambian de hotbar sólo en el primer frame', () => {
+test('input teclado: Q y R no hacen nada (no hay botón de Mirar)', () => {
   const target = makeTarget();
   const input = new Input(target);
 
   const idle = input.poll();
+  assert.equal(idle.handsPressed, false);
   assert.equal(idle.prevHotbar, false);
   assert.equal(idle.nextHotbar, false);
   assert.equal(idle.slotPressed, -1);
 
   target.fire('keydown', { code: 'KeyQ' });
-  const prevFrame = input.poll();
-  assert.equal(prevFrame.prevHotbar, true);
-  assert.equal(prevFrame.nextHotbar, false);
-  assert.equal(input.poll().prevHotbar, false);
-
+  const q = input.poll();
+  assert.equal(q.handsPressed, false, 'Q ya no mira ni hace nada');
+  assert.equal(q.prevHotbar, false);
+  assert.equal(q.nextHotbar, false);
   target.fire('keyup', { code: 'KeyQ' });
-  target.fire('keydown', { code: 'KeyR' });
-  const nextFrame = input.poll();
-  assert.equal(nextFrame.nextHotbar, true);
-  assert.equal(nextFrame.prevHotbar, false);
-  assert.equal(input.poll().nextHotbar, false);
 
-  // Un toque corto (keydown + keyup en el mismo frame) también dispara una vez.
-  target.fire('keyup', { code: 'KeyR' });
   target.fire('keydown', { code: 'KeyR' });
+  const r = input.poll();
+  assert.equal(r.nextHotbar, false, 'R queda libre');
+  assert.equal(r.prevHotbar, false);
+  assert.equal(r.handsPressed, false);
   target.fire('keyup', { code: 'KeyR' });
-  assert.equal(input.poll().nextHotbar, true);
-  assert.equal(input.poll().nextHotbar, false);
+
+  // La barra con teclado va con 1-8.
+  target.fire('keydown', { code: 'Digit4' });
+  assert.equal(input.poll().slotPressed, 3);
 });
 
 test('input teclado: Digit3 -> slotPressed 2 una vez y después -1', () => {
@@ -207,12 +228,8 @@ test('input mixto: las teclas funcionan aunque haya gamepad conectado', () => {
 
   withPad(makePad(), () => {
     target.fire('keydown', { code: 'KeyQ' });
-    assert.equal(input.poll().prevHotbar, true);
+    assert.equal(input.poll().handsPressed, false, 'Q no hace nada');
     target.fire('keyup', { code: 'KeyQ' });
-
-    target.fire('keydown', { code: 'KeyR' });
-    assert.equal(input.poll().nextHotbar, true);
-    target.fire('keyup', { code: 'KeyR' });
 
     target.fire('keydown', { code: 'Digit5' });
     assert.equal(input.poll().slotPressed, 4);
@@ -223,19 +240,58 @@ test('input mixto: las teclas funcionan aunque haya gamepad conectado', () => {
   });
 });
 
-test('deviceAfter: teclado gana, después pad, si no hay actividad se mantiene', () => {
-  assert.equal(deviceAfter('keyboard', {}), 'keyboard');
+test('deviceAfter: solo mouse y pad; el teclado nunca cambia el modo', () => {
+  assert.equal(deviceAfter(undefined, {}), 'mouse');
   assert.equal(deviceAfter('pad', { pad: true }), 'pad');
-  assert.equal(deviceAfter('keyboard', { pad: true }), 'pad');
-  assert.equal(deviceAfter('pad', { keyboard: true }), 'keyboard');
-  assert.equal(deviceAfter('pad', { keyboard: true, pad: true }), 'keyboard');
-  assert.equal(deviceAfter(undefined, {}), 'keyboard');
+  assert.equal(deviceAfter('mouse', { pad: true }), 'pad');
+  // Usar el teclado no saca el modo mouse.
+  assert.equal(deviceAfter('mouse', { keyboard: true }), 'mouse');
+  assert.equal(deviceAfter('pad', { keyboard: true }), 'pad');
+  assert.equal(deviceAfter('pad', { keyboard: true, pad: true }), 'pad');
 });
 
 test('deviceAfter: el mouse gana sobre teclado y pad', () => {
   assert.equal(deviceAfter('keyboard', { mouse: true }), 'mouse');
   assert.equal(deviceAfter('pad', { mouse: true }), 'mouse');
   assert.equal(deviceAfter('pad', { mouse: true, keyboard: true, pad: true }), 'mouse');
+});
+
+test('deviceAfter: el pad toma el control; el mouse queda si fue reciente', () => {
+  assert.equal(deviceAfter('mouse', { keyboard: true, mouseRecent: true }), 'mouse');
+  assert.equal(deviceAfter('mouse', { pad: true, mouseRecent: true }), 'pad',
+    'el pad toma el control enseguida');
+  assert.equal(deviceAfter('mouse', { keyboard: true, mouseRecent: false }), 'mouse');
+  assert.equal(deviceAfter('pad', { keyboard: true, mouseRecent: false }), 'pad',
+    'usar el teclado no cambia de dispositivo');
+});
+
+test('input mouse: un temblor de 2 px no toma el control, 5 px sí', () => {
+  const target = makeTarget();
+  const input = new Input(target);
+  // Primer movimiento: toma el control (no hay referencia previa).
+  target.fire('pointermove', { clientX: 100, clientY: 100 });
+  assert.equal(input.poll().device, 'mouse');
+
+  target.fire('keydown', { code: 'KeyW' });
+  assert.equal(input.poll().device, 'mouse', 'el teclado no cambia el modo');
+  target.fire('keyup', { code: 'KeyW' });
+
+  input.mouseAt = 0;
+  target.fire('keydown', { code: 'KeyW' });
+  assert.equal(input.poll().device, 'mouse', 'sin mouse sigue mouse, no "keyboard"');
+  target.fire('keyup', { code: 'KeyW' });
+
+  // Temblor de 2 px: no vuelve a marcar actividad.
+  input.mouseAt = 0;
+  target.fire('pointermove', { clientX: 102, clientY: 101 });
+  assert.equal(input.poll().device, 'mouse');
+  assert.equal(input.mouseAt, 0, 'el temblor no cuenta como movimiento');
+
+  // Movimiento real de 5 px: sí.
+  input.mouseAt = 0;
+  target.fire('pointermove', { clientX: 107, clientY: 101 });
+  assert.equal(input.poll().device, 'mouse');
+  assert.ok(input.mouseAt > 0);
 });
 
 test('input mouse: guarda el puntero y marca el mouse como último dispositivo', () => {
@@ -251,21 +307,21 @@ test('input mouse: guarda el puntero y marca el mouse como último dispositivo',
   assert.equal(second.device, 'mouse');
   assert.deepEqual(second.pointer, { x: 120, y: 80 });
 
+  input.mouseAt = 0;
   target.fire('keydown', { code: 'KeyW' });
-  assert.equal(input.poll().device, 'keyboard');
+  assert.equal(input.poll().device, 'mouse', 'el teclado no toma el control');
 });
 
-test('input teclado: X (KeyF) e Y (KeyI o Tab) de flanco', () => {
+test('input teclado: F/R/Q no hacen nada; I/Tab siguen abriendo la mochila', () => {
   const target = makeTarget();
   const input = new Input(target);
 
-  assert.equal(input.poll().xPressed, false);
-  target.fire('keydown', { code: 'KeyF' });
-  const x = input.poll();
-  assert.equal(x.x, true);
-  assert.equal(x.xPressed, true);
-  assert.equal(input.poll().xPressed, false);
-  target.fire('keyup', { code: 'KeyF' });
+  for (const code of ['KeyF', 'KeyR', 'KeyQ']) {
+    target.fire('keydown', { code });
+    const frame = input.poll();
+    assert.equal(frame.handsPressed, false, `${code} no es Manos`);
+    target.fire('keyup', { code });
+  }
 
   target.fire('keydown', { code: 'KeyI' });
   const y = input.poll();
@@ -280,17 +336,16 @@ test('input teclado: X (KeyF) e Y (KeyI o Tab) de flanco', () => {
   assert.equal(input.poll().yPressed, false);
 });
 
-test('input gamepad: botones 2 y 3 son X e Y', () => {
+test('input gamepad: el botón 3 es Y (Mochila) y el 2 es X (Manos)', () => {
   const target = makeTarget();
   const input = new Input(target);
 
   withPad(makePad({ buttons: { 2: true } }), () => {
     input.prev = { a: false, b: false, start: false };
     const pressed = input.poll();
-    assert.equal(pressed.x, true);
-    assert.equal(pressed.xPressed, true);
-    assert.equal(pressed.yPressed, false);
-    assert.equal(input.poll().xPressed, false);
+    assert.equal(pressed.hands, true);
+    assert.equal(pressed.handsPressed, true);
+    assert.equal(pressed.y, false);
   });
 
   withPad(makePad({ buttons: { 3: true } }), () => {
@@ -298,15 +353,15 @@ test('input gamepad: botones 2 y 3 son X e Y', () => {
     const pressed = input.poll();
     assert.equal(pressed.y, true);
     assert.equal(pressed.yPressed, true);
-    assert.equal(pressed.xPressed, false);
+    assert.equal(pressed.handsPressed, false);
   });
 });
 
-test('input: el dispositivo cambia pad -> teclado y viceversa', () => {
+test('input: hay dos dispositivos, mouse y pad; el teclado acompaña', () => {
   const target = makeTarget();
   const input = new Input(target);
 
-  assert.equal(input.poll().device, 'keyboard');
+  assert.equal(input.poll().device, 'mouse');
 
   withPad(makePad({ buttons: { 0: true } }), () => {
     assert.equal(input.poll().device, 'pad');
@@ -318,19 +373,16 @@ test('input: el dispositivo cambia pad -> teclado y viceversa', () => {
   });
 
   target.fire('keydown', { code: 'KeyW' });
-  assert.equal(input.poll().device, 'keyboard');
+  assert.equal(input.poll().device, 'pad', 'caminar con WASD no saca el pad');
   target.fire('keyup', { code: 'KeyW' });
 
-  // El stick fuera de la deadzone también cuenta como actividad del pad.
+  // El stick fuera de la deadzone cuenta como actividad del pad.
   withPad(makePad({ axes: [1, 0] }), () => {
     assert.equal(input.poll().device, 'pad');
   });
-  // Con teclado y pad en el mismo frame gana el teclado.
-  withPad(makePad({ buttons: { 0: true } }), () => {
-    target.fire('keydown', { code: 'KeyW' });
-    assert.equal(input.poll().device, 'keyboard');
-    target.fire('keyup', { code: 'KeyW' });
-  });
+  // El mouse toma el control con un movimiento real.
+  target.fire('pointermove', { clientX: 50, clientY: 50 });
+  assert.equal(input.poll().device, 'mouse');
 });
 
 test('input teclado: Backspace también es volver', () => {
@@ -404,4 +456,27 @@ test('input mouse: el menú contextual del canvas se cancela', () => {
   let prevented = 0;
   target.fire('contextmenu', { preventDefault() { prevented += 1; } });
   assert.equal(prevented, 1);
+});
+
+test('input mouse: click derecho = Manos (con flanco), no Mirar', () => {
+  const target = makeTarget();
+  const input = new Input(target);
+
+  assert.equal(input.poll().handsPressed, false);
+  target.fire('mousedown', { button: 2, clientX: 10, clientY: 12 });
+  const frame = input.poll();
+  assert.equal(frame.handsPressed, true);
+  assert.equal(frame.device, 'mouse');
+  assert.equal(input.poll().handsPressed, false, 'se resetea cada frame');
+  assert.deepEqual(frame.rightClick, { x: 10, y: 12 });
+});
+
+test('input: Enter y Espacio confirman en menús, no en el mundo', () => {
+  const target = makeTarget();
+  const input = new Input(target);
+  target.fire('keydown', { code: 'Space' });
+  const space = input.poll();
+  assert.equal(space.aPressed, true, 'confirma menús/diálogos');
+  assert.equal(space.padAPressed, false, 'el mundo solo actúa con A del pad');
+  assert.equal(space.handsPressed, false);
 });

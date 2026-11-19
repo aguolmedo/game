@@ -1,8 +1,10 @@
 import * as THREE from 'three';
-import { depthFor, imageSprite, regionTexture, makeGlow, buildFloorTexture }
-  from './sprite.js';
+import {
+  depthFor, imageSprite, regionTexture, makeGlow, buildFloorTexture, opaqueRect,
+} from './sprite.js';
 import { VIEW_W, VIEW_H } from './sprite.js';
 import { viewport, snapCamera } from './viewport.js';
+import { bumpMapVersion } from './reach.js';
 
 // Atlas donde buscar cada sprite de mapa, en orden. Las piezas viejas viven
 // en objects.png; las nuevas en los atlases del concepto.
@@ -33,6 +35,7 @@ export function anySprite(assets, name) {
       }),
     );
     mesh.userData.frame = { x, y, w, h };
+    mesh.userData.sheet = sheet;
     return mesh;
   }
   throw new Error(`Falta el sprite "${name}" en todos los atlases de mapa`);
@@ -59,6 +62,9 @@ export class WorldMap {
     this.solids = [];
     this.candidates = [];
     this.glows = [];
+    // Posición original de cada mueble (para reset() y para devolver un
+    // mueble liviano a su lugar si la historia interrumpe el acarreo).
+    this.home = new Map();
 
     const floorTex = buildFloorTexture(map, assets);
     const floor = imageSprite(floorTex, this.w, this.h, 0.5);
@@ -67,11 +73,16 @@ export class WorldMap {
     scene.add(floor);
     this.floor = floor;
 
-    for (const obj of map.objects) this.addObject(obj);
+    for (const obj of map.objects) {
+      this.home.set(obj.id, { x: obj.x, y: obj.y, solid: obj.solid });
+      this.addObject(obj);
+    }
+    this.rebuildSolids();
   }
 
-  addObject(obj) {
-    const mesh = anySprite(this.assets, obj.sprite);
+  /** Geometría de dibujo de un objeto según su posición actual en la grilla. */
+  layout(obj) {
+    const mesh = obj.mesh;
     const w = mesh.geometry.parameters.width;
     const h = mesh.geometry.parameters.height;
     const anchorX = (obj.x + obj.tw / 2) * 16;
@@ -80,18 +91,64 @@ export class WorldMap {
     const px = Math.round(anchorX + ox);
     const py = Math.round(anchorY - h / 2 + oy);
     const z = Number.isFinite(obj.z) ? obj.z : (obj.flat ? 1.9 : depthFor(anchorY));
-    mesh.position.set(px, py, z);
-    this.scene.add(mesh);
-    obj.mesh = mesh;
+    const trim = opaqueRect(mesh.userData.sheet && mesh.userData.sheet.image,
+      [mesh.userData.frame.x, mesh.userData.frame.y, w, h]);
+    const drawBox = trim
+      ? {
+        x: Math.round(px - w / 2 + trim.x) - 1,
+        y: Math.round(py - h / 2 + trim.y) - 1,
+        w: trim.w + 2,
+        h: trim.h + 2,
+      }
+      : { x: px - w / 2 - 1, y: py - h / 2 - 1, w: w + 2, h: h + 2 };
+    return {
+      anchorX, anchorY, px, py, w, h, z, drawBox,
+    };
+  }
 
-    if (obj.glow) {
-      const glow = makeGlow(this.scene, 64, 40);
-      glow.position.set(px, py - h * 0.2, z + 0.002);
-      this.glows.push(glow);
-      obj.glowMesh = glow;
+  /** Vuelve a ubicar malla, resplandor y candidatos de un objeto movido. */
+  updateObject(obj) {
+    if (!obj || !obj.mesh) return;
+    bumpMapVersion(this.map);
+    const box = this.layout(obj);
+    obj.mesh.position.set(box.px, box.py, box.z);
+    if (obj.glowMesh) obj.glowMesh.position.set(box.px, box.py - box.h * 0.2, box.z + 0.002);
+    for (const c of this.candidates) {
+      if (c.ref !== obj) continue;
+      if (c.kind === 'object') {
+        const hit = obj.hitFromSprite
+          ? { x: box.px, y: box.py + box.h / 2, w: box.w, h: box.h }
+          : { x: box.anchorX, y: box.anchorY, w: obj.tw * 16, h: obj.th * 16 };
+        c.x = hit.x;
+        c.y = hit.y;
+        c.w = hit.w;
+        c.h = hit.h;
+      } else {
+        c.x = box.anchorX;
+        c.y = box.anchorY;
+        c.w = obj.tw * 16;
+        c.h = obj.th * 16;
+      }
+      c.cursorBox = box.drawBox;
     }
+  }
 
-    if (obj.solid) {
+  /** Muestra u oculta un objeto (mueble liviano levantado, historia). */
+  hideObject(obj, hidden) {
+    if (!obj) return;
+    obj.hidden = Boolean(hidden);
+    if (obj.mesh) obj.mesh.visible = !obj.hidden;
+    if (obj.glowMesh) obj.glowMesh.visible = !obj.hidden;
+    bumpMapVersion(this.map);
+    this.rebuildSolids();
+  }
+
+  /** Rehace la lista de sólidos con los objetos visibles (movidos incluidos). */
+  rebuildSolids() {
+    bumpMapVersion(this.map);
+    this.solids = [];
+    for (const obj of this.map.objects || []) {
+      if (!obj.solid || obj.hidden) continue;
       const s = obj.solid === true
         ? { x: 0, y: 0, w: obj.tw, h: obj.th }
         : obj.solid;
@@ -103,13 +160,45 @@ export class WorldMap {
         id: obj.id,
       });
     }
+  }
 
-    if (obj.interact) {
+  /** Devuelve todos los objetos a su casillero original (reset de partida). */
+  resetPositions() {
+    bumpMapVersion(this.map);
+    for (const obj of this.map.objects || []) {
+      const home = this.home.get(obj.id);
+      if (home) {
+        obj.x = home.x;
+        obj.y = home.y;
+        obj.solid = home.solid;
+      }
+      obj.hidden = false;
+      if (obj.mesh) obj.mesh.visible = true;
+      this.updateObject(obj);
+    }
+    this.rebuildSolids();
+  }
+
+  addObject(obj) {
+    const mesh = anySprite(this.assets, obj.sprite);
+    this.scene.add(mesh);
+    obj.mesh = mesh;
+    const box = this.layout(obj);
+    mesh.position.set(box.px, box.py, box.z);
+
+    if (obj.glow) {
+      const glow = makeGlow(this.scene, 64, 40);
+      glow.position.set(box.px, box.py - box.h * 0.2, box.z + 0.002);
+      this.glows.push(glow);
+      obj.glowMesh = glow;
+    }
+
+    if ((obj.type || obj.interact) && !obj.container) {
       // `hitFromSprite`: la caja de hover/accion es la del sprite dibujado
       // (con su offset), no la del tile de anclaje. La vela del altillo la usa.
       const hit = obj.hitFromSprite
-        ? { x: px, y: py + h / 2, w, h }
-        : { x: anchorX, y: anchorY, w: obj.tw * 16, h: obj.th * 16 };
+        ? { x: box.px, y: box.py + box.h / 2, w: box.w, h: box.h }
+        : { x: box.anchorX, y: box.anchorY, w: obj.tw * 16, h: obj.th * 16 };
       this.candidates.push({
         id: obj.id,
         kind: 'object',
@@ -118,7 +207,11 @@ export class WorldMap {
         y: hit.y,
         w: hit.w,
         h: hit.h,
-        label: obj.interact.label,
+        cursorBox: box.drawBox,
+        label: obj.name || obj.id,
+        type: obj.type || 'decor',
+        name: obj.name,
+        talk: obj.talk || obj.interact?.talk,
         interact: obj.interact,
         ref: obj,
       });
@@ -128,11 +221,15 @@ export class WorldMap {
         id: obj.id,
         kind: 'container',
         priority: 1,
-        x: anchorX,
-        y: anchorY,
+        x: box.anchorX,
+        y: box.anchorY,
         w: obj.tw * 16,
         h: obj.th * 16,
-        label: `Abrir ${obj.container.name.toLowerCase()}`,
+        cursorBox: box.drawBox,
+        label: obj.name || obj.container.name,
+        type: obj.type || 'container',
+        name: obj.name,
+        talk: obj.talk,
         container: obj.container,
         ref: obj,
       });
@@ -171,7 +268,8 @@ export class WorldMap {
       }
       if (obj.glowMesh) {
         const candle = /oil_lamp|candle|lampara|vela/i.test(obj.sprite || '');
-        obj.glowMesh.visible = !dark || candle;
+        // Un objeto oculto (p. ej. la vela antes del apagón) no deja su resplandor.
+        obj.glowMesh.visible = !obj.hidden && (!dark || candle);
       }
     }
   }

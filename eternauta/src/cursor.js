@@ -3,6 +3,11 @@ import { canvasOverlay } from './sprite.js';
 
 const SIZE = 112;
 
+// Cursor lejos: ámbar fijo y bien visible, distinto del dorado que late cerca.
+export const FAR_RGB = '255, 190, 120';
+export const FAR_ALPHA = 0.75;
+export const FAR_FRAME_ALPHA = 0.18;
+
 export class ActionCursor {
   constructor(scene) {
     this.ui = canvasOverlay(SIZE, SIZE, 0);
@@ -13,22 +18,57 @@ export class ActionCursor {
     this.box = null;
     this.mode = 'near';
     this.grab = false;
+    this.id = null;
+    this.animFrom = null;
+    this.animStart = 0;
+    this.appearAt = null;
+    this.fadeAt = null;
+    this.alpha = 1;
+    this.drawn = null;
   }
 
   hide() {
     this.ui.mesh.visible = false;
+    this.animFrom = null;
+    this.appearAt = null;
+    this.fadeAt = null;
   }
 
   /**
    * opts.mode: 'near' (dorado, por defecto) | 'far' (ambar, mas tenue).
    * opts.grab: agrega un brillo sutil en la esquina superior derecha.
+   * opts.id: cambia de objetivo -> los corchetes se deslizan (~80 ms); al
+   * aparecer hacen un pop de 3 px hacia adentro (~100 ms).
    */
   showAt(box, t, opts = {}) {
+    const wasVisible = this.ui.mesh.visible;
+    if (!wasVisible || (opts.id && this.id && opts.id !== this.id)) {
+      this.animFrom = this.box || box;
+      this.animStart = t;
+    }
+    if (!wasVisible) this.appearAt = t;
+    this.fadeAt = null;
+    this.alpha = 1;
     this.t = t;
     this.box = box;
-    this.mode = opts.mode === 'far' ? 'far' : 'near';
+    this.id = opts.id || null;
+    this.mode = opts.mode === 'far' ? 'far' : opts.mode === 'faint' ? 'faint' : 'near';
     this.grab = Boolean(opts.grab);
     this.ui.mesh.visible = true;
+    this.draw();
+  }
+
+  /** Al desaparecer se apaga en ~120 ms, sin saltar. */
+  fadeOut(t) {
+    if (!this.ui.mesh.visible) return;
+    this.t = t;
+    if (this.fadeAt == null) this.fadeAt = t;
+    const k = (t - this.fadeAt) / 0.12;
+    if (k >= 1) {
+      this.hide();
+      return;
+    }
+    this.alpha = Math.max(0, 1 - k);
     this.draw();
   }
 
@@ -42,16 +82,40 @@ export class ActionCursor {
     if (!b) return;
     this.ui.clear();
     const far = this.mode === 'far';
-    const floor = far ? 0.42 : 0.65;
-    const amp = far ? 0.26 : 0.35;
-    const pulse = floor + amp * (0.5 + 0.5 * Math.sin(this.t * 4));
-    const rgb = far ? '255, 190, 120' : '255, 224, 150';
+    const faint = this.mode === 'faint';
+    // Deslizamiento entre objetivos: interpola la caja en ~80 ms.
+    const slide = this.animFrom
+      ? Math.min(1, Math.max(0, (this.t - this.animStart) / 0.08))
+      : 1;
+    const from = this.animFrom || b;
+    const box = {
+      x: from.x + (b.x - from.x) * slide,
+      y: from.y + (b.y - from.y) * slide,
+      w: from.w + (b.w - from.w) * slide,
+      h: from.h + (b.h - from.h) * slide,
+    };
+    if (slide >= 1) this.animFrom = null;
+    // Pop al aparecer: arranca 3 px mas grande y se mete en ~100 ms.
+    const popK = this.appearAt == null
+      ? 1
+      : Math.min(1, Math.max(0, (this.t - this.appearAt) / 0.1));
+    const pop = Math.round(3 * (1 - popK));
+    ctx.globalAlpha = this.alpha;
+    const floor = 0.65;
+    const amp = 0.35;
+    // Lejos: ámbar fijo (sin latido) y bien legible. Faint: dorado tenue y
+    // quieto (decorado que solo se mira). Cerca con acción: dorado que late.
+    const pulse = far ? FAR_ALPHA : faint ? 0.6
+      : floor + amp * (0.5 + 0.5 * Math.sin(this.t * 4));
+    const rgb = far ? FAR_RGB : '255, 224, 150';
     const color = `rgba(${rgb}, ${pulse.toFixed(2)})`;
-    const frameAlpha = far ? 0.18 : 0.30;
+    const frameAlpha = far ? FAR_FRAME_ALPHA : faint ? 0.16 : 0.30;
     const dark = 'rgba(26, 20, 38, 0.85)';
     // El plano esta centrado en el objeto: dibujamos en coordenadas locales.
-    const w = Math.max(10, Math.min(SIZE - 8, Math.round(b.w - 4)));
-    const h = Math.max(10, Math.min(SIZE - 8, Math.round(b.h - 4)));
+    const w = Math.max(10, Math.min(SIZE - 8, Math.round(box.w + pop * 2)));
+    const h = Math.max(10, Math.min(SIZE - 8, Math.round(box.h + pop * 2)));
+    this.drawn = { x: box.x + box.w / 2, y: box.y + box.h / 2 };
+    this.ui.mesh.position.set(Math.round(this.drawn.x), Math.round(this.drawn.y), 6);
     const left = Math.round((SIZE - w) / 2);
     const top = Math.round((SIZE - h) / 2);
     const len = 5;
@@ -90,11 +154,12 @@ export class ActionCursor {
       ctx.fillRect(gx - 1, gy + 1, 1, 1);
       ctx.fillRect(gx + 1, gy - 1, 1, 1);
     }
+    ctx.globalAlpha = 1;
     this.ui.commit();
   }
 
-  /** bbox en pixeles del mundo. */
+  /** bbox en pixeles del mundo (la posicion final; el dibujo interpola). */
   setPosition(x, y) {
-    this.ui.mesh.position.set(Math.round(x), Math.round(y), 6);
+    if (!this.drawn) this.ui.mesh.position.set(Math.round(x), Math.round(y), 6);
   }
 }

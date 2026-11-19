@@ -1,5 +1,48 @@
 import * as THREE from 'three';
 
+// Cache de recortes opacos por imagen+frame: el cuadradito enmarca el dibujo.
+const TRIM_CACHE = new WeakMap();
+
+/** BBox de los pixeles no transparentes de un frame del atlas (o null). */
+export function opaqueRect(image, frame) {
+  if (!image || !frame) return null;
+  let perImage = TRIM_CACHE.get(image);
+  if (!perImage) {
+    perImage = new Map();
+    TRIM_CACHE.set(image, perImage);
+  }
+  const [x, y, w, h] = frame;
+  const key = `${x},${y},${w},${h}`;
+  if (perImage.has(key)) return perImage.get(key);
+  let out = null;
+  try {
+    const canvas = document.createElement('canvas');
+    canvas.width = w;
+    canvas.height = h;
+    const ctx = canvas.getContext('2d');
+    ctx.drawImage(image, x, y, w, h, 0, 0, w, h);
+    const data = ctx.getImageData(0, 0, w, h).data;
+    let x0 = w;
+    let y0 = h;
+    let x1 = -1;
+    let y1 = -1;
+    for (let j = 0; j < h; j++) {
+      for (let i = 0; i < w; i++) {
+        if (data[(j * w + i) * 4 + 3] <= 16) continue;
+        if (i < x0) x0 = i;
+        if (i > x1) x1 = i;
+        if (j < y0) y0 = j;
+        if (j > y1) y1 = j;
+      }
+    }
+    if (x1 >= x0 && y1 >= y0) out = { x: x0, y: y0, w: x1 - x0 + 1, h: y1 - y0 + 1 };
+  } catch {
+    out = null;
+  }
+  perImage.set(key, out);
+  return out;
+}
+
 export const VIEW_W = 480;
 export const VIEW_H = 270;
 

@@ -16,7 +16,7 @@ export const ROWS = 16;
 
 // Tamaños de los sprites que usa este mapa (frames de objects/interior2).
 const SIZE = {
-  stairs_attic: [32, 48], window_back: [32, 16], back_wall: [16, 16],
+  stairs_attic: [32, 64], window_back: [32, 16], back_wall: [16, 16],
   snow_drift: [27, 5], kid_drawing: [14, 12], kid_bed: [20, 30],
   sink: [32, 24], chair: [16, 24], chair_r: [16, 24], wedding_photo: [12, 11],
   broom_bucket: [16, 26], bidon: [10, 13],
@@ -102,15 +102,24 @@ objects.push(put('stairs_up', 'stairs_attic', 16, 80, {
 }));
 objects.push(put('window_living', 'window_glow', 96, 48, {
   window: { view: 'living', openable: false },
-  interact: { kind: 'look', talk: 'window', label: 'Mirar la calle' },
+  // La ventana cuelga de la pared del fondo: se alcanza desde el piso del
+  // living que queda debajo (regla única de casilleros de acceso).
+  type: 'view', name: 'la ventana', talk: 'window',
 }));
 objects.push(put('bookshelf', 'shelf', 144, 48, { offset: [0, -2], solid: false,
-  interact: { kind: 'look', talk: 'shelf', label: 'Mirar la biblioteca' } }));
-objects.push(put('sofa', 'sofa', 100, 142, { solid: { x: 0, y: 1, w: 3, h: 1 },
-  interact: { kind: 'look', talk: 'sofa', label: 'Mirar el living' } }));
+  type: 'decor', name: 'la biblioteca', talk: 'shelf' }));
+// Sofa contra la pared del fondo, bajo la ventana y mirando a la mesa ratona.
+objects.push(put('sofa', 'sofa', 88, 77, { solid: { x: 0, y: 1, w: 3, h: 1 }, low: true,
+  type: 'decor', name: 'el sillón', talk: 'sofa' }));
 const radio = put('radio_cabinet', 'radio_cabinet', 32, 104, {
-  solid: { x: 0, y: 1, w: 2, h: 1 },
-  interact: { kind: 'look', talk: 'radio', label: 'Prender la radio' },
+  solid: { x: 0, y: 1, w: 2, h: 1 }, low: true,
+  type: 'device', name: 'la radio', talk: 'radio',
+  device: {
+    toggle: 'radio_on', action: 'toggle',
+    state: (g) => (g.flags?.radio_on ? 'on' : 'off'),
+    states: { off: { verb: 'Prender' }, on: { verb: 'Apagar' } },
+    messages: { on: 'La radio se prende.', off: 'La radio se apaga.' },
+  },
 });
 objects.push(radio);
 // Lámpara de aceite sobre el mueble de la radio: solo se ve en el apagón.
@@ -118,75 +127,98 @@ objects.push(put('oil_lamp_lit', 'oil_lamp_lit', 43, 84, {
   showIfFlag: 'apagon', glow: true, z: depthFor(96) + 0.02,
 }));
 const tableLiving = put('living_table', 'living_table', 104, 112, {
-  solid: { x: 0, y: 1, w: 2, h: 1 },
+  solid: { x: 0, y: 1, w: 2, h: 1 }, low: true,
   surface: null,
-  interact: { kind: 'look', talk: 'living_table', label: 'Mirar la mesa' },
+  type: 'surface', name: 'la mesa', talk: 'living_table',
 });
 tableLiving.surface = { slots: slots('living_table', tableLiving, [[8, 12], [16, 13], [24, 12]], 3).slots, maxItems: 3 };
 objects.push(tableLiving);
-const armL = put('armchair_l', 'armchair', 160, 96, { solid: { x: 0, y: 1, w: 1, h: 1 } });
+const armL = put('armchair_l', 'armchair', 160, 96, { solid: { x: 0, y: 1, w: 1, h: 1 }, low: true });
 objects.push(armL);
-objects.push(put('armchair_r', 'armchair', 66, 112, { solid: { x: 0, y: 1, w: 1, h: 1 } }));
+objects.push(put('armchair_r', 'armchair', 66, 112, { solid: { x: 0, y: 1, w: 1, h: 1 }, low: true }));
 
 // ---- hall
 objects.push(put('hall_door', 'door_porthole', 230, 49, {
-  interact: { kind: 'look', talk: 'hall_door', label: 'Mirar la puerta' },
+  type: 'decor', name: 'la puerta', talk: 'hall_door',
 }));
 const coat = put('coat_stand', 'coat_stand', 208, 64, {
   solid: { x: 0, y: 2, w: 1, h: 1 },
-  interact: { kind: 'look', talk: 'coat', label: 'Mirar el perchero' },
+  type: 'decor', name: 'el perchero', talk: 'coat',
 });
 coat.surface = slots('coat_stand', coat, [[6, 38]], 1);
 objects.push(coat);
 objects.push(put('wall_clock', 'wall_clock', 262, 24, {
   offset: [4, -8],
-  interact: { kind: 'look', talk: 'wall_clock', label: 'Mirar el reloj' },
+  type: 'decor', name: 'el reloj', talk: 'wall_clock',
 }));
 
 // ---- garaje-entrada
+// El portón es a la vez paso (warp, se cruza caminando) y abertura de la
+// casa: desde el piso de al lado se cierra/abre sin salir (historia: la casa
+// queda sellada). El sprite es el mismo.
 objects.push(put('garage_door', 'garage_door', 352, 49, {
-  interact: { kind: 'look', talk: 'garage_door', label: 'Ir al garaje' },
+  type: 'device', name: 'la puerta del garaje', talk: 'garage_door',
+  closeToast: 'Puerta cerrada.', openToast: 'Puerta abierta.',
+  device: {
+    action: 'window',
+    state: (g) => (g.flags?.closed_garage_door ? 'closed' : 'open'),
+    states: {
+      open: { verb: 'Cerrar', action: 'window' },
+      closed: { verb: 'Abrir', action: 'window' },
+    },
+  },
 }));
 objects.push(put('entry_shelf', 'garage_shelf', 304, 64, {
   solid: { x: 0, y: 1, w: 3, h: 1 },
-  interact: { kind: 'look', talk: 'shelf', label: 'Mirar el estante' },
+  type: 'decor', name: 'el estante', talk: 'shelf',
 }));
-objects.push(put('entry_tire', 'tire', 306, 128, { solid: { x: 0, y: 0, w: 1, h: 1 } }));
+// Rueda y bidon al rincon de abajo a la derecha de la entrada, junto a la escoba:
+// asi no tapan el paso del hall al garaje.
+objects.push(put('entry_tire', 'tire', 394, 142, { solid: { x: 0, y: 0, w: 1, h: 1 }, movable: true, type: 'decor', name: 'la rueda' }));
 objects.push(put('entry_cans', 'cans', 340, 128, {}));
-objects.push(put('entry_bucket', 'bucket', 420, 96, {}));
+objects.push(put('entry_bucket', 'bucket', 420, 96, { movable: true, type: 'decor', name: 'el balde' }));
 objects.push(put('broom_bucket', 'broom_bucket', 410, 112, {}));
-objects.push(put('bidon', 'bidon', 308, 112, {}));
+objects.push(put('bidon', 'bidon', 414, 141, { movable: true, type: 'decor', name: 'el bidón' }));
 
 // ---- dormitorio
-objects.push(put('bed', 'bed', 20, 208, { solid: { x: 0, y: 1, w: 2, h: 1 } }));
+objects.push(put('bed', 'bed', 20, 208, { solid: { x: 0, y: 1, w: 2, h: 1 }, low: true }));
 const night = put('nightstand', 'nightstand', 54, 192, {
-  solid: { x: 0, y: 1, w: 1, h: 1 },
-  interact: { kind: 'look', talk: 'nightstand', label: 'Mirar la mesa de luz' },
+  solid: { x: 0, y: 1, w: 1, h: 1 }, low: true,
+  type: 'surface', name: 'la mesa de luz', talk: 'nightstand',
 });
 night.surface = slots('nightstand', night, [[8, 18]], 1);
 objects.push(night);
 objects.push(put('wardrobe', 'wardrobe', 104, 192, {
   solid: { x: 0, y: 1, w: 2, h: 1 },
+  type: 'container', name: 'el ropero', talk: 'wardrobe',
   container: { name: 'Ropero', items: [{ id: 'rifle', n: 1 }, { id: 'balas', n: 30 }] },
 }));
 objects.push(put('wedding_photo', 'wedding_photo', 30, 162, {
-  interact: { kind: 'look', talk: 'wedding_photo', label: 'Mirar la foto' },
+  type: 'decor', name: 'la foto', talk: 'wedding_photo',
 }));
 
 // ---- cuarto de Martita
-objects.push(put('kid_bed', 'kid_bed', 164, 214, { solid: { x: 0, y: 1, w: 1, h: 1 } }));
+objects.push(put('kid_bed', 'kid_bed', 164, 214, { solid: { x: 0, y: 1, w: 1, h: 1 }, low: true }));
 objects.push(put('toy_horse', 'toy_horse', 212, 224, {
-  interact: { kind: 'look', talk: 'toy_horse', label: 'Mirar el caballito' },
+  movable: true, type: 'decor', name: 'el caballito', talk: 'toy_horse',
 }));
 objects.push(put('kid_drawing', 'kid_drawing', 200, 164, {
-  interact: { kind: 'look', talk: 'kid_drawing', label: 'Mirar el dibujo' },
+  type: 'decor', name: 'el dibujo', talk: 'kid_drawing',
 }));
 // La ventana va sobre el muro del fondo (fila 15): z un pelo mas alto que los
 // tiles del muro para que no pelee por el mismo plano.
 objects.push(put('window_martita', 'window_back', 192, 256, {
   z: depthFor(256) + 0.01,
   window: { view: null, openable: true },
-  interact: { kind: 'look', talk: 'window', label: 'Cerrar la ventana' },
+  type: 'device', name: 'la ventana', talk: 'window',
+  device: {
+    action: 'window',
+    state: (g) => (g.flags?.closed_window_martita ? 'closed' : 'open'),
+    states: {
+      open: { verb: 'Cerrar', action: 'window' },
+      closed: { verb: 'Abrir', action: 'window' },
+    },
+  },
 }));
 objects.push(put('snow_drift', 'snow_drift', 194, 240, {
   hideIfFlag: 'closed_window_martita',
@@ -195,25 +227,38 @@ objects.push(put('snow_drift', 'snow_drift', 194, 240, {
 // ---- cocina
 objects.push(put('alacena', 'alacena', 342, 192, {
   solid: { x: 0, y: 1, w: 3, h: 1 },
+  type: 'container', name: 'la alacena',
   container: { name: 'Alacena', items: [{ id: 'guantes', n: 1 }] },
 }));
 objects.push(put('sink', 'sink', 274, 192, {
   solid: { x: 0, y: 1, w: 2, h: 1 },
-  interact: { kind: 'look', talk: 'sink', label: 'Mirar la pileta' },
+  type: 'device', name: 'la pileta', talk: 'sink',
+  device: {
+    state: () => 'con_agua',
+    states: { con_agua: { verb: 'Mirar', action: 'look' } },
+  },
 }));
 // Sillas a los costados de la mesa (la puerta de la cocina queda libre).
-objects.push(put('kchair_l', 'chair', 320, 224, {}));
-objects.push(put('kchair_r', 'chair_r', 384, 224, {}));
+objects.push(put('kchair_l', 'chair', 320, 224, { low: true, movable: true, type: 'decor', name: 'la silla', talk: 'chair' }));
+objects.push(put('kchair_r', 'chair_r', 384, 224, { low: true, movable: true, type: 'decor', name: 'la silla', talk: 'chair' }));
 const stove = put('stove', 'stove', 404, 192, {
   solid: { x: 0, y: 1, w: 1, h: 1 },
   station: 'heat',
-  interact: { kind: 'look', talk: 'stove', label: 'Mirar la cocina' },
+  type: 'device', name: 'la cocina', talk: 'stove',
+  device: {
+    action: 'takePava',
+    state: (g) => (g.pavaStation === 'stove' ? 'ocupada' : 'libre'),
+    states: {
+      libre: { verb: 'Mirar', action: 'look' },
+      ocupada: { verb: 'Mirar', action: 'look' },
+    },
+  },
 });
 stove.surface = slots('stove', stove, [[8, 12]], 1);
 objects.push(stove);
 const ktable = put('kitchen_table', 'kitchen_table', 336, 224, {
-  solid: { x: 0, y: 1, w: 3, h: 1 },
-  interact: { kind: 'look', talk: 'kitchen_table', label: 'Mirar la mesa' },
+  solid: { x: 0, y: 1, w: 3, h: 1 }, low: true,
+  type: 'surface', name: 'la mesa', talk: 'kitchen_table',
 });
 // Tapa en y 3..14: fila de atras (frascos, latas, lista) y adelante (lata, pan,
 // un lugar libre para dejar cosas). Atras a la izquierda va la lampara.
@@ -223,7 +268,7 @@ objects.push(ktable);
 // (fila 13) para que se dibuje encima. Latas y frascos son surface items.
 objects.push({ id: 'oil_lamp', sprite: 'oil_lamp_lit', x: 21, y: 13, tw: 1, th: 1,
   solid: false, offset: [0, -16], glow: true });
-objects.push(put('kitchen_bucket', 'bucket', 420, 240, {}));
+objects.push(put('kitchen_bucket', 'bucket', 420, 240, { movable: true, type: 'decor', name: 'el balde' }));
 
 // ---- muro del fondo (fila 15): 26 tiles de pared, fuera de los limites.
 for (let i = 0; i < 26; i++) {
@@ -261,15 +306,23 @@ export const house = {
     { id: 'window_martita', x: 208, y: 248, view: null, openable: true },
   ],
   npcs: [
-    { id: 'elena', who: 'elena', x: 8 * 16 + 8, feet: 8 * 16 + 8, dir: 'down' },
-    { id: 'martita', who: 'martita', x: 12 * 16 + 8, feet: 13 * 16 + 8, dir: 'down' },
+    { id: 'elena', who: 'elena', type: 'person', name: 'Elena', x: 8 * 16 + 8, feet: 8 * 16 + 8, dir: 'down' },
+    { id: 'martita', who: 'martita', type: 'person', name: 'Martita', x: 12 * 16 + 8, feet: 13 * 16 + 8, dir: 'down' },
   ],
   pickups: [],
   warps: [
-    { id: 'stairs_up', x: 1 * 16, y: 3 * 16, w: 32, h: 32, to: 'attic', label: 'Subir',
+    // La caja cubre la escalera entera (la parte de arriba llega al borde de la
+    // pared), asi el hover y el click tambien la toman ahi. El pie de la escalera
+    // sigue en y=80 y los pies del jugador no pasan de y=54, asi que el warp
+    // automatico se comporta igual que antes.
+    { id: 'stairs_up', type: 'passage', name: 'la escalera', x: 1 * 16, y: 1 * 16, w: 32, h: 64, to: 'attic', label: 'Subir',
+      // Arriba no entra (borde de la pantalla + HUD), así que la etiqueta va
+      // al costado derecho para no tapar el dibujo de la escalera.
+      labelSide: 'right',
       look: 'La escalera rebatible que sube al altillo.',
       spawn: { x: 17 * 16 + 8, y: 12 * 16 + 8, dir: 'right' } },
-    { id: 'garage_door', x: 22 * 16, y: 3 * 16, w: 48, h: 16, to: 'garage', label: 'Entrar',
+    { id: 'garage_door', type: 'passage', name: 'la puerta del garaje', x: 22 * 16, y: 3 * 16, w: 48, h: 16, to: 'garage', label: 'Ir al garaje',
+      look: 'El portón del garaje. Es la única salida posible.',
       spawn: { x: 5 * 16 + 8, y: 4 * 16 + 8, dir: 'down' } },
   ],
 };

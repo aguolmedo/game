@@ -7,12 +7,13 @@
 //      objetivo declara la estación (atrapa el bug del banco del altillo).
 //   3. la estación de calor ocupada se saca con primary, tenga lo que tenga
 //      en la mano.
-//   4. item sin objetivo nunca es null.
+//   4. item (Usar en mí) solo devuelve los SELF_USES; nunca actúa sobre el
+//      objetivo y devuelve null si el ítem no tiene uso propio.
 //   5. actionLabel() de la escena === resolveAction(..., 'primary').label.
 // Y una ejecución por kind sobre un mundo falso.
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { resolveAction, stationOf } from '../src/actions.js';
+import { resolveAction, resolveHands, stationOf } from '../src/actions.js';
 import { ITEM_USES } from '../src/data/actions.js';
 import { ITEMS, getItem, isGrabbable } from '../src/items.js';
 import { addItem, removeItem, createInventory } from '../src/inventory.js';
@@ -32,16 +33,18 @@ const STATES = [null, 'workbench', 'stove'];
 function candidatesOf(map) {
   const list = [];
   for (const obj of map.objects || []) {
-    if (obj.interact) {
+    if ((obj.type || obj.interact) && !obj.container) {
       list.push({
-        id: obj.id, kind: 'object', label: obj.interact.label,
+        id: obj.id, kind: 'object', label: obj.name,
+        type: obj.type, name: obj.name, talk: obj.talk,
         interact: obj.interact, ref: obj,
       });
     }
     if (obj.container) {
       list.push({
         id: obj.id, kind: 'container', priority: 1,
-        label: `Abrir ${String(obj.container.name).toLowerCase()}`,
+        label: obj.name,
+        type: obj.type || 'container', name: obj.name, talk: obj.talk,
         container: obj.container, ref: obj,
       });
     }
@@ -60,8 +63,9 @@ function candidatesOf(map) {
   }
   for (const npc of map.npcs || []) {
     list.push({
-      id: npc.id, kind: 'npc', label: `Hablar con ${npc.who || npc.id}`,
-      npc: { id: npc.id, who: npc.who },
+      id: npc.id, kind: 'npc', label: `Hablar con ${npc.name || npc.who || npc.id}`,
+      type: 'person', name: npc.name || npc.who || npc.id,
+      npc: { id: npc.id, who: npc.who, name: npc.name },
     });
   }
   for (const warp of map.warps || []) {
@@ -145,12 +149,23 @@ test('invariante 2b: en el banco del altillo, tijera y tela no son la estación'
   for (const target of [tijera, tela]) {
     const action = resolveAction(ctx, target, 'pava_fria', 'primary');
     assert.notEqual(action.id, 'heatPava', `${target.label}: no es el fuego`);
-    assert.equal(action.kind, 'take', 'deja la acción propia del objeto apoyado');
+    // La Acción nunca agarra: sobre una cosa (tijera o tela) siempre mira.
+    assert.equal(action.kind, 'look', 'la Acción no agarra: eso es Manos');
+    assert.ok(action.label.startsWith('Mirar '), action.label);
+    // Manos sí agarra la tela (es material), no la tijera (decorativa).
+    const aim = { target, tile: null, point: null, device: 'mouse' };
+    const hands = resolveHands(ctx, aim, null, null);
+    if (target.grabbable) {
+      assert.equal(hands.kind, 'grab');
+      assert.equal(hands.label, 'Agarrar Tela engomada');
+    } else {
+      assert.equal(hands, null, 'la tijera decorativa no se agarra');
+    }
     assert.equal(stationOf(target, attic.objects), null);
   }
 });
 
-test('invariante 3: la estación de calor ocupada se saca con primary', () => {
+test('invariante 3: la pava de la estación de calor se agarra con Manos', () => {
   // Objetivos: el mueble de la estación (el banco, la cocina). Un objeto
   // apoyado tiene su propia acción ("Agarrar/Mirar X") antes de la regla de
   // la estación, en el orden fijo del resolvedor.
@@ -167,25 +182,42 @@ test('invariante 3: la estación de calor ocupada se saca con primary', () => {
       seen += 1;
       const ctx = ctxOf(map, stationId);
       for (const held of HELD) {
-        const action = resolveAction(ctx, target, held, 'primary');
-        assert.equal(action.kind, 'takePava', `${map.id}/${target.id} con ${held}: no saca la pava`);
-        assert.equal(action.label, 'Sacar la pava');
+        // La Acción ya no saca la pava; Manos la agarra (con la mano vacía o
+        // con lo que sea, igual que antes).
+        const hands = resolveHands(
+          ctx, { target, tile: null, point: null, device: 'mouse' }, held, null,
+        );
+        assert.equal(hands.kind, 'takePava', `${map.id}/${target.id} con ${held}: Manos no la agarra`);
+        assert.equal(hands.label, 'Agarrar la pava');
+        const primary = resolveAction(ctx, target, held, 'primary');
+        assert.notEqual(primary.id, 'takePava', 'la Acción no saca la pava');
       }
     }
   }
   assert.ok(seen >= 2, 'se revisaron el banco y la cocina');
 });
 
-test('invariante 4: item sin objetivo nunca es null', () => {
+test('invariante 4: sin objetivo, la Acción es el uso propio (o null)', () => {
+  const SELF = new Set([
+    'mate_cebado', 'traje', 'rifle', 'mate_vacio', 'mate_yerba',
+    'mate_lavado', 'pava_fria', 'pava_caliente', 'pava_hervida', 'yerba',
+  ]);
   for (const held of HELD) {
-    const action = resolveAction(ctxOf(attic), null, held, 'item');
-    assert.ok(action, `item ${held}: sin acción`);
+    const action = resolveAction(ctxOf(attic), null, held, 'primary');
+    if (!SELF.has(held)) {
+      assert.equal(action, null, `item ${held}: no debería tener uso propio`);
+      continue;
+    }
+    assert.ok(action, `item ${held}: sin uso propio`);
+    assert.equal(action.kind, 'self');
     assert.ok(typeof action.label === 'string' && action.label.length > 0);
   }
-  // Sin nada en la mano avisa; con un ítem sin fila propia cae a "Usar".
-  assert.equal(resolveAction(ctxOf(attic), null, null, 'item').kind, 'none');
-  assert.equal(resolveAction(ctxOf(attic), null, 'balas', 'item').label, 'Usar');
-  // primary sin objetivo solo reacciona a los ítems de SELF_USES.
+  assert.equal(resolveAction(ctxOf(attic), null, null, 'primary'), null);
+  // Con objetivo, la Acción es el verbo del tipo o el uso sobre el objetivo,
+  // nunca el uso propio.
+  const stove = candidatesOf(house).find((c) => c.id === 'stove');
+  const onStove = resolveAction(ctxOf(house), stove, 'mate_cebado', 'primary');
+  assert.notEqual(onStove.kind, 'self');
   assert.equal(resolveAction(ctxOf(attic), null, 'balas', 'primary'), null);
   assert.equal(resolveAction(ctxOf(attic), null, 'mate_cebado', 'primary').id, 'mateSelf');
 });
@@ -212,8 +244,8 @@ test('invariante 5: la etiqueta de la escena es la del resolvedor', () => {
             `${map.id}/${target.id} con ${held}: etiqueta distinta`);
         }
         const world = fakeLabelScene(map, state, held);
-        const use = resolveAction(world.ctx(), null, held, 'item');
-        assert.equal(world.useLabel(), held ? use.label : 'Usar');
+        const use = resolveAction(world.ctx(), null, held, 'primary');
+        assert.equal(world.useLabel(), (use && use.label) || 'Usar');
       }
     }
   }
@@ -297,19 +329,27 @@ function run(world, target, held, mode = 'primary') {
   return action;
 }
 
-test('ejecución take: el objeto apoyado pasa al inventario', () => {
+/** Ejecuta una acción de Manos (sin mouse): agarra o deja. */
+function runHands(world, target, held, carry = null) {
+  const aim = { target, tile: null, point: null, device: 'mouse' };
+  const action = resolveHands(world.ctx(), aim, held, carry);
+  world.runHands(action, { device: 'mouse' });
+  return action;
+}
+
+test('ejecución Manos: el objeto apoyado pasa al inventario', () => {
   const target = pick(attic, (c) => c.kind === 'surfaceItem' && c.worldItem.itemId === 'tela');
   const world = fakeScene(attic);
-  const action = run(world, target, null, 'primary');
-  assert.equal(action.kind, 'take');
+  const action = runHands(world, target, null);
+  assert.equal(action.kind, 'grab');
   assert.deepEqual(world.game.inventory.filter(Boolean).map((s) => s.id), ['tela']);
   assert.ok(world.game.events.some((e) => e.type === 'itemPicked' && e.data.id === 'tela'));
 });
 
-test('ejecución drop: el ítem de la mano sale del inventario', () => {
+test('ejecución Manos: el ítem de la mano queda en el mueble', () => {
   const target = pick(attic, (c) => c.kind === 'object' && c.id === 'workbench');
   const world = fakeScene(attic, { held: 'tela' });
-  const action = run(world, target, 'tela', 'primary');
+  const action = runHands(world, target, 'tela');
   assert.equal(action.kind, 'drop');
   assert.equal(action.label, 'Dejar Tela engomada');
   assert.equal(world.game.inventory.filter(Boolean).length, 0);
@@ -321,7 +361,7 @@ test('ejecución drop: el ítem de la mano sale del inventario', () => {
 test('ejecución use heatPava: la pava queda al fuego en el banco', () => {
   const target = pick(attic, (c) => c.kind === 'surfaceItem' && c.worldItem.itemId === 'calentador');
   const world = fakeScene(attic, { held: 'pava_fria' });
-  const action = run(world, target, 'pava_fria', 'item');
+  const action = run(world, target, 'pava_fria', 'primary');
   assert.equal(action.kind, 'use');
   assert.equal(action.id, 'heatPava');
   assert.equal(world.game.pavaStation, 'workbench');
@@ -344,7 +384,7 @@ test('ejecución self mateSelf: tomar mate emite itemUsed sip', () => {
     held: 'mate_cebado',
     mate: { state: 'cebado', cebadas: 0, burnt: false },
   });
-  const action = run(world, null, 'mate_cebado', 'item');
+  const action = run(world, null, 'mate_cebado', 'primary');
   assert.equal(action.kind, 'self');
   assert.equal(action.id, 'mateSelf');
   assert.equal(action.label, 'Tomar mate');

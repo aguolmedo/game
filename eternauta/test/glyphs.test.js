@@ -8,41 +8,31 @@ const ASSETS = {
   buttonsData: { frames: { mouse: [0, 0, 11, 13] } },
 };
 
-test('glyphName: con joystick se ven A y B', () => {
+test('glyphName: joystick = A (Hacer), X (Manos), Y (Mochila)', () => {
   assert.equal(glyphName('pad', 'interact'), 'a');
-  assert.equal(glyphName('pad', 'back'), 'b');
-  assert.equal(glyphName('pad', 'use'), 'x');
+  assert.equal(glyphName('pad', 'hands'), 'x');
   assert.equal(glyphName('pad', 'bag'), 'y');
-});
-
-test('glyphName: mouse y teclado muestran el mouse para interactuar/volver', () => {
-  for (const device of ['mouse', 'keyboard']) {
-    assert.equal(glyphName(device, 'interact'), 'mouse');
-    assert.equal(glyphName(device, 'back'), 'mouse');
-  }
-});
-
-test('glyphName: los demas atajos conservan su glifo de teclado', () => {
-  assert.equal(glyphName('keyboard', 'use'), 'key_f');
-  assert.equal(glyphName('keyboard', 'bag'), 'key_i');
-  assert.equal(glyphName('mouse', 'use'), 'mouse');
-  assert.equal(glyphName('mouse', 'bag'), 'mouse');
-  // Mirar con mouse tiene glifo propio (click derecho).
-  assert.equal(glyphName('mouse', 'look'), 'mouse_r');
-  assert.equal(glyphName('keyboard', 'menu'), 'key_esc');
   assert.equal(glyphName('pad', 'menu'), 'start');
+  assert.equal(ACTIONS.use, undefined, 'Usar en mí se borró');
+  assert.equal(ACTIONS.self, undefined);
+  assert.equal(ACTIONS.look, undefined, 'Mirar se borró como botón');
 });
 
-test('glyphName: interact y back nunca devuelven el glifo E', () => {
-  for (const device of ['pad', 'mouse', 'keyboard', undefined]) {
-    assert.notEqual(glyphName(device, 'interact'), 'key_e');
-    assert.notEqual(glyphName(device, 'back'), 'key_e');
-  }
+test('glyphName: mouse + teclado usa click izq., click der., I y Esc', () => {
+  assert.equal(glyphName('mouse', 'interact'), 'mouse');
+  assert.equal(glyphName('mouse', 'hands'), 'mouse_r');
+  assert.equal(glyphName('mouse', 'bag'), 'key_i');
+  assert.equal(glyphName('mouse', 'back'), 'key_esc');
+  assert.equal(glyphName('mouse', 'menu'), 'key_esc');
+  assert.equal(glyphName('mouse', 'look'), null);
+});
+
+test('glyphName: no existe el dispositivo teclado; E/F/Q dejaron de ser verbos', () => {
+  // Un valor viejo cae al glifo de teclado por compatibilidad del dibujo,
+  // pero el juego ya no produce ese dispositivo.
+  assert.equal(ACTIONS.interact.mouse, 'mouse');
   assert.notEqual(ACTIONS.interact.key, 'key_e');
-  assert.notEqual(ACTIONS.back.key, 'key_e');
-});
-
-test('glyphName: accion desconocida devuelve null', () => {
+  assert.equal(ACTIONS.interact.label, 'Hacer');
   assert.equal(glyphName('pad', 'nope'), null);
 });
 

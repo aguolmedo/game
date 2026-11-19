@@ -103,21 +103,21 @@ FAROLAS.forEach((left, i) => {
 // ---------------------------------------------------------------- ferreteria
 add(put('ferreteria', 'shop_ferreteria', 1096, 176, {
   solid: true,
-  interact: { kind: 'look', talk: 'ferreteria', label: 'Mirar la ferretería' },
+  type: 'decor', name: 'la ferretería', talk: 'ferreteria',
 }));
 add(put('cartel_ferreteria', 'sign_ferreteria', 1100, 168, {}));
 add(put('caja_municiones', 'crate', 1136, 194, {
-  interact: { kind: 'ammo', talk: 'ferreteria', label: 'Caja de municiones' },
+  type: 'container', name: 'la caja de municiones', talk: 'caja_municiones',
 }));
 
 // ---------------------------------------------------------------- calzada
 add(put('colectivo', 'colectivo_snow', 24, 284, {
   solid: { x: 0.3, y: 2, w: 5.4, h: 1 }, emissive: 'snow',
-  interact: { kind: 'look', talk: 'bus', label: 'Mirar el colectivo' },
+  type: 'decor', name: 'el colectivo', talk: 'bus',
 }));
 add(put('auto_1', 'sedan_teal_snow', 300, 278, {
   solid: { x: 0.3, y: 2, w: 3.4, h: 1 }, emissive: 'snow',
-  interact: { kind: 'look', talk: 'car', label: 'Mirar el auto' },
+  type: 'decor', name: 'el auto', talk: 'car',
 }));
 add(put('auto_2', 'sedan_bordo_snow', 520, 284, {
   solid: { x: 0.3, y: 2, w: 3.4, h: 1 }, emissive: 'snow',
@@ -135,7 +135,7 @@ add(put('auto_volcado', 'auto_volcado', 1128, 280, {
 }));
 add(put('auto_parado', 'auto_parado', 1196, 288, {
   solid: { x: 0.4, y: 3, w: 2.5, h: 1 },
-  interact: { kind: 'look', talk: 'car', label: 'Mirar el auto' },
+  type: 'decor', name: 'el auto', talk: 'car',
 }));
 add(put('cartel', 'cartel_esquina', 1230, 224, {
   solid: { x: 0, y: 1, w: 1, h: 1 },
@@ -154,7 +154,7 @@ for (const [id, left, base] of MOUNDS) {
 // Polsky boca abajo en la nieve: solo aparece si la historia lo mata.
 add(put('polsky_body', 'polsky_caido', 170, 270, {
   showIfFlag: 'polsky_muerto',
-  interact: { kind: 'look', talk: 'polsky_body', label: 'Mirar en la nieve' },
+  type: 'decor', name: 'el cuerpo de Polsky', talk: 'polsky_body',
 }));
 add(put('figura_nieve', 'figure_snow', 380, 254, {}));
 add(put('caido_1', 'fallen_1', 560, 266, {}));

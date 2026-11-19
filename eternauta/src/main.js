@@ -17,6 +17,7 @@ import { createMate, createPava, heat, coolPava, pavaItemId } from './mate.js';
 import { removeItem } from './inventory.js';
 import { PauseMenu, ChestPanel } from './menus.js';
 import { createInventory, addItem } from './inventory.js';
+import { resetWorld } from './surfaces.js';
 import { getItem } from './items.js';
 import { RECIPES, missingFor } from './recipes.js';
 import { currentObjective } from './objectives.js';
@@ -73,6 +74,11 @@ async function boot() {
     mateCalma: 0,
     mateShared: {},
     story: null,
+    // Estado de cosas por partida (§3): game.world[mapId] = { items, moved }.
+    world: {},
+    // Líneas de mirar ya dichas (primera vez que se usa un objeto): por partida.
+    seenLook: {},
+    carry: null,
     blackoutT: -1,
     clock: 0,
     scene: null,
@@ -137,6 +143,11 @@ async function boot() {
   function setScene(name, spawn) {
     const next = scenes[name];
     if (!next) throw new Error(`Escena desconocida: ${name}`);
+    // Si la historia saca a Juan del lugar cargando un mueble, lo apoya solo
+    // en el casillero válido más cercano (o lo devuelve a su lugar) (§7).
+    if (game.carry && game.scene && typeof game.scene.autoPlaceCarry === 'function') {
+      game.scene.autoPlaceCarry();
+    }
     pauseMenu.hide();
     chestPanel.hide();
     game.chestOpen = false;
@@ -168,6 +179,7 @@ async function boot() {
     game.mateCalma = 0;
     game.mateShared = {};
     game.blackoutT = -1;
+    resetWorld(game);
     game.clock = 0;
     game.runId += 1;
     game.transition = null;
@@ -387,8 +399,10 @@ async function boot() {
     }
 
     // En el combate solo manda la mira: el guante vuelve en menús y resultados.
-    const hideGlove = game.sceneName === 'arena'
-      && !pauseMenu.visible && !chestPanel.visible && !scene.blocksPause;
+    // En el mundo, al jugar con teclado/joystick se oculta el puntero.
+    const hideGlove = (!pauseMenu.visible && !chestPanel.visible && !scene.blocksPause)
+      && (game.sceneName === 'arena'
+        || (scene.worldZoom && state.device !== 'mouse'));
     if (mouseCursor.hidden !== hideGlove) mouseCursor.setHidden(hideGlove);
 
     // Camara del mundo. En el apagón (PI-1) la escena pasa por el shader de
@@ -465,6 +479,17 @@ async function boot() {
       transition: Boolean(game.transition || game.equipAnim),
       fade: game.fade,
       flags: { ...game.flags },
+      carry: game.carry
+        ? { mapId: game.carry.mapId, objectId: game.carry.objectId,
+          name: game.carry.object?.name || null }
+        : null,
+      world: Object.fromEntries(Object.entries(game.world).map(([id, st]) => [id, {
+        items: (st.items || []).map((wi) => ({
+          uid: wi.uid, itemId: wi.itemId, count: wi.count || 1,
+          place: wi.place ? { ...wi.place } : null,
+        })),
+        moved: { ...(st.moved || {}) },
+      }])),
       lighting: game.lightingMode,
       mate: { ...game.mate },
       pava: { ...game.pava },
@@ -560,6 +585,31 @@ async function boot() {
     },
     toast: (text) => game.showToast(text),
     setFlags: (flags) => { game.flags = { ...game.flags, ...flags }; },
+    /** Manos sin mouse: resuelve y ejecuta la acción apuntada. */
+    hands: () => {
+      const sc = game.scene;
+      if (!sc || typeof sc.handsActionFor !== 'function') return false;
+      const { action } = sc.handsActionFor({ device: 'pad' });
+      sc.runHands(action, { device: 'pad' });
+      return Boolean(action);
+    },
+    /** Hacer sin mouse (A del pad / click sobre el objetivo). */
+    action: () => {
+      const sc = game.scene;
+      if (!sc) return false;
+      sc.interact({ device: 'pad' });
+      return true;
+    },
+    /** Deja un ítem en el piso con Manos desde la API (pruebas headless). */
+    dropAt: (slot, tx, ty) => {
+      const sc = game.scene;
+      if (!sc) return false;
+      const result = sc.surface.dropOnFloor(game.inventory, slot, tx, ty);
+      if (!result) return false;
+      game.inventory = result.inventory;
+      sc.invalidateReach();
+      return true;
+    },
   };
 }
 

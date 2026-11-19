@@ -1,24 +1,37 @@
-// Input unificado: Gamepad API primero, teclado como fallback.
+// Input unificado: mouse + teclado (complementarios) o joystick.
+//
+// Dispositivos: solo hay dos modos, `mouse` y `pad` (DIRECCION.md, "Controles
+// e interacción"). El teclado no es un dispositivo propio: acompaña al mouse
+// (WASD/flechas para caminar, I/Tab mochila, Esc menú, 1-8 para elegir ítem) y
+// en menús/diálogos navega con flechas + Enter/Espacio, y Esc para volver.
+//
+// Dos verbos, uno por botón: Hacer = click izq. / A (botón 0); Manos = click
+// der. / X (botón 2). No hay botón de Mirar: se mira con Hacer en lo que solo
+// se mira. Q, E, Espacio, Enter, R, F y el RT no hacen nada en el mundo
+// (Espacio/Enter solo confirman en menús y diálogos).
+//
+// Mapeo no estándar del pad: A=0, B=1, X=2, Y=3, LB=4, RB=5, Start=9.
 import { combineMoves, keysToMove, stickToMove, DEADZONE } from './logic.js';
 
-const INTERACT_KEYS = ['KeyE', 'Enter', 'Space'];
+const CONFIRM_KEYS = ['Enter', 'Space'];
 const START_KEYS = ['Escape'];
 const BACK_KEYS = ['KeyB', 'Backspace'];
-const X_KEYS = ['KeyF'];
 const Y_KEYS = ['KeyI', 'Tab'];
-const PREV_HOTBAR_KEYS = ['KeyQ'];
-const NEXT_HOTBAR_KEYS = ['KeyR'];
+// La barra de items con teclado va con 1-8.
 const SLOT_KEYS = ['Digit1', 'Digit2', 'Digit3', 'Digit4', 'Digit5', 'Digit6', 'Digit7', 'Digit8'];
 const MOVE_KEYS = [
   'ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight',
   'KeyW', 'KeyA', 'KeyS', 'KeyD',
 ];
 const ALL_KEYS = [
-  ...INTERACT_KEYS, ...START_KEYS, ...BACK_KEYS, ...X_KEYS, ...Y_KEYS,
-  ...PREV_HOTBAR_KEYS, ...NEXT_HOTBAR_KEYS, ...SLOT_KEYS, ...MOVE_KEYS,
+  ...CONFIRM_KEYS, ...START_KEYS, ...BACK_KEYS, ...Y_KEYS,
+  ...SLOT_KEYS, ...MOVE_KEYS,
 ];
 
-const NONE = { a: false, b: false, start: false, x: false, y: false, lb: false, rb: false };
+const NONE = {
+  a: false, b: false, start: false, y: false,
+  lb: false, rb: false, hands: false,
+};
 
 const TAP_DIRS = {
   ArrowUp: { x: 0, y: -1 }, ArrowDown: { x: 0, y: 1 },
@@ -45,20 +58,34 @@ function anyTapped(tapped, codes) {
   return false;
 }
 
+function nowMs() {
+  return typeof performance !== 'undefined' && performance.now ? performance.now() : Date.now();
+}
+
 function clampWheel(value) {
   return Math.max(-1, Math.min(1, value));
 }
 
 /**
- * Último dispositivo usado. Si en el frame hubo mouse gana el mouse; después
- * teclado, después pad; si no hubo actividad, se mantiene el anterior.
+ * Último dispositivo usado. Solo hay dos: `mouse` (con teclado al lado) y
+ * `pad`. El teclado nunca cambia el modo; si el puntero se movió hace menos
+ * de ~1 s, sigue mandando el mouse.
  */
-export function deviceAfter(previous, { keyboard = false, pad = false, mouse = false } = {}) {
+export function deviceAfter(previous, {
+  pad = false, mouse = false, mouseRecent = false,
+} = {}) {
   if (mouse) return 'mouse';
-  if (keyboard) return 'keyboard';
   if (pad) return 'pad';
-  return previous || 'keyboard';
+  if (mouseRecent && previous === 'mouse') return 'mouse';
+  // Solo hay dos dispositivos: si el anterior era pad, sigue el pad; si no,
+  // mouse + teclado.
+  return previous === 'pad' ? 'pad' : 'mouse';
 }
+
+/** Umbral en px de pantalla para que el mouse tome el control. */
+export const MOUSE_MOVE_THRESHOLD = 4;
+/** Ventana en ms en la que el mouse sigue mandando aunque se use el teclado. */
+export const MOUSE_RECENT_MS = 1000;
 
 function defaultTarget() {
   return typeof window !== 'undefined' ? window : null;
@@ -69,18 +96,17 @@ export class Input {
     this.keys = new Set();
     this.tapped = new Set();
     this.prev = { ...NONE };
-    this.lastDevice = 'keyboard';
-    this.keyboardActivity = false;
+    this.lastDevice = 'mouse';
     this.mouseActivity = false;
+    this.mouseAt = 0;
     this.pointer = null;
+    this.pointerMoveFrom = null;
     this.wheel = 0;
     this.click = null;
     this.rightClick = null;
 
     if (!target) return;
     target.addEventListener('keydown', (e) => {
-      this.lastDevice = 'keyboard';
-      this.keyboardActivity = true;
       if (ALL_KEYS.includes(e.code)) e.preventDefault();
       if (e.repeat) return;
       this.keys.add(e.code);
@@ -93,20 +119,32 @@ export class Input {
     target.addEventListener('wheel', (e) => {
       e.preventDefault();
       this.wheel = clampWheel(this.wheel + Math.sign(e.deltaY || 0));
+      this.mouseActivity = true;
+      this.mouseAt = nowMs();
     }, { passive: false });
     target.addEventListener('pointermove', (e) => {
-      this.pointer = { x: e.clientX || 0, y: e.clientY || 0 };
-      this.mouseActivity = true;
+      const point = { x: e.clientX || 0, y: e.clientY || 0 };
+      // Solo un movimiento real (>4 px) toma el control: un temblor no.
+      const from = this.pointerMoveFrom || this.pointer;
+      if (!from || Math.hypot(point.x - from.x, point.y - from.y) > MOUSE_MOVE_THRESHOLD) {
+        this.mouseActivity = true;
+        this.mouseAt = nowMs();
+        this.pointerMoveFrom = point;
+      }
+      this.pointer = point;
     });
     target.addEventListener('mousedown', (e) => {
       const button = e.button ?? 0;
       if (button !== 0 && button !== 2) return;
       this.mouseActivity = true;
+      this.mouseAt = nowMs();
       const point = { x: e.clientX || 0, y: e.clientY || 0 };
+      this.pointer = point;
+      this.pointerMoveFrom = point;
       if (button === 2) this.rightClick = point;
       else this.click = point;
     });
-    // Click derecho = Mirar: sin menú contextual del navegador sobre el canvas.
+    // Click derecho = Manos: sin menú contextual del navegador sobre el canvas.
     target.addEventListener('contextmenu', (e) => e.preventDefault());
   }
 
@@ -122,16 +160,19 @@ export class Input {
     const down = (i) => Boolean(buttons[i] && buttons[i].pressed);
     const dx = (down(15) ? 1 : 0) - (down(14) ? 1 : 0);
     const dy = (down(13) ? 1 : 0) - (down(12) ? 1 : 0);
+    // Manos = X (botón 2), según el mapeo no estándar de DIRECCION.md.
+    const hands = down(2);
     const held = {
       a: down(0),
       b: down(1),
       start: down(9),
-      x: down(2),
       y: down(3),
       lb: down(4),
       rb: down(5),
+      hands,
     };
-    // cualquier boton (cruceta, gatillos, sticks apretados...) o cualquier stick cuenta como "usando joystick"
+    // cualquier botón (cruceta, gatillos, sticks apretados...) o stick cuenta
+    // como "usando joystick"
     const anyButton = buttons.some((b) => b && (b.pressed || (b.value || 0) > 0.5));
     const anyAxis = axes.slice(0, 4).some((v) => Math.abs(v || 0) > DEADZONE);
     const active = anyButton || anyAxis;
@@ -172,34 +213,41 @@ export class Input {
 
   /**
    * Llamar una vez por frame.
-   * aPressed/bPressed/xPressed/yPressed/startPressed/prevHotbar/nextHotbar son de flanco;
+   * aPressed/bPressed/startPressed/yPressed/handsPressed son de flanco;
    * slotPressed vale -1 o 0..7; wheel se resetea a 0 en cada poll.
+   *
+   * `a`/`aPressed` incluyen Enter/Espacio (confirmar en menús y diálogos);
+   * el mundo usa `padAPressed` para Hacer con joystick. `handsPressed`
+   * incluye el click derecho del mouse (Manos).
    */
   poll() {
     const prev = this.prev || NONE;
+    const confirm = anyHeld(this.keys, CONFIRM_KEYS);
     const keyboard = {
       move: keysToMove(this.keys),
-      a: anyHeld(this.keys, INTERACT_KEYS),
+      a: confirm,
       b: anyHeld(this.keys, BACK_KEYS),
       start: anyHeld(this.keys, START_KEYS),
-      x: anyHeld(this.keys, X_KEYS),
       y: anyHeld(this.keys, Y_KEYS),
-      prevHotbar: anyHeld(this.keys, PREV_HOTBAR_KEYS),
-      nextHotbar: anyHeld(this.keys, NEXT_HOTBAR_KEYS),
+      prevHotbar: false,
+      nextHotbar: false,
+      hands: false,
     };
     const pad = this.readGamepad();
     const a = keyboard.a || pad.a;
     const b = keyboard.b || pad.b;
     const start = keyboard.start || pad.start;
-    const x = keyboard.x || pad.x;
     const y = keyboard.y || pad.y;
-    const prevHotbar = keyboard.prevHotbar || pad.lb;
-    const nextHotbar = keyboard.nextHotbar || pad.rb;
+    const prevHotbar = pad.lb;
+    const nextHotbar = pad.rb;
+    // Manos: X del pad (con flanco) o click derecho del mouse.
+    const hands = pad.hands;
+    const handsPressed = (hands && !prev.hands) || Boolean(this.rightClick);
 
     const device = deviceAfter(this.lastDevice, {
-      keyboard: this.keyboardActivity,
       pad: pad.active,
       mouse: this.mouseActivity,
+      mouseRecent: this.mouseAt > 0 && nowMs() - this.mouseAt < MOUSE_RECENT_MS,
     });
     const tap = tapDirection(this.tapped);
     const state = {
@@ -208,14 +256,17 @@ export class Input {
       a,
       b,
       start,
-      x,
       y,
-      prevHotbar: (prevHotbar && !prev.lb) || anyTapped(this.tapped, PREV_HOTBAR_KEYS),
-      nextHotbar: (nextHotbar && !prev.rb) || anyTapped(this.tapped, NEXT_HOTBAR_KEYS),
+      hands,
+      handsPressed,
+      prevHotbar: (prevHotbar && !prev.lb) || anyTapped(this.tapped, []),
+      nextHotbar: (nextHotbar && !prev.rb) || anyTapped(this.tapped, []),
       slotPressed: this.readSlot(),
-      aPressed: (a && !prev.a) || anyTapped(this.tapped, INTERACT_KEYS),
+      // El mundo usa SOLO el A del pad para Hacer (el click va aparte):
+      // Enter/Espacio siguen siendo confirmar en menús y diálogos.
+      padAPressed: (pad.a && !prev.a) || anyTapped(this.tapped, []),
+      aPressed: (a && !prev.a) || anyTapped(this.tapped, CONFIRM_KEYS),
       bPressed: (b && !prev.b) || anyTapped(this.tapped, BACK_KEYS),
-      xPressed: (x && !prev.x) || anyTapped(this.tapped, X_KEYS),
       yPressed: (y && !prev.y) || anyTapped(this.tapped, Y_KEYS),
       startPressed: (start && !prev.start) || anyTapped(this.tapped, START_KEYS),
       wheel: this.wheel,
@@ -226,9 +277,8 @@ export class Input {
     };
     this.lastDevice = device;
     this.device = device;
-    this.prev = { a, b, start, x, y, lb: prevHotbar, rb: nextHotbar };
+    this.prev = { a, b, start, y, lb: prevHotbar, rb: nextHotbar, hands };
     this.tapped.clear();
-    this.keyboardActivity = false;
     this.mouseActivity = false;
     this.wheel = 0;
     this.click = null;

@@ -13,7 +13,9 @@ test('PI-6: la ventana de Martita vive en el muro del fondo y es el objetivo', (
   assert.equal(win.sprite, 'window_back');
   assert.deepEqual([win.x, win.y], [12, 15]);
   assert.equal(win.window.openable, true);
-  assert.equal(win.interact.label, 'Cerrar la ventana');
+  assert.equal(win.type, 'device');
+  assert.equal(win.name, 'la ventana');
+  assert.equal(typeof win.device.state, 'function');
   const entry = house.windows.find((w) => w.id === 'window_martita');
   assert.deepEqual(entry, { id: 'window_martita', x: 208, y: 248, view: null, openable: true });
   const drift = obj('snow_drift');

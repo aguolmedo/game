@@ -38,22 +38,24 @@ function fakeWorld(overrides = {}) {
 function candidatesOf(map) {
   const list = [];
   for (const obj of map.objects) {
-    if (obj.interact) {
+    if ((obj.type || obj.interact) && !obj.container) {
       list.push({
-        id: obj.id, kind: 'object', label: obj.interact.label,
+        id: obj.id, kind: 'object', label: obj.name,
+        type: obj.type, name: obj.name, talk: obj.talk,
         interact: obj.interact, ref: obj,
       });
     }
     if (obj.container) {
       list.push({
-        id: obj.id, kind: 'container',
-        label: `Abrir ${obj.container.name.toLowerCase()}`,
+        id: obj.id, kind: 'container', label: obj.name,
+        type: obj.type || 'container', name: obj.name, talk: obj.talk,
         container: obj.container, ref: obj,
       });
     }
   }
   for (const npc of map.npcs || []) {
-    list.push({ id: npc.id, kind: 'npc', label: `Hablar con ${npc.id}` });
+    list.push({ id: npc.id, kind: 'npc', label: `Hablar con ${npc.name || npc.id}`,
+      type: 'person', name: npc.name || npc.id, npc });
   }
   for (const warp of map.warps || []) {
     list.push({ id: `warp_${warp.id}`, kind: 'warp', label: warp.label, warp });

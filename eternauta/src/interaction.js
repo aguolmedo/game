@@ -1,6 +1,10 @@
 // Pure interaction helpers: action tile in front of the player, target
 // picking, item magnet and warp (teleport) triggers. No DOM, no Three.js.
 
+import {
+  candidateFootTiles, candidateAccessTiles, playerInAccess, facesFootprint,
+} from './reach.js';
+
 export const ACTION_RADIUS = 16;
 export const MAGNET_RADIUS = 16;
 
@@ -41,10 +45,6 @@ function pointToBox(px, py, box) {
   return Math.hypot(dx, dy);
 }
 
-function intersects(a, b) {
-  return a.x < b.x + b.w && b.x < a.x + a.w && a.y < b.y + b.h && b.y < a.y + a.h;
-}
-
 /** Candidate anchor (x, y = feet) -> collision box centered horizontally. */
 function candidateBox(c, tile) {
   const w = c.w > 0 ? c.w : tile;
@@ -52,90 +52,70 @@ function candidateBox(c, tile) {
   return { x: c.x - w / 2, y: c.y - h, w, h };
 }
 
-/** Algunos objetos de pared (el extractor) traen su propio alcance. */
-function candidateReach(c, fallback) {
-  if (c && Number.isFinite(c.reach)) return c.reach;
-  if (c && c.ref && Number.isFinite(c.ref.reach)) return c.ref.reach;
-  return fallback;
+/** Caja de dibujo/acción del candidato (la misma que usa el cursor). */
+export function visualBox(c, tile = 16) {
+  if (c && c.cursorBox) return c.cursorBox;
+  return candidateBox(c, tile);
 }
 
+/** Huella y accesos del candidato (ver src/reach.js). */
+export { candidateFootTiles, candidateAccessTiles, playerInAccess, facesFootprint };
+
 /**
- * Pick the best interactable. Candidates are {id, kind, x, y, w, h, priority?}.
- * First pass: boxes touching the action tile (or within `tolerance` px of its
- * center); nearest wins. Fallback: boxes within `reach` px of the player's
- * feet (adjacent). Ties keep input order. Returns {target, via} where via is
- * 'action', 'adjacent' or null.
- *
- * `priority` manda incluso sobre la pasada "action": un objeto apoyado sobre la
- * mesa (surfaceItem) le gana al mueble que lo sostiene, un NPC le gana al mueble
- * que tiene detrás y el extractor con el secador en la mano le gana a la puerta
- * de al lado aunque la puerta ocupe el tile de accion.
+ * Elige el interactivo alcanzable y mirado (E/A). La regla es única: el
+ * jugador parado en un casillero de acceso y mirando hacia la huella. Entre
+ * los que cumplen manda la prioridad (apoyado > NPC > mueble > warp), después
+ * la caja más chica y después el orden de la lista.
+ * Devuelve {target, via:'access'} o {target:null, via:null}.
  */
 export function pickTarget(player, candidates, opts = {}) {
   const tile = opts.tile || 16;
-  const reach = Number.isFinite(opts.reach)
-    ? opts.reach
-    : Number.isFinite(opts.radius)
-      ? opts.radius
-      : ACTION_RADIUS;
-  const tolerance = Number.isFinite(opts.tolerance) ? opts.tolerance : 2;
   const dir = opts.dir || player.dir || 'down';
-
-  const action = actionTile(player.x, player.feet, dir, tile);
-  const tileBox = { x: action.tx * tile, y: action.ty * tile, w: tile, h: tile };
-  const feetPoint = [player.x, player.feet];
+  const map = opts.map || null;
 
   let best = null;
-  let bestDist = Infinity;
   let bestPrio = -Infinity;
-  let bestAction = false;
-  let via = null;
+  let bestArea = Infinity;
+  let bestDist = Infinity;
 
   (candidates || []).forEach((c) => {
     if (!c) return;
-    const box = candidateBox(c, tile);
-    const touches = intersects(box, tileBox);
-    const distToAction = pointToBox(action.cx, action.cy, box);
-    const distToFeet = pointToBox(feetPoint[0], feetPoint[1], box);
-    const isAction = touches || distToAction <= tolerance;
-    const isAdjacent = distToFeet <= candidateReach(c, reach);
-
-    if (!isAction && !isAdjacent) return;
-    const dist = isAction ? distToAction : distToFeet;
+    if (!playerInAccess(player, c, map)) return;
+    if (!facesFootprint(player, c, map, dir)) return;
+    const box = visualBox(c, tile);
     const prio = Number.isFinite(c.priority) ? c.priority : 0;
-    // Prioridad primero; despues la pasada action le gana a solo-adyacente;
-    // despues la distancia. Empate: se queda el primero (orden de entrada).
-    const better = !best
-      || prio > bestPrio
-      || (prio === bestPrio && isAction && !bestAction)
-      || (prio === bestPrio && isAction === bestAction && dist < bestDist);
+    const area = box.w * box.h;
+    const dist = pointToBox(player.x, player.feet, candidateBox(c, tile));
+    const better = !best || prio > bestPrio
+      || (prio === bestPrio && (area < bestArea
+        || (area === bestArea && dist < bestDist)));
     if (!better) return;
     best = c;
-    bestDist = dist;
     bestPrio = prio;
-    bestAction = isAction;
-    via = isAction ? 'action' : 'adjacent';
+    bestArea = area;
+    bestDist = dist;
   });
 
-  return { target: best, via: best ? via : null };
+  return { target: best, via: best ? 'access' : null };
 }
 
-/** Caja visible de un candidato (la misma que usa el cursor). */
-function visualBox(c, tile) {
-  return c.cursorBox || candidateBox(c, tile);
+/** ¿El tile de adelante cae dentro de la huella? (para la histéresis). */
+export function actionInsideFoot(player, cand, map, dir) {
+  const foot = candidateFootTiles(cand, map);
+  const action = actionTile(player.x, player.feet, dir);
+  return foot.some((t) => t.tx === action.tx && t.ty === action.ty);
 }
 
 /**
  * Candidato bajo un punto del mundo (hover del mouse). Manda la prioridad
  * (objeto apoyado > NPC > mueble), después la caja más chica, después el
- * centro más cercano al puntero (desempata objetos apoyados superpuestos) y
- * por último el orden de dibujo (`front`: el más al frente gana). `near` dice
- * si el jugador está lo bastante cerca como para interactuar.
+ * centro más cercano al puntero y por último el orden de dibujo (`front`).
+ * `near` dice si el jugador está en un casillero de acceso del objetivo.
  */
 export function pickAt(player, candidates, point, opts = {}) {
   const tile = opts.tile || 16;
-  const reach = Number.isFinite(opts.reach) ? opts.reach : ACTION_RADIUS + 6;
   const tolerance = Number.isFinite(opts.tolerance) ? opts.tolerance : 2;
+  const map = opts.map || null;
   const px = point.x;
   const py = point.y;
 
@@ -174,14 +154,7 @@ export function pickAt(player, candidates, point, opts = {}) {
   });
 
   if (!best) return { target: null, near: false };
-  const box = visualBox(best, tile);
-  const feetDist = pointToBox(player.x, player.feet, box);
-  const action = actionTile(player.x, player.feet, opts.dir || player.dir || 'down', tile);
-  const tileBox = { x: action.tx * tile, y: action.ty * tile, w: tile, h: tile };
-  return {
-    target: best,
-    near: feetDist <= candidateReach(best, reach) || intersects(box, tileBox),
-  };
+  return { target: best, near: playerInAccess(player, best, map) };
 }
 
 /** Is the item close enough to the player's feet to be collected? */

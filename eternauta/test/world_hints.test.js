@@ -15,6 +15,8 @@ function fakeWorld(overrides = {}) {
     player: { x: 0, feet: 0, dir: 'down', sprite: { setDir() {} } },
     cursor: { hide() {} },
     dialog: { show() {}, hide() {} },
+    // Los clicks de este test solo verifican qué acción se elige.
+    runAction() {},
     game: {
       flags: {}, inventory: [], selectedSlot: 0, pavaStation: null,
       input: { device: 'mouse' },
@@ -25,45 +27,72 @@ function fakeWorld(overrides = {}) {
 }
 
 const RADIO = {
-  id: 'radio', kind: 'object', label: 'Prender la radio',
-  interact: { kind: 'look', talk: 'radio', label: 'Mirar la radio' },
-  ref: { id: 'radio', interact: { kind: 'look', talk: 'radio', label: 'Mirar la radio' } },
+  id: 'radio', kind: 'object', type: 'device', name: 'la radio', talk: 'radio',
+  ref: {
+    id: 'radio', type: 'device', name: 'la radio', talk: 'radio',
+    device: {
+      toggle: 'radio_on', action: 'toggle',
+      state: (g) => (g.flags?.radio_on ? 'on' : 'off'),
+      states: { off: { verb: 'Prender' }, on: { verb: 'Apagar' } },
+    },
+  },
 };
 
-test('mouse: la barra de pistas es fija y no cambia al hacer hover', () => {
+test('mouse: sin objetivo no hay Acción; sobre un objeto, sí', () => {
   const world = fakeWorld();
   const idle = world.hudParams({ device: 'mouse' }).hintActions;
+  // Sin objetivo y sin uso propio no hay Acción (§2): solo Mochila.
+  assert.deepEqual(idle.map((h) => h.label), ['Mochila']);
+  assert.deepEqual(idle.map((h) => h.action), ['bag']);
+
   world.target = RADIO;
   world.hoverTarget = RADIO;
   world.hoverNear = true;
   const hovered = world.hudParams({ device: 'mouse' }).hintActions;
-  assert.deepEqual(hovered, idle);
-  assert.deepEqual(idle.map((h) => h.label), ['Usar', 'Mirar', 'Mochila']);
+  // Hacer (con el texto real) y Mochila: no hay entrada Mirar aparte.
+  assert.deepEqual(hovered.map((h) => h.action), ['interact', 'bag']);
+  assert.equal(hovered[0].label, 'Prender la radio', 'usa el texto real de la acción');
 });
 
-test('mouse: solo Mochila es clickeable (Usar y Mirar son leyenda)', () => {
-  const world = fakeWorld();
+test('mouse sobre Juan: la Acción es el uso propio; todo leyenda salvo Mochila', () => {
+  const inv = Array.from({ length: 18 }, () => null);
+  inv[0] = { id: 'mate_cebado', count: 1 };
+  const world = fakeWorld({
+    selfHover: true,
+    game: {
+      flags: {}, inventory: inv, selectedSlot: 0,
+      pavaStation: null, input: { device: 'mouse' }, showToast() {}, emit() {},
+    },
+  });
   const hints = world.hudParams({ device: 'mouse' }).hintActions;
-  assert.equal(hints[0].static, true);
-  assert.equal(hints[1].static, true);
-  assert.ok(!hints[2].static, 'Mochila responde al click');
+  const action = hints.find((h) => h.action === 'interact');
+  assert.ok(action, 'con mate cebado y el puntero sobre Juan aparece la Acción');
+  assert.equal(action.label, 'Tomar mate');
+  assert.equal(action.static, true);
+  const bag = hints.find((h) => h.action === 'bag');
+  assert.ok(!bag.static, 'Mochila responde al click');
+  assert.equal(hints.find((h) => h.action === 'self'), undefined,
+    'ya no existe la entrada "Usar en mí"');
 });
 
-test('teclado: la barra conserva el verbo del objetivo apuntado', () => {
+test('mouse: la barra conserva el verbo real del objetivo apuntado', () => {
   const world = fakeWorld({
     target: RADIO,
     game: {
       flags: {}, inventory: [], selectedSlot: 0, pavaStation: null,
-      input: { device: 'keyboard' },
+      input: { device: 'mouse' },
       showToast() {}, emit() {},
     },
   });
-  const hints = world.hudParams({ device: 'keyboard' }).hintActions;
-  assert.equal(hints[0].action, 'interact');
+  const hints = world.hudParams({ device: 'mouse' }).hintActions;
+  assert.deepEqual(hints.map((h) => h.action), ['interact', 'bag']);
   // La barra muestra la etiqueta del resolvedor (el verbo del objeto).
-  assert.equal(hints[0].label, 'Mirar la radio');
+  assert.equal(hints[0].label, 'Prender la radio');
   assert.equal(hints[0].label, world.actionLabel(RADIO));
-  assert.ok(!hints[0].static);
+  assert.equal(hints[hints.length - 1].action, 'bag');
+  assert.equal(hints[0].static, true, 'Hacer es leyenda, no clickeable');
+  assert.equal(hints.find((h) => h.action === 'look'), undefined,
+    'nunca una entrada Mirar aparte');
 });
 
 test('mundo: un click sobre un objeto no es robado por el warp que se pisa', () => {

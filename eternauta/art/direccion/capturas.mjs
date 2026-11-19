@@ -66,8 +66,27 @@ await reset('street');
 await shot('esc_calle', async () => { await api(() => window.__eternauta.setSuit(true)); await settle(1200); });
 await reset('attic');
 await shot('esc_vista_altillo', async () => { await api(() => window.__eternauta.openView('attic')); await settle(1500); });
-await reset('attic');
-await shot('luz_apagon', async () => { await api(() => window.__eternauta.blackout()); await wait(2500); });
+// Apagón forzado (sin depender del parpadeo de blackout() en headless).
+const apagon = () => api(() => {
+  const g = window.__eternauta.game;
+  g.flags = { ...g.flags, apagon: true };
+  g.setLighting('apagon');
+  g.scene.setLightState?.('candle', true);
+  g.scene.setLightState?.('velador', false);
+  g.scene.applyStoryState?.();
+});
+for (const [name, sc, suit] of [['altillo', 'attic'], ['casa', 'house'], ['calle', 'street', true], ['garaje', 'garage']]) {
+  await reset(sc);
+  await shot(`luz_apagon_${name}`, async () => {
+    if (suit) await api(() => window.__eternauta.setSuit(true));
+    await apagon(); await settle(1500);
+  });
+}
+// Cuarto de Martita (pared trasera con la ventana del objetivo).
+await reset('house');
+await shot('esc_casa_martita', async () => {
+  await api(() => window.__eternauta.teleport(13 * 16 + 8, 14 * 16 + 8, 'up')); await settle(1200);
+});
 
 // --- Diálogos y viñetas
 await reset('attic', true);

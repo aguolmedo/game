@@ -333,8 +333,7 @@ export class ArenaScene {
     const pad = source && source.findPad ? source.findPad() : null;
     const btn = (i) => Boolean(pad && pad.buttons && pad.buttons[i] && pad.buttons[i].pressed);
     const padTap = (i) => btn(i) && !this.prevPad[i];
-    const padX = btn(2);
-    const padY = btn(3);
+
     // Con el mouse, un click cerca de la caja de municiones compra en vez de
     // disparar: el cartel de la tienda ya usa el glifo del mouse.
     const clickBuy = Boolean(input.click) && this.nearCrate();
@@ -343,8 +342,8 @@ export class ArenaScene {
       mouseDown: this.mouse.down,
       click: Boolean(input.click),
       nearCrate: this.nearCrate(),
-      // Space/J, gatillo derecho o toque corto de Enter (el teclado pierde la
-      // tecla entre frames).
+      // Space/J, gatillo derecho (RT; en la arena el pad se lee directo) o
+      // toque corto de Enter (el teclado pierde la tecla entre frames).
       keyboardFire: keys.has('Space') || keys.has('KeyJ') || btn(7)
         || (Boolean(input.aPressed) && input.device === 'keyboard' && !this.nearCrate()),
     });
@@ -355,10 +354,10 @@ export class ArenaScene {
     }
     this.controls = {
       fire,
-      // R / RB o el botón X del joystick.
+      // R / RB o la X del joystick.
       reload: Boolean(input.nextHotbar) || padTap(2),
-      // Y / I / Tab (pad) o F (teclado).
-      patch: Boolean(input.yPressed) || (Boolean(input.xPressed) && !padX && !padY),
+      // Y / I / Tab abren el parche.
+      patch: Boolean(input.yPressed),
       // A del joystick o E del teclado (Space/Enter están reservados al disparo).
       buy: clickBuy || (Boolean(input.aPressed) && !keys.has('Space') && !keys.has('Enter')),
       // Click tambien continua viñeta/resultado (durante la partida no se usa).
@@ -1099,7 +1098,7 @@ export class ArenaScene {
     const items = [
       [mouse ? 'mouse' : (pad ? 'rt' : 'key_space'), 'Disparar'],
       [pad ? 'x' : 'key_r', 'Recargar'],
-      [pad ? 'y' : 'key_f', 'Parche'],
+      [pad ? 'y' : 'key_i', 'Parche'],
     ];
     if (this.nearCrate() && ARENA.ammo !== 'infinita') {
       items.push([pad ? 'a' : 'mouse', 'Comprar']);

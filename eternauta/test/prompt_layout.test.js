@@ -3,7 +3,9 @@
 // promptRect queda como alias de la API vieja (un solo obstáculo).
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { placeLabel, promptRect, VIEW_W, VIEW_H } from '../src/hud.js';
+import {
+  placeLabel, placeGhostLabel, promptRect, VIEW_W, VIEW_H,
+} from '../src/hud.js';
 
 const BASE = { w: 60, h: 15, frameH: 32 };
 const MIN_Y = 18;
@@ -143,4 +145,51 @@ test('barrido objeto × cursor: el puntero nunca queda tapado si hay lugar', () 
     }
   }
   assert.ok(checked > 0, 'el barrido corrió');
+});
+
+test('placeLabel: la escalera del living pide la etiqueta al costado derecho', () => {
+  // Escalera 32x64 pegada al borde superior: x=48, y=24 en la vista (zoom 1.5),
+  // marco de 48x96. Arriba no entra (minY) y abajo pisaría al jugador.
+  const player = { x: 39, y: 84, w: 18, h: 45 };
+  const base = { x: 48, y: 24, w: 56, h: 15, frameH: 96, frameW: 48, obstacles: [player] };
+  const fallback = placeLabel(base);
+  assert.ok(overlaps(fallback, { x: 24, y: 24, w: 48, h: 96 }),
+    'sin side, la etiqueta se apoya sobre el dibujo de la escalera');
+  const side = placeLabel({ ...base, side: 'right' });
+  assert.equal(side.x, 75);
+  assert.equal(side.y, 26);
+  assert.ok(!overlaps(side, { x: 24, y: 24, w: 48, h: 96 }),
+    'al costado no tapa la escalera');
+  assert.ok(!overlaps(side, player));
+  assert.ok(onScreen(side));
+});
+
+// ------------------------------------------- aviso rojo de Manos (§8)
+
+test('placeGhostLabel: arriba de la silueta y sin tapar a Juan (mate en el piso)', () => {
+  // Caso real de manos_invalido.png (zoom 1.5): Juan a la izquierda y la
+  // silueta rojiza en el casillero de al lado.
+  const box = { x: 257, y: 147, w: 14, h: 18 };
+  const player = { x: 228, y: 114, w: 24, h: 48 };
+  const w = 90;   // "No entra ahí." + panel
+  const r = placeGhostLabel({ box, playerBox: player, w });
+  assert.ok(onScreen(r), `fuera de pantalla: ${JSON.stringify(r)}`);
+  assert.ok(!overlaps(r, player), 'la etiqueta tapa a Juan');
+  assert.ok(r.y + r.h <= box.y, 'la etiqueta no queda arriba de la silueta');
+});
+
+test('placeGhostLabel: arriba de la silla, corrida de Juan (taparía el paso)', () => {
+  const box = { x: 252, y: 132, w: 24, h: 36 };
+  const player = { x: 228, y: 87, w: 24, h: 48 };
+  const w = 108;  // "Taparía el paso." + panel
+  const r = placeGhostLabel({ box, playerBox: player, w });
+  assert.ok(onScreen(r), `fuera de pantalla: ${JSON.stringify(r)}`);
+  assert.ok(!overlaps(r, player), 'la etiqueta tapa a Juan');
+  assert.ok(r.y + r.h <= box.y, 'la etiqueta no queda arriba de la silueta');
+});
+
+test('placeGhostLabel: sin Juan cerca, va centrada arriba de la silueta', () => {
+  const box = { x: 200, y: 120, w: 14, h: 18 };
+  const r = placeGhostLabel({ box, w: 90 });
+  assert.deepEqual(r, { x: 162, y: 102, w: 90, h: 15 });
 });

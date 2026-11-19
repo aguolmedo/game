@@ -5,7 +5,7 @@ import assert from 'node:assert/strict';
 import { WorldScene } from '../src/scenes/world.js';
 import { house } from '../src/maps/house.js';
 import { pickAt } from '../src/interaction.js';
-import { resolveAction } from '../src/actions.js';
+import { resolveAction, resolveHands } from '../src/actions.js';
 
 function fakeGame(overrides = {}) {
   const toasts = [];
@@ -38,13 +38,13 @@ function fakeWorld(overrides = {}) {
 }
 
 const EXTRACTOR = {
-  id: 'extractor', kind: 'object',
+  id: 'extractor', kind: 'object', type: 'decor', name: 'el extractor',
   x: 136, y: 16, w: 16, h: 16,
   cursorBox: { x: 128, y: 0, w: 16, h: 16 },
-  interact: { kind: 'look', talk: 'extractor', label: 'Mirar el extractor' },
+  talk: 'extractor',
   ref: {
-    id: 'extractor', station: 'extractor',
-    interact: { kind: 'look', talk: 'extractor', label: 'Mirar el extractor' },
+    id: 'extractor', type: 'decor', name: 'el extractor', station: 'extractor',
+    talk: 'extractor',
   },
 };
 
@@ -80,11 +80,15 @@ test('prompt: con el puntero sobre el extractor no dice "Salir sin traje"', () =
   const world = fakeWorld();
   world.exitWarp = BLOCKED_GATE;
   world.target = EXTRACTOR;
-  world.actionLabel = () => 'Instalar el secador';
-  world.useLabel = () => 'Usar';
-  world.verbFor = () => 'Mirar';
+  // El extractor sin ítem en la mano es un decorado: la Acción lo mira.
   const prompt = world.hudParams().prompt;
-  assert.equal(prompt.label, 'Instalar el secador');
+  assert.equal(prompt.label, 'Mirar el extractor');
+  assert.notEqual(prompt.label, 'Salir sin traje');
+  // Con el secador en la mano, el prompt es el uso (Instalar el secador).
+  const inv = Array.from({ length: 18 }, () => null);
+  inv[0] = { id: 'secador', count: 1 };
+  world.game.inventory = inv;
+  assert.equal(world.hudParams().prompt.label, 'Instalar el secador');
 });
 
 test('prompt: sobre el warp bloqueado conserva "Salir sin traje"/lo que falta', () => {
@@ -148,7 +152,7 @@ test('escalera de la casa: el decorado no roba el click y el warp queda solo', (
     warp,
   };
   const player = { x: warp.x + warp.w / 2, feet: warp.y + warp.h + 16, dir: 'up' };
-  const hit = pickAt(player, [warpCand], { x: warp.x + 16, y: warp.y + 16 }, { dir: 'up' });
+  const hit = pickAt(player, [warpCand], { x: warp.x + 16, y: warp.y + 16 }, { dir: 'up', map: house });
   assert.equal(hit.target.kind, 'warp');
   assert.equal(hit.near, true);
 });
@@ -156,7 +160,7 @@ test('escalera de la casa: el decorado no roba el click y el warp queda solo', (
 // T10: usar un ítem sobre la pava no la saca (QA #7).
 const STOVE = { id: 'stove', station: 'heat' };
 
-test('pava: con mate en la mano el ítem no la saca', () => {
+test('pava: la Acción con mate en la mano no saca la pava', () => {
   const world = fakeWorld();
   world.game.pavaStation = 'stove';
   world.game.inventory = [{ id: 'mate_yerba', count: 1 }];
@@ -164,26 +168,31 @@ test('pava: con mate en la mano el ítem no la saca', () => {
   world.takePava = () => { taken += 1; };
   const target = { kind: 'object', id: 'stove', ref: STOVE };
 
-  // Con F/X (uso del ítem en la mano) el mate no saca la pava: avisa primero.
-  const action = resolveAction(world.ctx(), target, 'mate_yerba', 'item');
-  assert.equal(action.kind, 'none');
-  assert.equal(action.label, 'Primero sacá la pava.');
+  // La Acción ya no saca la pava: es Manos (§9). Con este ítem la Acción mira.
+  const action = resolveAction(world.ctx(), target, 'mate_yerba', 'primary');
+  assert.notEqual(action.id, 'takePava');
   world.runAction(action, target);
   assert.equal(taken, 0, 'la pava se queda en el fuego');
-  assert.deepEqual(world.game.toasts, ['Primero sacá la pava.']);
-  // Con click/E sí la saca, con lo que sea en la mano: lo cubre el test de abajo.
+  // Manos sí la agarra, con lo que sea en la mano: lo cubre el test de abajo.
 });
 
-test('pava: el click sobre la pava en el fuego la saca, con lo que sea en la mano', () => {
+test('pava: Manos la agarra del fuego, con lo que sea en la mano', () => {
   const world = fakeWorld();
   world.game.pavaStation = 'stove';
-  const target = { kind: 'object', id: 'stove', ref: { id: 'stove', station: 'heat' } };
+  const ref = { id: 'stove', station: 'heat' };
+  const target = { kind: 'object', id: 'stove', ref };
+  const aim = { target, tile: null, point: null, device: 'mouse' };
 
-  world.game.inventory = [{ id: 'mate_yerba', count: 1 }];
-  assert.equal(world.actionLabel(target), 'Sacar la pava');
-
-  world.game.inventory = [{ id: 'rifle', count: 1 }];
-  assert.equal(world.actionLabel(target), 'Sacar la pava');
+  for (const held of ['mate_yerba', 'rifle', null]) {
+    const inv = Array.from({ length: 18 }, () => null);
+    if (held) inv[0] = { id: held, count: 1 };
+    world.game.inventory = inv;
+    const hands = resolveHands(world.ctx(), aim, held, null);
+    assert.equal(hands.kind, 'takePava');
+    assert.equal(hands.label, 'Agarrar la pava');
+    // La Acción, en cambio, nunca la saca.
+    assert.notEqual(world.actionLabel(target), 'Sacar la pava');
+  }
 });
 
 test('click: la pava en la mano sobre la estacion de calor dice "Poner la pava al fuego"', () => {

@@ -12,10 +12,39 @@ import { lookLine } from './data/descriptions.js';
 import { INITIAL_ITEMS } from './data/surfaces.js';
 import { depthFor } from './sprite.js';
 import { createItemVisual } from './worldItems.js';
+import {
+  floorPos, surfacePlaceOf, dropFloorItem,
+} from './placement.js';
+import { tileWalkable } from './reach.js';
 
 export const TILE = 16;
 export const SPARKLE_PERIOD = 1.5;
 export const NO_SPACE_MESSAGE = 'No hay lugar.';
+
+/**
+ * Estado de cosas por partida (§3): game.world[mapId] = { items, moved }.
+ * Se crea desde INITIAL_ITEMS la primera vez que se toca el mapa y se borra
+ * entero en reset() (lo hace main.js con game.world = {}).
+ */
+export function ensureWorldState(game, mapId, mapData = null, initialItems = INITIAL_ITEMS) {
+  if (!game.world) game.world = {};
+  let state = game.world[mapId];
+  if (!state) {
+    state = { items: itemsForMap(mapId, initialItems, mapData), moved: {} };
+    game.world[mapId] = state;
+  }
+  if (!Array.isArray(state.items)) state.items = [];
+  if (!state.moved || typeof state.moved !== 'object') state.moved = {};
+  return state;
+}
+
+/** Borra el estado de cosas de la partida (reset() de main.js). */
+export function resetWorld(game) {
+  game.world = {};
+  game.carry = null;
+  // Las líneas de mirar de la primera vez también son por partida.
+  game.seenLook = {};
+}
 
 // ---------------------------------------------------------------- slots
 
@@ -64,8 +93,8 @@ export function canPlace(obj, items, slot) {
   if (slots.length === 0) return false;
   const index = slot == null ? nextSlot(obj, items) : slot;
   if (!Number.isInteger(index) || index < 0 || index >= slots.length) return false;
-  const onObject = (items || []).filter((wi) => wi && wi.objectId === obj.id);
-  if (onObject.some((wi) => wi.slot === index)) return false;
+  const onObject = (items || []).filter((wi) => surfacePlaceOf(wi)?.objectId === obj.id);
+  if (onObject.some((wi) => surfacePlaceOf(wi)?.slot === index)) return false;
   const max = Number.isFinite(obj.surface.maxItems)
     ? obj.surface.maxItems
     : slots.length;
@@ -76,12 +105,12 @@ export function canPlace(obj, items, slot) {
 export function nextSlot(obj, items) {
   if (!obj || !obj.surface) return -1;
   const slots = surfaceSlots(obj);
-  const onObject = (items || []).filter((wi) => wi && wi.objectId === obj.id);
+  const onObject = (items || []).filter((wi) => surfacePlaceOf(wi)?.objectId === obj.id);
   const max = Number.isFinite(obj.surface.maxItems)
     ? obj.surface.maxItems
     : slots.length;
   if (onObject.length >= max) return -1;
-  const used = new Set(onObject.map((wi) => wi.slot));
+  const used = new Set(onObject.map((wi) => surfacePlaceOf(wi)?.slot));
   for (let i = 0; i < slots.length; i++) {
     if (!used.has(i)) return i;
   }
@@ -91,7 +120,8 @@ export function nextSlot(obj, items) {
 /** ¿Qué worldItem hay en (objeto, slot)? */
 export function itemAt(items, objId, slot) {
   return (items || []).find(
-    (wi) => wi && wi.objectId === objId && wi.slot === slot,
+    (wi) => surfacePlaceOf(wi)?.objectId === objId
+      && surfacePlaceOf(wi)?.slot === slot,
   ) || null;
 }
 
@@ -110,12 +140,17 @@ function makeUid(items, objectId, slot) {
 export function placeItem(items, entry) {
   const next = (items || []).slice();
   if (!entry || !entry.itemId) return next;
-  const objectId = entry.objectId ?? entry.object?.id ?? null;
-  const slot = entry.slot ?? null;
+  const place = entry.place || null;
+  const objectId = place?.objectId ?? entry.objectId ?? entry.object?.id ?? null;
+  const slot = place?.slot ?? entry.slot ?? null;
 
   let x = Number.isFinite(entry.x) ? entry.x : null;
   let y = Number.isFinite(entry.y) ? entry.y : null;
-  if ((x == null || y == null) && entry.object) {
+  if (place?.kind === 'floor') {
+    const pos = floorPos(place.tx, place.ty);
+    x = pos.x;
+    y = pos.y;
+  } else if ((x == null || y == null) && entry.object) {
     const pos = surfaceSlot(entry.object, slot);
     if (pos) {
       x = pos.x;
@@ -129,6 +164,7 @@ export function placeItem(items, entry) {
     itemId: entry.itemId,
     objectId,
     slot,
+    place: place || { kind: 'surface', objectId, slot },
     x,
     y,
     count: Number.isFinite(entry.count) && entry.count > 0 ? entry.count : 1,
@@ -185,9 +221,17 @@ export function itemsForMap(mapId, initialItems = INITIAL_ITEMS, map = null) {
     const objectId = entry.objectId ?? (object && object.id) ?? null;
     const slot = entry.slot == null ? null : entry.slot;
 
+    const place = entry.place
+      || (Number.isInteger(entry.tx) && Number.isInteger(entry.ty)
+        ? { kind: 'floor', tx: entry.tx, ty: entry.ty }
+        : { kind: 'surface', objectId, slot });
     let x = Number.isFinite(entry.x) ? entry.x : null;
     let y = Number.isFinite(entry.y) ? entry.y : null;
-    if ((x == null || y == null) && object && slot != null) {
+    if (place.kind === 'floor') {
+      const pos = floorPos(place.tx, place.ty);
+      x = pos.x;
+      y = pos.y;
+    } else if ((x == null || y == null) && object && slot != null) {
       const pos = surfaceSlot(object, slot);
       if (pos) {
         x = pos.x;
@@ -197,10 +241,11 @@ export function itemsForMap(mapId, initialItems = INITIAL_ITEMS, map = null) {
     if (x == null || y == null) return;
 
     const wi = {
-      uid: entry.uid || `${mapId}:${objectId || 'floor'}:${slot ?? 'x'}:${i}`,
+      uid: entry.uid || `${mapId}:${objectId || `piso_${place.tx}_${place.ty}`}:${slot ?? 'x'}:${i}`,
       itemId: entry.itemId,
       objectId,
       slot,
+      place,
       x,
       y,
       count: entry.count || 1,
@@ -258,10 +303,12 @@ export function applyContainers(map, initialItems = INITIAL_ITEMS, mapId = null)
  *   .sync(); .dispose()
  */
 export class SurfaceLayer {
-  constructor(scene, assets, map, worldItems = []) {
+  constructor(scene, assets, map, worldItems = [], store = null) {
     this.scene = scene;
     this.assets = assets;
     this.map = map;
+    // Estado persistente por partida ({ items, moved }), ver §3.
+    this.store = store;
     this.objectById = new Map(
       objectList(map).filter(Boolean).map((obj) => [obj.id, obj]),
     );
@@ -273,9 +320,11 @@ export class SurfaceLayer {
   }
 
   _position(wi) {
-    const obj = wi && this.objectById.get(wi.objectId);
-    if (obj && wi.slot != null) {
-      const pos = surfaceSlot(obj, wi.slot);
+    const place = surfacePlaceOf(wi);
+    if (place?.kind === 'floor') return floorPos(place.tx, place.ty);
+    const obj = place && this.objectById.get(place.objectId);
+    if (obj && place.slot != null) {
+      const pos = surfaceSlot(obj, place.slot);
       if (pos) return pos;
     }
     if (Number.isFinite(wi?.x) && Number.isFinite(wi?.y)) {
@@ -285,10 +334,16 @@ export class SurfaceLayer {
   }
 
   _depth(wi) {
-    const obj = wi && this.objectById.get(wi.objectId);
+    const place = surfacePlaceOf(wi);
+    if (place?.kind === 'floor') return depthFor(wi?.y || 0) + 0.01;
+    const obj = place && this.objectById.get(place.objectId);
     const feet = obj ? (obj.y + obj.th) * TILE : (wi?.y || 0) + 8;
-    const slotOffset = Number.isFinite(wi?.slot) ? wi.slot * 0.0005 : 0;
+    const slotOffset = Number.isFinite(place?.slot) ? place.slot * 0.0005 : 0;
     return depthFor(feet) + 0.01 + slotOffset;
+  }
+
+  _persist() {
+    if (this.store) this.store.items = this.items;
   }
 
   _worldItemOf(candidate) {
@@ -329,26 +384,42 @@ export class SurfaceLayer {
 
       const w = Math.max(10, visual.w);
       const h = Math.max(12, visual.h);
-      this.candidates.push({
-        id: `surface_${wi.uid}`,
+      const place = surfacePlaceOf(wi);
+      const floor = place?.kind === 'floor';
+      const cand = {
+        id: `${floor ? 'floor' : 'surface'}_${wi.uid}`,
         uid: wi.uid,
-        kind: 'surfaceItem',
-        // Los objetos apoyados ganan sobre el mueble que los sostiene.
-        priority: 2,
+        kind: floor ? 'floorItem' : 'surfaceItem',
+        priority: floor ? 1 : 2,
         x: pos.x,
         y: pos.y,
         w,
         h,
         cursorBox: { x: pos.x - w / 2, y: pos.y - h, w, h },
         label: `${grabbable ? 'Agarrar' : 'Mirar'} ${item.name}`,
+        type: 'thing',
+        name: item.name,
         item,
         worldItem: wi,
-        slot: wi.slot,
+        slot: place?.slot ?? null,
         // Orden de dibujo: desempata objetos apoyados superpuestos.
-        front: Number.isFinite(wi.slot) ? wi.slot : 0,
-        objectId: wi.objectId,
+        front: Number.isFinite(place?.slot) ? place.slot : 0,
+        objectId: place?.objectId ?? null,
         grabbable,
-      });
+      };
+      if (floor) {
+        // Una cosa en el piso no es sólida: se camina por encima y se agarra
+        // desde su propio casillero o desde cualquier vecino caminable (§3).
+        const { tx, ty } = place;
+        cand.foot = [{ tx, ty }];
+        const access = new Set([`${tx},${ty}`]);
+        for (const [dx, dy] of [[0, 1], [0, -1], [1, 0], [-1, 0]]) {
+          if (tileWalkable(this.map, tx + dx, ty + dy)) access.add(`${tx + dx},${ty + dy}`);
+        }
+        cand.access = access;
+        cand.floorPlace = place;
+      }
+      this.candidates.push(cand);
     }
     return this.candidates;
   }
@@ -394,6 +465,7 @@ export class SurfaceLayer {
       this.items = takeItem(this.items, wi.uid).items;
     }
     this.sync();
+    this._persist();
     return { inventory: result.slots, itemId: wi.itemId, count: result.added, item };
   }
 
@@ -427,16 +499,40 @@ export class SurfaceLayer {
       itemId: entry.id,
       objectId,
       slot,
+      place: { kind: 'surface', objectId, slot },
       x: pos.x,
       y: pos.y,
       object: obj,
       sprite: item.worldSprite,
     });
     this.sync();
+    this._persist();
     return {
       inventory: removed.slots,
       placed: { itemId: entry.id, slot, objectId },
     };
+  }
+
+  /**
+   * Deja el ítem elegido en el piso (§5). Si es apilable y ya hay uno igual
+   * en ese casillero, suma `count`. Devuelve { inventory, placed } o null.
+   */
+  dropOnFloor(inventory, selectedSlot, tx, ty) {
+    const entry = typeof selectedSlot === 'number'
+      ? inventory[selectedSlot]
+      : selectedSlot;
+    if (!entry || !entry.id) return null;
+    const item = getItem(entry.id);
+    const removed = removeItem(inventory, entry.id, 1);
+    if (removed.removed <= 0) return null;
+    this.items = dropFloorItem(this.items, entry.id, 1, tx, ty).map((wi) => (
+      wi.itemId === entry.id && wi.place?.kind === 'floor'
+        && wi.place.tx === tx && wi.place.ty === ty
+        ? { ...wi, sprite: wi.sprite || item.worldSprite } : wi
+    ));
+    this.sync();
+    this._persist();
+    return { inventory: removed.slots, placed: { itemId: entry.id, tx, ty } };
   }
 
   /** Texto de "Mirar": descripción del item o línea propia del decorativo. */

@@ -27,10 +27,14 @@ function makeCtx() {
 function makeAssets() {
   return {
     font,
-    cascarudos: { image: {} },
-    cascarudosData: { frames: { 'cascarudo:right:0': [0, 0, 20, 16] } },
     buttons: { image: {} },
-    buttonsData: { frames: { a: [0, 0, 9, 9], key_space: [0, 0, 20, 9] } },
+    buttonsData: {
+      frames: {
+        a: [0, 0, 9, 9], b: [0, 0, 9, 9], mouse: [0, 0, 11, 13], mouse_r: [0, 0, 11, 13],
+        key_e: [0, 0, 9, 9], key_q: [0, 0, 9, 9], key_f: [0, 0, 9, 9],
+        key_i: [0, 0, 9, 9], key_esc: [0, 0, 17, 11], key_space: [0, 0, 20, 9],
+      },
+    },
   };
 }
 
@@ -55,7 +59,7 @@ test('drawResultScreen dibuja sin romper', { skip: !hasResults && 'results.js to
     const { ctx, calls } = makeCtx();
     assert.doesNotThrow(() => drawResultScreen(ctx, makeAssets(), view, 1.234), name);
     assert.ok(calls.rects > 100, `${name}: dibujó ${calls.rects} rects`);
-    assert.ok(calls.images >= 2, `${name}: dibujó ${calls.images} imágenes`);
+    assert.ok(calls.images >= 1, `${name}: dibujó ${calls.images} imágenes`);
     assert.ok(ctx.globalAlpha >= 0 && ctx.globalAlpha <= 1, `${name}: alfa válido`);
   }
 });
@@ -70,13 +74,16 @@ test('tallyLayout reproduce las medidas de ArenaScene', async () => {
   });
 });
 
-test('resultOptionRects: dos filas clickeables dentro del tablon', async () => {
-  const { resultOptionRects } = await import('../src/arena/resultScreen.js');
+test('resultOptionRects: dos filas clickeables dentro del cartel', async () => {
+  const { resultOptionRects, RESULT_BOARD } = await import('../src/arena/resultScreen.js');
   const rects = resultOptionRects(makeAssets());
   assert.equal(rects.length, 2);
   for (const rect of rects) {
     assert.ok(rect.w > 100 && rect.h >= 16);
-    assert.ok(rect.x >= 0 && rect.x + rect.w <= 480);
+    assert.ok(rect.x >= RESULT_BOARD.x && rect.x + rect.w <= RESULT_BOARD.x + RESULT_BOARD.w);
+    assert.ok(rect.y >= RESULT_BOARD.y && rect.y + rect.h <= RESULT_BOARD.y + RESULT_BOARD.h);
   }
   assert.ok(rects[1].y > rects[0].y);
+  // el cartel de la maqueta: 280x176 centrado en y=30
+  assert.deepEqual(RESULT_BOARD, { x: 100, y: 30, w: 280, h: 176 });
 });

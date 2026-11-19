@@ -73,7 +73,7 @@ function overlaps(a, b) {
  *   6. si nada sirve: el 1 clampeado a la pantalla
  */
 export function placeLabel({
-  x, y, w, h = PROMPT_H, frameH = 16, obstacles = [],
+  x, y, w, h = PROMPT_H, frameH = 16, frameW = 0, side = null, obstacles = [],
   viewW = VIEW_W, viewH = VIEW_H, minY = PROMPT_MIN_Y,
 }) {
   const list = (obstacles || []).filter(Boolean);
@@ -94,6 +94,14 @@ export function placeLabel({
     candidates.push(box(clampX(hit.x - w - 2), above));
     candidates.push(box(cx, Math.round(hit.y - 3 - h)));
   }
+  // Al costado, solo para objetos que lo piden (la escalera pegada al borde
+  // superior: arriba no entra sin tapar el dibujo). No cambia las demás.
+  const sideY = Math.max(minY, Math.round(y + 2));
+  if (side === 'right' && frameW > 0) {
+    candidates.push(box(clampX(x + frameW / 2 + 3), sideY));
+  } else if (side === 'left' && frameW > 0) {
+    candidates.push(box(clampX(x - frameW / 2 - 3 - w), sideY));
+  }
   // Abajo del marco: el único caso "abajo", y solo si arriba no entra.
   candidates.push(box(cx, Math.round(y + frameH + 3)));
 
@@ -102,6 +110,23 @@ export function placeLabel({
   }
   // Nada entra: la de arriba, clampeada a la pantalla.
   return box(cx, Math.max(minY, Math.min(viewH - 72, above)));
+}
+
+/**
+ * Etiqueta del aviso rojo de Manos (silueta inválida): va ARRIBA de la caja de
+ * la silueta y, si hace falta, se corre para no tapar la caja de Juan.
+ * `box` y `playerBox` vienen en coordenadas de vista (480x270).
+ */
+export function placeGhostLabel({ box, playerBox = null, w, minY = PROMPT_MIN_Y }) {
+  return placeLabel({
+    x: box.x + box.w / 2,
+    y: box.y,
+    w,
+    h: PROMPT_H,
+    frameH: Math.max(12, box.h),
+    obstacles: playerBox ? [playerBox] : [],
+    minY,
+  });
 }
 
 /**
@@ -147,8 +172,8 @@ export class Hud {
   }
 
   draw({
-    device = 'keyboard', objective = null, prompt = null, showHotbar = true,
-    hasSuit = false, fade = 0, hintActions = null, hidden = false,
+    device = 'mouse', objective = null, prompt = null, showHotbar = true,
+    hasSuit = false, fade = 0, hintActions = null, hidden = false, hoverHint = null,
   }) {
     const { ctx } = this.ui;
     const glyphs = this.assets.font.glyphs;
@@ -201,7 +226,7 @@ export class Hud {
 
       // barra de pistas abajo a la derecha
       if (hintActions && hintActions.length) {
-        this.drawHints(ctx, device, hintActions);
+        this.drawHints(ctx, device, hintActions, hoverHint);
       }
 
       // toasts
@@ -219,7 +244,7 @@ export class Hud {
     const glyphs = this.assets.font.glyphs;
     const {
       action, label, x, y, color = '#fff0c0', left = false, alpha = 1,
-      anchor = null,
+      anchor = null, frameW = 0, side = null,
     } = prompt;
     const w = promptWidth(this.assets, device, action, label) + 12;
     let bx;
@@ -231,6 +256,8 @@ export class Hud {
         w,
         h: PROMPT_H,
         frameH: prompt.frameH,
+        frameW,
+        side,
         obstacles: prompt.obstacles || (prompt.avoid ? [prompt.avoid] : []),
       });
       bx = rect.x;
@@ -303,15 +330,27 @@ export class Hud {
     return { x, y, total, boxes };
   }
 
-  drawHints(ctx, device, actions) {
+  drawHints(ctx, device, actions, hover = null) {
     const layout = this.hintLayout(device, actions);
     if (!layout.boxes.length) return;
     darkPanel(ctx, layout.x - 7, layout.y - 4, layout.total + 14, 16, 0.66);
+    // Hover sobre la única entrada clickeable (Mochila): fondo un tono más
+    // claro y texto crema más vivo. Las demás son leyenda y no se resaltan.
+    if (hover) {
+      const box = layout.boxes.find((b) => b.action === hover && !b.static);
+      if (box) {
+        ctx.fillStyle = 'rgba(255, 240, 192, 0.16)';
+        ctx.fillRect(box.rect.x, box.rect.y, box.rect.w, box.rect.h);
+        ctx.fillStyle = 'rgba(255, 240, 192, 0.45)';
+        ctx.fillRect(box.rect.x, box.rect.y, box.rect.w, 1);
+      }
+    }
     let cx = layout.x;
     for (const a of (actions || [])) {
       if (!a) continue;
+      const on = hover && a.action === hover && !a.static;
       const w = drawPrompt(ctx, this.assets, device, a.action, cx, layout.y - 1, this.t,
-        { label: a.label, bob: false });
+        { label: a.label, bob: false, color: on ? '#fffbe8' : '#fff0c0' });
       cx += w + 9;
     }
     void INK;

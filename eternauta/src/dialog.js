@@ -145,7 +145,7 @@ export class DialogBox {
   }
 
   /** Rect del prompt 'Cerrar' abajo a la derecha. */
-  closeRect(device = 'keyboard') {
+  closeRect(device = 'mouse') {
     const backW = promptWidth(this.assets, device, 'back', 'Cerrar');
     const box = this.boxRect();
     return { x: box.x + BOX_W - 10 - backW, y: box.y + BOX_H - 12, w: backW, h: 13 };
@@ -162,7 +162,7 @@ export class DialogBox {
   }
 
   /** input = estado de src/input.js. Devuelve 'closed' | 'page' | null. */
-  update(dt, input, device = 'keyboard', viewPoint = null) {
+  update(dt, input, device = 'mouse', viewPoint = null) {
     if (!this.open) return null;
     this.t += dt;
     const lines = this.pages[this.page] || [];
@@ -290,7 +290,7 @@ export class DialogBox {
     }
   }
 
-  draw(ctx, viewW, viewH, device = 'keyboard') {
+  draw(ctx, viewW, viewH, device = 'mouse') {
     if (!this.open) return;
     const glyphs = this.assets.font.glyphs;
     const x = Math.round((viewW - BOX_W) / 2);
@@ -397,14 +397,14 @@ export class ChoiceBox {
   }
 
   /** Rect del prompt 'Volver' abajo a la derecha. */
-  backRect(device = 'keyboard') {
+  backRect(device = 'mouse') {
     const { x, y, w, h } = this.panelRect();
     const backW = promptWidth(this.assets, device, 'back', 'Volver');
     return { x: x + w - backW - 18, y: y + h - 24, w: backW, h: 13 };
   }
 
   /** Rect del prompt 'Elegir' abajo a la izquierda: elige la opcion actual. */
-  pickRect(device = 'keyboard') {
+  pickRect(device = 'mouse') {
     const { x, y, w, h } = this.panelRect();
     const pickW = promptWidth(this.assets, device, 'interact', 'Elegir');
     return { x: x + 14, y: y + h - 29, w: pickW + 8, h: 23 };
@@ -419,7 +419,7 @@ export class ChoiceBox {
   }
 
   /** Devuelve {index, value} al elegir, 'cancel' con B, o null. */
-  update(dt, input, device = 'keyboard', viewPoint = null) {
+  update(dt, input, device = 'mouse', viewPoint = null) {
     if (!this.open) return null;
     this.t += dt;
     if (input.bPressed || input.startPressed) {
@@ -454,7 +454,7 @@ export class ChoiceBox {
     return null;
   }
 
-  draw(ctx, viewW, viewH, device = 'keyboard') {
+  draw(ctx, viewW, viewH, device = 'mouse') {
     if (!this.open) return;
     const glyphs = this.assets.font.glyphs;
     dim(ctx, 0.45);

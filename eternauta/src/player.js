@@ -86,7 +86,7 @@ export class Player {
       { x: this.x, feet: this.feet },
       move,
       dt,
-      PLAYER_SPEED,
+      PLAYER_SPEED * (this.speedScale || 1),
       bounds,
       world ? (box) => world.isSolid(box) : null,
     );

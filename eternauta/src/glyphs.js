@@ -6,32 +6,28 @@ import { drawText, measureText } from './font.js';
 export const GLYPH_GAP = 5;
 
 export const ACTIONS = {
-  interact: { pad: 'a', key: 'mouse', label: 'Hablar' },
-  use: { pad: 'x', key: 'key_f', label: 'Usar' },
-  bag: { pad: 'y', key: 'key_i', label: 'Mochila' },
-  // Mirar con mouse: glifo propio del click derecho (mouse_r) en el atlas.
-  look: { pad: 'a', key: 'mouse', label: 'Mirar' },
-  back: { pad: 'b', key: 'mouse', label: 'Volver' },
-  menu: { pad: 'start', key: 'key_esc', label: 'Menu' },
-  prev: { pad: 'lb', key: 'key_q', label: 'Anterior' },
-  next: { pad: 'rb', key: 'key_r', label: 'Siguiente' },
-  move: { pad: 'stick', key: 'key_arrow', label: 'Mover' },
+  // Dos verbos del mundo con mouse + teclado o joystick (DIRECCION.md,
+  // "Controles e interacción"). Mirar no es un botón: es Hacer en lo que solo
+  // se mira.
+  interact: { pad: 'a', mouse: 'mouse', key: 'mouse', label: 'Hacer' },
+  hands: { pad: 'x', mouse: 'mouse_r', key: 'mouse_r', label: 'Manos' },
+  bag: { pad: 'y', mouse: 'key_i', key: 'key_i', label: 'Mochila' },
+  back: { pad: 'b', mouse: 'key_esc', key: 'key_esc', label: 'Volver' },
+  menu: { pad: 'start', mouse: 'key_esc', key: 'key_esc', label: 'Menú' },
+  prev: { pad: 'lb', mouse: 'key_1', key: 'key_1', label: 'Anterior' },
+  next: { pad: 'rb', mouse: 'key_1', key: 'key_1', label: 'Siguiente' },
+  move: { pad: 'stick', mouse: 'key_arrow', key: 'key_arrow', label: 'Mover' },
+  item: { pad: 'lb', mouse: 'key_1', key: 'key_1', label: 'Elegir ítem' },
 };
 
 export function glyphName(device, action) {
   const entry = ACTIONS[action];
   if (!entry) return null;
-  // Mirar con mouse usa el glifo del click derecho.
-  if (device === 'mouse' && action === 'look') return 'mouse_r';
-  // Con mouse, los hints que se pueden clickear muestran el mouse.
-  if (device === 'mouse'
-    && (action === 'interact' || action === 'back' || action === 'use'
-      || action === 'bag')) {
-    return 'mouse';
-  }
-  // El joystick muestra A/B; con teclado, interactuar y volver son click
-  // (E y Esc siguen andando como atajos silenciosos).
-  return device === 'pad' ? entry.pad : entry.key;
+  // Con mouse manda su columna (click izq./der., Q, I, Esc). El teclado no
+  // tiene glifo propio: acompaña al mouse.
+  if (device === 'pad') return entry.pad;
+  if (device === 'mouse') return entry.mouse || entry.key;
+  return entry.key;
 }
 
 export function drawGlyph(ctx, assets, name, x, y) {
@@ -92,4 +88,46 @@ export function drawHintBar(ctx, assets, device, actions, x, y, t = 0) {
     cx += w + 10;
   }
   void glyphs;
+}
+
+/** Posiciones de una tablita de glifos (dibujo y click usan lo mismo). */
+export function promptBarLayout(assets, device, items, right, y) {
+  const list = (items || []).filter(Boolean).map((item) => ({
+    ...item,
+    width: promptWidth(assets, device, item.action, item.label),
+  }));
+  const top = Math.round(y);
+  if (!list.length) return { x: Math.round(right), y: top, total: 0, items: [] };
+  const content = list.reduce((sum, item) => sum + item.width, 0) + 10 * (list.length - 1);
+  const total = content + 10;
+  const x = Math.round(right) - total;
+  let cx = x + 5;
+  for (const item of list) {
+    item.x = cx;
+    item.y = top - 1;
+    cx += item.width + 10;
+  }
+  return { x, y: top, total, items: list };
+}
+
+/** Tablita oscura con "[glifo] etiqueta", como el "Elegir" del titulo. */
+export function drawPromptBar(ctx, assets, device, items, right, y, t = 0) {
+  const layout = promptBarLayout(assets, device, items, right, y);
+  if (!layout.items.length) return layout;
+  const bx = layout.x;
+  const by = layout.y - 3;
+  const bw = layout.total;
+  const bh = 15;
+  ctx.fillStyle = 'rgba(20, 14, 24, 0.96)';
+  for (let j = 0; j < bh; j++) {
+    const dy = Math.min(j, bh - 1 - j);
+    const inset = dy < 2 ? 2 - dy : 0;
+    ctx.fillRect(bx + inset, by + j, bw - inset * 2, 1);
+  }
+  for (const item of layout.items) {
+    drawPrompt(ctx, assets, device, item.action, item.x, item.y, t, {
+      label: item.label, bob: false, color: '#fff8e2', outline: '#0a0810',
+    });
+  }
+  return layout;
 }

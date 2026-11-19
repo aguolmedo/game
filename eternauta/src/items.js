@@ -88,8 +88,8 @@ export const ITEMS = {
   },
   casco: {
     id: 'casco',
-    name: 'Casco de buzo',
-    description: 'El casco de buzo de Juan, con visor de vidrio circular y filtro redondo.',
+    name: 'Casco del traje',
+    description: 'El casco del traje: capucha engomada, visera de vidrio y filtro de lata.',
     kind: 'material',
     worldSprite: 'casco',
   },

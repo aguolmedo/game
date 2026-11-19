@@ -99,7 +99,7 @@ test('Favalli explica el traje y nombra lo que falta', () => {
   const entry = talkEntry('favalli', game);
   const text = entry.lines.join(' ');
   assert.match(text, /Todavía falta/);
-  assert.match(text, /Casco de buzo/);
+  assert.match(text, /Casco del traje/);
   assert.match(text, /Tela engomada/);
 
   const stocked = gameWith({ apagon: true, casa_sellada: true, idea_traje: true }, true);

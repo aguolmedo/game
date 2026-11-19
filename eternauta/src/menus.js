@@ -2,17 +2,21 @@
 import { drawText, measureText } from './font.js';
 import { canvasOverlay } from './sprite.js';
 import {
-  OUT, INK, INK2, PAR, PAR2, AM2, AM3, SEL, GOOD, BAD, SNOW, WOOD1,
-  panel, darkPanel, slot, icon, count, namePlate, arrow, dim, wrapLines,
+  OUT, AM3, WOOD1,
+  icon, count, dim, wrapLines,
 } from './uiSkin.js';
-import { drawPrompt, drawGlyph, glyphName, promptWidth } from './glyphs.js';
+import {
+  drawPrompt, drawGlyph, glyphName, glyphSize, promptWidth, drawPromptBar, promptBarLayout,
+} from './glyphs.js';
 import { Cursor, MENU_TABS, nextTab, moveSlot } from './menu.js';
 import { canCraft, craft } from './crafting.js';
 import { RECIPES } from './recipes.js';
 import { getItem } from './items.js';
 import {
   woodSign, selectBar, snowflake, introAlpha, easeOut,
-  CREAM, CREAM2, ROW_H, ROW_Y, SIGN_H,
+  carve, amberFrame, flake,
+  CREAM, CREAM2, ROW_H, ROW_Y, SIGN_H, SH,
+  FACE_HI, SEAM, SEAM_HI, NAIL, NAIL_HI, FALTA, OKC,
 } from './titleUi.js';
 import {
   pointInRect, hitIndex, rowRects, gridRects, mousePoint,
@@ -222,18 +226,22 @@ export class TitleMenu {
     const title = 'CONTROLES';
     drawText(ctx, glyphs, Math.round((VIEW_W - measureText(glyphs, title, 2)) / 2), 26,
       title, CREAM, { scale: 2, shadow: '#5a2e14' });
-    CONTROLS_ROWS.forEach(([pad, label, action], i) => {
-      const y = 51 + i * 14;
-      drawGlyph(ctx, this.assets, pad, 56, y + 1);
-      drawText(ctx, glyphs, 86, y, label, CREAM, { shadow: '#4a2a18' });
-      drawGlyph(ctx, this.assets, glyphName('keyboard', action), 330, y - 1);
-      drawText(ctx, glyphs, 350, y, keyLabel(action), CREAM2, { shadow: '#4a2a18' });
+    for (const [header, x] of CONTROLS_HEADERS) {
+      drawText(ctx, glyphs, x, CTRL_HEADER_Y, header, CREAM2, { shadow: '#4a2a18' });
+    }
+    CONTROLS_ROWS.forEach((row, i) => {
+      const y = CTRL_ROW_Y + i * CTRL_ROW_STEP;
+      drawText(ctx, glyphs, CTRL_LABEL_X, y, row.label, CREAM, { shadow: '#4a2a18' });
+      drawGlyphRun(ctx, this.assets, row.mouse, CTRL_MOUSE_X, y);
+      drawText(ctx, glyphs, CTRL_MOUSE_LABEL_X, y, row.mouseLabel, CREAM2,
+        { shadow: '#4a2a18' });
+      drawGlyphRun(ctx, this.assets, row.pad, CTRL_PAD_X, y);
+      drawText(ctx, glyphs, CTRL_PAD_LABEL_X, y, row.padLabel, CREAM2,
+        { shadow: '#4a2a18' });
     });
-    drawText(ctx, glyphs, 46, 202,
-      'Objetivo: juntar las partes del traje, fabricarlo y salir.', CREAM2,
-      { shadow: '#4a2a18' });
-    drawText(ctx, glyphs, 46, 214, 'La nevada mata al contacto con la piel.',
-      CREAM2, { shadow: '#4a2a18' });
+    CONTROLS_NOTES.forEach((line, i) => {
+      drawText(ctx, glyphs, 46, 202 + i * 12, line, CREAM2, { shadow: '#4a2a18' });
+    });
     drawBoxedPrompt(ctx, this.assets, device, 'back', this.volverRect(device), this.t,
       { label: 'Volver' });
   }
@@ -266,84 +274,185 @@ export class TitleMenu {
   }
 }
 
-/** Panel de controles: glifo del pad a la izquierda y atajo/click a la derecha. */
-export const CONTROLS_ROWS = [
-  ['a', 'Hablar, mirar, confirmar', 'interact'],
-  ['b', 'Volver, cerrar', 'back'],
-  ['x', 'Usar el objeto elegido', 'use'],
-  ['y', 'Abrir la mochila', 'bag'],
-  ['lb', 'Slot anterior', 'prev'],
-  ['rb', 'Slot siguiente', 'next'],
-  ['start', 'Menu / pausa', 'menu'],
-  ['dpad', 'Mover con la cruceta', 'move'],
-  ['stick', 'Mover con el stick', 'move'],
+// ------------------------------------------------------- tabla de Controles
+// Dos columnas de dispositivo: mouse + teclado (complementarios) y joystick.
+const CTRL_LABEL_X = 44;
+const CTRL_MOUSE_X = 196;
+const CTRL_MOUSE_LABEL_X = 214;
+const CTRL_PAD_X = 330;
+const CTRL_PAD_LABEL_X = 371;
+const CTRL_HEADER_Y = 46;
+const CTRL_ROW_Y = 58;
+const CTRL_ROW_STEP = 19;
+
+export const CONTROLS_HEADERS = [
+  ['VERBO', CTRL_LABEL_X],
+  ['MOUSE + TECLADO', CTRL_MOUSE_X],
+  ['JOYSTICK', CTRL_PAD_X],
 ];
 
-const KEY_LABELS = {
-  interact: 'Click', back: 'Click', use: 'F', bag: 'I / Tab',
-  prev: 'Q', next: 'R', menu: 'Esc', move: 'WASD / flechas',
-};
+/** Pie del cartel de Controles (se dibuja línea por línea). */
+export const CONTROLS_NOTES = [
+  'Objetivo: juntar las partes del traje, fabricarlo y salir.',
+  'La nevada mata al contacto con la piel.',
+  'Click en la barra elige ítem. Click en Mochila la abre.',
+];
 
-function keyLabel(action) {
-  return KEY_LABELS[action] || '';
+/**
+ * Una fila por verbo. `mouse`/`pad` son listas de glifos y la etiqueta corta
+ * de cada columna. No hay modo "solo teclado": el teclado acompaña al mouse.
+ */
+export const CONTROLS_ROWS = [
+  {
+    action: 'interact', label: 'Hacer',
+    mouse: ['mouse'], mouseLabel: 'Click izq.',
+    pad: ['a'], padLabel: 'A',
+  },
+  {
+    action: 'hands', label: 'Manos',
+    mouse: ['mouse_r'], mouseLabel: 'Click der.',
+    pad: ['x'], padLabel: 'X',
+  },
+  {
+    action: 'move', label: 'Mover',
+    mouse: ['key_arrow'], mouseLabel: 'WASD / flechas',
+    pad: ['stick', 'dpad'], padLabel: 'Stick / cruceta',
+  },
+  {
+    action: 'item', label: 'Elegir ítem',
+    mouse: ['key_1'], mouseLabel: 'Rueda, 1 a 8',
+    pad: ['lb', 'rb'], padLabel: 'LB / RB',
+  },
+  {
+    action: 'bag', label: 'Mochila',
+    mouse: ['key_i'], mouseLabel: 'I / Tab',
+    pad: ['y'], padLabel: 'Y',
+  },
+  {
+    action: 'menu', label: 'Menú',
+    mouse: ['key_esc'], mouseLabel: 'Esc',
+    pad: ['start'], padLabel: 'Start',
+  },
+];
+
+/** Todos los textos fijos de la pantalla de Controles (test de fuente). */
+export function controlsTexts() {
+  return [
+    'CONTROLES',
+    ...CONTROLS_HEADERS.map(([header]) => header),
+    ...CONTROLS_ROWS.flatMap((row) => [row.label, row.mouseLabel, row.padLabel]),
+    ...CONTROLS_NOTES,
+    'Volver',
+  ];
+}
+
+/** Dibuja los glifos de una columna alineados con el texto de 7 px. */
+function drawGlyphRun(ctx, assets, names, x, y) {
+  let cx = x;
+  for (const name of names || []) {
+    const size = glyphSize(assets, name);
+    drawGlyph(ctx, assets, name, cx, y + Math.round((7 - size.h) / 2));
+    cx += size.w + 3;
+  }
+  return cx;
 }
 
 // ------------------------------------------------------------- menu de pausa
-const TAB_X0 = 54;
-const TAB_STEP = 124;
-const TAB_Y = 28;
-const TAB_W = 116;
-const TAB_H = 17;
-const SLOT_SIZE = 20;
+// Medidas de art/concept/menus_madera.py (mochila).
+export const PAUSE_BOX = { x: 52, y: 40, w: 376, h: 164 };
+const BX = PAUSE_BOX.x;
+const BY = PAUSE_BOX.y;
+const BW = PAUSE_BOX.w;
+const BH = PAUSE_BOX.h;
+
+const TAB_W = 100;
+const TAB_GAP = 8;
+const TAB_H = 22;
+const TAB_H_ACTIVE = 25;
+const TAB_X0 = BX + Math.round((BW - (3 * TAB_W + 2 * TAB_GAP)) / 2);
+const TAB_Y = BY - 16;
+const TAB_STEP = TAB_W + TAB_GAP;
+
+const SLOT_SIZE = 22;
 const SLOT_GAP = 3;
 const SLOT_COLS = 6;
-const SLOT_Y = 52;
+const SLOT_X = BX + 18;
+const SLOT_Y = BY + 20;
 
-/** Pestañas (Inventario / Fabricar / Opciones). */
-export function pauseTabRects() {
+const HINT_Y = BY + BH + 12;
+const HINT_RIGHT = BX + BW;
+const SUIT_IDS = new Set((RECIPES[0]?.needs || []).map((need) => need.id));
+
+/** Pestañas (Inventario / Fabricar / Opciones). La elegida es 3 px mas alta. */
+export function pauseTabRects(active = -1) {
   return MENU_TABS.map((_, i) => ({
-    x: TAB_X0 + i * TAB_STEP, y: TAB_Y, w: TAB_W, h: TAB_H,
+    x: TAB_X0 + i * TAB_STEP,
+    y: i === active ? TAB_Y - 3 : TAB_Y,
+    w: TAB_W,
+    h: i === active ? TAB_H_ACTIVE : TAB_H,
   }));
 }
 
-/** Slots de la mochila en grilla de 6 columnas. */
+/** Slots de la mochila en grilla de 6 columnas de 22 px. */
 export function pauseSlotRects(count) {
-  const gridW = SLOT_COLS * SLOT_SIZE + (SLOT_COLS - 1) * SLOT_GAP;
-  const x0 = Math.round((VIEW_W - gridW) / 2);
   return gridRects({
-    x: x0, y: SLOT_Y, w: SLOT_SIZE, h: SLOT_SIZE,
+    x: SLOT_X, y: SLOT_Y, w: SLOT_SIZE, h: SLOT_SIZE,
     gapX: SLOT_GAP, gapY: SLOT_GAP, columns: SLOT_COLS, count,
   });
 }
 
-/** Filas de recetas (una por RECIPES). */
+/** Fila tallada de la receta (una por RECIPES). */
 export function pauseRecipeRects() {
-  return rowRects({ x: 50, y: 59, w: 376, h: 32, gap: 2, count: RECIPES.length });
+  return rowRects({ x: BX + 16, y: BY + 20, w: BW - 32, h: 30, gap: 2, count: RECIPES.length });
 }
 
-/** Filas de opciones (Reanudar / Volver al titulo). */
+/** Filas de opciones (Reanudar / Volver al titulo), con la barra calida. */
 export function pauseOptionRects() {
-  return rowRects({ x: 50, y: 75, w: 340, h: 28, gap: 2, count: 2 });
+  return rowRects({ x: BX + 40, y: BY + 30 - 4, w: BW - 80, h: 23, gap: 3, count: 2 });
+}
+
+/** Tablita del boton Fabricar (96x20, centrada abajo). */
+export function pauseCraftButtonRect() {
+  return { x: BX + Math.round((BW - 96) / 2), y: BY + BH - 30, w: 96, h: 20 };
 }
 
 /** Layout de la barra de prompts de abajo (dibujo y click usan lo mismo). */
 export function hintLayout(assets, device, actions) {
-  const items = actions.map((a) => ({
-    ...a, width: promptWidth(assets, device, a.action, a.label),
-  }));
-  let total = 0;
-  for (const item of items) total += item.width + 9;
-  total -= 9;
-  const x = VIEW_W - total - 58;
-  const y = VIEW_H - 30;
-  let cx = x;
-  for (const item of items) {
-    item.x = cx;
-    item.y = y - 1;
-    item.rect = promptBox(cx, y - 1, item.width);
-    cx += item.width + 9;
+  const layout = promptBarLayout(assets, device, actions, HINT_RIGHT, HINT_Y);
+  for (const item of layout.items) item.rect = promptBox(item.x, item.y, item.width);
+  return layout;
+}
+
+/** Texto centrado en `cx`, con la sombra de la madera. */
+function centerText(ctx, glyphs, text, cx, y, color, scale = 1) {
+  const w = measureText(glyphs, text, scale);
+  drawText(ctx, glyphs, Math.round(cx - w / 2), y, text, color, { scale, shadow: SH });
+}
+
+/** Primera frase de la descripcion del resultado (la linea de la receta). */
+function itemFlavor(recipe) {
+  const text = getItem(recipe.result).description;
+  const end = text.indexOf('. ');
+  return end > 0 ? text.slice(0, end + 1) : text;
+}
+
+/** Lista de lo que falta (rojo suave) que sigue en la linea siguiente si no entra. */
+function drawWrappedNames(ctx, glyphs, text, x, y, firstX, width) {
+  const right = x + width;
+  let cx = firstX;
+  let cy = y;
+  let line = '';
+  for (const word of String(text).split(' ')) {
+    const next = line ? `${line} ${word}` : word;
+    if (line && cx + measureText(glyphs, next) > right) {
+      drawText(ctx, glyphs, cx, cy, line, FALTA, { shadow: SH });
+      line = '';
+      cx = x;
+      cy += 10;
+    }
+    line = line ? `${line} ${word}` : word;
   }
-  return { x, y, total, items };
+  if (line) drawText(ctx, glyphs, cx, cy, line, FALTA, { shadow: SH });
 }
 
 export class PauseMenu {
@@ -484,7 +593,7 @@ export class PauseMenu {
 
   /** Control bajo el puntero: pestaña, slot, receta u opcion. */
   hitTarget(point) {
-    const tab = hitIndex(point, pauseTabRects());
+    const tab = hitIndex(point, pauseTabRects(this.tab));
     if (tab >= 0) return { kind: 'tab', index: tab };
     if (this.tab === 0) {
       const slot = hitSlot(point, pauseSlotRects(this.game.inventory.length));
@@ -492,6 +601,9 @@ export class PauseMenu {
     } else if (this.tab === 1) {
       const recipe = hitSlot(point, pauseRecipeRects());
       if (recipe >= 0) return { kind: 'recipe', index: recipe };
+      if (pointInRect(point, pauseCraftButtonRect())) {
+        return { kind: 'recipe', index: this.recipeIndex };
+      }
     } else {
       const option = hitSlot(point, pauseOptionRects());
       if (option >= 0) return { kind: 'option', index: option };
@@ -620,24 +732,10 @@ export class PauseMenu {
     const device = this.game.input.device;
     this.ui.clear();
     dim(ctx, 0.58);
-    panel(ctx, 44, 20, 392, 226);
-    MENU_TABS.forEach((tabDef, i) => {
-      const label = tabDef.label;
-      const active = i === this.tab;
-      const x = TAB_X0 + i * TAB_STEP;
-      const w = TAB_W;
-      ctx.fillStyle = OUT;
-      ctx.fillRect(x, TAB_Y, w, TAB_H);
-      ctx.fillStyle = active ? '#b07a42' : WOOD1;
-      ctx.fillRect(x + 1, TAB_Y + 1, w - 2, TAB_H - 2);
-      if (active) {
-        ctx.fillStyle = AM3;
-        ctx.fillRect(x + 1, TAB_Y + 1, w - 2, 1);
-      }
-      const color = active ? '#fff0c0' : '#e8c890';
-      drawText(ctx, glyphs, Math.round(x + (w - measureText(glyphs, label)) / 2), TAB_Y + 5,
-        label, color, { shadow: active ? '#5a3420' : '#2e1a10' });
-    });
+    // Pestañas de atrás primero; la elegida se pega arriba del cartel.
+    this.drawBackTabs(ctx, glyphs);
+    woodSign(ctx, BX, BY, BW, BH, { seams: 20, snow: false });
+    this.drawActiveTab(ctx, glyphs);
     if (this.tab === 0) this.drawInventory(ctx, glyphs);
     else if (this.tab === 1) this.drawCrafting(ctx, glyphs);
     else this.drawOptions(ctx, glyphs);
@@ -645,127 +743,175 @@ export class PauseMenu {
     this.ui.commit();
   }
 
-  drawHints(ctx, device) {
-    const hints = hintLayout(this.assets, device, this.hintActions());
-    darkPanel(ctx, hints.x - 8, hints.y - 4, hints.total + 16, 16, 0.7);
-    for (const item of hints.items) {
-      drawPrompt(ctx, this.assets, device, item.action, item.x, item.y, this.t,
-        { label: item.label, bob: false });
+  /** Tablitas de las pestañas que no estan elegidas. */
+  drawBackTabs(ctx, glyphs) {
+    const rects = pauseTabRects(this.tab);
+    MENU_TABS.forEach((tabDef, i) => {
+      if (i === this.tab) return;
+      const r = rects[i];
+      woodSign(ctx, r.x, r.y, r.w, r.h, { seams: 0, nails: false, snow: false });
+      centerText(ctx, glyphs, tabDef.label, r.x + r.w / 2, r.y + 6, CREAM2);
+    });
+  }
+
+  /** La pestaña elegida: mas clara, clavada y fundida con el cartel. */
+  drawActiveTab(ctx, glyphs) {
+    const r = pauseTabRects(this.tab)[this.tab];
+    if (!r) return;
+    woodSign(ctx, r.x, r.y, r.w, r.h, {
+      seams: 0, nails: false, snow: false, shadow: false, face: FACE_HI,
+    });
+    // La tablita se apoya sobre el borde del cartel: sin costura a la vista.
+    ctx.fillStyle = FACE_HI;
+    ctx.fillRect(r.x + 4, BY + 2, r.w - 8, 4);
+    ctx.fillStyle = WOOD1;
+    ctx.fillRect(r.x + 1, BY + 2, 3, 3);
+    ctx.fillRect(r.x + r.w - 4, BY + 2, 3, 3);
+    centerText(ctx, glyphs, MENU_TABS[this.tab].label, r.x + r.w / 2, BY - 12, CREAM);
+    for (const nx of [r.x + 6, r.x + r.w - 8]) {
+      ctx.fillStyle = NAIL;
+      ctx.fillRect(nx, BY - 13, 2, 2);
+      ctx.fillStyle = NAIL_HI;
+      ctx.fillRect(nx, BY - 13, 1, 1);
     }
+  }
+
+  drawHints(ctx, device) {
+    drawPromptBar(ctx, this.assets, device, this.hintActions(), HINT_RIGHT, HINT_Y, this.t);
   }
 
   drawInventory(ctx, glyphs) {
     const rects = pauseSlotRects(this.game.inventory.length);
     rects.forEach((rect, i) => {
-      const selected = i === this.cursor.index;
-      const bob = selected ? Math.round(Math.sin(this.t * 6)) : 0;
-      const x = rect.x;
-      const y = rect.y + bob;
-      slot(ctx, x, y, rect.w, selected);
+      carve(ctx, rect.x, rect.y, rect.w, rect.h);
       const bag = this.game.inventory[i];
       if (bag) {
-        icon(ctx, this.assets, bag.id, x + 2, y + 2, 16);
-        count(ctx, glyphs, bag.count, x + 13, y + 12);
+        icon(ctx, this.assets, bag.id, rect.x + 3, rect.y + 3, 16);
+        count(ctx, glyphs, bag.count, rect.x + 12, rect.y + 13);
       }
     });
+    const selected = rects[this.cursor.index];
+    if (selected) amberFrame(ctx, selected.x, selected.y, selected.w, selected.h);
+
+    // Ficha del objeto elegido, tallada a la derecha de la grilla.
+    const fx = SLOT_X + SLOT_COLS * (SLOT_SIZE + SLOT_GAP) + 10;
+    const fy = SLOT_Y;
+    const fw = BX + BW - 18 - fx;
+    carve(ctx, fx, fy, 38, 38);
     const bag = this.game.inventory[this.cursor.index];
-    const detailY = 128;
     if (bag) {
       const item = getItem(bag.id);
-      drawText(ctx, glyphs, 62, detailY, item.name, SEL, { shadow: '#f8e8c0' });
-      const lines = wrapLines(glyphs, item.description, 340, 2);
+      icon(ctx, this.assets, bag.id, fx + 3, fy + 3, 32);
+      drawText(ctx, glyphs, fx + 46, fy + 4, item.name, CREAM, { shadow: SH });
+      if (SUIT_IDS.has(bag.id)) {
+        drawText(ctx, glyphs, fx + 46, fy + 16, 'Para el traje', AM3, { shadow: SH });
+      }
+      const lines = wrapLines(glyphs, item.description, fw, 3);
       lines.forEach((line, i) => {
-        drawText(ctx, glyphs, 62, detailY + 12 + i * 10, line, INK, { shadow: '#f8e8c0' });
+        drawText(ctx, glyphs, fx, fy + 48 + i * 11, line, CREAM2, { shadow: SH });
       });
-      const action = bag.id === 'traje'
-        ? (this.game.hasSuit ? 'Sacarse el traje' : 'Ponerse el traje')
-        : 'Llevar a la mano';
-      drawText(ctx, glyphs, 62, detailY + 40, action, INK2, { shadow: '#f8e8c0' });
     } else {
-      drawText(ctx, glyphs, 62, detailY, 'La mochila está vacía.', INK2, {});
+      drawText(ctx, glyphs, fx + 46, fy + 4, 'La mochila está vacía.', CREAM2,
+        { shadow: SH });
     }
+
+    // Junta y materiales que faltan, quemados en la madera (solo si faltan).
     const pieces = this.game.missingParts ? this.game.missingParts() : [];
-    if (this.game.crafted) {
-      drawText(ctx, glyphs, 62, 206, 'Traje fabricado.', GOOD, { shadow: '#f8e8c0' });
-    } else if (pieces.length) {
-      const names = pieces.map((id) => getItem(id).name);
-      const lines = wrapLines(glyphs, `Falta: ${names.join(', ')}`, 356, 3);
-      lines.forEach((line, i) => {
-        drawText(ctx, glyphs, 62, 198 + i * 10, line, BAD, { shadow: '#f8e8c0' });
-      });
-    } else {
-      drawText(ctx, glyphs, 62, 206, 'Materiales del traje completos.', GOOD,
-        { shadow: '#f8e8c0' });
-    }
+    if (!pieces.length) return;
+    const ly = BY + BH - 36;
+    ctx.fillStyle = SEAM;
+    ctx.fillRect(BX + 16, ly, BW - 32, 1);
+    ctx.fillStyle = SEAM_HI;
+    ctx.fillRect(BX + 16, ly + 1, BW - 32, 1);
+    const prefix = 'Para el traje faltan: ';
+    drawText(ctx, glyphs, BX + 18, ly + 9, prefix, CREAM2, { shadow: SH });
+    drawWrappedNames(ctx, glyphs, pieces.map((id) => getItem(id).name).join(', '),
+      BX + 18, ly + 9, BX + 18 + measureText(glyphs, prefix), BW - 36);
   }
 
   drawCrafting(ctx, glyphs) {
     const rects = pauseRecipeRects();
     RECIPES.forEach((recipe, i) => {
-      const selected = i === this.recipeIndex;
-      const y = rects[i].y + 5;
-      const bob = selected ? Math.round(Math.sin(this.t * 6)) : 0;
-      if (selected) {
-        ctx.fillStyle = 'rgba(232, 150, 58, 0.25)';
-        ctx.fillRect(58, y - 4 + bob, 364, 30);
-        arrow(ctx, 46, y + 6 + bob, AM3);
+      const rect = rects[i];
+      if (!rect) return;
+      carve(ctx, rect.x, rect.y, rect.w, rect.h);
+      if (i === this.recipeIndex) {
+        selectBar(ctx, rect.x + 2, rect.y + 2, rect.w - 3, rect.h - 3);
       }
-      slot(ctx, 64, y + bob, 20, selected);
-      icon(ctx, this.assets, recipe.result, 66, y + 2 + bob);
-      drawText(ctx, glyphs, 92, y + 2 + bob, recipe.name, selected ? SEL : INK,
-        { shadow: '#f8e8c0' });
-      drawText(ctx, glyphs, 92, y + 13 + bob, recipe.description.slice(0, 52), INK2, {});
-      const ok = canCraft(this.game.inventory, recipe);
-      const status = this.game.crafted ? 'Fabricado' : (ok ? 'Listo' : 'Faltan');
-      drawText(ctx, glyphs, 364, y + 2, status, this.game.crafted || ok ? GOOD : BAD, {});
+      icon(ctx, this.assets, recipe.result, rect.x + 7, rect.y + 7);
+      drawText(ctx, glyphs, rect.x + 30, rect.y + 6, recipe.name, CREAM, { shadow: SH });
+      drawText(ctx, glyphs, rect.x + 30, rect.y + 17, itemFlavor(recipe), CREAM2,
+        { shadow: SH });
     });
-    const recipe = RECIPES[this.recipeIndex];
+
+    const recipe = RECIPES[this.recipeIndex] || RECIPES[0];
     if (!recipe) return;
-    const needsY = 146;
-    drawText(ctx, glyphs, 62, needsY - 12, 'Materiales:', INK, { shadow: '#f8e8c0' });
+    const rx = BX + 16;
+    const ry = BY + 20;
+    drawText(ctx, glyphs, rx + 2, ry + 38, 'Materiales', CREAM2, { shadow: SH });
     recipe.needs.forEach((need, i) => {
       const have = this.game.inventory.reduce(
         (sum, s) => sum + (s && s.id === need.id ? s.count : 0), 0,
       );
       const ok = have >= need.n;
-      const col = i % 2;
-      const row = Math.floor(i / 2);
-      const x = 66 + col * 180;
-      const y = needsY + row * 12;
-      icon(ctx, this.assets, need.id, x, y - 2, 12);
-      drawText(ctx, glyphs, x + 16, y, `${getItem(need.id).name} ${have}/${need.n}`,
-        ok ? GOOD : BAD, { shadow: '#f8e8c0' });
+      const x = rx + 2 + (i % 2) * 176;
+      const y = ry + 50 + Math.floor(i / 2) * 21;
+      carve(ctx, x, y, 18, 18);
+      icon(ctx, this.assets, need.id, x + 1, y + 1, 16);
+      drawText(ctx, glyphs, x + 24, y + 6, getItem(need.id).name,
+        ok ? CREAM : CREAM2, { shadow: SH });
+      const text = `${have}/${need.n}`;
+      drawText(ctx, glyphs, x + 160 - measureText(glyphs, text), y + 6, text,
+        ok ? OKC : FALTA, { shadow: SH });
     });
+
+    // Boton Fabricar: apagado mientras falte algo.
+    const ready = canCraft(this.game.inventory, recipe);
+    const box = pauseCraftButtonRect();
+    woodSign(ctx, box.x, box.y, box.w, box.h, {
+      seams: 0, nails: false, snow: false, face: ready ? FACE_HI : WOOD1,
+    });
+    centerText(ctx, glyphs, 'Fabricar', box.x + box.w / 2, box.y + 7,
+      ready ? CREAM : CREAM2);
   }
 
   drawOptions(ctx, glyphs) {
-    const options = ['Reanudar', 'Volver al titulo'];
+    const options = ['Reanudar', 'Volver al título'];
     const rects = pauseOptionRects();
     options.forEach((label, i) => {
+      const rect = rects[i];
       const selected = i === this.optionIndex;
-      const y = rects[i].y + 5;
-      if (selected) {
-        arrow(ctx, 62, y + 6, AM3);
-        ctx.fillStyle = 'rgba(232, 150, 58, 0.22)';
-        ctx.fillRect(74, y - 4, 300, 22);
-      }
-      drawText(ctx, glyphs, 82, y, label, selected ? SEL : INK,
-        { scale: 2, shadow: selected ? '#e8c890' : '#f8e8c0' });
+      if (selected) selectBar(ctx, rect.x, rect.y, rect.w, rect.h);
+      const w = measureText(glyphs, label, 2);
+      const left = Math.round(rect.x + rect.w / 2 - w / 2);
+      drawText(ctx, glyphs, left, rect.y + 4, label,
+        selected ? CREAM : CREAM2,
+        { scale: 2, shadow: selected ? '#5a2e14' : '#4a2a18' });
+      if (selected) flake(ctx, left - 10, rect.y + 11, CREAM);
     });
-    drawText(ctx, glyphs, 62, 160, 'Volver al titulo pierde la partida.', INK2,
-      { shadow: '#f8e8c0' });
-    drawText(ctx, glyphs, 62, 180, 'Objetivo actual:', INK2, { shadow: '#f8e8c0' });
+    centerText(ctx, glyphs, 'Volver al título pierde la partida.', VIEW_W / 2,
+      BY + 80, FALTA);
+
+    // Objetivo actual en una plaquita tallada.
+    const py = BY + BH - 50;
+    carve(ctx, BX + 40, py, BW - 80, 34);
+    centerText(ctx, glyphs, 'Objetivo actual', VIEW_W / 2, py + 7, CREAM2);
     const objective = this.game.objective ? this.game.objective() : null;
-    if (objective) drawText(ctx, glyphs, 62, 192, objective.text, INK, { shadow: '#f8e8c0' });
+    if (objective) centerText(ctx, glyphs, objective.text, VIEW_W / 2, py + 20, CREAM);
   }
 }
 
 // ------------------------------------------------------------- panel de cofre
-const CHEST_W = 300;
-const CHEST_H = 132;
+// Mismo lenguaje que la mochila: cartel de madera, casilleros tallados, ficha
+// del objeto y tablita de glifos. Sin papel rayado.
+const CHEST_W = 360;
+const CHEST_H = 156;
+const CHEST_SLOT = 22;
+const CHEST_GAP = 3;
+const CHEST_PAD = 18;
 
 /** Caja del panel de cofre (centrado y un poco arriba). */
-function chestBox() {
+export function chestBox() {
   return {
     x: Math.round((VIEW_W - CHEST_W) / 2),
     y: Math.round((VIEW_H - CHEST_H) / 2) - 10,
@@ -774,17 +920,40 @@ function chestBox() {
   };
 }
 
-/** Slots del cofre: minimo 4, en fila. */
+/** Tablita del titulo, clavada arriba como la pestaña elegida de la mochila. */
+export function chestTitleRect(assets, title) {
+  const box = chestBox();
+  const text = title || 'Cofre';
+  const w = Math.max(112, measureText(assets.font.glyphs, text) + 30);
+  return { x: Math.round(box.x + (box.w - w) / 2), y: box.y - 19, w, h: 25 };
+}
+
+/** Casilleros tallados de 22 px, alineados a la izquierda como el inventario. */
 export function chestSlotRects(count) {
   const box = chestBox();
   const n = Math.max(4, count);
-  const size = 20;
-  const gap = 4;
-  const total = n * (size + gap) - gap;
-  const x0 = Math.round(box.x + (box.w - total) / 2);
   return gridRects({
-    x: x0, y: box.y + 34, w: size, h: size, gapX: gap, gapY: 0, columns: n, count: n,
+    x: box.x + CHEST_PAD, y: box.y + 20, w: CHEST_SLOT, h: CHEST_SLOT,
+    gapX: CHEST_GAP, gapY: 0, columns: n, count: n,
   });
+}
+
+/** Glifos de abajo: Agarrar (si queda algo) y Cerrar. */
+function chestHintItems(hasItems) {
+  return [
+    ...(hasItems ? [{ action: 'interact', label: 'Agarrar' }] : []),
+    { action: 'back', label: 'Cerrar' },
+  ];
+}
+
+/** Geometria de la tablita de glifos (dibujo y click usan lo mismo). */
+function chestHintLayout(assets, device, hasItems = true) {
+  const box = chestBox();
+  const layout = promptBarLayout(
+    assets, device, chestHintItems(hasItems), box.x + box.w - 16, box.y + box.h - 22,
+  );
+  for (const item of layout.items) item.rect = promptBox(item.x, item.y, item.width);
+  return layout;
 }
 
 export class ChestPanel {
@@ -890,18 +1059,22 @@ export class ChestPanel {
     return chestSlotRects(this.container ? this.container.items.length : 0);
   }
 
+  /** Caja clickeable de un glifo de la tablita de abajo. */
+  hintRect(device, action) {
+    const hasItems = Boolean(this.container && this.container.items.length);
+    const layout = chestHintLayout(this.assets, device, hasItems);
+    const item = layout.items.find((entry) => entry.action === action);
+    return item ? item.rect : null;
+  }
+
   /** Caja del prompt Cerrar. */
   closeRect(device) {
-    const box = chestBox();
-    const width = promptWidth(this.assets, device, 'back', 'Cerrar');
-    return promptBox(box.x + box.w - width - 16, box.y + box.h - 22, width);
+    return this.hintRect(device, 'back');
   }
 
   /** Caja del prompt Agarrar (el del objeto seleccionado). */
   takeRect(device) {
-    const box = chestBox();
-    const width = promptWidth(this.assets, device, 'interact', 'Agarrar');
-    return promptBox(box.x + 16, box.y + box.h - 22, width);
+    return this.hintRect(device, 'interact');
   }
 
   /** Agarrar el item del slot `index` (A o click). */
@@ -915,6 +1088,27 @@ export class ChestPanel {
     this.index = left === 0 ? 0 : Math.min(this.index, left - 1);
   }
 
+  /** Tablita del titulo pegada al borde superior del cartel. */
+  drawTitleTab(ctx, glyphs, tab, title) {
+    const box = chestBox();
+    woodSign(ctx, tab.x, tab.y, tab.w, tab.h, {
+      seams: 0, nails: false, snow: false, shadow: false, face: FACE_HI,
+    });
+    // Se funde con el cartel, como la pestaña elegida de la mochila.
+    ctx.fillStyle = FACE_HI;
+    ctx.fillRect(tab.x + 4, box.y + 2, tab.w - 8, 4);
+    ctx.fillStyle = WOOD1;
+    ctx.fillRect(tab.x + 1, box.y + 2, 3, 3);
+    ctx.fillRect(tab.x + tab.w - 4, box.y + 2, 3, 3);
+    centerText(ctx, glyphs, title, tab.x + tab.w / 2, box.y - 12, CREAM);
+    for (const nx of [tab.x + 6, tab.x + tab.w - 8]) {
+      ctx.fillStyle = NAIL;
+      ctx.fillRect(nx, box.y - 13, 2, 2);
+      ctx.fillStyle = NAIL_HI;
+      ctx.fillRect(nx, box.y - 13, 1, 1);
+    }
+  }
+
   draw() {
     if (!this.ui.mesh.visible || !this.container) return;
     const { ctx } = this.ui;
@@ -924,34 +1118,44 @@ export class ChestPanel {
     dim(ctx, 0.5);
     const box = chestBox();
     const { x, y, w, h } = box;
-    panel(ctx, x, y, w, h);
-    namePlate(ctx, glyphs, this.container.name, x + w / 2, y + 10);
     const items = this.container.items;
+
+    woodSign(ctx, x, y, w, h, { seams: 18, snow: false });
+    this.drawTitleTab(ctx, glyphs, chestTitleRect(this.assets, this.container.name),
+      this.container.name);
+
     this.slotRects().forEach((rect, i) => {
-      const selected = i === this.index && items.length > 0;
-      const bob = selected ? Math.round(Math.sin(this.t * 6)) : 0;
-      slot(ctx, rect.x, rect.y + bob, rect.w, selected);
-      if (items[i]) {
-        icon(ctx, this.assets, items[i].id || items[i], rect.x + 2, rect.y + 2 + bob);
-        const n = items[i].n || 1;
-        if (n > 1) count(ctx, glyphs, n, rect.x + 13, rect.y + 12 + bob);
+      carve(ctx, rect.x, rect.y, rect.w, rect.h);
+      const entry = items[i];
+      if (entry) {
+        icon(ctx, this.assets, entry.id || entry, rect.x + 3, rect.y + 3, 16);
+        count(ctx, glyphs, entry.n || 1, rect.x + 12, rect.y + 13);
       }
     });
+    const selected = this.slotRects()[this.index];
+    if (selected && items.length) amberFrame(ctx, selected.x, selected.y, selected.w, selected.h);
+
+    // Ficha del objeto elegido, como la del inventario adaptada al ancho.
+    const fx = x + 128;
+    const fy = y + 20;
+    carve(ctx, fx, fy, 38, 38);
     if (items.length) {
       const raw = items[this.index];
       const item = getItem(raw.id || raw);
-      drawText(ctx, glyphs, x + 16, y + 70, item.name, SEL, { shadow: '#f8e8c0' });
-      const lines = wrapLines(glyphs, item.description, w - 32, 2);
+      icon(ctx, this.assets, raw.id || raw, fx + 3, fy + 3, 32);
+      drawText(ctx, glyphs, fx + 46, fy + 4, item.name, CREAM, { shadow: SH });
+      const lines = wrapLines(glyphs, item.description, w - CHEST_PAD * 2, 3);
       lines.forEach((line, i) => {
-        drawText(ctx, glyphs, x + 16, y + 82 + i * 10, line, INK, { shadow: '#f8e8c0' });
+        drawText(ctx, glyphs, x + CHEST_PAD, fy + 48 + i * 11, line, CREAM2,
+          { shadow: SH });
       });
-      drawBoxedPrompt(ctx, this.assets, device, 'interact', this.takeRect(device), this.t,
-        { label: 'Agarrar' });
     } else {
-      drawText(ctx, glyphs, x + 16, y + 70, 'No queda nada.', INK2, {});
+      drawText(ctx, glyphs, x + CHEST_PAD, fy + 48, 'No queda nada.', CREAM2,
+        { shadow: SH });
     }
-    drawBoxedPrompt(ctx, this.assets, device, 'back', this.closeRect(device), this.t,
-      { label: 'Cerrar' });
+
+    drawPromptBar(ctx, this.assets, device, chestHintItems(items.length > 0),
+      x + w - 16, y + h - 22, this.t);
     this.ui.commit();
   }
 }

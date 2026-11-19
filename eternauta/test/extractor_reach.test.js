@@ -2,18 +2,21 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { garage } from '../src/maps/garage.js';
 import { pickAt, pickTarget } from '../src/interaction.js';
+import { objectAccessTiles, playerInAccess } from '../src/reach.js';
 
-// Mismo candidato que arma mapView.addObject().
+// Mismo candidato que arma mapView.addObject() (sin el recorte de textura).
 function candidateOf(obj) {
-  const anchorX = (obj.x + obj.tw / 2) * 16;
-  const anchorY = (obj.y + obj.th) * 16;
+  const w = obj.tw * 16;
+  const h = obj.th * 16;
   return {
     id: obj.id,
     kind: 'object',
-    x: anchorX,
-    y: anchorY,
-    w: obj.tw * 16,
-    h: obj.th * 16,
+    priority: 1,
+    x: (obj.x + obj.tw / 2) * 16,
+    y: (obj.y + obj.th) * 16,
+    w,
+    h,
+    cursorBox: { x: obj.x * 16, y: obj.y * 16, w, h },
     ref: obj,
   };
 }
@@ -21,30 +24,29 @@ function candidateOf(obj) {
 test('garage: el extractor se alcanza desde el piso frente al portón', () => {
   const obj = garage.objects.find((o) => o.id === 'extractor');
   assert.ok(obj, 'falta el extractor en el mapa del garaje');
-  assert.equal(obj.reach, 56, 'el extractor tiene que traer su propio alcance');
+  assert.equal(obj.reach, undefined, 'ya no hay alcances por objeto');
 
+  // Cuelga de la pared: el acceso es el piso de la fila 3, frente al portón.
+  assert.ok(objectAccessTiles(obj, garage).has('8,3'), 'falta el casillero de acceso');
   const cand = candidateOf(obj);
-  // bounds.minFeet del garaje es 54: el jugador llega hasta ahí.
-  const player = { x: cand.x, feet: 54, dir: 'up' };
+  const player = { x: 8 * 16 + 8, feet: 3 * 16 + 12, dir: 'up' };
+  assert.ok(playerInAccess(player, cand, garage), 'el jugador está en un acceso');
 
-  const byFacing = pickTarget(player, [cand], { dir: 'up', reach: 22 });
+  const byFacing = pickTarget(player, [cand], { dir: 'up', map: garage });
   assert.equal(byFacing.target && byFacing.target.id, 'extractor');
 
-  const byMouse = pickAt(player, [cand], { x: cand.x, y: cand.y - 8 }, { dir: 'up', reach: 28 });
+  const byMouse = pickAt(player, [cand], { x: 136, y: 10 }, { dir: 'up', map: garage });
   assert.equal(byMouse.target && byMouse.target.id, 'extractor');
   assert.equal(byMouse.near, true);
 });
 
-test('garage: sin el alcance propio el extractor queda fuera de alcance', () => {
+test('garage: el extractor no se alcanza desde otro casillero', () => {
   const obj = garage.objects.find((o) => o.id === 'extractor');
-  const plain = { ...obj };
-  delete plain.reach;
-  const cand = candidateOf(plain);
-  const player = { x: cand.x, feet: 54, dir: 'up' };
-
-  assert.equal(pickTarget(player, [cand], { dir: 'up', reach: 22 }).target, null);
-
-  const byMouse = pickAt(player, [cand], { x: cand.x, y: cand.y - 8 }, { dir: 'up', reach: 28 });
-  assert.equal(byMouse.target && byMouse.target.id, 'extractor');
-  assert.equal(byMouse.near, false, 'a 38 px no llega con el alcance normal');
+  const cand = candidateOf(obj);
+  // Dos tiles a la derecha del acceso: no hay alcance.
+  const player = { x: 10 * 16 + 8, feet: 3 * 16 + 12, dir: 'up' };
+  assert.equal(playerInAccess(player, cand, garage), false);
+  assert.equal(pickTarget(player, [cand], { dir: 'up', map: garage }).target, null);
+  const byMouse = pickAt(player, [cand], { x: 136, y: 10 }, { dir: 'up', map: garage });
+  assert.equal(byMouse.near, false, 'se puede apuntar de lejos, pero no llegar');
 });

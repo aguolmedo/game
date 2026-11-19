@@ -53,44 +53,58 @@ for (let y = 1; y < ROWS - 1; y++) {
 const objects = [];
 
 // Puerta interior a la casa (en la pared del fondo, a la izquierda).
-objects.push(put('door_home', 'door', 80, 48, {
-  interact: { kind: 'look', talk: 'door_home', label: 'Volver a la casa' },
-}));
+// La puerta es un paso (`warp` door_home); el sprite queda de decorado.
+objects.push(put('door_home', 'door', 80, 48, {}));
 
 // Pared del fondo: estantes, manguera, la puerta a la calle con el extractor.
 const shelfL = put('garage_shelf', 'garage_shelf', 16, 64, {
   solid: { x: 0, y: 1, w: 3, h: 1 },
-  interact: { kind: 'look', talk: 'shelf', label: 'Mirar el estante' },
 });
 shelfL.surface = slots('garage_shelf', shelfL, [[6, 10], [18, 10], [30, 10], [6, 22], [18, 22], [30, 22]], 6);
+shelfL.type = 'surface';
+shelfL.name = 'el estante';
+shelfL.talk = 'shelf';
 objects.push(shelfL);
 objects.push(put('hose', 'hose', 66, 42, {}));
-const outerDoor = put('garage_door', 'double_door', 112, 51, {});
-outerDoor.interact = { kind: 'look', talk: 'garage_door', label: 'Salir a la calle' };
-objects.push(outerDoor);
+// La salida a la calle la maneja el warp `garage_door` (paso con traje).
+objects.push(put('garage_door', 'double_door', 112, 51, {}));
 objects.push(put('extractor', 'extractor', 124, 20, {
   station: 'extractor',
-  // Esta en lo alto de la pared: se usa desde el piso, frente a la puerta.
-  reach: 56,
-  interact: { kind: 'look', talk: 'extractor', label: 'Mirar el extractor' },
+  // Cuelga de la pared: se alcanza desde el piso frente a la puerta (regla
+  // única de casilleros de acceso, sin alcances por objeto).
+  type: 'device', name: 'el extractor', talk: 'extractor',
+  device: {
+    state: (g) => (g.flags?.extractor_ok ? 'instalado' : 'libre'),
+    states: {
+      libre: { verb: 'Mirar', action: 'look' },
+      instalado: { verb: 'Mirar', action: 'look' },
+    },
+  },
 }));
 const shelfR = put('garage_shelf_r', 'garage_shelf', 180, 64, {
   solid: { x: 0, y: 1, w: 3, h: 1 },
-  interact: { kind: 'look', talk: 'shelf', label: 'Mirar el estante' },
+  type: 'decor', name: 'el estante', talk: 'shelf',
 });
 objects.push(shelfR);
-objects.push(put('garage_crate', 'crate', 256, 64, { solid: true }));
-objects.push(put('garage_box', 'box', 256, 82, { solid: false }));
+objects.push(put('garage_crate', 'crate', 256, 64, { solid: true, movable: true, type: 'decor', name: 'el cajón', talk: 'crate' }));
+objects.push(put('garage_box', 'box', 256, 82, { solid: false, movable: true, type: 'decor', name: 'la caja', talk: 'box' }));
 
 // El electrogeno de Favalli con su bidon; la lamparita colgando del cable.
 const gen = put('generator', 'generator', 208, 112, {
   solid: { x: 0, y: 1, w: 2, h: 1 },
-  interact: { kind: 'use', talk: 'generator', label: 'Usar el electrógeno' },
+  type: 'device', name: 'el electrógeno', talk: 'generator',
+  device: {
+    state: (g) => (g.flags?.electrogeno_on ? 'encendido' : 'seco'),
+    states: {
+      seco: { verb: 'Mirar', action: 'look' },
+      encendido: { verb: 'Mirar', action: 'look' },
+    },
+  },
 });
 objects.push(gen);
 const can = put('bidon', 'bidon', 256, 112, {
   solid: true,
-  interact: { kind: 'look', talk: 'bidon', label: 'Mirar el bidón' },
+  type: 'surface', name: 'el bidón', talk: 'bidon',
 });
 can.surface = slots('bidon', can, [[5, 4]], 1);
 objects.push(can);
@@ -98,9 +112,9 @@ objects.push(put('bulb', 'bulb', 146, 80, { glow: true }));
 
 // El banco del traje, el banquito y las cajas.
 const bench = put('bench_suit', 'bench_suit', 16, 128, {
-  solid: { x: 0, y: 1, w: 3, h: 1 },
+  solid: { x: 0, y: 1, w: 3, h: 1 }, low: true,
   station: 'craft',
-  interact: { kind: 'look', talk: 'bench_suit', label: 'Mirar el banco' },
+  type: 'surface', name: 'el banco', talk: 'bench_suit',
 });
 bench.surface = slots('bench_suit', bench, [[8, 12], [20, 12], [32, 12]], 3);
 objects.push(bench);
@@ -110,12 +124,12 @@ objects.push(bench);
 objects.push(put('oil_lamp_bench', 'oil_lamp_lit', 19, 105, {
   showIfFlag: 'apagon', z: depthFor(128) + 0.02,
 }));
-objects.push(put('stool', 'stool', 68, 144, {}));
-objects.push(put('garage_cardboard', 'box', 16, 160, { solid: true }));
-objects.push(put('garage_box2', 'box', 34, 160, { solid: true, offset: [2, 0] }));
+objects.push(put('stool', 'stool', 68, 144, { low: true, movable: true, type: 'decor', name: 'el banquito' }));
+objects.push(put('garage_cardboard', 'box', 16, 160, { solid: true, movable: true, type: 'decor', name: 'la caja', talk: 'box' }));
+objects.push(put('garage_box2', 'box', 34, 160, { solid: true, offset: [2, 0], movable: true, type: 'decor', name: 'la caja', talk: 'box' }));
 
 // El neumatico, el balde con la escoba y las manchas de aceite.
-objects.push(put('tire', 'tire', 176, 160, { solid: true }));
+objects.push(put('tire', 'tire', 176, 160, { solid: true, movable: true, type: 'decor', name: 'la rueda' }));
 objects.push(put('broom', 'broom_bucket', 240, 160, { solid: { x: 0, y: 1, w: 1, h: 1 } }));
 // El traje colgado de un clavo, junto a la puerta (decorativo hasta fabricarlo).
 objects.push(put('suit_hanging', 'coat_stand', 156, 106, { offset: [-4, -6] }));
@@ -146,10 +160,12 @@ export const garage = {
   pickups: [],
   warps: [
     // puerta interior: vuelve a la casa, al lado del porton del garaje
-    { id: 'door_home', x: 5 * 16, y: 3 * 16, w: 16, h: 16, to: 'house', label: 'Entrar',
+    { id: 'door_home', type: 'passage', name: 'la puerta de la casa', x: 5 * 16, y: 3 * 16, w: 16, h: 16, to: 'house', label: 'Volver a la casa',
+      look: 'La puerta que da a la casa.',
       spawn: { x: 23 * 16 + 8, y: 4 * 16 + 8, dir: 'down' } },
     // la puerta de dos hojas: recien se puede cruzar con el traje y todo listo
-    { id: 'garage_door', x: 7 * 16, y: 3 * 16, w: 48, h: 16, to: 'street', label: 'Salir',
+    { id: 'garage_door', type: 'passage', name: 'el portón de la calle', x: 7 * 16, y: 3 * 16, w: 48, h: 16, to: 'street', label: 'Salir a la calle',
+      look: 'El portón del garaje. Es la única salida posible.',
       needsSuit: true, needsFlag: 'listo_para_salir',
       spawn: { x: 4 * 16 + 8, y: 12 * 16 + 8, dir: 'down' } },
   ],
