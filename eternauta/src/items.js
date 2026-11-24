@@ -260,16 +260,6 @@ export const ITEMS = {
   },
 };
 
-export const ITEM_ORDER = [
-  'mate_vacio', 'mate_yerba', 'mate_cebado', 'mate_lavado', 'yerba',
-  'pava_fria', 'pava_caliente', 'pava_hervida',
-  'tela', 'guantes', 'botas', 'casco', 'tiras', 'lata', 'traje',
-  'secador', 'nafta', 'rifle', 'balas',
-  'naipes', 'anotador', 'sifon', 'vino', 'vaso', 'cenicero',
-  'latas', 'frascos', 'pan', 'libros', 'tijera', 'calentador',
-  'lampara_aceite', 'lista', 'vela',
-];
-
 /** ¿Este item se puede levantar del mundo? Los decorativos no. */
 export function isGrabbable(id) {
   const item = ITEMS[id];

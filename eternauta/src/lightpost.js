@@ -260,9 +260,3 @@ export class LightPost {
   }
 }
 
-/** Colores de fuente compartidos con el diseño (lighting2/3.py). */
-export const LIGHT_COLORS = { candle: CANDLE_VEC(), ember: EMBER_VEC(), snow: SNOW_VEC() };
-
-function CANDLE_VEC() { return [1.25, 1.06, 0.80]; }
-function EMBER_VEC() { return [1.22, 0.80, 0.58]; }
-function SNOW_VEC() { return [0.62, 0.92, 1.12]; }

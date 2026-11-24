@@ -9,6 +9,41 @@ export const AMBIENT = {
 
 export const WARM = '#ffcf6e';
 export const SNOW_GLOW = '#96e1f0';
+export const MAX_LIGHTS = 8;
+
+function lightDistance(light, origin) {
+  return Math.hypot((light.x || 0) - origin.x, (light.y || 0) - origin.y);
+}
+
+/**
+ * Recorta la lista a `max` luces conservando el orden original.
+ * Las que no son nieve (bengala, farol, velas) entran siempre; el resto
+ * del cupo se llena con las luces de nieve más cercanas a `origin`.
+ * Sin origin se conservan las primeras. No muta la lista.
+ */
+export function prioritizeLights(lights, max = MAX_LIGHTS, origin = null) {
+  const list = Array.isArray(lights) ? lights : [];
+  const limit = Math.max(0, Math.floor(Number(max)));
+  if (list.length <= limit) return list.slice();
+
+  const keep = new Set();
+  const snow = [];
+  list.forEach((light, i) => {
+    if (light && light.kind === 'snow') snow.push(i);
+    else if (keep.size < limit) keep.add(i);
+  });
+
+  const candidates = origin && Number.isFinite(origin.x) && Number.isFinite(origin.y)
+    ? snow.slice().sort((a, b) => lightDistance(list[a], origin) - lightDistance(list[b], origin)
+      || a - b)
+    : snow;
+  for (const i of candidates) {
+    if (keep.size >= limit) break;
+    keep.add(i);
+  }
+
+  return list.filter((_, i) => keep.has(i));
+}
 
 /** Ruido determinístico 0..1 a partir de dos números. */
 function hash(a = 0, b = 0) {
@@ -78,6 +113,16 @@ function rgba(hex, alpha) {
   return `rgba(${r}, ${g}, ${b}, ${alpha})`;
 }
 
+// Cuantización del alpha (1/128): permite cachear gradientes sin que el
+// flicker cree uno nuevo por frame. La diferencia es imperceptible.
+const ALPHA_STEPS = 128;
+function quantizeAlpha(a) {
+  return Math.round(a * ALPHA_STEPS) / ALPHA_STEPS;
+}
+
+// Tope de gradientes cacheados por contexto (si se pasa, se tira todo).
+const GRADIENT_CACHE_MAX = 600;
+
 /** Oscurecido + charcos de luz sobre un canvas 480x270. */
 export class LightOverlay {
   constructor(assets, map) {
@@ -87,6 +132,82 @@ export class LightOverlay {
     this.camX = 0;
     this.camY = 0;
     this.time = 0;
+    // Reutilizados por frame: entradas {light, f}, el filtro y el array devuelto.
+    this._entries = [];
+    for (let i = 0; i < MAX_LIGHTS; i++) this._entries.push({ light: null, f: 0 });
+    this._out = [];
+    this._filtered = [];
+    this._origin = { x: 0, y: 0 };
+    // Un gradiente de canvas solo sirve para el ctx que lo creó.
+    this._caches = new WeakMap();
+  }
+
+  /** Cache de gradientes del ctx (Map por contexto, sin allocation extra). */
+  _cache(ctx) {
+    let cache = this._caches.get(ctx);
+    if (!cache) {
+      cache = new Map();
+      this._caches.set(ctx, cache);
+    }
+    return cache;
+  }
+
+  /** Guarda un gradiente recién creado (respeta el tope del cache). */
+  _store(cache, key, gradient) {
+    if (cache.size >= GRADIENT_CACHE_MAX) cache.clear();
+    cache.set(key, gradient);
+    return gradient;
+  }
+
+  _holeGradient(ctx, r, alpha) {
+    const a = quantizeAlpha(alpha);
+    const key = `hole|${r}|${a}`;
+    const cache = this._cache(ctx);
+    const hit = cache.get(key);
+    if (hit) return hit;
+    const g = ctx.createRadialGradient(0, 0, 0, 0, 0, r);
+    g.addColorStop(0, rgba('#000000', a));
+    g.addColorStop(0.55, rgba('#000000', a * 0.5));
+    g.addColorStop(1, rgba('#000000', 0));
+    return this._store(cache, key, g);
+  }
+
+  _poolGradient(ctx, r, color, alpha) {
+    const radius = r * 0.95;
+    const a = quantizeAlpha(alpha);
+    const key = `pool|${color}|${radius}|${a}`;
+    const cache = this._cache(ctx);
+    const hit = cache.get(key);
+    if (hit) return hit;
+    const g = ctx.createRadialGradient(0, 0, 0, 0, 0, radius);
+    g.addColorStop(0, rgba(color, a));
+    g.addColorStop(0.45, rgba(color, a * 0.42));
+    g.addColorStop(1, rgba(color, 0));
+    return this._store(cache, key, g);
+  }
+
+  _coreGradient(ctx, r, alpha) {
+    const radius = r * 0.45;
+    const a = quantizeAlpha(alpha);
+    const key = `core|${radius}|${a}`;
+    const cache = this._cache(ctx);
+    const hit = cache.get(key);
+    if (hit) return hit;
+    const g = ctx.createRadialGradient(0, 0, 0, 0, 0, radius);
+    g.addColorStop(0, rgba('#ffb070', a));
+    g.addColorStop(1, rgba('#ffb070', 0));
+    return this._store(cache, key, g);
+  }
+
+  /** Círculo relleno con un gradiente ya centrado en (0,0). */
+  _blit(ctx, gradient, sx, sy, radius) {
+    ctx.save();
+    ctx.translate(sx, sy);
+    ctx.fillStyle = gradient;
+    ctx.beginPath();
+    ctx.arc(0, 0, radius, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.restore();
   }
 
   setMode(mode) {
@@ -103,10 +224,32 @@ export class LightOverlay {
     this.time += dt;
   }
 
-  lights(t = this.time) {
-    return lightsFor(this.map, this.mode).map((light) => ({
-      light, f: lightIntensity(light, t),
-    })).filter((entry) => entry.f > 0);
+  lights(t = this.time, origin = null) {
+    // Filtro en el lugar (mismo resultado que lightsFor) para no crear un
+    // array nuevo por frame; el recorte sólo asigna si hay más de MAX_LIGHTS.
+    const raw = (this.map && this.map.lights) || [];
+    const filtered = this._filtered;
+    let count = 0;
+    for (const light of raw) {
+      if (lightOn(light, this.mode)) filtered[count++] = light;
+    }
+    filtered.length = count;
+    const source = filtered.length > MAX_LIGHTS
+      ? prioritizeLights(filtered, MAX_LIGHTS, origin)
+      : filtered;
+    let n = 0;
+    for (let i = 0; i < source.length; i++) {
+      const light = source[i];
+      const f = lightIntensity(light, t);
+      if (!(f > 0)) continue;
+      const entry = this._entries[n];
+      entry.light = light;
+      entry.f = f;
+      this._out[n] = entry;
+      n++;
+    }
+    this._out.length = n;
+    return this._out;
   }
 
   /**
@@ -118,7 +261,15 @@ export class LightOverlay {
     const amb = AMBIENT[this.mode] || AMBIENT.electrica;
     const W = (ctx.canvas && ctx.canvas.width) || 480;
     const H = (ctx.canvas && ctx.canvas.height) || 270;
-    const list = this.lights(t);
+    const origin = this._origin;
+    if (player) {
+      origin.x = player.x;
+      origin.y = player.feet ?? player.y;
+    } else {
+      origin.x = this.camX + W / 2;
+      origin.y = this.camY + H / 2;
+    }
+    const list = this.lights(t, origin);
     const dark = this.mode === 'apagon';
     const mateCalma = Boolean(player && player.mateCalma);
     void mateCalma; // la calma del mate no cambia la luz
@@ -139,15 +290,9 @@ export class LightOverlay {
         const sy = light.y - this.camY;
         const r = Math.max(4, light.radius || 40);
         if (sx < -r || sy < -r || sx > W + r || sy > H + r) continue;
-        const hole = Math.min(0.95, 0.74 * f * (light.hole ?? 1));
-        const g = ctx.createRadialGradient(sx, sy, 0, sx, sy, r);
-        g.addColorStop(0, rgba('#000000', hole));
-        g.addColorStop(0.55, rgba('#000000', hole * 0.5));
-        g.addColorStop(1, rgba('#000000', 0));
-        ctx.fillStyle = g;
-        ctx.beginPath();
-        ctx.arc(sx, sy, r, 0, Math.PI * 2);
-        ctx.fill();
+        const ember = light.kind === 'ember';
+        const hole = Math.min(0.95, 0.74 * f * (light.hole ?? 1) * (ember ? 1.2 : 1));
+        this._blit(ctx, this._holeGradient(ctx, r, hole), sx, sy, r);
       }
     }
 
@@ -165,15 +310,18 @@ export class LightOverlay {
       const r = Math.max(4, light.radius || 40);
       if (sx < -r || sy < -r || sx > W + r || sy > H + r) continue;
       const color = light.kind === 'snow' ? SNOW_GLOW : (light.color || WARM);
-      const glow = dark ? 0.34 : 0.16;
-      const g = ctx.createRadialGradient(sx, sy, 0, sx, sy, r * 0.95);
-      g.addColorStop(0, rgba(color, glow * f));
-      g.addColorStop(0.45, rgba(color, glow * 0.42 * f));
-      g.addColorStop(1, rgba(color, 0));
-      ctx.fillStyle = g;
-      ctx.beginPath();
-      ctx.arc(sx, sy, r * 0.95, 0, Math.PI * 2);
-      ctx.fill();
+      const ember = light.kind === 'ember';
+      const glow = dark ? (ember ? 0.55 : 0.34) : 0.16;
+      this._blit(ctx, this._poolGradient(ctx, r, color, glow * f), sx, sy, r * 0.95);
+      // Núcleo caliente de la bengala: se lee fuerte aun sobre la nieve.
+      if (ember) {
+        const cr = r * 0.45;
+        this._blit(
+          ctx,
+          this._coreGradient(ctx, r, Math.min(1, 0.45 * f)),
+          sx, sy, cr,
+        );
+      }
     }
 
     ctx.restore();

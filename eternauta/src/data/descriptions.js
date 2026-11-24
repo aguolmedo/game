@@ -1,6 +1,7 @@
 // Líneas de "Mirar" para los objetos decorativos que se apoyan en superficies.
 // Devuelven texto en castellano rioplatense; algunas dependen de banderas
 // (la radio y el reloj cambian después del apagón).
+import { FLAG } from './flags.js';
 
 export const LOOK_LINES = {
   naipes: 'Tres del mismo palo… y Favalli ni se enteró.',
@@ -41,10 +42,10 @@ export const LOOK_LINES = {
 /** Línea de (A) "Mirar" para un objeto; null si no tiene una propia. */
 export function lookLine(objectId, flags = {}) {
   if (objectId === 'radio') {
-    return flags && flags.apagon ? 'Muda.' : LOOK_LINES.radio;
+    return flags && flags[FLAG.APAGON] ? 'Muda.' : LOOK_LINES.radio;
   }
   if (objectId === 'reloj') {
-    return flags && flags.apagon ? 'Las once y diez. Se paró.' : LOOK_LINES.reloj;
+    return flags && flags[FLAG.APAGON] ? 'Las once y diez. Se paró.' : LOOK_LINES.reloj;
   }
   return LOOK_LINES[objectId] || null;
 }

@@ -1,5 +1,6 @@
 // Glifos de botones (pad) y teclas, con la etiqueta corta en la fuente chica.
 import { drawText, measureText } from './font.js';
+import { OUT, TEXT } from './uiSkin.js';
 
 // Separacion horizontal entre el glifo y su etiqueta (el contorno de 1 px
 // se come parte del hueco, por eso 5 y no 3).
@@ -59,7 +60,7 @@ export function drawPrompt(ctx, assets, device, action, x, y, t = 0, opts = {}) 
   if (opts.right) cx = Math.round(x - size.w - GLYPH_GAP - measureText(glyphs, label));
   drawGlyph(ctx, assets, name, cx, y + bob);
   drawText(ctx, glyphs, cx + size.w + GLYPH_GAP, y + Math.round((size.h - 7) / 2) + bob, label,
-    opts.color || '#fff0c0', { outline: opts.outline || '#1a1426' });
+    opts.color || TEXT, { outline: opts.outline || OUT });
   return size.w + GLYPH_GAP + measureText(glyphs, label);
 }
 
@@ -71,25 +72,6 @@ export function promptWidth(assets, device, action, label = null) {
 }
 
 /** Barra compacta abajo a la derecha: varios [glifo] etiqueta separados. */
-export function drawHintBar(ctx, assets, device, actions, x, y, t = 0) {
-  const glyphs = assets.font.glyphs;
-  const parts = actions.filter(Boolean);
-  let total = 0;
-  for (const a of parts) total += promptWidth(assets, device, a) + 10;
-  total -= 10;
-  const barW = total + 14;
-  ctx.fillStyle = 'rgba(12, 12, 24, 0.72)';
-  ctx.fillRect(x - barW + 7, y - 4, barW, 17);
-  ctx.fillStyle = 'rgba(255, 207, 110, 0.35)';
-  ctx.fillRect(x - barW + 7, y - 4, barW, 1);
-  let cx = x - barW + 14;
-  for (const a of parts) {
-    const w = drawPrompt(ctx, assets, device, a, cx, y - 1, t, { bob: false });
-    cx += w + 10;
-  }
-  void glyphs;
-}
-
 /** Posiciones de una tablita de glifos (dibujo y click usan lo mismo). */
 export function promptBarLayout(assets, device, items, right, y) {
   const list = (items || []).filter(Boolean).map((item) => ({

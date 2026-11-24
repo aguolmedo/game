@@ -35,7 +35,8 @@ export function muzzlePoint(origin, dir) {
 }
 
 /** Desvío del tiro: ±2° si se mueve, perfecto si está quieto. */
-export function spreadAngle(moving, rng = Math.random) {
+export function spreadAngle(moving, rng) {
+  if (typeof rng !== 'function') throw new Error('spreadAngle: falta rng');
   if (!moving) return 0;
   const r = Math.max(0, Math.min(1, num(rng(), 0.5)));
   return (r - 0.5) * 2 * (SPREAD_DEG * Math.PI / 180);
@@ -52,8 +53,10 @@ export function normalize(x, y) {
  * pega 1 y cada rebote de perforación la mitad (PIERCE_DAMAGE).
  */
 export function createShot(origin, aim, opts = {}) {
+  const rng = opts.rng;
+  if (typeof rng !== 'function') throw new Error('createShot: falta rng');
   const dir = normalize(aim && aim.x, aim && aim.y);
-  const angle = Math.atan2(dir.y, dir.x) + spreadAngle(opts.moving, opts.rng || Math.random);
+  const angle = Math.atan2(dir.y, dir.x) + spreadAngle(opts.moving, rng);
   const shots = opts.shots && opts.shots.length
     ? opts.shots
     : [{ damage: 1 }, { damage: PIERCE_DAMAGE }];
@@ -197,7 +200,8 @@ export function aimDotAlpha(t, hold = false) {
 }
 
 /** Vaina expulsada: sale de costado del caño, hace un arco y cae. */
-export function ejectCasing(origin, dir, rng = Math.random) {
+export function ejectCasing(origin, dir, rng) {
+  if (typeof rng !== 'function') throw new Error('ejectCasing: falta rng');
   const d = normalize(dir && dir.x, dir && dir.y);
   const side = num(rng(), 0.5) < 0.5 ? -1 : 1;
   const px = -d.y * side;

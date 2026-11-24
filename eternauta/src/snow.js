@@ -10,6 +10,12 @@ import { viewport } from './viewport.js';
  *   back    count (90)       8-16 px/s   back_on/off     6
  *   mid     count/2 (45)     18-30       mid_on/off      6.5
  *   front   front (12)       40-60       front_on/off    8
+ *
+ * Rendimiento: dos InstancedMesh por capa (uno "on" y uno "off"), asi que la
+ * nieve entera son 6 mallas (6 draw calls, 12 pasadas por el doble pase de los
+ * materiales DoubleSide transparentes) en vez de un mesh por copo. Los copos
+ * viven en this.flakes (x, y, speed, ...) y draw() escribe la matriz de cada
+ * instancia, sin allocar nada por frame.
  */
 const LAYER_DEFS = [
   {
@@ -41,7 +47,9 @@ export class Snowfall {
 
     this.geos = new Map(); // tamaño en px -> PlaneGeometry compartida
     this.materials = new Map(); // textura -> material compartido
+    this.layers = []; // { def, z, onMesh, offMesh, onCount, offCount }
     this.flakes = [];
+    this._matrix = new THREE.Matrix4(); // reutilizada: cero allocs por copo
 
     const amounts = [count, Math.round(count / 2), front];
     LAYER_DEFS.forEach((def, i) => this.makeFlakes(def, amounts[i]));
@@ -70,21 +78,22 @@ export class Snowfall {
     return mat;
   }
 
-  /** Crea `n` copos de una capa: dos meshes (on/off) por copo. */
+  /** Crea una capa: `n` copos y dos InstancedMesh (on/off) con capacidad `n`. */
   makeFlakes(def, n) {
-    const geoOn = this.geometryFor(def.sizeOn);
-    const geoOff = this.geometryFor(def.sizeOff);
-    const matOn = this.materialFor(this.textures[def.on]);
-    const matOff = this.materialFor(this.textures[def.off]);
+    const onMesh = this.instanceMeshFor(
+      this.geometryFor(def.sizeOn), this.materialFor(this.textures[def.on]), def.z, n,
+    );
+    const offMesh = this.instanceMeshFor(
+      this.geometryFor(def.sizeOff), this.materialFor(this.textures[def.off]), def.z, n,
+    );
+    const layer = {
+      def, z: def.z, onMesh, offMesh, onCount: 0, offCount: 0,
+    };
+    this.layers.push(layer);
     for (let i = 0; i < n; i++) {
-      const on = new THREE.Mesh(geoOn, matOn);
-      const off = new THREE.Mesh(geoOff, matOff);
-      on.position.z = def.z;
-      off.position.z = def.z;
-      this.group.add(on, off);
       this.flakes.push({
-        on,
-        off,
+        layer,
+        glowOn: false,
         x: Math.random() * this.width,
         y: Math.random() * this.height,
         speed: (def.minSpeed + Math.random() * (def.maxSpeed - def.minSpeed)) * this.speedScale,
@@ -94,6 +103,23 @@ export class Snowfall {
         blink: 0.9 + Math.random() * 1.3,
       });
     }
+    return layer;
+  }
+
+  /**
+   * InstancedMesh vacio (count 0) listo para escribir matrices cada frame.
+   * La z de la capa va en el mesh (no en la matriz) para que el orden de
+   * dibujado entre objetos transparentes sea el mismo que con un mesh por copo.
+   */
+  instanceMeshFor(geo, material, z, capacity) {
+    const mesh = new THREE.InstancedMesh(geo, material, capacity);
+    mesh.position.z = z;
+    mesh.instanceMatrix.setUsage(THREE.DynamicDrawUsage);
+    mesh.frustumCulled = false;
+    mesh.count = 0;
+    mesh.visible = false;
+    this.group.add(mesh);
+    return mesh;
   }
 
   setCamera(x, y) {
@@ -147,19 +173,36 @@ export class Snowfall {
     this.draw();
   }
 
-  /** Posiciones enteras (sin subpixeles) y textura on/off segun la fosforescencia. */
+  /**
+   * Posiciones enteras (sin subpixeles) y textura on/off segun la
+   * fosforescencia. Escribe una matriz de traslacion (x, y) por copo en el
+   * InstancedMesh de su capa; cada copo queda en uno solo de los dos.
+   */
   draw() {
+    for (const layer of this.layers) {
+      layer.onCount = 0;
+      layer.offCount = 0;
+    }
+    const m = this._matrix;
     for (const f of this.flakes) {
       const x = Math.round(f.x);
       const y = Math.round(f.y);
-      f.on.position.x = x;
-      f.on.position.y = y;
-      f.off.position.x = x;
-      f.off.position.y = y;
       const b = 0.5 + 0.5 * Math.sin(this.time * f.blink + f.ph * 3);
       const glowing = b > 0.55;
-      f.on.visible = glowing;
-      f.off.visible = !glowing;
+      const layer = f.layer;
+      f.glowOn = glowing;
+      const mesh = glowing ? layer.onMesh : layer.offMesh;
+      const slot = glowing ? layer.onCount++ : layer.offCount++;
+      m.makeTranslation(x, y, 0);
+      mesh.setMatrixAt(slot, m);
+    }
+    for (const layer of this.layers) {
+      layer.onMesh.count = layer.onCount;
+      layer.offMesh.count = layer.offCount;
+      layer.onMesh.visible = layer.onCount > 0;
+      layer.offMesh.visible = layer.offCount > 0;
+      layer.onMesh.instanceMatrix.needsUpdate = true;
+      layer.offMesh.instanceMatrix.needsUpdate = true;
     }
   }
 }

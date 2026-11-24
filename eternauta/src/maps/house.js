@@ -8,7 +8,8 @@
 //           mesa con la lampara de aceite)
 //
 // Las paredes intermedias de las filas 9-10 se ven de frente, como en el mockup.
-import { makeGrid, fillRect } from './grid.js';
+import { makeGrid } from './grid.js';
+import { placer, slotPlacer } from './place.js';
 import { depthFor } from '../sprite.js';
 
 export const COLS = 28;
@@ -29,27 +30,10 @@ const SIZE = {
   stove: [16, 24], oil_lamp_lit: [10, 14], jar: [8, 8],
 };
 
-// Ubica un sprite por su esquina inferior izquierda en px, como el concepto:
-// el anclaje del juego es (centro X, base Y) y el offset corrige el resto.
-function put(id, sprite, left, base, extra = {}) {
-  const [w, h] = SIZE[sprite];
-  const tw = Math.max(1, Math.round(w / 16));
-  const th = Math.max(1, Math.round(h / 16));
-  const x = Math.round((left + w / 2) / 16 - tw / 2);
-  const y = Math.round(base / 16) - th;
-  const ox = Math.round(left + w / 2 - (x + tw / 2) * 16);
-  const oy = Math.round(base - (y + th) * 16);
-  return { id, sprite, x, y, tw, th, offset: [ox, oy], ...extra };
-}
+const put = placer(SIZE);
 
 /** Slots en coords locales del sprite (0,0 = esquina superior izquierda). */
-function slots(sprite, obj, local, maxItems) {
-  const dy = obj.th * 16 - SIZE[sprite][1];
-  return {
-    slots: local.map(([x, y]) => ({ x, y: y + dy })),
-    maxItems,
-  };
-}
+const slots = slotPlacer(SIZE);
 
 // ---------------------------------------------------------------- piso
 const floor = makeGrid(COLS, ROWS, () => 'black');

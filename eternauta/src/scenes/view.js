@@ -4,6 +4,8 @@
 // - 'living': la casa de los Ramírez, con la vela que titila.
 import * as THREE from 'three';
 import { imageSprite, canvasOverlay, VIEW_W, VIEW_H } from '../sprite.js';
+import { FLAG } from '../data/flags.js';
+import { renderFlat } from '../core/scene.js';
 
 const PAN_W = 960;
 const PAN_H = 300;
@@ -58,7 +60,7 @@ export class ViewScene {
   enter() {
     this.t = 0;
     this.exited = false;
-    this.dark = Boolean(this.game.flags && this.game.flags.apagon);
+    this.dark = Boolean(this.game.flags && this.game.flags[FLAG.APAGON]);
     this.buildSprite();
     this.cam = this.viewId === 'attic'
       ? { x: 0, y: PAN_Y }
@@ -88,6 +90,9 @@ export class ViewScene {
     this.mesh.position.set(w / 2, h / 2, 1);
     this.scene.add(this.mesh);
   }
+
+  /** Pantalla fija: sin luz de apagón (ver core/scene.js). */
+  render(ctx) { renderFlat(this, ctx); }
 
   applyCamera(camera) {
     camera.left = this.cam.x;

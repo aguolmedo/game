@@ -133,19 +133,6 @@ export function iconSprite(sheet, frame, w = 16, h = 16) {
 }
 
 /** Sprite de un frame del atlas de objetos. */
-export function objectSprite(assets, name, scale = 1) {
-  const f = assets.objectsData.frames[name];
-  if (!f) throw new Error(`Falta el objeto ${name} en objects.json`);
-  const [x, y, w, h] = f;
-  const texture = regionTexture(assets.objects, x, y, w, h);
-  const mesh = new THREE.Mesh(
-    new THREE.PlaneGeometry(w * scale, h * scale),
-    new THREE.MeshBasicMaterial({
-      map: texture, transparent: true, alphaTest: 0.5, side: THREE.DoubleSide,
-    }),
-  );
-  return mesh;
-}
 
 /** Mancha calida de luz (textura radial suave) para faroles y lamparas. */
 let glowTexture = null;
@@ -162,12 +149,18 @@ export function getGlowTexture() {
   grad.addColorStop(1, 'rgba(255, 180, 80, 0)');
   ctx.fillStyle = grad;
   ctx.fillRect(0, 0, size, size);
-  glowTexture = new THREE.CanvasTexture(canvas);
-  glowTexture.magFilter = THREE.NearestFilter;
-  glowTexture.minFilter = THREE.NearestFilter;
-  glowTexture.generateMipmaps = false;
-  glowTexture.flipY = false;
-  glowTexture.colorSpace = THREE.SRGBColorSpace;
+  const tex = new THREE.CanvasTexture(canvas);
+  tex.magFilter = THREE.NearestFilter;
+  tex.minFilter = THREE.NearestFilter;
+  tex.generateMipmaps = false;
+  tex.flipY = false;
+  tex.colorSpace = THREE.SRGBColorSpace;
+  // El glow es un singleton compartido por todos los objetos/mundos. Varios
+  // teardowns (arena.disposeWorld) disponen el `map` de cada material sin saber
+  // que es el mismo objeto: liberarlo dejaria sin textura al mundo siguiente.
+  // Es una textura chica que vive toda la sesion, asi que se ignora el dispose.
+  tex.dispose = () => {};
+  glowTexture = tex;
   return glowTexture;
 }
 
@@ -183,10 +176,22 @@ export function makeGlow(scene, w = 56, h = 32) {
   return mesh;
 }
 
+// Una geometria por tamano de sombra (14x5, 12x4, 10x4...): se reusan.
+const shadowGeometries = new Map();
+function shadowGeometry(w, h) {
+  const key = `${w}x${h}`;
+  let geo = shadowGeometries.get(key);
+  if (!geo) {
+    geo = new THREE.PlaneGeometry(w, h);
+    shadowGeometries.set(key, geo);
+  }
+  return geo;
+}
+
 /** Sombra redonda suave debajo de un personaje/pickup. */
 export function makeShadow(scene, texture, w = 14, h = 5) {
   const mesh = new THREE.Mesh(
-    new THREE.PlaneGeometry(w, h),
+    shadowGeometry(w, h),
     new THREE.MeshBasicMaterial({
       map: texture, transparent: true, depthWrite: false, side: THREE.DoubleSide,
     }),

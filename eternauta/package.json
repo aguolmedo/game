@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "test": "node --test",
+    "test": "node --test \"test/**/*.test.js\"",
     "assets": "python3 tools/export_assets.py",
     "screens": "node tools/play_screens.mjs",
     "concept": "python3 tools/art/concept_export.py",

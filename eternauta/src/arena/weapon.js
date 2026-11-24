@@ -19,6 +19,7 @@ export function createWeapon(opts = {}) {
     reserve: opts.reserve ?? START_RESERVE,
     damage: opts.damage ?? 1,
     pierce: opts.pierce ?? 1,
+    pierceDamage: opts.pierceDamage ?? PIERCE_DAMAGE,
     fireRate: opts.fireRate ?? FIRE_RATE,
     reloadTime: opts.reloadTime ?? RELOAD_TIME,
     emptyRate: opts.emptyRate ?? EMPTY_RATE,
@@ -34,9 +35,11 @@ export function createWeapon(opts = {}) {
 }
 
 function shotList(w) {
+  const raw = w.pierceDamage;
+  const pierceDamage = Number.isFinite(raw) && raw >= 0 ? raw : PIERCE_DAMAGE;
   const shots = [{ damage: w.damage }];
   for (let i = 0; i < w.pierce; i++) {
-    shots.push({ damage: w.damage * PIERCE_DAMAGE });
+    shots.push({ damage: w.damage * pierceDamage });
   }
   return shots;
 }

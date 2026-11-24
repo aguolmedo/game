@@ -6,6 +6,7 @@ import { drawCentered } from '../font.js';
 import { OUT, SNOW, PAR, darkPanel } from '../uiSkin.js';
 import { drawPrompt, promptWidth } from '../glyphs.js';
 import { street } from '../maps/street.js';
+import { renderFlat } from '../core/scene.js';
 
 export class DeathScene {
   constructor(game) {
@@ -33,6 +34,9 @@ export class DeathScene {
     this.snow.scatter();
     this.draw(true);
   }
+
+  /** Pantalla fija: sin luz de apagón (ver core/scene.js). */
+  render(ctx) { renderFlat(this, ctx); }
 
   applyCamera(camera) {
     camera.left = this.cam.x;

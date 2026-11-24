@@ -3,6 +3,7 @@
 import { drawText, measureText, wrapText } from './font.js';
 import { portraitFor } from './data/portraits.js';
 import { drawGlyph, glyphName } from './glyphs.js';
+import { clamp } from './geom.js';
 
 export const INK = '#16131c';
 export const PAPER = '#f6f1e4';
@@ -24,10 +25,6 @@ function glyphsOf(assets) {
   const glyphs = assets.font?.glyphs || assets.glyphs || assets;
   setComicGlyphs(glyphs);
   return glyphs;
-}
-
-function clamp(v, a, b) {
-  return Math.max(a, Math.min(b, v));
 }
 
 function roundRect(ctx, x, y, w, h, r) {

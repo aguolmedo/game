@@ -31,6 +31,3 @@ export function pick(prefix, x, y, n = 3) {
 }
 
 /** Convierte coordenadas de tile a píxeles (esquina superior izquierda). */
-export function tilePx(tx, ty) {
-  return { x: tx * TILE, y: ty * TILE };
-}

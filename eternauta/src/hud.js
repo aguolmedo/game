@@ -2,10 +2,12 @@
 import { drawText, measureText } from './font.js';
 import { canvasOverlay } from './sprite.js';
 import {
-  OUT, INK, PAR, PAR2, AM3, AM2, GOOD, SNOW, darkPanel, icon, count, slot,
+  OUT, INK, PAR, PAR2, AM3, AM2, GOOD, SNOW, TEXT, darkPanel, icon, count, slot, wrapLines,
 } from './uiSkin.js';
 import { drawPrompt, drawGlyph, glyphSize, promptWidth } from './glyphs.js';
-import { pointInRect } from './uiHit.js';
+import { pointInRect, overlaps } from './geom.js';
+import { woodSign, CREAM } from './titleUi.js';
+import { LOOT_ITEM, LOOT_KINDS } from './run/loot.js';
 
 export const VIEW_W = 480;
 export const VIEW_H = 270;
@@ -57,8 +59,20 @@ export function hotbarLayout() {
 const PROMPT_H = 15;
 const PROMPT_MIN_Y = 18;   // debajo del panel de objetivo
 
-function overlaps(a, b) {
-  return a.x < b.x + b.w && b.x < a.x + a.w && a.y < b.y + b.h && b.y < a.y + a.h;
+// Plaquita de botin de la base (arriba a la derecha): 4 iconos con su cantidad.
+export const BOTIN_PLATE = { w: 112, h: 20, x: VIEW_W - 6 - 112, y: 5, cell: 26 };
+
+/** Rects de la plaquita de botin (dibujo y pruebas comparten las cuentas). */
+export function botinPlate(botin) {
+  if (!botin || typeof botin !== 'object') return null;
+  const items = LOOT_KINDS.map((kind, i) => ({
+    kind,
+    item: LOOT_ITEM[kind],
+    n: Number.isFinite(Number(botin[kind])) ? Math.max(0, Math.trunc(Number(botin[kind]))) : 0,
+    x: BOTIN_PLATE.x + 5 + i * BOTIN_PLATE.cell,
+    y: BOTIN_PLATE.y + 4,
+  }));
+  return { ...BOTIN_PLATE, items };
 }
 
 /**
@@ -174,6 +188,7 @@ export class Hud {
   draw({
     device = 'mouse', objective = null, prompt = null, showHotbar = true,
     hasSuit = false, fade = 0, hintActions = null, hidden = false, hoverHint = null,
+    botin = null,
   }) {
     const { ctx } = this.ui;
     const glyphs = this.assets.font.glyphs;
@@ -182,16 +197,26 @@ export class Hud {
 
     if (!hidden) {
       let bottom = 20;   // y donde termina el panel de arriba (objetivo o checklist)
-      // objetivo arriba a la izquierda
+      // objetivo arriba a la izquierda; el texto largo (la mochila de la base)
+      // se parte en dos lineas para no meterse debajo de la plaquita de botin.
       if (objective) {
         const text = `Objetivo: ${objective.text}`;
-        const w = measureText(glyphs, text) + 20;
-        darkPanel(ctx, 6, 5, w, 15, 0.68);
+        const maxW = botin
+          ? BOTIN_PLATE.x - 19 - 10
+          : VIEW_W - 26;
+        const lines = wrapLines(glyphs, text, maxW, 2);
+        const w = Math.min(VIEW_W - 12,
+          Math.max(...lines.map((line) => measureText(glyphs, line))) + 20);
+        const h = lines.length > 1 ? 23 : 15;
+        darkPanel(ctx, 6, 5, w, h, 0.68);
         ctx.fillStyle = AM3;
         ctx.fillRect(11, 10, 4, 4);
         ctx.fillStyle = '#a86a28';
         ctx.fillRect(12, 11, 2, 2);
-        drawText(ctx, glyphs, 19, 9, text, '#fff0c0', { outline: OUT });
+        lines.forEach((line, i) => {
+          drawText(ctx, glyphs, 19, 9 + i * 9, line, TEXT, { outline: OUT });
+        });
+        bottom = 5 + h;
       }
       // checklist chica del objetivo (esclusa / equipado): sin íconos de check,
       // la fuente no los tiene, así que va "(x)"/"( )".
@@ -200,11 +225,11 @@ export class Hud {
         const texts = rows.map((row) => `${row.done ? '(x) ' : '( ) '}${row.label}`);
         const w = Math.max(...texts.map((t) => measureText(glyphs, t))) + 14;
         const h = rows.length * 9 + 6;
-        const y = 22;
+        const y = bottom + 2;
         darkPanel(ctx, 6, y, w, h, 0.68);
         rows.forEach((row, i) => {
           drawText(ctx, glyphs, 11, y + 5 + i * 9, texts[i],
-            row.done ? '#8fd6a0' : '#d4b47c', { outline: OUT });
+            row.done ? '#8fd6a0' : PAR2, { outline: OUT });
         });
         bottom = y + h;
       }
@@ -214,6 +239,19 @@ export class Hud {
         darkPanel(ctx, 6, y, 22, 22, 0.68);
         icon(ctx, this.assets, 'traje', 8, y + 2, 18);
         drawText(ctx, glyphs, 25, y + 9, 'traje', PAR2, { outline: OUT });
+      }
+
+      // botin de la base: plaquita de madera arriba a la derecha
+      const plate = botinPlate(botin);
+      if (plate) {
+        woodSign(ctx, plate.x, plate.y, plate.w, plate.h, {
+          seams: 0, nails: false, shadow: false, snow: false,
+        });
+        for (const entry of plate.items) {
+          icon(ctx, this.assets, entry.item, entry.x, entry.y, 12);
+          drawText(ctx, glyphs, entry.x + 14, entry.y + 3, String(entry.n), CREAM,
+            { outline: OUT });
+        }
       }
 
       // prompt flotante junto al tile de accion
@@ -243,7 +281,7 @@ export class Hud {
   drawPrompt(ctx, device, prompt) {
     const glyphs = this.assets.font.glyphs;
     const {
-      action, label, x, y, color = '#fff0c0', left = false, alpha = 1,
+      action, label, x, y, color = TEXT, left = false, alpha = 1,
       anchor = null, frameW = 0, side = null,
     } = prompt;
     const w = promptWidth(this.assets, device, action, label) + 12;
@@ -350,7 +388,7 @@ export class Hud {
       if (!a) continue;
       const on = hover && a.action === hover && !a.static;
       const w = drawPrompt(ctx, this.assets, device, a.action, cx, layout.y - 1, this.t,
-        { label: a.label, bob: false, color: on ? '#fffbe8' : '#fff0c0' });
+        { label: a.label, bob: false, color: on ? '#fffbe8' : TEXT });
       cx += w + 9;
     }
     void INK;

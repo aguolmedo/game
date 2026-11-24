@@ -8,9 +8,10 @@ Cuando algo cambia en el juego, se regeneran las imágenes y se actualiza la sec
   - láminas: `python3 art/direccion/laminas.py`
   - capturas: `npx vite --port 5199 --strictPort &` y después `node art/direccion/capturas.mjs`
 - Referencia anterior (v2, 15/11): `Eternauta-direccion-de-arte.pdf` y `Eternauta-enemigos.pdf`.
+- **22/11:** se sumó [Roguelike (en diseño)](#roguelike-en-diseño), que es solo concepto.
 - **Última actualización: 19/11.** Entraron al juego la planta baja v4, la escalera nueva, el casco nuevo y los menús de madera (mochila y fin de partida). Todas las capturas y láminas se regeneraron ese día.
 
-**Índice:** [Tablero](#tablero) · [Hecho](#hecho) · [Controles e interacción](#controles-e-interacción) · [La idea](#la-idea) · [Paleta](#paleta) · [Personajes](#personajes) · [Animaciones](#animaciones) · [Diálogos y retratos](#diálogos-y-retratos) · [Viñetas](#viñetas) · [Escenarios y construcción](#escenarios-y-construcción) · [Objetos](#objetos) · [HUD](#hud) · [Inventario, fabricar y cofres](#inventario-fabricar-y-cofres) · [Menús y pantallas](#menús-y-pantallas) · [Cursor](#cursor) · [Enemigos y minijuego](#enemigos-y-minijuego) · [Efectos e iluminación](#efectos-e-iluminación) · [Assets abiertos](#assets-abiertos)
+**Índice:** [Tablero](#tablero) · [Hecho](#hecho) · [Controles e interacción](#controles-e-interacción) · [La idea](#la-idea) · [Paleta](#paleta) · [Personajes](#personajes) · [Animaciones](#animaciones) · [Diálogos y retratos](#diálogos-y-retratos) · [Viñetas](#viñetas) · [Escenarios y construcción](#escenarios-y-construcción) · [Objetos](#objetos) · [HUD](#hud) · [Inventario, fabricar y cofres](#inventario-fabricar-y-cofres) · [Menús y pantallas](#menús-y-pantallas) · [Cursor](#cursor) · [Enemigos y minijuego](#enemigos-y-minijuego) · [Roguelike (en diseño)](#roguelike-en-diseño) · [Efectos e iluminación](#efectos-e-iluminación) · [Assets abiertos](#assets-abiertos)
 
 ---
 
@@ -34,6 +35,7 @@ Flujo: **abierto** → **en diseño** → **aprobado** (con lámina o maqueta y 
 | 10 | Personajes | Revisar que todos los adultos tengan la misma altura y proporción | revisar | 15/11 | abierto |
 | 11 | Personajes | Decidir si el traje necesita más variantes (por ejemplo, sin capucha) | decidir | 18/11 | abierto |
 | 12 | Menús | **Captura de Créditos:** Controles ya se captura (`art/direccion/capturas_ctrl.mjs`); falta Créditos, y que el crédito del guante ([#8](#tablero)) entre ahí | doc | 18/11 | abierto |
+| 13 | Roguelike | **Concepto del roguelike** (22/11): el Eternauta viejo, el programador y su cuarto, la llegada (la tinta se vuelve píxeles), el gag, el botín y la mochila de "otra vez". Ver [Roguelike (en diseño)](#roguelike-en-diseño). Hecho: personajes, cuarto, llegada, gag, botín, mochila y la casa como base (estaciones, taller y 12 mejoras). las cinco manzanas de la grilla (primera iteración). Falta: revisión del usuario y más formas | dibujo | 22/11 | en diseño |
 
 ## Hecho
 
@@ -444,6 +446,87 @@ Diseño completo en `Eternauta-enemigos.pdf` (cascarudos y la Mano):
 ![Enemigos: diseño](img/enemy_lineup_x5.png)
 
 Pendiente: [#4](#tablero) sumar la Mano.
+
+## Roguelike (en diseño)
+
+**Concepto, no está en el juego.** Narrativa y decisiones en `docs/roguelike_narrativa.md`. Generador: `art/concept/roguelike.py` (salida completa en `art/concept/out/roguelike/`). Todo parte de los sprites del juego: el viejo sale de Lucas, el programador de Juan, y los muebles y baldosas son los mismos. Tablero: [#13](#tablero).
+
+La idea en una línea: Juan, perdido en el continuum, cae en el **universo 16 bits** y queda en un loop de la noche de la nevada. Un gag con el programador lo explica, después está la nevada, el traje se arma una sola vez, la calle es el roguelike y la casa es la base de mejoras.
+
+### Personajes
+
+![El Eternauta viejo (frente, perfil, espalda, sentado) y el programador](doc/roguelike/personajes.png)
+
+- **El Eternauta viejo** (p014–p015): casi calvo, mechones blancos, ojos hundidos y cansados, túnica de **trama rara** (gris verdoso, de ninguna época). Tiene un **hilo cian del continuum** en el ruedo y los puños: lo único que trae de afuera.
+- **El programador:** buzo con capucha, auriculares al cuello, barba de días y ojeras. Es genérico, no es nadie en particular. Sin anteojos, porque en 16 px se leían como lentes de sol.
+
+### El cuarto del programador
+
+![El cuarto, vacío](doc/roguelike/cuarto_vacio.png)
+![La llegada: la mancha blanca en la silla](doc/roguelike/cuarto_llegada.png)
+
+- Mundo con el zoom 1.5× del juego. Luz con la regla del apagón: lámpara cálida y pantalla cian (el cian de la nieve).
+- Guiños a la p013: la ventana de noche con estrellas y la **silla de visitas** de madera oscura con remates redondos. En la pantalla está **este juego** (la calle nevada). En la ventana cae **el primer copo**, cian. Hay una mochila tirada en el piso.
+- **La llegada:** la mancha blanca toma la forma del viejo sentado, con chispas del continuum.
+
+### El gag
+
+![Gag 1](doc/roguelike/gag_1.png)
+![Gag 4](doc/roguelike/gag_4.png)
+![Gag 5](doc/roguelike/gag_5.png)
+
+Cinco líneas con el cuadro de diálogo de siempre y retratos de cabeza de sprite. Las cinco están en `art/concept/out/roguelike/gag_*.png`.
+
+### La llegada: la tinta se vuelve píxeles
+
+![Estática, mancha, tinta, cuadritos, color, 16 bits, se mira las manos](doc/roguelike/llegada_tira.png)
+
+Es la animación de entrada al universo 16 bits. La tinta es **el mismo sprite pasado a pluma** (negro, papel y rayado); no copia el dibujo de Solano López. Después se cuadricula, agarra color con tramado Bayer, queda en el sprite del juego y Juan se mira las manos.
+
+### Botín y la mochila de "otra vez"
+
+![Íconos: chatarra, goma, nafta, pieza de cascarudo, mochila](doc/roguelike/botin.png)
+![La calle: botín del cascarudo y la mochila de otra vez](doc/roguelike/calle_mochila.png)
+
+- Íconos de 16×16 con contorno de color: **chatarra**, **goma** (tira de cámara), **pieza de cascarudo** (élitro con el brillo frío de su paleta) y la **mochila**. La nafta es la que ya está en el juego.
+- **La mochila de otra vez** (lo que queda al morir): medio enterrada en la nieve, con un **temblor cian** en el borde. **No toma la luz de la noche**: conserva sus colores cálidos en medio del azul, porque no es de esta noche. Así se ve desde lejos.
+- En el apagón, la farola está apagada.
+
+### La casa como base
+
+![El garaje: cada uno en su estación](doc/roguelike/casa_garaje.png)
+![El taller de Favalli](doc/roguelike/casa_taller_favalli.png)
+![El taller de Lucas: la tercera mejora bloqueada](doc/roguelike/casa_taller_lucas.png)
+![Las doce mejoras y lo que cuestan](doc/roguelike/casa_mejoras.png)
+
+- **Cuatro estaciones en el garaje:** Favalli en el banco (el rifle), Elena al lado del traje colgado (el traje), Lucas, radioaficionado, con la radio (rumores de la noche, sobrevivientes y gags de lo que agarra: ver `docs/roguelike_narrativa.md`) y el electrógeno (luz y fuego, con nafta).
+- **El taller** es el cartel de madera de la mochila. Las pestañas son las cuatro estaciones, con la cabeza de cada uno y la bengala para el electrógeno. A la izquierda están las tres mejoras, que son un camino y se hacen en orden: hecho, disponible, bloqueado con candadito tallado. A la derecha, la ficha con el costo en botín, en verde si alcanza y en rojo si falta.
+- **Las doce mejoras** (generador: `art/concept/roguelike_casa.py`, lista en `docs/roguelike_narrativa.md`). Los costos son una primera pasada. La pieza de cascarudo es la cara.
+
+### El barrio: las manzanas
+
+![Loop A: las cinco piezas armadas en una grilla](doc/manzanas/barrio_loop_a.png)
+![Loop B en el apagón: las mismas piezas en otro orden](doc/manzanas/barrio_loop_b_apagon.png)
+
+El barrio es una **grilla de piezas de 20×20** con salidas fijas (este/oeste por la calzada, norte/sur por la bocacalle), y cada loop lo arma en otro orden. Para que no sea siempre una calle horizontal, cada pieza tiene otra forma. Generador: `art/concept/manzanas.py`. Detalle en `docs/roguelike_narrativa.md`.
+
+- Todo sale de las baldosas y sprites de la calle del juego. Se dibujaron nuevos, con las mismas reglas: bicicleta, banco de plaza, busto, hamaca, baranda, vagón del Mitre, barrera, garita, cruz de San Andrés, alambrado, paredes de ladrillo, vidriera rota, buzón del Correo y plátanos de vereda.
+- **El borde del loop:** donde no hay pieza (y en el borde del mapa), el barrio se termina en **estática del continuum**, la misma de la llegada. Contra el borde, la pieza se deshace en cuadraditos con tramado Bayer, como la llegada al revés. Adentro de la estática, a veces se entrevé el fantasma de otra noche, y la cruzan rayas de interferencia como de radio mal sintonizada. La luz del apagón no la toca.
+- Cada ficha trae la pieza, el **plano de juego** (salidas, médanos de donde salen, botín y trampa) y cómo se ve en el apagón.
+
+![1. La casa de Juan](doc/manzanas/ficha_1.png)
+![2. La esquina del choque](doc/manzanas/ficha_2.png)
+![3. La plaza](doc/manzanas/ficha_3.png)
+![4. Las vías](doc/manzanas/ficha_4.png)
+![5. La cortada](doc/manzanas/ficha_5.png)
+
+### Investigación: la Biblioteca Nacional (queda como research, no se implementa)
+
+![La Biblioteca en lo alto de la barranca de Recoleta](doc/biblioteca/biblioteca_exterior.png)
+![En el apagón](doc/biblioteca/biblioteca_exterior_apagon.png)
+![La sala de lectura: la barricada de libros](doc/biblioteca/biblioteca_sala.png)
+
+Guiño a *El atajo: La batalla de la Biblioteca Nacional* (Sasturain y Solano López, 2007): un Mano trae el edificio del futuro con un materializador. Para nosotros es una anomalía de otro tiempo, con estática del continuum en los bordes. La manzana es la real: Las Heras arriba con la Plaza del Lector, la Biblioteca en la meseta, la barranca y la plaza de abajo hasta Libertador, la Plaza Mitre cruzando Agüero y el Palacio Unzué como imagen emergente. Detalle, fuentes e ideas de juego en `docs/mapa_biblioteca.md`. Generador: `art/concept/biblioteca.py`.
 
 ## Efectos e iluminación
 

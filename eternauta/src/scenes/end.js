@@ -7,6 +7,7 @@ import { drawCentered } from '../font.js';
 import { OUT, SNOW, PAR, AM3, darkPanel } from '../uiSkin.js';
 import { drawPrompt, promptWidth } from '../glyphs.js';
 import { street } from '../maps/street.js';
+import { renderFlat } from '../core/scene.js';
 
 export class EndScene {
   constructor(game) {
@@ -37,6 +38,9 @@ export class EndScene {
     this.snow.scatter();
     this.draw(true);
   }
+
+  /** Pantalla fija: sin luz de apagón (ver core/scene.js). */
+  render(ctx) { renderFlat(this, ctx); }
 
   applyCamera(camera) {
     camera.left = this.cam.x;

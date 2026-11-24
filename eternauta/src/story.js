@@ -5,14 +5,16 @@
 // El juego emite eventos con game.emit(type, data) y llama story.update(dt, game)
 // una vez por frame (game.updateMate ya lo hace).
 import { CAPTIONS, DIALOGS, COMICS } from './data/script.js';
+import { FLAG } from './data/flags.js';
 import { closedCount, currentObjective } from './objectives.js';
+import { loadSave, writeSave } from './run/save.js';
 
 // Objetos que marcan la lista de "casa cerrada" (§6.2). La ventana de Martita
 // la marca world.js al cerrarla; estas tres las marca la historia al usarlas.
 const CLOSE_KEYS = {
-  window_living: 'closed_window_living',
-  hall_door: 'closed_hall_door',
-  garage_door: 'closed_garage_door',
+  window_living: FLAG.CLOSED_WINDOW_LIVING,
+  hall_door: FLAG.CLOSED_HALL_DOOR,
+  garage_door: FLAG.CLOSED_GARAGE_DOOR,
 };
 
 const STREET_ARENA_X = 62 * 16;   // mitad de camino: salen los cascarudos (3.1)
@@ -68,7 +70,15 @@ export class Story {
       case 'viewEnd': this.onViewEnd(data, game); break;
       case 'itemUsed': this.onItemUsed(data, game); break;
       case 'itemCrafted':
-        if (data.id === 'traje') game.flags.traje_fabricado = true;
+        if (data.id === 'traje') {
+          game.flags[FLAG.TRAJE_FABRICADO] = true;
+          // El traje queda hecho para siempre: desde el título se puede
+          // Continuar en la casa sin volver a armar la historia. El save en
+          // memoria manda y game.persist avisa si el storage falla (M3).
+          const next = { ...(game.baseSave || loadSave()), trajeHecho: true };
+          if (typeof game.persist === 'function') game.persist(next);
+          else writeSave(next);
+        }
         break;
       case 'mateShared': this.onMateShared(data, game); break;
       case 'timerEnd': this.onTimerEnd(data, game); break;
@@ -103,23 +113,23 @@ export class Story {
           await this.playDialog(game, 'intro_favalli', 'favalli');
         });
       }
-      if (flags.ramirez_muerto && !flags.idea_traje && !this.shown.idea) {
+      if (flags[FLAG.RAMIREZ_MUERTO] && !flags[FLAG.IDEA_TRAJE] && !this.shown.idea) {
         this.shown.idea = true;
         this.run(game, async () => {
           await this.playDialog(game, 'favalli_idea', 'favalli');
-          game.flags.idea_traje = true;
+          game.flags[FLAG.IDEA_TRAJE] = true;
           game.showToast?.('Favalli tiene un plan: el traje.');
         });
       }
     }
-    if (map === 'house' && flags.vio_la_nevada && !flags.casa_sellada
-      && !flags.martita_ventana && !this.shown.martita) {
+    if (map === 'house' && flags[FLAG.VIO_LA_NEVADA] && !flags[FLAG.CASA_SELLADA]
+      && !flags[FLAG.MARTITA_VENTANA] && !this.shown.martita) {
       this.shown.martita = true;
       this.run(game, () => this.startMartita(game));
     }
-    if (map === 'street' && flags.listo_para_salir && !flags.afuera && !this.shown.outside) {
+    if (map === 'street' && flags[FLAG.LISTO_PARA_SALIR] && !flags[FLAG.AFUERA] && !this.shown.outside) {
       this.shown.outside = true;
-      flags.afuera = true;
+      flags[FLAG.AFUERA] = true;
       this.run(game, () => this.playCaption(game, CAPTIONS.outside));
     }
   }
@@ -128,13 +138,13 @@ export class Story {
     const flags = game.flags;
 
     // Elena en el living abre el hilo: primero la ventana, después el altillo.
-    if (kind === 'npc' && id === 'elena' && flags.casa_sellada && !flags.elena_hablada) {
-      flags.elena_hablada = true;
+    if (kind === 'npc' && id === 'elena' && flags[FLAG.CASA_SELLADA] && !flags[FLAG.ELENA_HABLADA]) {
+      flags[FLAG.ELENA_HABLADA] = true;
     }
 
     // Sentarse a la mesa: después del diálogo ("Sentarse") corren las viñetas.
-    if ((id === 'chair_juan' || id === 'chair') && flags.mate_tutorial
-      && !flags.truco_jugado && !this.shown.chair) {
+    if ((id === 'chair_juan' || id === 'chair') && flags[FLAG.MATE_TUTORIAL]
+      && !flags[FLAG.TRUCO_JUGADO] && !this.shown.chair) {
       this.shown.chair = true;
       if (game.scene?.dialog?.open) this.pendingChair = true;
       else this.run(game, () => this.playTruco(game));
@@ -142,9 +152,9 @@ export class Story {
 
     // Cerrar la ventana de Martita a tiempo (evento con barra de 8 s).
     if (kind === 'windowClosed' && id === 'window_martita'
-      && flags.martita_sprint && !flags.martita_ventana) {
-      flags.martita_ventana = 'ok';
-      flags.martita_sprint = false;
+      && flags[FLAG.MARTITA_SPRINT] && !flags[FLAG.MARTITA_VENTANA]) {
+      flags[FLAG.MARTITA_VENTANA] = 'ok';
+      flags[FLAG.MARTITA_SPRINT] = false;
       if (game.scene) game.scene.timedBar = null;
       this.run(game, () => this.playElenaMartita(game));
     }
@@ -152,16 +162,16 @@ export class Story {
     // Ventanas con vista: dejamos pendiente la escena para cuando se vuelva
     // al mapa (también llega viewEnd; el pending es el respaldo).
     if (kind === 'window') {
-      if (id === 'window' && flags.apagon && !flags.vio_la_nevada) {
+      if (id === 'window' && flags[FLAG.APAGON] && !flags[FLAG.VIO_LA_NEVADA]) {
         this.pendingView = 'window';
-      } else if (id === 'window_living' && flags.casa_sellada && !flags.ramirez_muerto) {
+      } else if (id === 'window_living' && flags[FLAG.CASA_SELLADA] && !flags[FLAG.RAMIREZ_MUERTO]) {
         this.pendingView = 'window_living';
       }
     }
 
     // Lista de la casa cerrada: ventana del living, puerta del hall y portón.
     const key = CLOSE_KEYS[id];
-    if (key && flags.apagon && !flags.casa_sellada && !flags[key]) {
+    if (key && flags[FLAG.APAGON] && !flags[FLAG.CASA_SELLADA] && !flags[key]) {
       flags[key] = true;
       game.showToast?.('Cerraste todo por acá.');
     }
@@ -176,9 +186,9 @@ export class Story {
 
   onViewEnd({ id }, game) {
     const flags = game.flags;
-    if (id === 'window' && flags.apagon && !flags.vio_la_nevada) {
+    if (id === 'window' && flags[FLAG.APAGON] && !flags[FLAG.VIO_LA_NEVADA]) {
       this.pendingView = 'window';
-    } else if (id === 'window_living' && flags.casa_sellada && !flags.ramirez_muerto) {
+    } else if (id === 'window_living' && flags[FLAG.CASA_SELLADA] && !flags[FLAG.RAMIREZ_MUERTO]) {
       this.pendingView = 'window_living';
     }
   }
@@ -186,12 +196,12 @@ export class Story {
   onItemUsed({ id, action }, game) {
     if (!id || !String(id).startsWith('mate_')) return;
     if (action !== 'cebar' && action !== 'sip') return;
-    if (!game.flags.mate_tutorial) game.flags.mate_tutorial = true;
+    if (!game.flags[FLAG.MATE_TUTORIAL]) game.flags[FLAG.MATE_TUTORIAL] = true;
   }
 
   onMateShared({ all }, game) {
     if (!all) return;
-    game.flags.mate_tutorial = true;
+    game.flags[FLAG.MATE_TUTORIAL] = true;
     if (!this.shown.sharedAll) {
       this.shown.sharedAll = true;
       game.showToast?.('Convidaste a los tres. Volvé a la mesa.');
@@ -200,9 +210,9 @@ export class Story {
 
   onTimerEnd({ id }, game) {
     const flags = game.flags;
-    if (id !== 'martita' || !flags.martita_sprint || flags.martita_ventana) return;
-    flags.martita_ventana = 'tarde';
-    flags.martita_sprint = false;
+    if (id !== 'martita' || !flags[FLAG.MARTITA_SPRINT] || flags[FLAG.MARTITA_VENTANA]) return;
+    flags[FLAG.MARTITA_VENTANA] = 'tarde';
+    flags[FLAG.MARTITA_SPRINT] = false;
     this.run(game, async () => {
       await this.playComic(game, COMICS.martitaTarde);
       await this.playElenaMartita(game);
@@ -215,27 +225,30 @@ export class Story {
     const flags = game.flags;
     const scene = game.scene;
 
+    // La casa como base del roguelike no repite las cinemáticas de la historia.
+    if (flags[FLAG.BASE]) return;
+
     this.checkPendingView(game);
     if (!this.ready(game)) return;
 
     // 1. Las cuatro aberturas cerradas: la casa queda sellada y se va Polsky.
-    if (flags.apagon && flags.vio_la_nevada && flags.martita_ventana
-      && !flags.casa_sellada && closedCount(flags) >= 4) {
-      flags.casa_sellada = true;
+    if (flags[FLAG.APAGON] && flags[FLAG.VIO_LA_NEVADA] && flags[FLAG.MARTITA_VENTANA]
+      && !flags[FLAG.CASA_SELLADA] && closedCount(flags) >= 4) {
+      flags[FLAG.CASA_SELLADA] = true;
       game.showToast?.('La casa quedó sellada.');
     }
-    if (flags.casa_sellada && !flags.polsky_muerto && !this.shown.polsky
+    if (flags[FLAG.CASA_SELLADA] && !flags[FLAG.POLSKY_MUERTO] && !this.shown.polsky
       && (scene.name === 'house' || scene.name === 'attic')) {
       this.shown.polsky = true;
       this.run(game, () => this.playPolsky(game));
     }
 
     // 2. Esclusa del garaje: nafta + extractor + traje.
-    if (flags.electrogeno_on && flags.extractor_ok && flags.traje_fabricado
-      && !flags.esclusa_lista) {
-      flags.esclusa_lista = true;
+    if (flags[FLAG.ELECTROGENO_ON] && flags[FLAG.EXTRACTOR_OK] && flags[FLAG.TRAJE_FABRICADO]
+      && !flags[FLAG.ESCLUSA_LISTA]) {
+      flags[FLAG.ESCLUSA_LISTA] = true;
     }
-    if (flags.esclusa_lista && !this.shown.eclusa) {
+    if (flags[FLAG.ESCLUSA_LISTA] && !this.shown.eclusa) {
       this.shown.eclusa = true;
       this.run(game, async () => {
         await this.playDialog(game, 'lucas_extractor', 'lucas');
@@ -244,37 +257,37 @@ export class Story {
     }
 
     // 3. Los dados: en el living, con la esclusa lista.
-    if (flags.esclusa_lista && !flags.dados && !this.shown.dados
+    if (flags[FLAG.ESCLUSA_LISTA] && !flags[FLAG.DADOS] && !this.shown.dados
       && scene?.name === 'house') {
       this.shown.dados = true;
       this.run(game, async () => {
         await this.playComic(game, COMICS.dados);
-        game.flags.dados = true;
+        game.flags[FLAG.DADOS] = true;
         game.showToast?.('Equipate: el traje y el rifle.');
       });
     }
 
     // 4. Equipado: traje y rifle puestos.
-    if (flags.esclusa_lista && flags.dados && game.hasSuit && game.hasRifle
-      && !flags.listo_para_salir) {
-      flags.listo_para_salir = true;
+    if (flags[FLAG.ESCLUSA_LISTA] && flags[FLAG.DADOS] && game.hasSuit && game.hasRifle
+      && !flags[FLAG.LISTO_PARA_SALIR]) {
+      flags[FLAG.LISTO_PARA_SALIR] = true;
       game.showToast?.('Estás listo. Salí por el garaje.');
     }
 
     // 5. Mitad de la calle: salen los cascarudos y empieza la arena.
-    if (scene?.name === 'street' && flags.afuera && !flags.arena
+    if (scene?.name === 'street' && flags[FLAG.AFUERA] && !flags[FLAG.ARENA]
       && !this.shown.arena && scene.player && scene.player.x > STREET_ARENA_X) {
       this.shown.arena = true;
       this.run(game, async () => {
         await this.playCaption(game, CAPTIONS.streetMid);
         await this.playComic(game, COMICS.cascudos);
         game.startArena?.();
-        game.flags.arena = true;
+        game.flags[FLAG.ARENA] = true;
       });
     }
 
     // 6. Aviso una sola vez cuando ya están los seis materiales.
-    if (flags.idea_traje && !flags.traje_fabricado && !this.shown.materials
+    if (flags[FLAG.IDEA_TRAJE] && !flags[FLAG.TRAJE_FABRICADO] && !this.shown.materials
       && currentObjective(game).id === 'craft') {
       this.shown.materials = true;
       game.showToast?.('Ya están los materiales. Armá el traje en el garaje.');
@@ -287,8 +300,8 @@ export class Story {
     const scene = game.scene;
     if (!this.ready(game)) return;
     if (this.pendingView === 'window') {
-      if (!flags.apagon) { this.pendingView = null; return; }
-      if (scene?.name !== 'attic' || flags.vio_la_nevada || this.shown.snow) return;
+      if (!flags[FLAG.APAGON]) { this.pendingView = null; return; }
+      if (scene?.name !== 'attic' || flags[FLAG.VIO_LA_NEVADA] || this.shown.snow) return;
       this.pendingView = null;
       this.shown.snow = true;
       this.run(game, async () => {
@@ -296,18 +309,18 @@ export class Story {
         await this.playDialog(game, 'lucas_porque', 'lucas');
         await this.playDialog(game, 'favalli_aire', 'favalli');
         await this.playDialog(game, 'favalli_radiactiva', 'favalli');
-        game.flags.vio_la_nevada = true;
+        game.flags[FLAG.VIO_LA_NEVADA] = true;
         game.showToast?.('Bajá a ver a Elena y Martita.');
       });
       return;
     }
     if (this.pendingView === 'window_living') {
-      if (!flags.casa_sellada) { this.pendingView = null; return; }
-      if (scene?.name !== 'house' || flags.ramirez_muerto) return;
+      if (!flags[FLAG.CASA_SELLADA]) { this.pendingView = null; return; }
+      if (scene?.name !== 'house' || flags[FLAG.RAMIREZ_MUERTO]) return;
       this.pendingView = null;
       this.run(game, async () => {
         await this.playComic(game, COMICS.ramirez);
-        game.flags.ramirez_muerto = true;
+        game.flags[FLAG.RAMIREZ_MUERTO] = true;
       });
     }
   }
@@ -317,12 +330,12 @@ export class Story {
   async startMartita(game) {
     await this.playCaption(game, CAPTIONS.martitaRoom);
     // Si ya la había cerrado antes, no hay carrera: Elena aparece igual.
-    if (game.flags.closed_window_martita) {
-      game.flags.martita_ventana = 'ok';
+    if (game.flags[FLAG.CLOSED_WINDOW_MARTITA]) {
+      game.flags[FLAG.MARTITA_VENTANA] = 'ok';
       await this.playElenaMartita(game);
       return;
     }
-    game.flags.martita_sprint = true;
+    game.flags[FLAG.MARTITA_SPRINT] = true;
     game.scene?.startTimedBar?.('martita', 8, '¡Cerrá la ventana de Martita!');
   }
 
@@ -335,18 +348,18 @@ export class Story {
 
   async playTruco(game) {
     await this.playComic(game, COMICS.truco);
-    game.flags.truco_jugado = true;
+    game.flags[FLAG.TRUCO_JUGADO] = true;
     await this.playComic(game, COMICS.choque);
     game.blackout?.();
-    game.flags.apagon = true;
+    game.flags[FLAG.APAGON] = true;
   }
 
   async playPolsky(game) {
     await this.playComic(game, COMICS.polsky);
     const flags = game.flags;
-    flags.polsky_muerto = true;
-    flags.polskyLeft = true;
-    flags.closed_hall_door = true;
+    flags[FLAG.POLSKY_MUERTO] = true;
+    flags[FLAG.POLSKY_LEFT] = true;
+    flags[FLAG.CLOSED_HALL_DOOR] = true;
     game.scene?.applyStoryState?.();
   }
 

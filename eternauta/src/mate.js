@@ -1,4 +1,6 @@
 // El mate y la pava: lógica pura (sin DOM ni three) + el termómetro dibujado.
+import { OUT } from './uiSkin.js';
+import { clamp } from './geom.js';
 // Máquina de estados del diseño §7.
 
 export const PERFECT_MIN = 70;
@@ -139,10 +141,6 @@ const ZONE_COLOR = {
   hervida: '#a83a34',
 };
 
-function clamp(v, a, b) {
-  return Math.max(a, Math.min(b, v));
-}
-
 /**
  * Barra vertical de 6x30 con la zona ideal en verde, marcas cada 10 y aguja.
  * (x, y) es la esquina de arriba a la izquierda de la barra.
@@ -155,7 +153,7 @@ export function drawThermometer(ctx, x, y, temp) {
   const innerH = h - 2;
 
   // marco de tinta
-  ctx.fillStyle = '#1a1426';
+  ctx.fillStyle = OUT;
   ctx.fillRect(x - 1, y - 1, w + 2, h + 2);
   // pista oscura
   ctx.fillStyle = '#2a2238';

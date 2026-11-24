@@ -1,5 +1,5 @@
 // UI dibujada a mano en canvas 1x: madera, papel y slots chicos (estilo Stardew).
-import { drawText, measureText } from './font.js';
+import { drawText, measureText, wrapText } from './font.js';
 
 export const OUT = '#1a1426';
 export const INK = '#3a2418';
@@ -11,10 +11,17 @@ export const WOOD1 = '#7a4e2c';
 export const WOOD2 = '#a06a3c';
 export const AM2 = '#e8963a';
 export const AM3 = '#ffcf6e';
-export const SEL = '#8a3a20';
 export const GOOD = '#2f7a4a';
-export const BAD = '#a83a34';
 export const SNOW = '#bdeffa';
+export const TEXT = '#fff0c0';
+export const WHITE = '#ffffff';
+export const WARN = '#ff9a8a';
+export const SLOT_DARK = '#2a1a14';
+export const SLOT_EDGE = '#8a5a2a';
+export const PANEL_PAPER = '#f6f1e4';
+export const CAPTION_PAPER = '#efe0a8';
+export const DARK_INK = '#16131c';
+export const SOFT_SHADOW = 'rgba(8, 8, 18, 0.42)';
 
 export function panel(ctx, x, y, w, h, opts = {}) {
   const alpha = opts.alpha ?? 1;
@@ -62,7 +69,7 @@ export function slot(ctx, x, y, size, selected, opts = {}) {
   ctx.fillRect(x, y, s, s);
   ctx.fillStyle = selected ? '#a86a28' : '#5a3a24';
   ctx.fillRect(x + 1, y + 1, s - 2, s - 2);
-  ctx.fillStyle = selected ? '#8a5a2a' : '#2a1a14';
+  ctx.fillStyle = selected ? SLOT_EDGE : SLOT_DARK;
   ctx.fillRect(x + 2, y + 2, s - 4, s - 4);
   if (opts.bounce) {
     ctx.fillStyle = AM3;
@@ -81,7 +88,7 @@ export function tab(ctx, label, glyphs, x, y, w, active) {
     ctx.fillStyle = PAR;
     ctx.fillRect(x + 1, y + 13, w - 2, 1);
   }
-  const color = active ? '#fff0c0' : '#e8c890';
+  const color = active ? TEXT : '#e8c890';
   const tw = measureText(glyphs, label);
   drawText(ctx, glyphs, Math.round(x + (w - tw) / 2), y + 4, label, color, {
     shadow: active ? '#5a3420' : '#2e1a10',
@@ -132,19 +139,5 @@ export function dim(ctx, alpha = 0.55) {
 }
 
 export function wrapLines(glyphs, text, maxWidth, maxLines = 3) {
-  const words = String(text).split(' ');
-  const lines = [];
-  let line = '';
-  for (const word of words) {
-    const next = line ? `${line} ${word}` : word;
-    if (line && measureText(glyphs, next) > maxWidth) {
-      lines.push(line);
-      line = word;
-    } else {
-      line = next;
-    }
-    if (lines.length === maxLines) break;
-  }
-  if (line && lines.length < maxLines) lines.push(line);
-  return lines;
+  return wrapText(glyphs, text, maxWidth, { spacing: 1, maxLines, truncate: true });
 }

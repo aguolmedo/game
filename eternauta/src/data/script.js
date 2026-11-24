@@ -3,6 +3,7 @@
 // Líneas entre comillas = paráfrasis en la voz del cómic (Oesterheld / Solano
 // López, 1957), no transcripción. Retratos: ids de src/data/portraits.js.
 import { getItem } from '../items.js';
+import { FLAG } from './flags.js';
 import { missingFor, RECIPES } from '../recipes.js';
 
 const SUIT = RECIPES[0];
@@ -148,19 +149,19 @@ export const TALK = {
   // ---------------------------------------------------------- personajes
   favalli(game) {
     const flags = game.flags || {};
-    if (game.hasSuit || game.crafted || flags.listo_para_salir) {
+    if (game.hasSuit || game.crafted || flags[FLAG.LISTO_PARA_SALIR]) {
       return entry('Favalli', 'favalli', [
         'Lo primero es ir a la armería. Después la comida.',
         'Cuando salgas, cerrá la puerta y no mires atrás.',
       ]);
     }
-    if (flags.dados) {
+    if (flags[FLAG.DADOS]) {
       return entry('Favalli', 'favalli', [
         'Te tocó a vos. Así lo quisieron los dados.',
         'No te saques el traje ni para dormir.',
       ]);
     }
-    if (flags.idea_traje) {
+    if (flags[FLAG.IDEA_TRAJE]) {
       const missing = missingNames(game);
       if (missing.length) {
         return entry('Favalli', 'favalli', [
@@ -172,8 +173,8 @@ export const TALK = {
         'Ya está todo. Armá el traje en el banco del garaje.',
       ]);
     }
-    if (flags.apagon) {
-      return entry('Favalli', 'favalli', flags.polsky_muerto
+    if (flags[FLAG.APAGON]) {
+      return entry('Favalli', 'favalli', flags[FLAG.POLSKY_MUERTO]
         ? [
           'Hay que cerrar todo. Ni una partícula puede entrar.',
           'Polsky salió a buscar a Edith y los chicos…',
@@ -198,7 +199,7 @@ export const TALK = {
         'Pero te tocó a vos. Volvé, Juan.',
       ]);
     }
-    if (flags.apagon) {
+    if (flags[FLAG.APAGON]) {
       return entry('Lucas', 'lucas', [
         'Afuera no pasa un alma. La calle quedó muda.',
         'Y esa nieve brilla. No es una nevada común.',
@@ -212,7 +213,7 @@ export const TALK = {
 
   polsky(game) {
     const flags = game.flags || {};
-    if (flags.apagon) {
+    if (flags[FLAG.APAGON]) {
       return entry('Polsky', 'polsky', [
         'Tengo que ir a casa. Edith y los chicos están solos.',
         'No me digan nada. Ya lo decidí.',
@@ -226,26 +227,26 @@ export const TALK = {
 
   elena(game) {
     const flags = game.flags || {};
-    if (flags.dados || flags.listo_para_salir) {
+    if (flags[FLAG.DADOS] || flags[FLAG.LISTO_PARA_SALIR]) {
       return entry('Elena', 'elena', [
         'No me diste un beso, Juan…',
         'Volvé. Martita te va a estar esperando.',
       ]);
     }
-    if (flags.idea_traje) {
+    if (flags[FLAG.IDEA_TRAJE]) {
       return entry('Elena', 'elena', [
         '¿Y cómo vas a respirar con eso?',
         'Favalli dice que el filtro del casco alcanza.',
         'Cuidate, Juan.',
       ]);
     }
-    if (flags.casa_sellada) {
+    if (flags[FLAG.CASA_SELLADA]) {
       return entry('Elena', 'elena', [
         '¡Juan! ¡Va a abrir la ventana!',
         'La casa de los Ramírez tenía una vela encendida.',
       ]);
     }
-    if (flags.apagon) {
+    if (flags[FLAG.APAGON]) {
       return entry('Elena', 'elena', [
         '¿Qué pasa, Juan? ¿Qué pasa?',
         'Martita se asustó con el ruido.',
@@ -259,13 +260,13 @@ export const TALK = {
 
   martita(game) {
     const flags = game.flags || {};
-    if (flags.casa_sellada) {
+    if (flags[FLAG.CASA_SELLADA]) {
       return entry('Martita', 'martita', [
         '¡Hay una luz en la casa de enfrente!',
         '¿Ves, papito? Una vela.',
       ]);
     }
-    if (flags.apagon) {
+    if (flags[FLAG.APAGON]) {
       return entry('Martita', 'martita', [
         '¿Se apagó la luz para siempre?',
         'No me gusta la nieve que brilla.',
@@ -280,7 +281,7 @@ export const TALK = {
   // ---------------------------------------------------------- altillo
   radio(game) {
     const flags = game.flags || {};
-    return flags.apagon
+    return flags[FLAG.APAGON]
       ? entry('Radio', null, ['Muda.', 'Ni siquiera la interferencia. Nada.'])
       : entry('Radio', null, [
         'La radio pasa de una emisora a otra.',
@@ -290,7 +291,7 @@ export const TALK = {
   },
   window(game) {
     const flags = game.flags || {};
-    return flags.apagon
+    return flags[FLAG.APAGON]
       ? entry('Juan', 'juan', [
         'La calle está blanca y brilla sola.',
         'No se oye ni un motor.',
@@ -306,7 +307,7 @@ export const TALK = {
   ]),
   chair(game) {
     const flags = game.flags || {};
-    return flags.mate_tutorial
+    return flags[FLAG.MATE_TUTORIAL]
       ? entry('Juan', 'juan', ['Me siento y reparto. La mano que viene es la última tranquila.'])
       : entry('Juan', 'juan', ['Todavía no. Primero, un mate.']);
   },
@@ -356,7 +357,7 @@ export const TALK = {
   sink: look(['La pileta de la cocina. El agua todavía sale, aunque sea un hilo.']),
   wall_clock(game) {
     const flags = game.flags || {};
-    return entry('Juan', 'juan', [flags.apagon ? 'Las once y diez. El reloj se paró.' : 'Las once y diez.']);
+    return entry('Juan', 'juan', [flags[FLAG.APAGON] ? 'Las once y diez. El reloj se paró.' : 'Las once y diez.']);
   },
   hall_door: look([
     'La puerta de calle. Está cerrada con llave.',
@@ -369,20 +370,20 @@ export const TALK = {
   garage_door: look(['El portón del garaje. Es la única salida posible.']),
   extractor(game) {
     const flags = game.flags || {};
-    return entry('Juan', 'juan', flags.extractor_ok
+    return entry('Juan', 'juan', flags[FLAG.EXTRACTOR_OK]
       ? ['El extractor de la pared ya tiene el secador de Elena instalado.']
       : ['El extractor de la pared. Le falta algo que sople el aire hacia afuera.']);
   },
   generator(game) {
     const flags = game.flags || {};
-    return entry('Juan', 'juan', flags.electrogeno_on
+    return entry('Juan', 'juan', flags[FLAG.ELECTROGENO_ON]
       ? ['El electrógeno ronronea. La lamparita titila.']
       : ['El electrógeno de Favalli, seco. Le falta nafta.']);
   },
   bidon: look(['Un bidón de nafta para el electrógeno.']),
   bench_suit(game) {
     const flags = game.flags || {};
-    return entry('Juan', 'juan', flags.traje_fabricado
+    return entry('Juan', 'juan', flags[FLAG.TRAJE_FABRICADO]
       ? ['El banco del garaje. El traje ya está listo.']
       : ['El banco donde se arma el traje.', 'Con los materiales a mano, acá se cose todo.']);
   },

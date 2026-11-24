@@ -2,13 +2,18 @@
 // sólo usa los métodos de escena/enemigos que recibe.
 
 /** Saca de la escena TODOS los enemigos (vivos y cadáveres) y vacía la lista. */
-export function clearEnemyEntities(scene, enemies) {
+export function clearEnemyEntities(parent, enemies) {
   let removed = 0;
   for (const enemy of enemies) {
     const vis = enemy && enemy.vis;
     if (!vis) continue;
-    if (vis.mesh) scene.remove(vis.mesh);
-    if (vis.shadow) scene.remove(vis.shadow);
+    if (vis.mesh) parent.remove(vis.mesh);
+    if (vis.shadow) {
+      parent.remove(vis.shadow);
+      // La geometría de la sombra es compartida (sprite.makeShadow), pero el
+      // material es de esta instancia porque cambia su opacidad: sí se libera.
+      vis.shadow.material?.dispose?.();
+    }
     enemy.vis = null;
     removed += 1;
   }
@@ -17,11 +22,11 @@ export function clearEnemyEntities(scene, enemies) {
 }
 
 /** Saca de la escena los efectos (partículas, fogonazos, etc.). */
-export function clearFxEntities(scene, fx) {
+export function clearFxEntities(parent, fx) {
   let removed = 0;
   for (const item of fx) {
     if (item && item.mesh) {
-      scene.remove(item.mesh);
+      parent.remove(item.mesh);
       removed += 1;
     }
   }

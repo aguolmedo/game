@@ -2,6 +2,10 @@ import * as THREE from 'three';
 import { imageSprite, getGlowTexture, VIEW_W, VIEW_H } from '../sprite.js';
 import { Snowfall } from '../snow.js';
 import { TitleMenu } from '../menus.js';
+import { titleOptions } from '../base.js';
+import { loadSave, clearSave } from '../run/save.js';
+import { FLAG } from '../data/flags.js';
+import { renderFlat } from '../core/scene.js';
 
 const LAYER_W = 512;
 const LAYER_H = 286;
@@ -110,12 +114,17 @@ export class TitleScene {
 
   enter() {
     this.menu.view = 'main';
+    // Con el traje ya hecho aparece "Continuar" en vez de "Jugar".
+    this.menu.options = titleOptions(this.game.baseSave || loadSave());
     this.menu.cursor.setLength(this.menu.options.length);
     this.menu.cursor.index = 0;
     this.menu.show();
     this.snow.scatter();
     this.t = 0;
   }
+
+  /** Pantalla fija: sin luz de apagón (ver core/scene.js). */
+  render(ctx) { renderFlat(this, ctx); }
 
   applyCamera(camera) {
     camera.left = 0;
@@ -159,17 +168,27 @@ export class TitleScene {
 
     this.menu.setCamera(0, 0);
     const action = this.menu.update(dt, input);
-    if (action === 'play') {
+    if (action === 'continue') {
+      // La casa como base: el traje ya está hecho y no se repite la historia.
+      this.menu.hide();
+      this.game.enterBase();
+    } else if (action === 'play') {
       this.menu.hide();
       this.game.newGame();
-      this.game.changeScene('attic');
+      this.game.startPrologue('intro');
+    } else if (action === 'new') {
+      // Partida nueva: se borra el guardado y arranca como Jugar.
+      clearSave();
+      this.menu.hide();
+      this.game.newGame();
+      this.game.startPrologue('intro');
     } else if (action === 'arena') {
       // directo al minijuego: Juan sale con el traje puesto y el rifle
       this.menu.hide();
       this.game.newGame();
       this.game.hasSuit = true;
-      this.game.flags = { ...(this.game.flags || {}), apagon: true, listo_para_salir: true };
-      this.game.startArena();
+      this.game.flags = { ...(this.game.flags || {}), [FLAG.APAGON]: true, [FLAG.LISTO_PARA_SALIR]: true };
+      this.game.startArena({ minigame: true });
     }
   }
 

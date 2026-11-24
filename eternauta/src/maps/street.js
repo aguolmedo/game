@@ -7,6 +7,7 @@
 //     (auto volcado + auto de trompa + cartel) y la ferreteria con su caja de
 //     municiones; Polsky caido en la calle si la historia lo mata
 import { makeGrid, pick } from './grid.js';
+import { placer } from './place.js';
 
 export const COLS = 80;
 export const ROWS = 20;
@@ -42,17 +43,7 @@ const SIZE = {
   auto_volcado: [66, 46], auto_parado: [56, 74],
 };
 
-// Ubica un sprite por su esquina inferior izquierda en px, como el concepto.
-function put(id, sprite, left, base, extra = {}) {
-  const [w, h] = SIZE[sprite];
-  const tw = Math.max(1, Math.round(w / 16));
-  const th = Math.max(1, Math.round(h / 16));
-  const x = Math.round((left + w / 2) / 16 - tw / 2);
-  const y = Math.round(base / 16) - th;
-  const ox = Math.round(left + w / 2 - (x + tw / 2) * 16);
-  const oy = Math.round(base - (y + th) * 16);
-  return { id, sprite, x, y, tw, th, offset: [ox, oy], ...extra };
-}
+const put = placer(SIZE);
 
 const objects = [];
 const add = (obj) => { objects.push(obj); return obj; };
@@ -142,7 +133,7 @@ add(put('cartel', 'cartel_esquina', 1230, 224, {
 }));
 
 // ---------------------------------------------------------------- nieve y cuerpos
-// Medanos: tambien son los spawns de la arena (§11).
+// Medanos de nieve sobre la calzada.
 const MOUNDS = [
   ['medano_1', 192, 268], ['medano_2', 416, 248], ['medano_3', 608, 282],
   ['medano_4', 800, 262], ['medano_5', 992, 248], ['medano_6', 1168, 272],
@@ -221,16 +212,6 @@ export const street = {
     ])),
   ],
   windows: [],
-  // Zona jugable de la arena (minijuego §11): vereda + calzada.
-  arena: { minX: 8 * 16, maxX: 72 * 16, minY: 7 * 16, maxY: 18 * 16 },
-  // Spawns de cascarudos: los seis medanos y los bordes del mapa.
-  spawns: {
-    medano_1: { x: 208, y: 268 }, medano_2: { x: 432, y: 248 },
-    medano_3: { x: 624, y: 282 }, medano_4: { x: 816, y: 262 },
-    medano_5: { x: 1008, y: 248 }, medano_6: { x: 1184, y: 272 },
-    left: { x: 8 * 16, y: 266 }, right: { x: 72 * 16, y: 266 },
-    bottom: { x: 40 * 16, y: 18 * 16 },
-  },
   // Se conserva por compatibilidad con StreetScene; la calle ya no termina.
   endX: COLS * 16,
   npcs: [],

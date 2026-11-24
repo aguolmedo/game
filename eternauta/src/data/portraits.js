@@ -46,3 +46,15 @@ export function spriteHeadFor(id) {
   if (typeof id !== 'string') return null;
   return SPRITE_HEADS[id] || null;
 }
+
+// Id de personaje -> frame de objects.png (16x32). La cabeza son las filas 0..15.
+const OBJECT_HEADS = {
+  eternauta_viejo: 'eternauta_viejo_abajo',
+  programador: 'programador_abajo',
+};
+
+/** Frame de objects.png para un id de personaje, o null si no hay sprite. */
+export function objectHeadFor(id) {
+  if (typeof id !== 'string') return null;
+  return OBJECT_HEADS[id] || null;
+}

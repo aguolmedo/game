@@ -5,9 +5,14 @@
 import * as THREE from 'three';
 import { regionTexture, depthFor, VIEW_W, VIEW_H } from '../sprite.js';
 import { reloadProgress } from './weapon.js';
+import { stepBullets } from './simulate.js';
+import * as particles from './feedbackParticles.js';
+import * as shake from './feedbackShake.js';
+import * as draw from './feedbackDraw.js';
+import { LIFT } from './feedbackParticles.js';
 import {
-  AIM_LENGTH, aimDotAlpha, aimDots, createShot, ejectCasing,
-  isOutOfView, muzzlePoint, recoilPush, shotOrigin, stepCasing, updateBullet,
+  createShot, ejectCasing,
+  isOutOfView, muzzlePoint, recoilPush, shotOrigin, stepCasing,
   TRAIL_TIME,
 } from './projectiles.js';
 
@@ -18,14 +23,11 @@ const HITSTOP_KILL = 0.03;
 const CASING_FADE = 0.6;
 const SLIDE_TIME = 0.3;
 // La bala colisiona en el plano del piso pero se dibuja a la altura del cuerpo.
-const LIFT = 6;
 const MUZZLE_LIFT = 10;
 
-function rgba(hex, alpha) {
-  const s = hex.replace('#', '');
-  const n = parseInt(s, 16);
-  return `rgba(${(n >> 16) & 255}, ${(n >> 8) & 255}, ${n & 255}, ${alpha})`;
-}
+// Listas vacías compartidas: update() no debe crear arrays si no hay contexto.
+const NO_ENEMIES = [];
+const NO_SOLIDS = [];
 
 function pointInBoxes(x, y, boxes) {
   for (const box of boxes) {
@@ -34,9 +36,13 @@ function pointInBoxes(x, y, boxes) {
   return false;
 }
 
-/** Sprite chico del atlas de efectos. `additive` para fuego y chispas. */
-function makeSprite(tex, frame, additive = false) {
-  const texture = regionTexture(tex, frame[0], frame[1], frame[2], frame[3]);
+/**
+ * Sprite chico del atlas de efectos. `additive` para fuego y chispas.
+ * La textura y la geometría son compartidas por frame (cacheadas): acá sólo
+ * se crea el material, que sí es por instancia porque cada sprite cambia su
+ * opacidad.
+ */
+function makeSprite(texture, geometry, additive = false) {
   const material = new THREE.MeshBasicMaterial({
     map: texture,
     transparent: true,
@@ -45,7 +51,7 @@ function makeSprite(tex, frame, additive = false) {
     side: THREE.DoubleSide,
     blending: additive ? THREE.AdditiveBlending : THREE.NormalBlending,
   });
-  const mesh = new THREE.Mesh(new THREE.PlaneGeometry(frame[2], frame[3]), material);
+  const mesh = new THREE.Mesh(geometry, material);
   return { mesh, material };
 }
 
@@ -57,7 +63,7 @@ export function resetShootingFx(fx) {
   if (fx.flash) fx.dropSprite(fx.flash);
   if (fx.click) fx.dropSprite(fx.click);
   if (fx.bolt) fx.dropSprite(fx.bolt);
-  fx.bullets = [];
+  fx.bullets.length = 0; // el array es del state: se vacía en el lugar
   fx.casings = [];
   fx.particles = [];
   fx.slides = [];
@@ -69,14 +75,22 @@ export function resetShootingFx(fx) {
   fx.shakeAmp = 0;
   fx.hitStop = 0;
   fx.lightT = 0;
+  // Soltar las referencias del mundo y de las estelas del último run.
+  if (fx.world) {
+    fx.world.enemies = [];
+    fx.world.solids = [];
+    fx.world.view = null;
+  }
+  if (fx.liveTrail) fx.liveTrail.clear();
 }
 
 export class ShootingFx {
   constructor(scene, assets) {
-    this.scene = scene;
+    this.root = scene; // THREE.Scene donde se agregan los sprites
     this.assets = assets;
     this.tex = null;
     this.frames = null;
+    this.textures = new Map();
     this.geos = new Map();
     this.bullets = [];
     this.casings = [];
@@ -91,6 +105,20 @@ export class ShootingFx {
     this.hitStop = 0;
     this.lightT = 0;
     this.lightPos = { x: 0, y: 0 };
+    this.shake = { x: 0, y: 0 };
+    this.liveTrail = new Set();
+    // Mundo reutilizable para las balas: se le cambian las referencias por frame.
+    this.viewBuf = { x: 0, y: 0, w: VIEW_W, h: VIEW_H };
+    // Las funciones se crean una vez y leen las referencias del mundo; pueden
+    // desestructurarse sin perder el `this` (updateBullet las usa sueltas).
+    const world = {
+      enemies: [],
+      solids: [],
+      view: null,
+    };
+    world.isSolid = (x, y) => pointInBoxes(x, y, world.solids);
+    world.isOut = (x, y) => (world.view ? isOutOfView(x, y, world.view) : null);
+    this.world = world;
     this.mouseAim = false;
     this.load();
     this.bindAim();
@@ -158,19 +186,31 @@ export class ShootingFx {
     return this.geos.get(name);
   }
 
-  spawnSprite(name, x, y, additive = false, z = 0.05, lift = 0) {
+  /** Textura recortada del atlas, una sola por frame (no se clona por sprite). */
+  texture(name) {
     const f = this.frame(name);
-    if (!f) return null;
-    const sprite = makeSprite(this.tex, f, additive);
+    if (!f || !this.tex) return null;
+    if (!this.textures.has(name)) {
+      this.textures.set(name, regionTexture(this.tex, f[0], f[1], f[2], f[3]));
+    }
+    return this.textures.get(name);
+  }
+
+  spawnSprite(name, x, y, additive = false, z = 0.05, lift = 0) {
+    const texture = this.texture(name);
+    const geometry = this.geometry(name);
+    if (!texture || !geometry) return null;
+    const sprite = makeSprite(texture, geometry, additive);
     sprite.mesh.position.set(Math.round(x), Math.round(y - lift), depthFor(y) + z);
-    this.scene.add(sprite.mesh);
+    this.root.add(sprite.mesh);
     return sprite;
   }
 
   dropSprite(sprite) {
     if (!sprite) return;
-    this.scene.remove(sprite.mesh);
-    sprite.material.map.dispose();
+    this.root.remove(sprite.mesh);
+    // La textura y la geometría son compartidas por frame: sólo se libera el
+    // material de esta instancia.
     sprite.material.dispose();
   }
 
@@ -182,7 +222,8 @@ export class ShootingFx {
    */
   fire(origin, aim, opts = {}) {
     const dir = aim && (aim.x || aim.y) ? aim : { x: 0, y: 1 };
-    const rng = opts.rng || Math.random;
+    const rng = opts.rng;
+    if (typeof rng !== 'function') throw new Error('fire: falta rng');
     const bullet = createShot(origin, dir, {
       shots: opts.shots,
       moving: opts.moving,
@@ -194,7 +235,8 @@ export class ShootingFx {
     const muzzle = muzzlePoint(origin, dir);
     this.spawnFlash(muzzle, Boolean(opts.emergency));
     this.lightT = LIGHT_TIME;
-    this.lightPos = { x: muzzle.x, y: muzzle.y - MUZZLE_LIFT };
+    this.lightPos.x = muzzle.x;
+    this.lightPos.y = muzzle.y - MUZZLE_LIFT;
     this.addShake(1, 0.06);
 
     const casing = ejectCasing(origin, dir, rng);
@@ -273,7 +315,6 @@ export class ShootingFx {
         const f = this.frame(name);
         const geo = sprite.mesh.geometry.parameters;
         if (f && (geo.width !== f[2] || geo.height !== f[3])) {
-          sprite.mesh.geometry.dispose();
           sprite.mesh.geometry = this.geometry(name);
         }
         sprite.material.opacity = Math.min(1, casing.life / CASING_FADE);
@@ -292,95 +333,16 @@ export class ShootingFx {
 
   // ------------------------------------------------------------- partículas
 
-  addParticle(name, x, y, opts = {}) {
-    const f = this.frame(name);
-    if (!f) return null;
-    const lift = opts.lift ?? LIFT;
-    const sprite = this.spawnSprite(name, x, y, opts.additive ?? false, 0.055, lift);
-    if (!sprite) return null;
-    if (opts.scale && opts.scale !== 1) {
-      sprite.mesh.scale.set(opts.scale, opts.scale, 1);
-    }
-    const particle = {
-      ...sprite,
-      name,
-      x,
-      y,
-      lift,
-      z: opts.z ?? 0,
-      vx: opts.vx ?? 0,
-      vy: opts.vy ?? 0,
-      vz: opts.vz ?? 0,
-      gravity: opts.gravity ?? 260,
-      life: opts.life ?? 0.25,
-      max: opts.life ?? 0.25,
-      spin: opts.spin ?? 0,
-    };
-    sprite.mesh.rotation.z = opts.angle ?? 0;
-    this.particles.push(particle);
-    return particle;
-  }
+  addParticle(name, x, y, opts = {}) { return particles.addParticle(this, name, x, y, opts); }
 
-  burstChitin(x, y, dir, count = 3) {
-    for (let i = 0; i < count; i++) {
-      const name = i % 2 ? 'chitin_1' : 'chitin_0';
-      this.addParticle(name, x + Math.random() * 4 - 2, y + Math.random() * 3 - 2, {
-        vx: dir.x * 34 + (Math.random() - 0.5) * 50,
-        vy: dir.y * 34 + (Math.random() - 0.5) * 40 - 6,
-        vz: 40 + Math.random() * 55,
-        life: 0.2 + Math.random() * 0.18,
-        spin: Math.random() * 6,
-      });
-    }
-  }
+  burstChitin(x, y, dir, count = 3) { return particles.burstChitin(this, x, y, dir, count); }
 
-  burstSnow(x, y, count = 2, power = 1) {
-    for (let i = 0; i < count; i++) {
-      const name = i % 2 ? 'puff_1' : 'puff_0';
-      this.addParticle(name, x, y - 2, {
-        vx: (Math.random() - 0.5) * 34 * power,
-        vy: (Math.random() - 0.5) * 24 * power - 4,
-        vz: 12 + Math.random() * 22,
-        life: 0.22 + Math.random() * 0.16,
-        gravity: 40,
-        scale: name === 'puff_1' ? 1 : 0.85,
-      });
-    }
-  }
+  burstSnow(x, y, count = 2, power = 1) { return particles.burstSnow(this, x, y, count, power); }
 
-  burstSpark(x, y, dir) {
-    this.addParticle('spark_0', x, y, {
-      vx: -dir.x * 8, vy: -dir.y * 8, vz: 30, life: 0.09, gravity: 60,
-    });
-    this.addParticle('spark_1', x - dir.x * 2, y - dir.y * 2, {
-      vx: dir.x * 6, vy: dir.y * 6, vz: 12, life: 0.07, gravity: 0,
-    });
-    this.burstSnow(x, y, 1, 0.6);
-  }
+  burstSpark(x, y, dir) { return particles.burstSpark(this, x, y, dir); }
 
-  updateParticles(dt) {
-    for (let i = this.particles.length - 1; i >= 0; i--) {
-      const p = this.particles[i];
-      p.life -= dt;
-      if (p.life <= 0) {
-        this.dropSprite(p);
-        this.particles.splice(i, 1);
-        continue;
-      }
-      p.x += p.vx * dt;
-      p.y += p.vy * dt;
-      p.vz -= p.gravity * dt;
-      p.z = Math.max(0, p.z + p.vz * dt);
-      if (p.z === 0) {
-        p.vx *= Math.max(0, 1 - 12 * dt);
-        p.vy *= Math.max(0, 1 - 12 * dt);
-        p.vz = 0;
-      }
-      p.mesh.position.set(Math.round(p.x), Math.round(p.y - p.z - p.lift), depthFor(p.y) + 0.055);
-      p.mesh.rotation.z += p.spin * dt;
-      p.material.opacity = Math.max(0, Math.min(1, p.life / p.max));
-    }
-  }
+  updateParticles(dt) { return particles.updateParticles(this, dt); }
+
 
   // ------------------------------------------------------------- impacto
 
@@ -450,27 +412,28 @@ export class ShootingFx {
     this.hitStop = Math.max(0, this.hitStop - step);
     const worldDt = this.hitStop > 0 ? 0 : step;
 
-    const solids = ctx.solids || [];
-    const view = ctx.view
-      ? { x: ctx.view.x, y: ctx.view.y, w: VIEW_W, h: VIEW_H }
-      : null;
-    const world = {
-      enemies: ctx.enemies || [],
-      isSolid: (x, y) => pointInBoxes(x, y, solids),
-      isOut: view ? (x, y) => isOutOfView(x, y, view) : null,
-    };
+    this.world.enemies = ctx.enemies || NO_ENEMIES;
+    this.world.solids = ctx.solids || NO_SOLIDS;
+    if (ctx.view) {
+      this.viewBuf.x = ctx.view.x;
+      this.viewBuf.y = ctx.view.y;
+      this.world.view = this.viewBuf;
+    } else {
+      this.world.view = null;
+    }
+    const world = this.world;
 
-    for (const bullet of this.bullets) {
-      if (!bullet.alive) continue;
-      const events = updateBullet(bullet, worldDt, world);
-      for (const event of events) {
+    // La física de las balas es pura (simulate.js); acá solo la vista.
+    stepBullets(this.bullets, worldDt, world, {
+      onEvent: (event) => {
         if (event.type === 'enemy') this.handleHit(event, ctx.onHit);
         else if (event.type === 'wall') this.handleWall(event);
-      }
-      this.updateBulletVisual(bullet);
-      if (!bullet.alive) this.dropBullet(bullet);
-    }
-    this.bullets = this.bullets.filter((bullet) => bullet.alive);
+      },
+      afterBullet: (bullet) => {
+        this.updateBulletVisual(bullet);
+        if (!bullet.alive) this.dropBullet(bullet);
+      },
+    });
     this.cleanupTrails();
 
     this.updateSlides(worldDt);
@@ -502,18 +465,25 @@ export class ShootingFx {
 
   /** Estelas que ya no pertenecen a ninguna bala: se sacan de la escena. */
   cleanupTrails() {
-    const live = new Set();
+    if (!this.bullets.length && !this.trailDots.length) return;
+    const live = this.liveTrail;
+    live.clear();
     for (const bullet of this.bullets) {
       for (const dot of bullet.trail) live.add(dot);
     }
-    this.trailDots = this.trailDots.filter((dot) => {
-      if (live.has(dot) && dot.sprite) return true;
+    // Compactar en el lugar en vez de crear un array nuevo por frame.
+    let kept = 0;
+    for (const dot of this.trailDots) {
+      if (live.has(dot) && dot.sprite) {
+        this.trailDots[kept++] = dot;
+        continue;
+      }
       if (dot.sprite) {
         this.dropSprite(dot.sprite);
         dot.sprite = null;
       }
-      return false;
-    });
+    }
+    this.trailDots.length = kept;
   }
 
   updateFlash(dt) {
@@ -524,7 +494,6 @@ export class ShootingFx {
     const f = this.frame(name);
     const geo = flash.mesh.geometry.parameters;
     if (f && (geo.width !== f[2] || geo.height !== f[3])) {
-      flash.mesh.geometry.dispose();
       flash.mesh.geometry = this.geometry(name);
     }
     const k = flash.size || 1;
@@ -568,7 +537,6 @@ export class ShootingFx {
     const f = this.frame(name);
     const geo = this.bolt.mesh.geometry.parameters;
     if (f && (geo.width !== f[2] || geo.height !== f[3])) {
-      this.bolt.mesh.geometry.dispose();
       this.bolt.mesh.geometry = this.geometry(name);
     }
     this.bolt.mesh.position.set(
@@ -578,67 +546,13 @@ export class ShootingFx {
 
   // ------------------------------------------------------------- cámara/luz
 
-  addShake(amp, time) {
-    this.shakeAmp = Math.max(this.shakeAmp, amp);
-    this.shakeT = Math.max(this.shakeT, time);
-  }
+  addShake(amp, time) { return shake.addShake(this, amp, time); }
 
-  /** Desvío de cámara por la sacudida (1 px por disparo, 2 px por baja). */
-  shakeOffset(t = 0) {
-    if (this.shakeT <= 0 || this.shakeAmp <= 0) return { x: 0, y: 0 };
-    return {
-      x: Math.round(Math.sin(t * 143) * this.shakeAmp),
-      y: Math.round(Math.cos(t * 111) * this.shakeAmp),
-    };
-  }
+  shakeOffset(t = 0) { return shake.shakeOffset(this, t); }
 
-  /** Fogonazo que ilumina alrededor en el apagón (canvas de luz). */
-  drawMuzzleLight(ctx, cam) {
-    if (this.lightT <= 0 || !ctx) return;
-    const k = Math.min(1, this.lightT / LIGHT_TIME);
-    const sx = Math.round(this.lightPos.x - cam.x);
-    const sy = Math.round(this.lightPos.y - cam.y);
-    const r = 26 + (1 - k) * 26;
-    if (sx < -r || sy < -r || sx > VIEW_W + r || sy > VIEW_H + r) return;
-    ctx.save();
-    ctx.globalCompositeOperation = 'destination-out';
-    let g = ctx.createRadialGradient(sx, sy, 0, sx, sy, r);
-    g.addColorStop(0, `rgba(0, 0, 0, ${0.62 * k})`);
-    g.addColorStop(0.5, `rgba(0, 0, 0, ${0.28 * k})`);
-    g.addColorStop(1, 'rgba(0, 0, 0, 0)');
-    ctx.fillStyle = g;
-    ctx.beginPath();
-    ctx.arc(sx, sy, r, 0, Math.PI * 2);
-    ctx.fill();
-    ctx.globalCompositeOperation = 'lighter';
-    g = ctx.createRadialGradient(sx, sy, 0, sx, sy, r * 0.85);
-    g.addColorStop(0, `rgba(255, 228, 150, ${0.46 * k})`);
-    g.addColorStop(0.45, `rgba(255, 170, 70, ${0.2 * k})`);
-    g.addColorStop(1, 'rgba(255, 160, 60, 0)');
-    ctx.fillStyle = g;
-    ctx.beginPath();
-    ctx.arc(sx, sy, r * 0.85, 0, Math.PI * 2);
-    ctx.fill();
-    ctx.restore();
-  }
+  drawMuzzleLight(ctx, cam) { return draw.drawMuzzleLight(this, ctx, cam); }
 
-  /** Guía de tiro punteada: punto cada 3 px, se apaga con la distancia. */
-  drawAimLine(ctx, player, aim, cam, input) {
-    if (!ctx || !player || !aim) return;
-    const hold = this.aimHeld(input);
-    const origin = shotOrigin(player);
-    // Arranca un poco adelante del traje y se dibuja a la altura del arma.
-    const start = { x: origin.x + aim.x * 8, y: origin.y + aim.y * 6 - LIFT };
-    const dots = aimDots(start, aim, { length: hold ? AIM_LENGTH + 18 : AIM_LENGTH });
-    for (const dot of dots) {
-      const sx = Math.round(dot.x - cam.x);
-      const sy = Math.round(dot.y - cam.y);
-      if (sx < 0 || sy < 0 || sx >= VIEW_W || sy >= VIEW_H) continue;
-      const alpha = aimDotAlpha(dot.t, hold);
-      ctx.fillStyle = rgba(dot.t < 0.45 ? '#fff4c0' : '#ecab4c', alpha);
-      ctx.fillRect(sx, sy, 1, 1);
-    }
-  }
+  drawAimLine(ctx, player, aim, cam, input) { return draw.drawAimLine(this, ctx, player, aim, cam, input); }
 
   // ------------------------------------------------------------- debug
 
@@ -654,5 +568,12 @@ export class ShootingFx {
 
   reset() {
     resetShootingFx(this);
+  }
+
+  /** Libera las geometrías propias (los materiales los suelta cada sprite). */
+  dispose() {
+    resetShootingFx(this);
+    for (const geometry of this.geos.values()) geometry.dispose();
+    this.geos.clear();
   }
 }

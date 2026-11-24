@@ -1,6 +1,7 @@
 // Objetivos de la historia: lógica pura, sin DOM ni Three.js (diseño §6.2).
 // El texto no lleva el prefijo "Objetivo: ": lo pone el HUD.
 import { STREET_END_X } from './logic.js';
+import { FLAG } from './data/flags.js';
 
 // Los 12 textos exactos del §6.2, en orden, más "craft" (guion 2.5: al juntar
 // los seis materiales el objetivo pasa a armar el traje en el garaje).
@@ -36,7 +37,8 @@ export const SUIT_NEEDS = [
 
 // Las cuatro aberturas de la casa (guion 2.2 / diseño §6.3).
 export const CLOSED_KEYS = [
-  'closed_window_martita', 'closed_window_living', 'closed_hall_door', 'closed_garage_door',
+  FLAG.CLOSED_WINDOW_MARTITA, FLAG.CLOSED_WINDOW_LIVING,
+  FLAG.CLOSED_HALL_DOOR, FLAG.CLOSED_GARAGE_DOOR,
 ];
 
 function amount(slots, id) {
@@ -64,17 +66,17 @@ export function closedCount(flags = {}) {
 /** Pasos de la esclusa listos: nafta, extractor y traje (0..3). */
 export function airlockCount(flags = {}) {
   let n = 0;
-  if (flags.electrogeno_on) n += 1;
-  if (flags.extractor_ok) n += 1;
-  if (flags.traje_fabricado) n += 1;
+  if (flags[FLAG.ELECTROGENO_ON]) n += 1;
+  if (flags[FLAG.EXTRACTOR_OK]) n += 1;
+  if (flags[FLAG.TRAJE_FABRICADO]) n += 1;
   return n;
 }
 
 // Checklist de la esclusa: los mismos tres pasos del contador, con etiqueta.
 export const AIRLOCK_STEPS = [
-  { id: 'nafta', label: 'Nafta', flag: 'electrogeno_on' },
-  { id: 'extractor', label: 'Extractor', flag: 'extractor_ok' },
-  { id: 'traje', label: 'Traje', flag: 'traje_fabricado' },
+  { id: 'nafta', label: 'Nafta', flag: FLAG.ELECTROGENO_ON },
+  { id: 'extractor', label: 'Extractor', flag: FLAG.EXTRACTOR_OK },
+  { id: 'traje', label: 'Traje', flag: FLAG.TRAJE_FABRICADO },
 ];
 
 /** Estado de los tres pasos de la esclusa (nafta, extractor, traje). */
@@ -89,7 +91,7 @@ export function airlockChecklist(flags = {}) {
 /** Qué le falta ponerse a Juan para salir: dados, traje y rifle. */
 export function equipChecklist(state = {}) {
   return [
-    { id: 'dados', label: 'Dados', done: Boolean(state.flags?.dados) },
+    { id: 'dados', label: 'Dados', done: Boolean(state.flags?.[FLAG.DADOS]) },
     { id: 'traje_puesto', label: 'Traje puesto', done: Boolean(state.hasSuit) },
     { id: 'rifle', label: 'Rifle', done: Boolean(state.hasRifle) },
   ];
@@ -135,41 +137,41 @@ export function currentObjective(state = {}) {
 
   const flags = state.flags || {};
   const map = state.map ?? state.sceneName;
-  const materials = state.crafted || flags.traje_fabricado
+  const materials = state.crafted || flags[FLAG.TRAJE_FABRICADO]
     ? SUIT_NEEDS.length
     : (state.inventory ? countMaterials(state.inventory) : (state.partsComplete ? SUIT_NEEDS.length : 0));
 
-  if (!flags.mate_tutorial) return objective('mate');
-  if (!flags.truco_jugado) return objective('table');
-  if (!flags.apagon || !flags.vio_la_nevada) return objective('window');
-  if (!flags.martita_ventana) {
-    return flags.martita_sprint ? objective('martita') : objective('downstairs');
+  if (!flags[FLAG.MATE_TUTORIAL]) return objective('mate');
+  if (!flags[FLAG.TRUCO_JUGADO]) return objective('table');
+  if (!flags[FLAG.APAGON] || !flags[FLAG.VIO_LA_NEVADA]) return objective('window');
+  if (!flags[FLAG.MARTITA_VENTANA]) {
+    return flags[FLAG.MARTITA_SPRINT] ? objective('martita') : objective('downstairs');
   }
-  if (!flags.casa_sellada) {
+  if (!flags[FLAG.CASA_SELLADA]) {
     const closed = state.closedCount ?? closedCount(flags);
     return withProgress('seal', closed, CLOSED_KEYS.length);
   }
-  if (!flags.idea_traje) {
-    if (flags.ramirez_muerto) return objective('attic');
-    if (!flags.elena_hablada) return objective('elena');
+  if (!flags[FLAG.IDEA_TRAJE]) {
+    if (flags[FLAG.RAMIREZ_MUERTO]) return objective('attic');
+    if (!flags[FLAG.ELENA_HABLADA]) return objective('elena');
     return objective('ramirez');
   }
-  if (!flags.traje_fabricado) {
+  if (!flags[FLAG.TRAJE_FABRICADO]) {
     return materials >= SUIT_NEEDS.length
       ? objective('craft')
       : withProgress('materials', materials, SUIT_NEEDS.length);
   }
-  if (!flags.esclusa_lista) {
+  if (!flags[FLAG.ESCLUSA_LISTA]) {
     const steps = state.airlockCount ?? airlockCount(flags);
     return {
       ...withProgress('airlock', steps, 3),
       checklist: airlockChecklist(flags),
     };
   }
-  if (!flags.listo_para_salir) {
+  if (!flags[FLAG.LISTO_PARA_SALIR]) {
     return { ...objective('equip'), checklist: equipChecklist(state) };
   }
-  if (flags.arena || flags.afuera || map === 'arena') return objective('survive');
+  if (flags[FLAG.ARENA] || flags[FLAG.AFUERA] || map === 'arena') return objective('survive');
   return objective('exit');
 }
 

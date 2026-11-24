@@ -1,3 +1,5 @@
+import { overlaps } from './geom.js';
+
 // Alcance por casilleros de acceso (DIRECCION.md, "Controles e interacción").
 // Lógica pura: sin DOM ni Three.js. La usan la E/A, el click y el cuadradito.
 //
@@ -51,10 +53,6 @@ export function mapIndex(map) {
   const index = { solids, low, solidTiles: map.solidTiles || [] };
   indexCache.set(map, { version, index });
   return index;
-}
-
-function overlaps(a, b) {
-  return a.x < b.x + b.w && b.x < a.x + a.w && a.y < b.y + b.h && b.y < a.y + a.h;
 }
 
 function tileNameSolid(index, name) {

@@ -1,5 +1,5 @@
 import { charSprite, canvasOverlay, depthFor, makeShadow } from './sprite.js';
-import { drawText } from './font.js';
+import { OUT, PAR, INK } from './uiSkin.js';
 
 const IDLE_FRAME_TIME = 0.55;
 
@@ -41,18 +41,18 @@ export class NPC {
     const { ctx } = this.bubble;
     this.bubble.clear();
     // globito de historieta chico, crema con contorno oscuro y colita
-    ctx.fillStyle = '#1a1426';
+    ctx.fillStyle = OUT;
     ctx.fillRect(2, 0, 11, 8);
     ctx.fillRect(3, 8, 9, 1);
     ctx.fillRect(4, 9, 7, 1);
     ctx.fillRect(5, 10, 5, 1);
     ctx.fillRect(6, 11, 3, 1);
-    ctx.fillStyle = '#ecd6a4';
+    ctx.fillStyle = PAR;
     ctx.fillRect(3, 1, 9, 6);
     ctx.fillRect(4, 7, 7, 1);
     ctx.fillRect(5, 8, 5, 1);
     ctx.fillRect(6, 9, 3, 1);
-    ctx.fillStyle = '#3a2418';
+    ctx.fillStyle = INK;
     ctx.fillRect(5, 3, 1, 1);
     ctx.fillRect(7, 3, 1, 1);
     ctx.fillRect(9, 3, 1, 1);

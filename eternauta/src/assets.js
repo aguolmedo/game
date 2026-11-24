@@ -32,6 +32,9 @@ export async function loadAssets(baseUrl = './') {
     chars2Data, portraitsDlgData, portraitsPanelData, housesData, street2Data,
     interior2Data, propsData, cascarudosData, fxData, titleData,
     deathPanelData, cursorData,
+    roguelikeLlegada1, roguelikeLlegada2, roguelikeLlegada3, roguelikeLlegada4,
+    roguelikeLlegada5, roguelikeLlegada6, roguelikeLlegada7,
+    roguelikeCuartoVacio, roguelikeCuartoLlegada, roguelikeCuartoGag,
   ] = await Promise.all([
     texture('tiles.png'),
     texture('objects.png'),
@@ -85,6 +88,16 @@ export async function loadAssets(baseUrl = './') {
     fetchJson(url('title.json')),
     fetchJson(url('death_panel.json')),
     fetchJson(url('cursor.json')),
+    texture('roguelike/llegada_1.png'),
+    texture('roguelike/llegada_2.png'),
+    texture('roguelike/llegada_3.png'),
+    texture('roguelike/llegada_4.png'),
+    texture('roguelike/llegada_5.png'),
+    texture('roguelike/llegada_6.png'),
+    texture('roguelike/llegada_7.png'),
+    texture('roguelike/cuarto_vacio.png'),
+    texture('roguelike/cuarto_llegada.png'),
+    texture('roguelike/cuarto_gag.png'),
   ]);
 
   return {
@@ -101,5 +114,16 @@ export async function loadAssets(baseUrl = './') {
     chars2Data, portraitsDlgData, portraitsPanelData, housesData, street2Data,
     interior2Data, propsData, cascarudosData, fxData, titleData,
     deathPanelData, cursorData,
+    roguelike: {
+      llegada: [
+        roguelikeLlegada1, roguelikeLlegada2, roguelikeLlegada3, roguelikeLlegada4,
+        roguelikeLlegada5, roguelikeLlegada6, roguelikeLlegada7,
+      ],
+      cuarto: {
+        vacio: roguelikeCuartoVacio,
+        llegada: roguelikeCuartoLlegada,
+        gag: roguelikeCuartoGag,
+      },
+    },
   };
 }

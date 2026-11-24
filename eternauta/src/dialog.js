@@ -4,8 +4,8 @@ import {
   INK, INK2, PAR, PAR2, OUT, AM3, panel, namePlate, wrapLines, dim,
 } from './uiSkin.js';
 import { drawPrompt, promptWidth } from './glyphs.js';
-import { portraitFor, spriteHeadFor } from './data/portraits.js';
-import { pointInRect } from './uiHit.js';
+import { portraitFor, spriteHeadFor, objectHeadFor } from './data/portraits.js';
+import { pointInRect } from './geom.js';
 
 // El cuadro ocupa a lo sumo un tercio de la pantalla (270 / 3 = 90 px).
 const BOX_W = 464;
@@ -214,6 +214,13 @@ export class DialogBox {
 
   drawPortrait(ctx, entry, px, py) {
     const kind = entry.portraitKind || 'dlg';
+    // Retratos que viven en objects.png (roguelike): la cabeza del frame 16x32.
+    const objectCrop = this.objectCrop(entry.portrait);
+    if (objectCrop) {
+      if (kind === 'panel') this.drawObjectPanel(ctx, objectCrop, px, py);
+      else this.drawObjectDialog(ctx, objectCrop, px, py);
+      return;
+    }
     // El traje (y sus variantes) se sigue viendo en portraits_dlg.
     const keepAtlas = kind === 'dlg' && SUIT_DLG.has(entry.portrait);
     if (!keepAtlas) {
@@ -225,6 +232,38 @@ export class DialogBox {
       }
     }
     this.drawAtlasPortrait(ctx, entry, px, py, kind);
+  }
+
+  /** Cabeza (filas 0..15) de un frame de objects.png: { image, sx, sy, sw, sh } o null. */
+  objectCrop(id) {
+    const name = objectHeadFor(id);
+    const image = this.assets.objects?.image;
+    const frame = name && this.assets.objectsData?.frames?.[name];
+    if (!image || !frame) return null;
+    if (!(image.width > 0) || !(image.height > 0)) return null;
+    const [fx, fy, fw] = frame;
+    const sw = Math.min(SPRITE_W, fw || SPRITE_W);
+    if (fx + sw > image.width || fy + SPRITE_W > image.height) return null;
+    return { image, sx: fx, sy: fy, sw, sh: SPRITE_W };
+  }
+
+  /** Retrato de objects en el cuadro de diálogo: cabeza 16x16 escalada x4. */
+  drawObjectDialog(ctx, crop, px, py) {
+    ctx.fillStyle = SPRITE_BG;
+    ctx.fillRect(px, py, PORTRAIT, PORTRAIT);
+    ctx.imageSmoothingEnabled = false;
+    ctx.drawImage(crop.image, crop.sx, crop.sy, crop.sw, crop.sh,
+      px, py, PORTRAIT, PORTRAIT);
+  }
+
+  /** Retrato de objects en viñeta: cabeza 1x, centrada y abajo en el cuadrado de 32. */
+  drawObjectPanel(ctx, crop, px, py) {
+    const dx = px + Math.round((PANEL - crop.sw) / 2);
+    const dy = py + PANEL - crop.sh;
+    ctx.fillStyle = SPRITE_BG;
+    ctx.fillRect(px, py, PANEL, PANEL);
+    ctx.imageSmoothingEnabled = false;
+    ctx.drawImage(crop.image, crop.sx, crop.sy, crop.sw, crop.sh, dx, dy, crop.sw, crop.sh);
   }
 
   /** Retrato del cuadro de diálogo: recorte 16x21 de chars2 escalado x3. */

@@ -5,6 +5,8 @@ import {
 import { VIEW_W, VIEW_H } from './sprite.js';
 import { viewport, snapCamera } from './viewport.js';
 import { bumpMapVersion } from './reach.js';
+import { solidRectFor } from './maps/solid.js';
+import { clamp, overlaps } from './geom.js';
 
 // Atlas donde buscar cada sprite de mapa, en orden. Las piezas viejas viven
 // en objects.png; las nuevas en los atlases del concepto.
@@ -62,6 +64,8 @@ export class WorldMap {
     this.solids = [];
     this.candidates = [];
     this.glows = [];
+    // Mallas juntadas por atlas (sólo si el mapa lo pide, ver batchStatic).
+    this.batches = [];
     // Posición original de cada mueble (para reset() y para devolver un
     // mueble liviano a su lugar si la historia interrumpe el acarreo).
     this.home = new Map();
@@ -78,6 +82,145 @@ export class WorldMap {
       this.addObject(obj);
     }
     this.rebuildSolids();
+    // P2: el mobiliario estático del barrio se junta en una malla por atlas.
+    if (map.batchStatic) this.buildStaticBatches();
+  }
+
+  /**
+   * P2: junta el mobiliario estático en UNA malla (un atlas armado al vuelo con
+   * los sheets que usa el mapa). Los UVs de cada sprite quedan grabados y cada
+   * vértice lleva su z. Los objetos se ordenan como el pase transparente de
+   * three (z de cerca a lejos, empate por id de malla), así el dibujo queda
+   * igual que con una malla por objeto. Los que setDark tiñe (ventanas, casas,
+   * farolas, pinos) quedan con su malla propia.
+   * Las mallas individuales se sacan de la escena pero se conservan en obj.mesh
+   * porque layout() lee de ahí tamaño y frame (para sólidos y hover).
+   */
+  buildStaticBatches() {
+    const sheetY = new Map();
+    const items = [];
+    // Los objetos dentro de un resplandor aditivo (farolas) se dejan sueltos:
+    // el glow no escribe z y su orden con los sprites debe quedar igual.
+    const glowRects = [];
+    for (const obj of this.map.objects || []) {
+      const glow = obj.glowMesh;
+      if (!glow || !glow.geometry || !glow.geometry.parameters) continue;
+      const gw = glow.geometry.parameters.width;
+      const gh = glow.geometry.parameters.height;
+      glowRects.push({
+        x: glow.position.x - gw / 2,
+        y: glow.position.y - gh / 2,
+        w: gw,
+        h: gh,
+      });
+    }
+    const inGlow = (x, y, w, h) => glowRects.some((r) => (
+      x < r.x + r.w && x + w > r.x && y < r.y + r.h && y + h > r.y
+    ));
+    for (const obj of this.map.objects || []) {
+      const mesh = obj.mesh;
+      if (!mesh || needsOwnMaterial(obj)) continue;
+      const sheet = mesh.userData.sheet;
+      const frame = mesh.userData.frame;
+      if (!sheet || !sheet.image || !frame) continue;
+      const w = mesh.geometry.parameters.width;
+      const h = mesh.geometry.parameters.height;
+      if (inGlow(mesh.position.x - w / 2, mesh.position.y - h / 2, w, h)) continue;
+      if (!sheetY.has(sheet)) sheetY.set(sheet, 0);
+      const { x: px, y: py, z } = mesh.position;
+      items.push({
+        z,
+        id: mesh.id,
+        sheet,
+        frame,
+        px,
+        py,
+        w,
+        h,
+        flipX: Boolean(obj.flipX),
+      });
+      this.scene.remove(mesh);
+    }
+    if (!items.length) return;
+
+    // Atlas vertical con los sheets usados (todos chicos: ~560x700). Cada
+    // sheet lleva 1 px de borde con su propia orilla repetida: así un sprite
+    // pegado al borde del sheet muestrea lo mismo que el ClampToEdge original.
+    const PAD = 1;
+    let atlasW = 0;
+    let atlasH = 0;
+    for (const sheet of sheetY.keys()) {
+      atlasW = Math.max(atlasW, sheet.image.width);
+      atlasH += sheet.image.height + PAD * 2;
+    }
+    atlasW += PAD * 2;
+    const canvas = document.createElement('canvas');
+    canvas.width = atlasW;
+    canvas.height = atlasH;
+    const ctx = canvas.getContext('2d');
+    let oy = PAD;
+    for (const sheet of sheetY.keys()) {
+      const img = sheet.image;
+      const iw = img.width;
+      const ih = img.height;
+      sheetY.set(sheet, oy);
+      ctx.drawImage(img, PAD, oy);
+      // Orillas repetidas (arriba/abajo/izquierda/derecha y esquinas).
+      ctx.drawImage(img, 0, 0, iw, 1, PAD, oy - PAD, iw, PAD);
+      ctx.drawImage(img, 0, ih - 1, iw, 1, PAD, oy + ih, iw, PAD);
+      ctx.drawImage(img, 0, 0, 1, ih, 0, oy, PAD, ih);
+      ctx.drawImage(img, iw - 1, 0, 1, ih, PAD + iw, oy, PAD, ih);
+      ctx.drawImage(img, 0, 0, 1, 1, 0, oy - PAD, PAD, PAD);
+      ctx.drawImage(img, iw - 1, 0, 1, 1, PAD + iw, oy - PAD, PAD, PAD);
+      ctx.drawImage(img, 0, ih - 1, 1, 1, 0, oy + ih, PAD, PAD);
+      ctx.drawImage(img, iw - 1, ih - 1, 1, 1, PAD + iw, oy + ih, PAD, PAD);
+      oy += ih + PAD * 2;
+    }
+    const texture = new THREE.CanvasTexture(canvas);
+    texture.magFilter = THREE.NearestFilter;
+    texture.minFilter = THREE.NearestFilter;
+    texture.generateMipmaps = false;
+    texture.flipY = false;
+    texture.colorSpace = THREE.SRGBColorSpace;
+
+    // Mismo orden que reversePainterSortStable: cerca primero, empate por id.
+    // Un bias diminuto (0,05 px) hace que, en un empate exacto de z, el mueble
+    // gane sobre el jugador (creado antes; en el dibujo objeto por objeto el
+    // desempate por id lo dejaba adelante). No altera diferencias de 1 px.
+    items.sort((a, b) => (b.z - a.z) || (a.id - b.id));
+    const Z_BIAS = 0.00005;
+    const pos = [];
+    const uv = [];
+    const idx = [];
+    let b = 0;
+    for (const it of items) {
+      const u0 = (PAD + it.frame.x) / atlasW;
+      const u1 = (PAD + it.frame.x + it.frame.w) / atlasW;
+      const yBase = sheetY.get(it.sheet) + it.frame.y;
+      const v0 = yBase / atlasH;
+      const v1 = (yBase + it.frame.h) / atlasH;
+      const ul = it.flipX ? u1 : u0;
+      const ur = it.flipX ? u0 : u1;
+      const x0 = it.px - it.w / 2;
+      const x1 = it.px + it.w / 2;
+      const yTop = it.py + it.h / 2;
+      const yBottom = it.py - it.h / 2;
+      const z = it.z + Z_BIAS;
+      pos.push(x0, yTop, z, x1, yTop, z, x0, yBottom, z, x1, yBottom, z);
+      uv.push(ul, v1, ur, v1, ul, v0, ur, v0);
+      idx.push(b, b + 2, b + 1, b + 2, b + 3, b + 1);
+      b += 4;
+    }
+    const geo = new THREE.BufferGeometry();
+    geo.setAttribute('position', new THREE.Float32BufferAttribute(pos, 3));
+    geo.setAttribute('uv', new THREE.Float32BufferAttribute(uv, 2));
+    geo.setIndex(idx);
+    geo.computeBoundingSphere();
+    const mesh = new THREE.Mesh(geo, new THREE.MeshBasicMaterial({
+      map: texture, transparent: true, alphaTest: 0.5, side: THREE.DoubleSide,
+    }));
+    this.scene.add(mesh);
+    this.batches.push(mesh);
   }
 
   /** Geometría de dibujo de un objeto según su posición actual en la grilla. */
@@ -101,8 +244,11 @@ export class WorldMap {
         h: trim.h + 2,
       }
       : { x: px - w / 2 - 1, y: py - h / 2 - 1, w: w + 2, h: h + 2 };
+    // `trim` va sin el margen de 1 px de `drawBox`: lo usa el sólido del barrio
+    // (solidPx, ver src/maps/solid.js) para no tapar píxeles transparentes.
+    const trimRect = trim ? { x: trim.x, y: trim.y, w: trim.w, h: trim.h } : null;
     return {
-      anchorX, anchorY, px, py, w, h, z, drawBox,
+      anchorX, anchorY, px, py, w, h, z, drawBox, trim: trimRect,
     };
   }
 
@@ -149,6 +295,14 @@ export class WorldMap {
     this.solids = [];
     for (const obj of this.map.objects || []) {
       if (!obj.solid || obj.hidden) continue;
+      // Barrio: el sólido sale del rect dibujado (offset incluido). Opt-in por
+      // objeto (`solidPx`), así los demás mapas conservan su rect de baldosas.
+      if (obj.solidPx) {
+        const box = this.layout(obj);
+        const rect = solidRectFor(obj, [box.w, box.h], box.trim);
+        if (rect) this.solids.push({ ...rect, id: obj.id });
+        continue;
+      }
       const s = obj.solid === true
         ? { x: 0, y: 0, w: obj.tw, h: obj.th }
         : obj.solid;
@@ -181,6 +335,8 @@ export class WorldMap {
 
   addObject(obj) {
     const mesh = anySprite(this.assets, obj.sprite);
+    // Espejado horizontal opcional (p. ej. la cruz de San Andres del paso a nivel).
+    if (obj.flipX) mesh.scale.x = -1;
     this.scene.add(mesh);
     obj.mesh = mesh;
     const box = this.layout(obj);
@@ -317,11 +473,18 @@ export class WorldMap {
   }
 }
 
-export function overlaps(a, b) {
-  return a.x < b.x + b.w && a.x + a.w > b.x
-    && a.y < b.y + b.h && a.y + a.h > b.y;
-}
+export { overlaps };
 
-function clamp(v, min, max) {
-  return Math.min(max, Math.max(min, v));
+/**
+ * ¿`setDark()` puede cambiar el color de este objeto? Los que sí necesitan su
+ * propio material (no se pueden juntar en el batch estático).
+ */
+function needsOwnMaterial(obj) {
+  const sprite = obj.sprite || '';
+  const id = obj.id || '';
+  return Boolean(obj.window) || /window/i.test(sprite)
+    || /^house_|^shop_/i.test(id)
+    || /farola|streetlight/i.test(sprite)
+    || /^pino|^arbusto/i.test(id)
+    || /oil_lamp|candle|lampara/i.test(sprite);
 }

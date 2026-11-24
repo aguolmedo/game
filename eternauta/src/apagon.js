@@ -3,6 +3,7 @@
 // lista de luces cálidas, haces fríos, vidrios y los efectos chicos (llama,
 // pucho). Ver art/concept/lighting2.py y lighting3.py.
 import { viewport } from './viewport.js';
+import { FLAG } from './data/flags.js';
 
 export const CANDLE_COL = [1.25, 1.06, 0.80];
 export const EMBER_COL = [1.22, 0.80, 0.58];
@@ -159,7 +160,7 @@ export function buildApagon(scene) {
 
     // Lamparita colgando del cable: apagada hasta cargar nafta en el electrógeno.
     const bulb = bounds(obj('bulb'));
-    if (bulb && scene.game?.flags?.electrogeno_on) {
+    if (bulb && scene.game?.flags?.[FLAG.ELECTROGENO_ON]) {
       const flick = BULB_JIT[Math.floor(t / 0.15) % BULB_JIT.length];
       params.lights.push({ x: bulb.cx, y: bulb.b - 4, r: 70 + flick, col: BULB_COL });
     }

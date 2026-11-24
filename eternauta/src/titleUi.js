@@ -1,6 +1,10 @@
 // Cartel de madera, copo de nieve y fundido de la pantalla de titulo.
 // Todo se dibuja en canvas 1x con posiciones enteras (pixel art).
-import { OUT } from './uiSkin.js';
+// La madera que coincide con la paleta de uiSkin se toma de ahí; la del
+// cartel (más clara) sigue en este archivo.
+import { OUT, WOOD1, WOOD2 as WOOD_UI2, AM3 } from './uiSkin.js';
+
+export { OUT, WOOD1, AM3 };
 
 export const ICE = '#eefaff';
 export const ICE2 = '#c8e2ee';
@@ -10,17 +14,14 @@ export const CREAM2 = '#d9ad7c';
 
 // Paleta del cartel (la misma que art/concept/menus_madera.py).
 export const WOOD0 = '#5a3820';
-export const WOOD1 = '#7a4e2c';
 export const WOOD2 = '#8a5a34';
-export const WOOD3 = '#a06a3c';
+export const WOOD3 = WOOD_UI2; // mismo tono que uiSkin.WOOD2
 export const FACE_HI = '#9a663a';
 export const SEAM = 'rgba(74, 42, 26, 0.55)';
 export const SEAM_HI = 'rgba(214, 160, 102, 0.30)';
-export const GRAIN = 'rgba(74, 42, 26, 0.35)';
 export const NAIL = '#2a2634';
 export const NAIL_HI = '#8a94a8';
 export const SH = '#3a1c0c';
-export const AM3 = '#ffcf6e';
 export const FALTA = '#f09a7a';
 export const OKC = '#b8d890';
 export const CARVE = '#5e3a22';
@@ -50,6 +51,13 @@ export function introAlpha(t, dur = 0.8) {
 export function easeOut(t) {
   const k = Math.min(1, Math.max(0, t));
   return 1 - (1 - k) * (1 - k) * (1 - k);
+}
+
+/** Ensancha el cartel (sin mover su centro) para que el texto mas ancho quede
+ *  con `margin` px de aire a cada lado. Devuelve un cartel nuevo, no muta. */
+export function fitSignWidth(sign, widest, margin = 12) {
+  const w = Math.max(sign.w, widest + margin * 2);
+  return { ...sign, w, x: Math.round(sign.x + sign.w / 2 - w / 2) };
 }
 
 /** Nieve acumulada sobre el borde de arriba del cartel. */

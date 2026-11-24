@@ -53,9 +53,7 @@ export function footBox(x, feet) {
 }
 
 /** Strict AABB overlap: boxes that only touch edges do NOT overlap. */
-export function overlaps(a, b) {
-  return a.x < b.x + b.w && b.x < a.x + a.w && a.y < b.y + b.h && b.y < a.y + a.h;
-}
+export { overlaps } from './geom.js';
 
 /**
  * Move `pos` by `move` * speed * dt, resolving axes one at a time so the

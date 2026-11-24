@@ -4,6 +4,7 @@ import { chromium } from 'playwright-core';
 import fs from 'node:fs';
 
 const PORT = process.env.PORT || 5399;
+const SEED = 3455; // el mismo barrio que tools/salida_screens.mjs
 const OUT = 'docs/screens/shooting';
 fs.mkdirSync(OUT, { recursive: true });
 
@@ -47,7 +48,10 @@ const aimAt = (dx, dy = 0) => page.evaluate(([ax, ay]) => {
 try {
   await page.goto(`http://localhost:${PORT}/`, { waitUntil: 'networkidle' });
   await page.waitForFunction(() => window.__eternauta, null, { timeout: 15000 });
-  await page.evaluate(() => window.__eternauta.go('arena'));
+  await page.evaluate((seed) => {
+    window.__eternauta.game.run = { loop: 1, seed };
+    window.__eternauta.go('arena');
+  }, SEED);
   await page.waitForFunction(() => window.__eternauta.state().scene === 'arena');
   await wait(900); // que carguen los fx
 
@@ -56,6 +60,29 @@ try {
     return { fx: a.shooting.ready(), bullets: a.shooting.count().bullets };
   });
   console.log('fx listo:', JSON.stringify(ready));
+
+  // Tramo libre del barrio actual: Juan + un bicho 46 px a la derecha + la
+  // bala, con el piso despejado (se busca con world.isSolid y canSpawnAt).
+  const spot = await page.evaluate(() => {
+    const a = window.__eternauta.scenes.arena;
+    // La calle de abajo del barrio sembrado (la de salida_esquina): sin huecos del mapa a la vista.
+    for (let y = 520; y <= 600; y += 8) {
+      for (let x = 200; x <= 700; x += 8) {
+        let clear = true;
+        for (let dx = -20; dx <= 130 && clear; dx += 6) {
+          if (a.world.isSolid({ x: x + dx - 5, y: y - 6, w: 10, h: 6 })) clear = false;
+        }
+        if (clear && a.canSpawnAt('veloz', x + 46, y) && a.canSpawnAt('cascarudo', x + 46, y)
+          && !a.world.isSolid({ x: x - 5, y: y - 40, w: 10, h: 40 })) {
+          return { x, y };
+        }
+      }
+    }
+    return null;
+  });
+  console.log('tramo libre:', JSON.stringify(spot));
+  if (!spot) throw new Error('no hay tramo libre para el escenario');
+  await page.evaluate((p) => { window.__spot = p; }, spot);
 
   // Escenario estable: ronda activa sin oleadas automáticas, en un tramo libre
   // de la calle (verificado con world.isSolid), apuntando a la derecha.
@@ -66,8 +93,9 @@ try {
     a.cfg = { ...a.cfg, total: 9999 };
     a.clearEnemies();
     a.shooting.reset();
-    window.__eternauta.teleport(640, 262, 'right');
-    a.cam = a.world.cameraFor(640, 262 - 18);
+    const { x, y } = window.__spot;
+    window.__eternauta.teleport(x, y, 'right');
+    a.cam = a.world.cameraFor(x, y - 18);
     a.__followCamera = a.followCamera;
     a.followCamera = () => {};
     a.aim = { x: 1, y: 0 };
@@ -218,10 +246,11 @@ try {
     const a = window.__eternauta.scenes.arena;
     a.shooting.reset();
     a.clearEnemies();
-    a.player.place(640, 262, 'right');
-    a.cam = a.world.cameraFor(640, 262 - 18);
-    a.player.x = 640; a.player.feet = 262; a.player.draw();
-    const bug = a.spawnEnemy('veloz', 640 + 46, 262);
+    const { x, y } = window.__spot;
+    a.player.place(x, y, 'right');
+    a.cam = a.world.cameraFor(x, y - 18);
+    a.player.x = x; a.player.feet = y; a.player.draw();
+    const bug = a.spawnEnemy('veloz', x + 46, y);
     a.updateEnemyVisual(bug);
     a.points.score = 0;
     a.points.kills = 0;
@@ -236,6 +265,7 @@ try {
     };
   });
   console.log('baja:', JSON.stringify(kill));
+  if (!kill.dead || kill.kills < 1) throw new Error('la baja no se produjo');
   await wait(120);
   await shot('10_kill_knockback');
 
@@ -244,10 +274,11 @@ try {
     const a = window.__eternauta.scenes.arena;
     a.shooting.reset();
     a.clearEnemies();
-    a.player.place(640, 262, 'right');
-    a.cam = a.world.cameraFor(640, 262 - 18);
-    a.player.x = 640; a.player.feet = 262; a.player.draw();
-    const bug = a.spawnEnemy('cascarudo', 640 + 46, 262);
+    const { x, y } = window.__spot;
+    a.player.place(x, y, 'right');
+    a.cam = a.world.cameraFor(x, y - 18);
+    a.player.x = x; a.player.feet = y; a.player.draw();
+    const bug = a.spawnEnemy('cascarudo', x + 46, y);
     a.updateEnemyVisual(bug);
     window.__arm();
     a.tryFire();
@@ -258,6 +289,7 @@ try {
     return { steps, hp: bug.hp, hitT: bug.hitT, dead: bug.dead };
   });
   console.log('golpe:', JSON.stringify(hit));
+  if (hit.hitT <= 0) throw new Error('el golpe no marcó al bicho');
   await wait(120);
   await shot('11_hit_flash_knockback');
 
@@ -284,8 +316,9 @@ try {
     a.update = a.__realUpdate;
     a.followCamera = a.__followCamera;
     a.resetRun();
-    window.__eternauta.teleport(640, 248, 'right');
-    a.cam = a.world.cameraFor(640, 248 - 18);
+    const { x, y } = window.__spot;
+    window.__eternauta.teleport(x, y, 'right');
+    a.cam = a.world.cameraFor(x, y - 18);
     a.phase = 'active';
     a.spawnTimer = 0.2;
     a.debugSetRound(3);

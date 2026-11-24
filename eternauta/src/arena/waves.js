@@ -1,5 +1,6 @@
 // Rondas de cascarudos (§11.4). Lógica pura: sin DOM ni three.
 // Coordenadas en píxeles, Y hacia abajo (igual que el resto del juego).
+import { rngFromSeed } from '../run/rng.js';
 
 export const TILE = 16;
 export const MIN_SPAWN_DIST = 6 * TILE; // 96 px: nunca aparecen encima del jugador
@@ -24,7 +25,8 @@ export function roundConfig(r) {
 }
 
 /** Tipo de bicho que aparece en la ronda. rng() devuelve [0,1). */
-export function pickType(r, rng = Math.random) {
+export function pickType(r, rng) {
+  if (typeof rng !== 'function') throw new Error('pickType: falta rng');
   const cfg = roundConfig(r);
   const roll = Number(rng()) || 0;
   if (cfg.armoredPct > 0 && roll < cfg.armoredPct) return 'acorazado';
@@ -52,7 +54,8 @@ function distTo(player, point) {
  * Devuelve null si no hay ninguno a `minDist` o más: la escena decide
  * un borde alternativo. Nunca devuelve un punto cerca del jugador.
  */
-export function spawnPoint(rng = Math.random, spawns = [], player = null, minDist = MIN_SPAWN_DIST) {
+export function spawnPoint(rng, spawns = [], player = null, minDist = MIN_SPAWN_DIST) {
+  if (typeof rng !== 'function') throw new Error('spawnPoint: falta rng');
   const points = spawns.map(pointOf).filter(Boolean);
   const far = points.filter((p) => distTo(player, p) >= minDist);
   if (!far.length) return null;
@@ -61,8 +64,24 @@ export function spawnPoint(rng = Math.random, spawns = [], player = null, minDis
 }
 
 /** Pausa entre apariciones: 0.6 a 1.2 segundos. */
-export function nextSpawnDelay(rng = Math.random) {
+export function nextSpawnDelay(rng) {
+  if (typeof rng !== 'function') throw new Error('nextSpawnDelay: falta rng');
   return 0.6 + (Number(rng()) || 0) * 0.6;
+}
+
+/**
+ * Secuencia completa de apariciones para una semilla: misma semilla, misma
+ * salida. Cada aparición gasta una tirada de posición, una de tipo y una de
+ * demora, en ese orden (igual que updateRound en la arena).
+ */
+export function waveSequence(seed, { round = 1, spawns = [], player = null, count = 20 } = {}) {
+  const rng = rngFromSeed(((Number(seed) >>> 0) ^ 0x5eed) >>> 0);
+  const out = [];
+  for (let i = 0; i < count; i++) {
+    const p = spawnPoint(rng, spawns, player) || { x: 0, y: 0 };
+    out.push({ type: pickType(round, rng), x: p.x, y: p.y, delay: nextSpawnDelay(rng) });
+  }
+  return out;
 }
 
 // Palotes de tinta: cada grupo son 4 rayas verticales y una diagonal encima.

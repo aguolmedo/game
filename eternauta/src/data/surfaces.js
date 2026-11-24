@@ -76,6 +76,3 @@ export const INITIAL_ITEMS = {
   },
 };
 
-export const INITIAL_CONTAINERS = Object.fromEntries(
-  Object.entries(INITIAL_ITEMS).map(([mapId, data]) => [mapId, data.containers || {}]),
-);

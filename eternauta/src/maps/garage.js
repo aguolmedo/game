@@ -6,6 +6,7 @@
 // estantes, el electrogeno de Favalli con su bidon y la lamparita colgando;
 // a la izquierda el banco donde se arma el traje y la puerta a la casa.
 import { makeGrid } from './grid.js';
+import { placer, slotPlacer } from './place.js';
 import { depthFor } from '../sprite.js';
 
 export const COLS = 18;
@@ -17,25 +18,13 @@ const SIZE = {
   crate: [16, 16], box: [16, 16], generator: [28, 24], bidon: [10, 13],
   bulb: [8, 22], bench_suit: [48, 32], stool: [12, 14], tire: [16, 16],
   broom_bucket: [16, 26], coat_stand: [16, 40], door: [16, 32], oil_lamp_lit: [10, 14],
+  radio: [16, 16],
 };
 
-// Igual que en house.js: el sprite se ubica por su esquina inferior izquierda.
-function put(id, sprite, left, base, extra = {}) {
-  const [w, h] = SIZE[sprite];
-  const tw = Math.max(1, Math.round(w / 16));
-  const th = Math.max(1, Math.round(h / 16));
-  const x = Math.round((left + w / 2) / 16 - tw / 2);
-  const y = Math.round(base / 16) - th;
-  const ox = Math.round(left + w / 2 - (x + tw / 2) * 16);
-  const oy = Math.round(base - (y + th) * 16);
-  return { id, sprite, x, y, tw, th, offset: [ox, oy], ...extra };
-}
+const put = placer(SIZE);
 
 /** Slots en coords locales del sprite, pasados a coords de la caja del objeto. */
-function slots(sprite, obj, local, maxItems) {
-  const dy = obj.th * 16 - SIZE[sprite][1];
-  return { slots: local.map(([x, y]) => ({ x, y: y + dy })), maxItems };
-}
+const slots = slotPlacer(SIZE);
 
 // ---------------------------------------------------------------- piso
 const floor = makeGrid(COLS, ROWS, (x, y) => {
@@ -89,10 +78,22 @@ objects.push(shelfR);
 objects.push(put('garage_crate', 'crate', 256, 64, { solid: true, movable: true, type: 'decor', name: 'el cajón', talk: 'crate' }));
 objects.push(put('garage_box', 'box', 256, 82, { solid: false, movable: true, type: 'decor', name: 'la caja', talk: 'box' }));
 
+// La radio de Lucas, sobre las cajas de la derecha (modo base). En la historia
+// no tiene verbo propio: se mira. En la base, Lucas la hace sonar.
+objects.push(put('base_radio', 'radio', 262, 80, {
+  type: 'device', name: 'la radio', talk: 'radio', showIfFlag: 'base',
+  device: {
+    state: () => 'apagada',
+    states: { apagada: { verb: 'Mirar', action: 'look' } },
+  },
+  baseAction: { kind: 'radio', label: 'Escuchar la radio' },
+}));
+
 // El electrogeno de Favalli con su bidon; la lamparita colgando del cable.
 const gen = put('generator', 'generator', 208, 112, {
   solid: { x: 0, y: 1, w: 2, h: 1 },
   type: 'device', name: 'el electrógeno', talk: 'generator',
+  baseAction: { kind: 'taller', station: 'luz', label: 'Mejoras' },
   device: {
     state: (g) => (g.flags?.electrogeno_on ? 'encendido' : 'seco'),
     states: {
@@ -156,7 +157,24 @@ export const garage = {
       flicker: 0.04, state: 'on', onlyIn: null },
   ],
   windows: [],
-  npcs: [],
+  // Las estaciones de la base: solo aparecen con `flags.base` (Continuar).
+  npcs: [
+    {
+      id: 'favalli', who: 'favalli', type: 'person', name: 'Favalli',
+      x: 56, feet: 120, dir: 'down', showIfFlag: 'base',
+      baseAction: { kind: 'taller', station: 'favalli', label: 'Mejoras' },
+    },
+    {
+      id: 'elena', who: 'elena', type: 'person', name: 'Elena',
+      x: 184, feet: 120, dir: 'down', showIfFlag: 'base',
+      baseAction: { kind: 'taller', station: 'elena', label: 'Mejoras' },
+    },
+    {
+      id: 'lucas', who: 'lucas', type: 'person', name: 'Lucas',
+      x: 246, feet: 104, dir: 'right', showIfFlag: 'base',
+      baseAction: { kind: 'taller', station: 'lucas', label: 'Mejoras' },
+    },
+  ],
   pickups: [],
   warps: [
     // puerta interior: vuelve a la casa, al lado del porton del garaje
@@ -166,7 +184,7 @@ export const garage = {
     // la puerta de dos hojas: recien se puede cruzar con el traje y todo listo
     { id: 'garage_door', type: 'passage', name: 'el portón de la calle', x: 7 * 16, y: 3 * 16, w: 48, h: 16, to: 'street', label: 'Salir a la calle',
       look: 'El portón del garaje. Es la única salida posible.',
-      needsSuit: true, needsFlag: 'listo_para_salir',
+      needsSuit: true, needsFlag: 'listo_para_salir', baseExit: true,
       spawn: { x: 4 * 16 + 8, y: 12 * 16 + 8, dir: 'down' } },
   ],
 };

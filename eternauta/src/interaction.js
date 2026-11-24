@@ -4,6 +4,7 @@
 import {
   candidateFootTiles, candidateAccessTiles, playerInAccess, facesFootprint,
 } from './reach.js';
+import { pointInRect } from './geom.js';
 
 export const ACTION_RADIUS = 16;
 export const MAGNET_RADIUS = 16;
@@ -166,7 +167,7 @@ export function inMagnetRange(player, item, radius = MAGNET_RADIUS) {
 export function warpAt(x, feet, warps) {
   for (const w of warps || []) {
     if (!w) continue;
-    if (x >= w.x && x < w.x + w.w && feet >= w.y && feet < w.y + w.h) return w;
+    if (pointInRect({ x, y: feet }, w)) return w;
   }
   return null;
 }

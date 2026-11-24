@@ -8,6 +8,7 @@
 // WorldScene solo lee `.label` (prompt, barra, tests) y ejecuta `.kind`.
 
 import { ITEM_USES, SELF_USES } from './data/actions.js';
+import { closedFlag } from './data/flags.js';
 import { TYPE_VERBS } from './data/types.js';
 import { getItem, isGrabbable } from './items.js';
 import { addItem } from './inventory.js';
@@ -66,7 +67,7 @@ export function stateOf(target, game = {}) {
         : { id: 'libre', verb: 'Mirar', action: 'look' };
     }
     if (obj.window?.openable) {
-      const closed = Boolean(flags[`closed_${obj.id}`]);
+      const closed = Boolean(flags[closedFlag(obj.id)]);
       return closed
         ? { id: 'closed', verb: 'Abrir', action: 'window' }
         : { id: 'open', verb: 'Cerrar', action: 'window' };
@@ -76,7 +77,7 @@ export function stateOf(target, game = {}) {
   let id;
   if (typeof dev.state === 'function') id = dev.state(game);
   else if (dev.flag) id = flags[dev.flag] ? 'on' : 'off';
-  else if (obj.window?.openable) id = flags[`closed_${obj.id}`] ? 'closed' : 'open';
+  else if (obj.window?.openable) id = flags[closedFlag(obj.id)] ? 'closed' : 'open';
   else if (obj.station === 'heat') id = game.pavaStation === obj.id ? 'ocupada' : 'libre';
   else id = dev.initial || 'normal';
   const raw = dev.states && dev.states[id];
@@ -172,8 +173,8 @@ function matchOn(ctx, on, target) {
   }
   if (on.objectId && obj.id !== on.objectId) return null;
   if (on.window === 'openable' && !obj.window?.openable) return null;
-  if (on.open === true && game.flags?.[`closed_${obj.id}`]) return null;
-  if (on.open === false && !game.flags?.[`closed_${obj.id}`]) return null;
+  if (on.open === true && game.flags?.[closedFlag(obj.id)]) return null;
+  if (on.open === false && !game.flags?.[closedFlag(obj.id)]) return null;
   if (on.idMatch && !on.idMatch.test(target.id || '')) return null;
   if (on.kind === 'npc') return target.npc || target;
   return station || obj;

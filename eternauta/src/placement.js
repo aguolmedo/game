@@ -10,6 +10,7 @@ import {
   objectFootTiles, objectAccessTiles, playerFootTile, tileWalkable,
 } from './reach.js';
 import { getItem } from './items.js';
+import { pointInRect } from './geom.js';
 
 export const TILE = 16;
 export const FLOOR_BASE_Y = 14;
@@ -67,7 +68,7 @@ export function warpAtTile(warps, tx, ty) {
   const cy = ty * TILE + TILE / 2;
   for (const w of warps || []) {
     if (!w) continue;
-    if (cx >= w.x && cx < w.x + w.w && cy >= w.y && cy < w.y + w.h) return w;
+    if (pointInRect({ x: cx, y: cy }, w)) return w;
   }
   return null;
 }
@@ -300,12 +301,3 @@ export function supportCheck({
 }
 
 /** Casilleros de la huella de un mueble apoyado en (tx,ty). */
-export function furnitureTiles(object, tx, ty) {
-  const tw = Math.max(1, object?.tw || 1);
-  const th = Math.max(1, object?.th || 1);
-  const out = [];
-  for (let y = ty; y < ty + th; y++) {
-    for (let x = tx; x < tx + tw; x++) out.push({ tx: x, ty: y });
-  }
-  return out;
-}

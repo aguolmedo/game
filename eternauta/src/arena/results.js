@@ -3,7 +3,7 @@
 import { formatPoints } from './points.js';
 
 export const RESULT_OPTIONS = [
-  { id: 'retry', label: 'Otra vez' },
+  { id: 'home', label: 'Volver a la casa' },
   { id: 'title', label: 'Volver al título' },
 ];
 
@@ -52,7 +52,7 @@ export function stepResultNav(nav, move) {
   return { sel, armed: true, axis: key, moved: true };
 }
 
-/** Índice -> id de opción ('retry' | 'title'). Fuera de rango: 'retry'. */
+/** Índice -> id de opción ('home' | 'title'). Fuera de rango: 'home'. */
 export function resultAction(sel) {
   const raw = Math.floor(Number(sel) || 0);
   const i = Math.min(RESULT_OPTIONS.length - 1, Math.max(0, raw));

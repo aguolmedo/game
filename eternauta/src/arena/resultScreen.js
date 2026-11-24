@@ -8,24 +8,45 @@ import {
   CREAM, CREAM2, SH, AM3, WOOD0, WOOD1, WOOD3, ICE, ICE2,
 } from '../titleUi.js';
 import { RESULT_OPTIONS } from './results.js';
+import { bagSummary } from './lootRun.js';
 import { formatPoints } from './points.js';
 
 const VIEW_W = 480;
 const VIEW_H = 270;
 
 // Cartel y postes (mismas medidas que la maqueta).
-export const RESULT_BOARD = { x: 100, y: 30, w: 280, h: 176 };
+export const RESULT_BOARD = { x: 100, y: 30, w: 280, h: 196 };
 const POST_X = [RESULT_BOARD.x + 34, RESULT_BOARD.x + RESULT_BOARD.w - 44];
-const OPTION_Y = [RESULT_BOARD.y + 112, RESULT_BOARD.y + 136];
 
 function optionLabel(option) {
   if (typeof option === 'string') return option;
   return (option && option.label) || '';
 }
 
+/**
+ * Etiquetas de las dos opciones. En el Minijuego (sin salida real) la primera
+ * reinicia el combate, así que se llama "Otra vez" en vez de "Volver a la casa".
+ */
+export function resultOptionLabels(view) {
+  const retry = Boolean(view && view.retry);
+  return RESULT_OPTIONS.map((option, i) => (
+    i === 0 && retry ? 'Otra vez' : optionLabel(option)
+  ));
+}
+
+/**
+ * Y de las dos opciones. Con mochila el bloque de texto ocupa más, así que
+ * las opciones bajan 6 px para dejar aire bajo el resumen.
+ */
+export function resultOptionYs(view) {
+  const hasBag = Boolean(bagSummary(view && view.bag));
+  const first = RESULT_BOARD.y + (hasBag ? 126 : 120);
+  return [first, first + 26];
+}
+
 /** Rects clickeables de las dos opciones del resultado (mismas que dibuja draw). */
-export function resultOptionRects() {
-  return OPTION_Y.map((y) => ({
+export function resultOptionRects(view) {
+  return resultOptionYs(view).map((y) => ({
     x: RESULT_BOARD.x + 26,
     y: y - 5,
     w: RESULT_BOARD.w - 52,
@@ -109,7 +130,7 @@ export function drawResultScreen(ctx, assets, view, t) {
   ];
   stats.forEach(([label, value], i) => {
     const x = cx0 + i * (cw + gap);
-    const y = by + 44;
+    const y = by + 40;
     carve(ctx, x, y, cw, 38);
     centerText(ctx, glyphs, label, x + cw / 2, y + 5, CREAM2);
     centerText(ctx, glyphs, value, x + cw / 2, y + 18, CREAM, 2);
@@ -118,7 +139,7 @@ export function drawResultScreen(ctx, assets, view, t) {
   // Mejor marca (y copito de record).
   const bestText = `Mejor: Ronda ${bestRound} — ${groupedPoints(bestPoints)} pts`;
   const bestW = measureText(glyphs, bestText);
-  const bestY = by + 92;
+  const bestY = by + 88;
   if (newBest) {
     const badge = '¡Nueva marca!';
     const total = bestW + 14 + measureText(glyphs, badge);
@@ -131,11 +152,19 @@ export function drawResultScreen(ctx, assets, view, t) {
       { shadow: SH });
   }
 
+  // Mochila que quedó en la nieve (si la salida tenía algo).
+  const bag = bagSummary(v.bag);
+  if (bag) {
+    centerText(ctx, glyphs, 'La mochila quedó en la nieve:', VIEW_W / 2, by + 98, CREAM2);
+    centerText(ctx, glyphs, bag, VIEW_W / 2, by + 107, AM3);
+  }
+
   // Opciones verticales, como el menu del titulo.
-  const labels = RESULT_OPTIONS.map(optionLabel);
+  const labels = resultOptionLabels(v);
+  const optionYs = resultOptionYs(v);
   labels.forEach((label, i) => {
     const selected = i === sel;
-    const y = OPTION_Y[i];
+    const y = optionYs[i];
     const bob = selected ? Math.round(Math.sin(time * 3.1) * 1.2) : 0;
     if (selected) selectBar(ctx, bx + 30, y - 4 + bob, bw - 60, 22);
     const left = Math.round((VIEW_W - measureText(glyphs, label, 2)) / 2);

@@ -3,13 +3,18 @@
 // acá van el papel, el doble marco de tinta, el cartucho y los copos animados.
 import { drawText, measureText } from '../font.js';
 import { drawGlyph, glyphSize } from '../glyphs.js';
-import { OUT, PAR, darkPanel, dim } from '../uiSkin.js';
+import {
+  OUT, PAR, darkPanel, dim,
+  PANEL_PAPER, CAPTION_PAPER, DARK_INK, SOFT_SHADOW,
+} from '../uiSkin.js';
 
 export const PANEL = { x: 58, y: 49, w: 364, h: 172, border: 2 };
-const PAPER = '#f6f1e4';
 const PAPER2 = '#e4d9c0';
-const CAPTION = '#efe0a8';
-const INK = '#16131c';
+const SNOW_CROSS = 'rgba(238, 250, 255, 0.75)';
+const CAPTION_LINE = 'rgba(138, 106, 60, 0.35)';
+const PANEL_SHADOW = 'rgba(8, 8, 18, 0.5)';
+const MISSING_IMAGE_BG = '#121630';
+const WIPE_HI = 'rgba(246, 241, 228, 0.5)';
 const SNOW_HI = 'rgba(238, 250, 255, 0.92)';
 const SNOW_GLOW = 'rgba(159, 220, 238, 0.22)';
 export const WIPE_TIME = 0.4;
@@ -48,7 +53,7 @@ function drawFlakes(ctx, flakes, x, y, w, h, t) {
     const px = 44 + i * 109 + Math.sin(t * 1.3 + i) * 4;
     const rx = Math.round(x + px);
     const ry = Math.round(y + py);
-    ctx.fillStyle = 'rgba(238, 250, 255, 0.75)';
+    ctx.fillStyle = SNOW_CROSS;
     ctx.fillRect(rx - 1, ry, 3, 1);
     ctx.fillRect(rx, ry - 1, 1, 3);
   }
@@ -58,14 +63,14 @@ function drawFlakes(ctx, flakes, x, y, w, h, t) {
 function drawCaption(ctx, glyphs, x, y) {
   const w = measureText(glyphs, CAPTION_TEXT) + 18;
   const h = 17;
-  ctx.fillStyle = 'rgba(8, 8, 18, 0.42)';
+  ctx.fillStyle = SOFT_SHADOW;
   ctx.fillRect(x + 2, y + 2, w, h);
-  ctx.fillStyle = CAPTION;
+  ctx.fillStyle = CAPTION_PAPER;
   ctx.fillRect(x, y, w, h);
-  framePx(ctx, x, y, w, h, 1, INK);
-  ctx.fillStyle = 'rgba(138, 106, 60, 0.35)';
+  framePx(ctx, x, y, w, h, 1, DARK_INK);
+  ctx.fillStyle = CAPTION_LINE;
   ctx.fillRect(x + 1, y + h - 2, w - 2, 1);
-  drawText(ctx, glyphs, x + 8, y + 5, CAPTION_TEXT, INK);
+  drawText(ctx, glyphs, x + 8, y + 5, CAPTION_TEXT, DARK_INK);
 }
 
 /**
@@ -81,7 +86,7 @@ export function drawDeathPanel(ctx, assets, state) {
   const wipe = Math.max(1, Math.ceil(p.w * progress));
 
   // sombra del panel sobre la calle
-  ctx.fillStyle = 'rgba(8, 8, 18, 0.5)';
+  ctx.fillStyle = PANEL_SHADOW;
   ctx.fillRect(p.x + 3, p.y + 4, p.w, p.h);
 
   ctx.save();
@@ -90,12 +95,12 @@ export function drawDeathPanel(ctx, assets, state) {
   ctx.clip();
 
   // papel y doble marco de tinta
-  ctx.fillStyle = PAPER;
+  ctx.fillStyle = PANEL_PAPER;
   ctx.fillRect(p.x, p.y, p.w, p.h);
-  framePx(ctx, p.x, p.y, p.w, p.h, 2, INK);
-  ctx.fillStyle = PAPER;
-  framePx(ctx, p.x + 2, p.y + 2, p.w - 4, p.h - 4, 1, PAPER);
-  framePx(ctx, p.x + 3, p.y + 3, p.w - 6, p.h - 6, 1, INK);
+  framePx(ctx, p.x, p.y, p.w, p.h, 2, DARK_INK);
+  ctx.fillStyle = PANEL_PAPER;
+  framePx(ctx, p.x + 2, p.y + 2, p.w - 4, p.h - 4, 1, PANEL_PAPER);
+  framePx(ctx, p.x + 3, p.y + 3, p.w - 6, p.h - 6, 1, DARK_INK);
 
   // ilustración centrada en el area interior
   const innerX = p.x + 5;
@@ -113,7 +118,7 @@ export function drawDeathPanel(ctx, assets, state) {
     ctx.drawImage(image, ax, ay, aw, ah);
     drawFlakes(ctx, data.flakes, ax, ay, aw, ah, t);
   } else {
-    ctx.fillStyle = '#121630';
+    ctx.fillStyle = MISSING_IMAGE_BG;
     ctx.fillRect(ax, ay, aw, ah);
   }
 
@@ -122,9 +127,9 @@ export function drawDeathPanel(ctx, assets, state) {
 
   // filo de tinta del entintado (si todavía se está dibujando)
   if (progress < 1) {
-    ctx.fillStyle = INK;
+    ctx.fillStyle = DARK_INK;
     ctx.fillRect(p.x + wipe - 2, p.y, 2, p.h);
-    ctx.fillStyle = 'rgba(246, 241, 228, 0.5)';
+    ctx.fillStyle = WIPE_HI;
     ctx.fillRect(p.x + wipe - 3, p.y + 2, 1, p.h - 4);
   }
 
